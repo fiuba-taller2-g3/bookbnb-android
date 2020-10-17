@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/bkbnb24dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="@dimen/bkbnb32dp"
         android:layout_marginEnd="@dimen/bkbnb24dp"
         android:text="@string/login_title"
         app:layout_constraintEnd_toEndOf="parent"
