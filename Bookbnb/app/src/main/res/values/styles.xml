@@ -20,4 +20,16 @@
         <item name="android:textColor">@color/colorTitle</item>
     </style>
 
+    <style name="bkbnbTextInputField">
+        <item name="android:fontFamily">@font/rubik_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:background">@drawable/text_input_field</item>
+        <item name="android:paddingStart">@dimen/bkbnb10dp</item>
+        <item name="android:paddingEnd">@dimen/bkbnb10dp</item>
+        <item name="android:paddingTop">@dimen/bkbnb12dp</item>
+        <item name="android:paddingBottom">@dimen/bkbnb12dp</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_text_input_field_color</item>
+    </style>
+
 </resources>

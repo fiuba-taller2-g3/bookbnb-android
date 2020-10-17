@@ -35,24 +35,15 @@
         app:layout_constraintStart_toStartOf="@+id/bkbnb_login_title"
         app:layout_constraintTop_toBottomOf="@+id/bkbnb_login_title" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/userIDTextInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/bkbnb24dp"
         android:layout_marginTop="@dimen/bkbnb32dp"
         android:layout_marginEnd="@dimen/bkbnb24dp"
+        style="@style/bkbnbTextInputField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bkbnb_login_subtitle">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/userIDTextInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter User Name" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintStart_toStartOf="@+id/bkbnb_login_subtitle"
+        app:layout_constraintTop_toBottomOf="@+id/bkbnb_login_subtitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="bkbnb1dp">1dp</dimen>
+    <dimen name="bkbnb2dp">2dp</dimen>
+    <dimen name="bkbnb4dp">4dp</dimen>
+    <dimen name="bkbnb6dp">6dp</dimen>
     <dimen name="bkbnb8dp">8dp</dimen>
+    <dimen name="bkbnb10dp">10dp</dimen>
+    <dimen name="bkbnb12dp">12dp</dimen>
     <dimen name="bkbnb24dp">24dp</dimen>
     <dimen name="bkbnb32dp">32dp</dimen>
 </resources>
