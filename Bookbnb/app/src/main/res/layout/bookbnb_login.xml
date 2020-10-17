@@ -35,13 +35,14 @@
         app:layout_constraintStart_toStartOf="@+id/bkbnb_login_title"
         app:layout_constraintTop_toBottomOf="@+id/bkbnb_login_title" />
 
-    <EditText
+    <LinearLayout
+        android:id="@+id/input_fields_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginStart="@dimen/bkbnb24dp"
         android:layout_marginTop="@dimen/bkbnb32dp"
         android:layout_marginEnd="@dimen/bkbnb24dp"
-        style="@style/bkbnbTextInputField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/bkbnb_login_subtitle"
         app:layout_constraintTop_toBottomOf="@+id/bkbnb_login_subtitle" />
