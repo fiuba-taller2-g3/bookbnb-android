@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bkbnb8dp">8dp</dimen>
+    <dimen name="bkbnb24dp">24dp</dimen>
+    <dimen name="bkbnb32dp">32dp</dimen>
+</resources>

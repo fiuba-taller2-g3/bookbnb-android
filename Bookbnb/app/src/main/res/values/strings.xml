@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bookbnb</string>
+    <string name="login_title">Tu perfil</string>
+    <string name="login_subtitle">Inicia sesión y empieza a planificar tu próximo viaje.</string>
 </resources>
