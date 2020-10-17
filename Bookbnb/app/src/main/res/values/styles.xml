@@ -32,4 +32,10 @@
         <item name="android:textCursorDrawable">@drawable/cursor_text_input_field_color</item>
     </style>
 
+    <style name="bkbnbLabelInputField">
+        <item name="android:fontFamily">@font/rubik_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
 </resources>
