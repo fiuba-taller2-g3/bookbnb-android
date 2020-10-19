@@ -6,4 +6,5 @@
     <color name="colorTitle">#3A3837</color>
     <color name="colorTextInputFieldBorder">#999999</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorButton">#D72345</color>
 </resources>

@@ -46,4 +46,37 @@
         app:layout_constraintStart_toStartOf="@+id/bkbnb_login_subtitle"
         app:layout_constraintTop_toBottomOf="@+id/bkbnb_login_subtitle" />
 
+    <TextView
+        android:id="@+id/text_not_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/bkbnbSubtitle"
+        android:text="@string/text_question_not_register"
+        app:layout_constraintStart_toStartOf="@+id/input_fields_container"
+        app:layout_constraintTop_toBottomOf="@+id/input_fields_container" />
+
+    <TextView
+        style="@style/bkbnbSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_register"
+        android:layout_marginStart="@dimen/bkbnb4dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/text_not_register"
+        app:layout_constraintStart_toEndOf="@+id/text_not_register"
+        app:layout_constraintTop_toTopOf="@+id/text_not_register" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb40dp"
+        android:background="@drawable/button_shape"
+        android:text="@string/login_text_button"
+        android:paddingStart="@dimen/bkbnb32dp"
+        android:paddingEnd="@dimen/bkbnb32dp"
+        style="@style/bkbnbButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_not_register" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

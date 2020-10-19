@@ -4,4 +4,7 @@
     <string name="login_subtitle">Inicia sesión y empieza a planificar tu próximo viaje.</string>
     <string name="email_text_field">EMAIL</string>
     <string name="pass_text_field">CONTRASEÑA</string>
+    <string name="text_question_not_register">¿No tienes una cuenta?</string>
+    <string name="text_register"><u>Regístrate</u></string>
+    <string name="login_text_button">Iniciar sesión</string>
 </resources>
