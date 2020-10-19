@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bkbnb40dp"
-        android:background="@drawable/button_shape"
+        android:background="@drawable/button_ripple"
         android:text="@string/login_text_button"
         android:paddingStart="@dimen/bkbnb32dp"
         android:paddingEnd="@dimen/bkbnb32dp"
