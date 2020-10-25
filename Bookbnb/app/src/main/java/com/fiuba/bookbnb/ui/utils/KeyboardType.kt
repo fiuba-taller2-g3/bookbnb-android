@@ -1,4 +1,4 @@
-package com.example.bookbnb.ui.utils
+package com.fiuba.bookbnb.ui.utils
 
 enum class KeyboardType {
     NUMERIC,

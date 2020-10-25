@@ -1,4 +1,4 @@
-package com.example.bookbnb
+package com.fiuba.bookbnb
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -15,8 +15,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initAppBar() {
         setSupportActionBar(app_toolbar as Toolbar)
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.apply {
+            setHomeButtonEnabled(true)
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowTitleEnabled(false)
+        }
     }
 }

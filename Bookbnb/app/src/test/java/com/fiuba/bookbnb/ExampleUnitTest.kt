@@ -1,4 +1,4 @@
-package com.example.bookbnb
+package com.fiuba.bookbnb
 
 import org.junit.Test
 
