@@ -2,6 +2,16 @@ language: android
 jdk: openjdk8
 notifications:
   email: true
+android:
+  components:
+    - build-tools-${ANDROID_BUILD_TOOLS}
+    - android-${ANDROID_API}
+    - add-on
+    - extra
+  licenses:
+    - 'android-sdk-preview-license-52d11cd2'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
 jobs:
   include:
   - stage: test
