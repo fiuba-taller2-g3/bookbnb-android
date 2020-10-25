@@ -3,12 +3,14 @@ jdk:
   - openjdk8
 notifications:
   email: true
+env:
+  global:
+  - ANDROID_SDK_ROOT=$HOME/Android/Sdk
 jobs:
   include:
   - stage: test
     script:
     - cd Bookbnb
-    - ./gradlew clean
     - ./gradlew test
   - stage: deploy
     if: branch = main
