@@ -7,9 +7,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.fiuba.bookbnb.R
+import com.fiuba.bookbnb.forms.FieldsId
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_view.view.*
 
-class TextInputField(context: Context, label: String, type: KeyboardType = KeyboardType.ALPHANUMERIC) : LinearLayout(context) {
+class TextInputField(context: Context, label: String, private val fieldId: FieldsId, type: KeyboardType = KeyboardType.ALPHANUMERIC) : LinearLayout(context) {
 
     init {
         setLayoutParams()
@@ -18,6 +19,10 @@ class TextInputField(context: Context, label: String, type: KeyboardType = Keybo
         }
         setInputType(type)
     }
+
+    fun getContentField() = edit_text.text.toString()
+
+    fun getFieldId() = fieldId
 
     private fun setInputType(keyboardType: KeyboardType) {
         when (keyboardType) {

@@ -67,6 +67,7 @@
         app:layout_constraintTop_toTopOf="@+id/text_not_register" />
 
     <Button
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bkbnb40dp"
