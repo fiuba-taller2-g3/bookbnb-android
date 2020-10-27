@@ -7,4 +7,5 @@
     <string name="text_question_not_register">¿No tienes una cuenta?</string>
     <string name="text_register"><u>Regístrate</u></string>
     <string name="login_text_button">Iniciar sesión</string>
+    <string name="text_logging_spinner">Iniciando sesión...</string>
 </resources>

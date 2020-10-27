@@ -1,6 +1,8 @@
 package com.fiuba.bookbnb.ui.utils
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.text.InputType
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
@@ -10,7 +12,13 @@ import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.FieldsId
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_view.view.*
 
-class TextInputField(context: Context, label: String, private val fieldId: FieldsId, type: KeyboardType = KeyboardType.ALPHANUMERIC) : LinearLayout(context) {
+
+class TextInputField(
+    context: Context,
+    label: String,
+    private val fieldId: FieldsId,
+    type: KeyboardType = KeyboardType.ALPHANUMERIC
+) : LinearLayout(context) {
 
     init {
         setLayoutParams()
@@ -21,6 +29,18 @@ class TextInputField(context: Context, label: String, private val fieldId: Field
     }
 
     fun getContentField() = edit_text.text.toString()
+
+    fun disableEditText() {
+        edit_text.isEnabled = false
+        edit_text.setTextColor(resources.getColor(R.color.colorTextInputFieldDisabled))
+        (edit_text.background as GradientDrawable).setColor(resources.getColor(R.color.colorBackgroundInputFieldDisabled))
+    }
+
+    fun enableEditText() {
+        edit_text.isEnabled = true
+        edit_text.setTextColor(resources.getColor(R.color.colorTitle))
+        (edit_text.background as GradientDrawable).setColor(resources.getColor(R.color.colorWhite))
+    }
 
     fun getFieldId() = fieldId
 
@@ -40,7 +60,10 @@ class TextInputField(context: Context, label: String, private val fieldId: Field
     }
 
     private fun setLayoutParams() {
-        layoutParams = LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        layoutParams = LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         orientation = VERTICAL
     }
 }

@@ -9,6 +9,7 @@
     <dimen name="bkbnb12dp">12dp</dimen>
     <dimen name="bkbnb18dp">18dp</dimen>
     <dimen name="bkbnb24dp">24dp</dimen>
+    <dimen name="bkbnb28dp">28dp</dimen>
     <dimen name="bkbnb32dp">32dp</dimen>
     <dimen name="bkbnb40dp">40dp</dimen>
     <dimen name="bkbnb48dp">48dp</dimen>

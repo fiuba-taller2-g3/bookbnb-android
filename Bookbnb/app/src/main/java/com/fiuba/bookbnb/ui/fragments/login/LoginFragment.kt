@@ -1,8 +1,11 @@
 package com.fiuba.bookbnb.ui.fragments.login
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
@@ -34,15 +37,22 @@ class LoginFragment : Fragment(R.layout.bookbnb_login) {
     private fun setButtonLoginListener() {
         login_button.setOnClickListener {
             val loginResponse = NetworkModule.buildRetrofitClient().login(getLoginRequest())
+            progress_login.isVisible = true
+            login_button.isEnabled = false
+            login_button.setTextColor(resources.getColor(R.color.colorTextButtonDisabled))
+            login_button.setBackgroundColor(resources.getColor(R.color.colorBackgroundButtonDisabled))
+
             loginResponse.enqueue(object : Callback<LoginResponse> {
 
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    val msg = response.body()?.msg
-                    print(msg)
+                    enableLoginComponents()
+                    AlertDialog.Builder(context).run {
+                        setMessage(response.body()?.msg)
+                    }.show()
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    // Log error here since request failed
+                    enableLoginComponents()
                 }
 
             })
@@ -54,9 +64,20 @@ class LoginFragment : Fragment(R.layout.bookbnb_login) {
         for (i in 0 until input_fields_container.childCount) {
             val textInputField = input_fields_container.getChildAt(i) as TextInputField
             fields[textInputField.getFieldId()] = textInputField.getContentField()
+            textInputField.disableEditText()
         }
 
         return LoginRequest(getContent(fields[FieldsId.EMAIL]), getContent(fields[FieldsId.PASSWORD]))
+    }
+
+    private fun enableLoginComponents() {
+        for (i in 0 until input_fields_container.childCount) {
+            (input_fields_container.getChildAt(i) as TextInputField).enableEditText()
+        }
+        progress_login.isVisible = false
+        login_button.isEnabled = true
+        login_button.setTextColor(resources.getColor(R.color.colorWhite))
+        login_button.setBackgroundColor(resources.getColor(R.color.colorButton))
     }
 
     private fun getContent(content: String?): String = content ?: StringUtils.EMPTY
