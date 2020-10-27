@@ -8,4 +8,5 @@
     <string name="text_register"><u>Regístrate</u></string>
     <string name="login_text_button">Iniciar sesión</string>
     <string name="text_logging_spinner">Iniciando sesión...</string>
+    <string name="text_error_login">Usuario y/o contraseña invalidos</string>
 </resources>
