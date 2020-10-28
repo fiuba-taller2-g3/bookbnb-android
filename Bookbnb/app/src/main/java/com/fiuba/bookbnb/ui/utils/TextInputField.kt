@@ -13,12 +13,7 @@ import com.fiuba.bookbnb.forms.FieldsId
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_view.view.*
 
 
-class TextInputField(
-    context: Context,
-    label: String,
-    private val fieldId: FieldsId,
-    type: KeyboardType = KeyboardType.ALPHANUMERIC
-) : LinearLayout(context) {
+class TextInputField(context: Context, label: String, private val fieldId: FieldsId, type: KeyboardType = KeyboardType.ALPHANUMERIC) : LinearLayout(context) {
 
     init {
         setLayoutParams()

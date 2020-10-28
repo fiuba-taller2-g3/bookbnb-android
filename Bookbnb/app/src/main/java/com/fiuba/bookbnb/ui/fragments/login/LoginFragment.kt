@@ -13,12 +13,13 @@ import com.fiuba.bookbnb.forms.FieldsId
 import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import com.fiuba.bookbnb.ui.utils.TextInputField
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.bookbnb_login.*
 import org.apache.commons.lang3.StringUtils
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class LoginFragment : Fragment(R.layout.bookbnb_login) {
 
@@ -32,14 +33,7 @@ class LoginFragment : Fragment(R.layout.bookbnb_login) {
 
         input_fields_container.apply {
             addView(TextInputField(context, getString(R.string.email_text_field), FieldsId.EMAIL))
-            addView(
-                TextInputField(
-                    context,
-                    getString(R.string.pass_text_field),
-                    FieldsId.PASSWORD,
-                    KeyboardType.ALPHANUMERIC_PASSWORD
-                )
-            )
+            addView(TextInputField(context, getString(R.string.pass_text_field), FieldsId.PASSWORD, KeyboardType.ALPHANUMERIC_PASSWORD))
         }
 
         setButtonLoginListener()
@@ -57,12 +51,12 @@ class LoginFragment : Fragment(R.layout.bookbnb_login) {
 
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     enableLoginComponents()
+
+                    val message = if (response.isSuccessful) response.body()?.msg else
+                        response.errorBody()?.let { Gson().fromJson(it.string(), LoginResponse::class.java) }?.msg
+
                     AlertDialog.Builder(context).run {
-                        if (response.isSuccessful) {
-                            setMessage(response.body()?.msg)
-                        } else {
-                            setMessage(R.string.text_error_login)
-                        }
+                        setMessage(message)
                     }.show()
                 }
 
@@ -72,7 +66,6 @@ class LoginFragment : Fragment(R.layout.bookbnb_login) {
                         setMessage(t.message)
                     }.show()
                 }
-
             })
         }
     }
