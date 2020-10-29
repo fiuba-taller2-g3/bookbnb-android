@@ -2,7 +2,6 @@ package com.fiuba.bookbnb.ui.fragments.login
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -10,15 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
-import com.fiuba.bookbnb.domain.login.LoginResponse
-import com.fiuba.bookbnb.networking.NetworkModule
+import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import com.fiuba.bookbnb.ui.utils.TextInputField
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.bookbnb_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class LoginFragment : Fragment(R.layout.bookbnb_login) {
@@ -43,41 +37,37 @@ class LoginFragment : Fragment(R.layout.bookbnb_login) {
     }
 
     private fun setViewModelObserver() {
-        viewModel.showLoading.observe(viewLifecycleOwner) { isLoadingEnabled ->
-            progress_login.visibility = getLoadingVisibility(isLoadingEnabled)
-            login_button.isEnabled = !isLoadingEnabled
-            login_button.setTextColor(getTextColorButton(isLoadingEnabled))
-            login_button.setBackgroundColor(getBackgroundColorButton(isLoadingEnabled))
-            emailInputField.setInputFieldStatus(!isLoadingEnabled)
-            passwordInputField.setInputFieldStatus(!isLoadingEnabled)
+        viewModel.loadingStatus.observe(viewLifecycleOwner) { loginStatus ->
+            when (loginStatus) {
+                LoadingStatus.SUCCESS -> showDialog()
+                LoadingStatus.FAILURE -> showDialog()
+                LoadingStatus.LOADING -> showLoading(true)
+                LoadingStatus.ERROR -> showDialog()
+                else -> {}
+            }
         }
+    }
+
+    private fun showLoading(enabled: Boolean) {
+        progress_login.visibility = getLoadingVisibility(enabled)
+        login_button.isEnabled = !enabled
+        login_button.setTextColor(getTextColorButton(enabled))
+        login_button.setBackgroundColor(getBackgroundColorButton(enabled))
+        emailInputField.setInputFieldStatus(!enabled)
+        passwordInputField.setInputFieldStatus(!enabled)
     }
 
     private fun setButtonLoginListener() {
         login_button.setOnClickListener {
-            viewModel.showLoading()
-            val loginResponse = NetworkModule.buildRetrofitClient().login(getLoginRequest())
-
-            loginResponse.enqueue(object : Callback<LoginResponse> {
-
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    viewModel.hideLoading()
-                    val message = if (response.isSuccessful) response.body()?.msg else
-                        response.errorBody()?.let { Gson().fromJson(it.string(), LoginResponse::class.java) }?.msg
-
-                    AlertDialog.Builder(context).run {
-                        setMessage(message)
-                    }.show()
-                }
-
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    viewModel.hideLoading()
-                    AlertDialog.Builder(context).run {
-                        setMessage(t.message)
-                    }.show()
-                }
-            })
+            viewModel.login(getLoginRequest())
         }
+    }
+
+    private fun showDialog() {
+        showLoading(false)
+        AlertDialog.Builder(context).run {
+            setMessage(viewModel.getMsgResponse())
+        }.show()
     }
 
     private fun getLoginRequest() = LoginRequest(emailInputField.getContentField(), passwordInputField.getContentField())
