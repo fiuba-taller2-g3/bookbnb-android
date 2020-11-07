@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Bookbnb</string>
+
+    <!-- Login -->
     <string name="login_title">Tu perfil</string>
     <string name="login_subtitle">Inicia sesión y empieza a planificar tu próximo viaje.</string>
     <string name="email_text_field">EMAIL</string>
@@ -8,4 +10,8 @@
     <string name="text_register"><u>Regístrate</u></string>
     <string name="login_text_button">Iniciar sesión</string>
     <string name="text_logging_spinner">Iniciando sesión…</string>
+
+    <!-- Register -->
+    <string name="register_title">Registro</string>
+    <string name="register_subtitle">Agrega la información</string>
 </resources>

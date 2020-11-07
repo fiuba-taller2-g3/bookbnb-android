@@ -12,33 +12,33 @@
         android:paddingBottom="@dimen/bkbnb64dp">
 
         <TextView
-            android:id="@+id/bkbnb_login_title"
+            android:id="@+id/bkbnb_form_title"
             style="@style/bkbnbTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bkbnb24dp"
             android:layout_marginTop="@dimen/bkbnb32dp"
             android:layout_marginEnd="@dimen/bkbnb24dp"
-            android:text="@string/login_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constrainedWidth="true" />
+            app:layout_constrainedWidth="true"
+            tools:text="Título" />
 
         <TextView
-            android:id="@+id/bkbnb_login_subtitle"
+            android:id="@+id/bkbnb_form_subtitle"
             style="@style/bkbnbSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/bkbnb8dp"
             android:layout_marginEnd="@dimen/bkbnb24dp"
-            android:text="@string/login_subtitle"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/bkbnb_login_title"
-            app:layout_constraintTop_toBottomOf="@+id/bkbnb_login_title" />
+            app:layout_constraintStart_toStartOf="@+id/bkbnb_form_title"
+            app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_title"
+            tools:text="Subtítulo" />
 
         <LinearLayout
             android:id="@+id/input_fields_container"
@@ -49,8 +49,8 @@
             android:layout_marginTop="@dimen/bkbnb64dp"
             android:layout_marginEnd="@dimen/bkbnb24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/bkbnb_login_subtitle"
-            app:layout_constraintTop_toBottomOf="@+id/bkbnb_login_subtitle" />
+            app:layout_constraintStart_toStartOf="@+id/bkbnb_form_subtitle"
+            app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_subtitle" />
 
         <TextView
             android:id="@+id/text_not_register"
@@ -58,16 +58,19 @@
             android:layout_height="wrap_content"
             style="@style/bkbnbSubtitle"
             android:text="@string/text_question_not_register"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/input_fields_container"
             app:layout_constraintTop_toBottomOf="@+id/input_fields_container" />
 
         <TextView
+            android:id="@+id/login_register_text"
             style="@style/bkbnbSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_register"
             android:layout_marginStart="@dimen/bkbnb4dp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/text_not_register"
             app:layout_constraintStart_toEndOf="@+id/text_not_register"
             app:layout_constraintTop_toTopOf="@+id/text_not_register" />
