@@ -76,7 +76,7 @@
             app:layout_constraintTop_toTopOf="@+id/text_not_register" />
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/form_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/bkbnb40dp"
@@ -96,7 +96,7 @@
             android:layout_marginTop="@dimen/bkbnb48dp"
             android:visibility="invisible"
             android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/login_button"
+            app:layout_constraintTop_toBottomOf="@id/form_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:visibility="visible">
