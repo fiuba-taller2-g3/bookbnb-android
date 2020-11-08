@@ -2,7 +2,7 @@ package com.fiuba.bookbnb.ui.fragments.form
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.utils.TextInputField
@@ -18,6 +18,7 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
 
         bkbnb_form_title.text = getString(getTitle())
         bkbnb_form_subtitle.text = getString(getSubtitle())
+        form_button.text = getString(getButtonText())
 
         initFields()
     }
@@ -29,22 +30,17 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
     protected fun getFieldContent(fieldId: String) = fields[fieldId]?.getContentField() ?: StringUtils.EMPTY
 
     protected fun showLoading(enabled: Boolean) {
-        progress_login.visibility = getLoadingVisibility(enabled)
+        progress.visibility = if (enabled) View.VISIBLE else View.INVISIBLE
+        form_button.text = if (progress.isVisible) StringUtils.EMPTY else getString(getButtonText())
         form_button.isEnabled = !enabled
-        form_button.setTextColor(getTextColorButton(enabled))
-        form_button.setBackgroundColor(getBackgroundColorButton(enabled))
         fields.values.forEach { it.setInputFieldStatus(!enabled) }
     }
-
-    private fun getLoadingVisibility(showLoading: Boolean) = if (showLoading) View.VISIBLE else View.INVISIBLE
-
-    private fun getTextColorButton(showLoading: Boolean) = ContextCompat.getColor(requireContext(), if (!showLoading) R.color.colorWhite else R.color.colorTextButtonDisabled)
-
-    private fun getBackgroundColorButton(showLoading: Boolean) = ContextCompat.getColor(requireContext(), if (!showLoading) R.color.colorButton else R.color.colorBackgroundButtonDisabled)
 
     protected abstract fun getTitle() : Int
 
     protected abstract fun getSubtitle() : Int
+
+    protected abstract fun getButtonText() : Int
 
     protected abstract fun initFields()
 

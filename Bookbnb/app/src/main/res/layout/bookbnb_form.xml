@@ -9,6 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/bkbnb24dp"
+        android:paddingEnd="@dimen/bkbnb24dp"
         android:paddingBottom="@dimen/bkbnb64dp">
 
         <TextView
@@ -16,9 +18,7 @@
             style="@style/bkbnbTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/bkbnb24dp"
             android:layout_marginTop="@dimen/bkbnb32dp"
-            android:layout_marginEnd="@dimen/bkbnb24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,11 +32,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/bkbnb8dp"
-            android:layout_marginEnd="@dimen/bkbnb24dp"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/bkbnb_form_title"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_title"
             tools:text="Subtítulo" />
 
@@ -45,78 +44,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="@dimen/bkbnb24dp"
             android:layout_marginTop="@dimen/bkbnb64dp"
-            android:layout_marginEnd="@dimen/bkbnb24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/bkbnb_form_subtitle"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_subtitle" />
 
-        <TextView
-            android:id="@+id/text_not_register"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/additional_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/bkbnbSubtitle"
-            android:text="@string/text_question_not_register"
+            android:orientation="vertical"
             android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/input_fields_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_fields_container" />
 
-        <TextView
-            android:id="@+id/login_register_text"
-            style="@style/bkbnbSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_register"
-            android:layout_marginStart="@dimen/bkbnb4dp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/text_not_register"
-            app:layout_constraintStart_toEndOf="@+id/text_not_register"
-            app:layout_constraintTop_toTopOf="@+id/text_not_register" />
-
-        <Button
-            android:id="@+id/form_button"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/bkbnb40dp"
-            android:background="@drawable/button_ripple"
-            android:text="@string/login_text_button"
-            android:paddingStart="@dimen/bkbnb32dp"
-            android:paddingEnd="@dimen/bkbnb32dp"
-            style="@style/bkbnbButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_not_register" />
+            app:layout_constraintStart_toStartOf="@+id/bkbnb_form_title"
+            app:layout_constraintTop_toBottomOf="@+id/additional_container">
 
-        <LinearLayout
-            android:id="@+id/progress_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/bkbnb48dp"
-            android:visibility="invisible"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/form_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:visibility="visible">
+            <Button
+                android:id="@+id/form_button"
+                style="@style/bkbnbButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_ripple"
+                android:elevation="1dp"
+                android:paddingStart="@dimen/bkbnb32dp"
+                android:paddingEnd="@dimen/bkbnb32dp"
+                tools:text="Seleccionar" />
 
             <ProgressBar
-                style="?android:attr/progressBarStyleSmall"
-                android:indeterminateTint="@color/colorButton"
-                android:indeterminateTintMode="src_in"
-                android:indeterminate="true"
+                android:id="@+id/progress"
                 android:layout_width="@dimen/bkbnb24dp"
                 android:layout_height="@dimen/bkbnb24dp"
-                android:layout_marginEnd="@dimen/bkbnb8dp"/>
+                style="?android:attr/progressBarStyleSmall"
+                android:indeterminateTint="@color/colorWhite"
+                android:indeterminateTintMode="src_in"
+                android:indeterminate="true"
+                android:elevation="2dp"
+                android:visibility="gone"
+                android:layout_alignBottom="@+id/form_button"
+                android:layout_alignTop="@+id/form_button"
+                android:layout_centerHorizontal="true" />
 
-            <TextView
-                style="@style/bkbnbSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_logging_spinner"
-                android:layout_marginStart="@dimen/bkbnb4dp"/>
-        </LinearLayout>
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

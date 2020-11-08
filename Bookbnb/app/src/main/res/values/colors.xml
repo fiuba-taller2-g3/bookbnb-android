@@ -7,8 +7,6 @@
     <color name="colorTextInputFieldBorder">#C2C2C2</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorButton">#D72345</color>
-    <color name="colorTextButtonDisabled">#888888</color>
-    <color name="colorBackgroundButtonDisabled">#CCCCCC</color>
     <color name="colorTextInputFieldDisabled">#9A9A9A</color>
     <color name="colorBackgroundInputFieldDisabled">#E1E1E1</color>
 </resources>

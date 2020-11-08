@@ -15,6 +15,8 @@ class RegisterFragment : FormFragment() {
 
     override fun getSubtitle() = R.string.register_subtitle
 
+    override fun getButtonText() = R.string.register_title
+
     override fun initFields() {
 
     }
