@@ -2,6 +2,7 @@ package com.fiuba.bookbnb.ui.fragments.form
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fiuba.bookbnb.R
@@ -33,6 +34,9 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         progress.visibility = if (enabled) View.VISIBLE else View.INVISIBLE
         form_button.text = if (progress.isVisible) StringUtils.EMPTY else getString(getButtonText())
         form_button.isEnabled = !enabled
+        for (i in 0 until additional_container.childCount) {
+            additional_container.getChildAt(i).isEnabled = !enabled
+        }
         fields.values.forEach { it.setInputFieldStatus(!enabled) }
     }
 

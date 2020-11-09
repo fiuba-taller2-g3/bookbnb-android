@@ -66,9 +66,7 @@ class LoginFragment : FormFragment() {
 
     private fun buildAdditionalContainer() {
         val notRegisterText = AdditionalContentForm(requireContext(), buildNotRegisterText()).also {
-            it.getTextViewId().setOnClickListener() { view ->
-                view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-            }
+            it.setOnClickListener { view -> view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
         }
 
         additional_container.isVisible = true

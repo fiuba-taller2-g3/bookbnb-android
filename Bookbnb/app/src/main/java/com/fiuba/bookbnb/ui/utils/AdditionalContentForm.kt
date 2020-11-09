@@ -14,6 +14,4 @@ class AdditionalContentForm(context: Context, label: SpannableStringBuilder) : L
             it.label.text = label
         }
     }
-
-    fun getTextViewId() = label
 }
