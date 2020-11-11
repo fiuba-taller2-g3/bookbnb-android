@@ -4,8 +4,6 @@
     <!-- Login -->
     <string name="login_title">Tu perfil</string>
     <string name="login_subtitle">Inicia sesión y empieza a planificar tu próximo viaje.</string>
-    <string name="email_text_field">EMAIL</string>
-    <string name="pass_text_field">CONTRASEÑA</string>
     <string name="text_question_not_register">¿No tienes una cuenta?</string>
     <string name="text_register">Regístrate</string>
     <string name="text_forgotten_pass">¿Olvidaste tu contraseña?</string>
@@ -14,4 +12,15 @@
     <!-- Register -->
     <string name="register_title">Registro</string>
     <string name="register_subtitle">Agrega la información</string>
+
+    <!-- Forms -->
+    <string name="email_text_field">Correo electrónico</string>
+    <string name="pass_text_field">Contraseña</string>
+    <string name="name_text_field">Nombre</string>
+    <string name="surname_text_field">Apellido</string>
+    <string name="birthday_text_field">Fecha de nacimiento</string>
+    <string name="profile_type_text_field">Tipo de perfil</string>
+
+    <!-- Validation messages -->
+    <string name="_text_field">Correo electrónico</string>
 </resources>

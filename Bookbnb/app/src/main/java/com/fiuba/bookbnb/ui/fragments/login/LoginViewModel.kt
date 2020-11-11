@@ -22,6 +22,10 @@ class LoginViewModel : ViewModel() {
 
     fun getMsgResponse() = msgResponse
 
+    fun hideLoading() {
+        loadingStatusMutable.value = LoadingStatus.HIDE
+    }
+
     fun login(request: LoginRequest) {
         loadingStatusMutable.value = LoadingStatus.LOADING
         NetworkModule.buildRetrofitClient().login(request).enqueue(object : Callback<LoginResponse> {

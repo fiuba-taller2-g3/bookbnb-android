@@ -18,7 +18,7 @@ import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
 import com.fiuba.bookbnb.ui.utils.KeyboardType
-import com.fiuba.bookbnb.ui.utils.TextInputField
+import com.fiuba.bookbnb.ui.utils.inputFields.TextInputField
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 
@@ -60,6 +60,7 @@ class LoginFragment : FormFragment() {
         AlertDialog.Builder(context).run {
             setMessage(viewModel.getMsgResponse())
         }.show()
+        viewModel.hideLoading()
     }
 
     private fun getLoginRequest() = LoginRequest(getFieldContent(EMAIL), getFieldContent(PASS))

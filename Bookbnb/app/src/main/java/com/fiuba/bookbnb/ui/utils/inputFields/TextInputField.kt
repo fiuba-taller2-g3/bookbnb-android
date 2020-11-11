@@ -1,4 +1,4 @@
-package com.fiuba.bookbnb.ui.utils
+package com.fiuba.bookbnb.ui.utils.inputFields
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,12 +9,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import com.fiuba.bookbnb.R
+import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_view.view.*
+import org.apache.commons.lang3.StringUtils
 
 
 @SuppressLint("ViewConstructor")
-class TextInputField(context: Context, label: String, type: KeyboardType = KeyboardType.ALPHANUMERIC) : LinearLayout(context) {
+class TextInputField(context: Context, label: String,
+                     type: KeyboardType = KeyboardType.ALPHANUMERIC,
+                     description: String = StringUtils.EMPTY) : InputField, LinearLayout(context) {
 
     init {
         setLayoutParams()
@@ -22,11 +28,28 @@ class TextInputField(context: Context, label: String, type: KeyboardType = Keybo
             it.label.text = label
         }
         setInputType(type)
+        description_text.isVisible = description.isNotEmpty()
+        loadValidation()
     }
 
-    fun getContentField() = edit_text.text.toString()
+    override fun enable() = setInputFieldStatus(true)
 
-    fun setInputFieldStatus(isEnabled: Boolean) {
+    override fun disable() = setInputFieldStatus(false)
+
+    override fun isValidated() {
+        TODO("Not yet implemented")
+    }
+
+    override fun getContentField() = edit_text.text.toString()
+
+    private fun loadValidation() {
+        edit_text.addTextChangedListener {
+            validation_text.isVisible = edit_text.text.isNotEmpty()
+            validation_text.text = "Sarasa"
+        }
+    }
+
+    private fun setInputFieldStatus(isEnabled: Boolean) {
         edit_text.isEnabled = isEnabled
         edit_text.setTextColor(getTextColor())
         (edit_text.background as GradientDrawable).setColor(getBackgroundColor())

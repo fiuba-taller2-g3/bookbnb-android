@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/bkbnb64dp"
+            android:layout_marginTop="@dimen/bkbnb48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_subtitle" />
@@ -55,6 +55,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone"
+            android:layout_marginTop="@dimen/bkbnb12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_fields_container" />
