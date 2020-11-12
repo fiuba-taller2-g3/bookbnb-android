@@ -5,13 +5,13 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.ui.utils.inputFields.TextInputField
+import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 
 abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
 
-    private val fields by lazy { HashMap<String, TextInputField>() }
+    protected val fields by lazy { HashMap<String, AbstractInputFieldItem>() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,11 +34,7 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         for (i in 0 until additional_container.childCount) {
             additional_container.getChildAt(i).isEnabled = !loadingEnabled
         }
-        fields.values.forEach { field -> if (loadingEnabled) field.disable() else field.enable() }
-    }
-
-    protected fun putField(fieldId: String, textInputField: TextInputField) {
-        fields[fieldId] = textInputField.also { input_fields_container.addView(it) }
+        fields.values.forEach { field -> if (loadingEnabled) field.disableInput() else field.enableInput() }
     }
 
     protected fun getFieldContent(fieldId: String) = fields[fieldId]?.getContentField() ?: StringUtils.EMPTY

@@ -14,11 +14,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
+import com.fiuba.bookbnb.forms.inputFields.EditTextInputFieldItem
 import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
 import com.fiuba.bookbnb.ui.utils.KeyboardType
-import com.fiuba.bookbnb.ui.utils.inputFields.TextInputField
+import com.fiuba.bookbnb.forms.inputFields.InputFieldModule
+import com.fiuba.bookbnb.forms.validators.EmailInputValidator
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 
@@ -51,7 +53,7 @@ class LoginFragment : FormFragment() {
 
     private fun setButtonLoginListener() {
         form_button.setOnClickListener {
-            viewModel.login(getLoginRequest())
+            if (fields.values.all { it.isValidated() }) viewModel.login(getLoginRequest())
         }
     }
 
@@ -103,8 +105,12 @@ class LoginFragment : FormFragment() {
     override fun getButtonText(): Int = R.string.login_text_button
 
     override fun initFields() {
-        putField(EMAIL, TextInputField(requireContext(), getString(R.string.email_text_field)))
-        putField(PASS, TextInputField(requireContext(), getString(R.string.pass_text_field), KeyboardType.ALPHANUMERIC_PASSWORD))
+        fields[EMAIL] = EditTextInputFieldItem(requireContext(), EmailInputValidator()).also {
+            input_fields_container.addView(InputFieldModule(requireContext(), getString(R.string.email_field_label), it))
+        }
+
+        //putField(EMAIL, InputFieldModule(requireContext(), getString(R.string.email_text_field)))
+        //putField(PASS, InputFieldModule(requireContext(), getString(R.string.pass_text_field), KeyboardType.ALPHANUMERIC_PASSWORD))
     }
 
     companion object {

@@ -14,13 +14,10 @@
     <string name="register_subtitle">Agrega la información</string>
 
     <!-- Forms -->
-    <string name="email_text_field">Correo electrónico</string>
-    <string name="pass_text_field">Contraseña</string>
-    <string name="name_text_field">Nombre</string>
-    <string name="surname_text_field">Apellido</string>
-    <string name="birthday_text_field">Fecha de nacimiento</string>
-    <string name="profile_type_text_field">Tipo de perfil</string>
-
-    <!-- Validation messages -->
-    <string name="_text_field">Correo electrónico</string>
+    <string name="email_field_label">Correo electrónico</string>
+    <string name="pass_field_label">Contraseña</string>
+    <string name="name_field_label">Nombre</string>
+    <string name="surname_field_label">Apellido</string>
+    <string name="birthday_field_label">Fecha de nacimiento</string>
+    <string name="profile_type_field_label">Tipo de perfil</string>
 </resources>

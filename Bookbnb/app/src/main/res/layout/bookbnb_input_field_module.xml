@@ -14,24 +14,11 @@
         style="@style/bkbnbLabelInputField"
         tools:text="Label de prueba" />
 
-    <EditText
-        android:id="@+id/edit_text"
-        android:layout_marginTop="@dimen/bkbnb6dp"
-        android:layout_marginBottom="@dimen/bkbnb6dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/input_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:saveEnabled="false"
-        style="@style/bkbnbTextInputField" />
-
-    <TextView
-        android:id="@+id/validation_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/bkbnb6dp"
-        android:visibility="gone"
-        style="@style/bkbnbValidationTextInputField"
-        tools:text="El campo es obligatorio"
-        tools:visibility="visible" />
+        android:layout_marginTop="@dimen/bkbnb6dp" />
 
     <TextView
         android:id="@+id/description_text"

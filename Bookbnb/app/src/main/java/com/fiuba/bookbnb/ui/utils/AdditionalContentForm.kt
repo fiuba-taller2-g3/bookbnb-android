@@ -5,7 +5,7 @@ import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.fiuba.bookbnb.R
-import kotlinx.android.synthetic.main.bookbnb_text_input_field_view.view.*
+import kotlinx.android.synthetic.main.bookbnb_input_field_module.view.*
 
 class AdditionalContentForm(context: Context, label: SpannableStringBuilder) : LinearLayout(context) {
 
