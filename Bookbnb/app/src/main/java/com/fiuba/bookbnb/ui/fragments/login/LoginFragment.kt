@@ -15,12 +15,12 @@ import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.forms.inputFields.EditTextInputFieldItem
+import com.fiuba.bookbnb.forms.validators.EmailInputValidator
+import com.fiuba.bookbnb.forms.validators.PassInputValidator
 import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
 import com.fiuba.bookbnb.ui.utils.KeyboardType
-import com.fiuba.bookbnb.forms.inputFields.InputFieldModule
-import com.fiuba.bookbnb.forms.validators.EmailInputValidator
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 
@@ -36,7 +36,6 @@ class LoginFragment : FormFragment() {
 
         buildAdditionalContainer()
         setViewModelObserver()
-        setButtonLoginListener()
     }
 
     private fun setViewModelObserver() {
@@ -51,16 +50,10 @@ class LoginFragment : FormFragment() {
         }
     }
 
-    private fun setButtonLoginListener() {
-        form_button.setOnClickListener {
-            if (fields.values.all { it.isValidated() }) viewModel.login(getLoginRequest())
-        }
-    }
-
     private fun showDialog() {
         showLoading(false)
         AlertDialog.Builder(context).run {
-            setMessage(viewModel.getMsgResponse())
+            setMessage(viewModel.getMessageResponse())
         }.show()
         viewModel.hideLoading()
     }
@@ -105,13 +98,11 @@ class LoginFragment : FormFragment() {
     override fun getButtonText(): Int = R.string.login_text_button
 
     override fun initFields() {
-        fields[EMAIL] = EditTextInputFieldItem(requireContext(), EmailInputValidator()).also {
-            input_fields_container.addView(InputFieldModule(requireContext(), getString(R.string.email_field_label), it))
-        }
-
-        //putField(EMAIL, InputFieldModule(requireContext(), getString(R.string.email_text_field)))
-        //putField(PASS, InputFieldModule(requireContext(), getString(R.string.pass_text_field), KeyboardType.ALPHANUMERIC_PASSWORD))
+        addInputField(EMAIL, R.string.email_field_label, EditTextInputFieldItem(requireContext(), EmailInputValidator()))
+        addInputField(PASS, R.string.pass_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(), KeyboardType.ALPHANUMERIC_PASSWORD))
     }
+
+    override fun proceedLoading() = viewModel.login(getLoginRequest())
 
     companion object {
         private const val EMAIL = "EMAIL"

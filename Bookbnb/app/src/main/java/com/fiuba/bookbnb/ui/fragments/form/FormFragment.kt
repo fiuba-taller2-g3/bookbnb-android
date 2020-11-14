@@ -6,12 +6,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
+import com.fiuba.bookbnb.forms.inputFields.InputFieldModule
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 
 abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
 
-    protected val fields by lazy { HashMap<String, AbstractInputFieldItem>() }
+    private val fields by lazy { HashMap<String, AbstractInputFieldItem>() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -21,6 +22,7 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         form_button.text = getString(getButtonText())
 
         initFields()
+        setButtonListener()
     }
 
     private fun setButtonLoading(loadingEnabled: Boolean) {
@@ -37,6 +39,20 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         fields.values.forEach { field -> if (loadingEnabled) field.disableInput() else field.enableInput() }
     }
 
+    protected fun addInputField(fieldId: String, labelResource: Int, abstractInputFieldItem: AbstractInputFieldItem) {
+        fields[fieldId] = abstractInputFieldItem.also {
+            input_fields_container.addView(InputFieldModule(abstractInputFieldItem.context, getString(labelResource), it))
+        }
+    }
+
+    protected fun setButtonListener() {
+        form_button.setOnClickListener {
+            var isFormsValidated = true
+            fields.values.forEach { field -> if (!field.isValidated() || isFormsValidated) isFormsValidated = false }
+            if (isFormsValidated) proceedLoading()
+        }
+    }
+
     protected fun getFieldContent(fieldId: String) = fields[fieldId]?.getContentField() ?: StringUtils.EMPTY
 
     protected abstract fun getTitle() : Int
@@ -46,5 +62,7 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
     protected abstract fun getButtonText() : Int
 
     protected abstract fun initFields()
+
+    protected abstract fun proceedLoading()
 
 }

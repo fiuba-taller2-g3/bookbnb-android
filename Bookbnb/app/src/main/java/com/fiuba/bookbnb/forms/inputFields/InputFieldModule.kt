@@ -25,13 +25,6 @@ class InputFieldModule @JvmOverloads constructor(context: Context, label: String
         input_field.addView(inputFieldItem)
     }
 
-//    private fun loadValidation() {
-//        edit_text.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-//            validation_text.isVisible = !hasFocus && !isValidated()
-//            validation_text.text = getValidationText()
-//        }
-//    }
-
     private fun setLayoutParams() {
         layoutParams = LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,

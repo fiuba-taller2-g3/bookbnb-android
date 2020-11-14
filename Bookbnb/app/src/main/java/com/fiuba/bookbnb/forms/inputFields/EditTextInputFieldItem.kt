@@ -5,6 +5,7 @@ import android.graphics.drawable.GradientDrawable
 import android.text.InputType
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
+import android.view.animation.AlphaAnimation
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
@@ -28,8 +29,11 @@ class EditTextInputFieldItem(context: Context,
 
     override fun isValidated(): Boolean {
         val textContent = edit_text.text.toString()
+        val animation = AlphaAnimation(0.0f, 1.0f).also { it.duration = 1000 }
+
         return validation.checkValidation(textContent).also { isValid ->
             validation_text.isVisible = !isValid
+            validation_text.startAnimation(animation)
             validation_text.text = validation.getTextValidation(textContent)
         }
     }

@@ -2,15 +2,22 @@ package com.fiuba.bookbnb.ui.fragments.register
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProviders
 import com.fiuba.bookbnb.R
+import com.fiuba.bookbnb.forms.inputFields.EditTextInputFieldItem
+import com.fiuba.bookbnb.forms.validators.EmailInputValidator
+import com.fiuba.bookbnb.forms.validators.PassInputValidator
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.KeyboardType
-import com.fiuba.bookbnb.forms.inputFields.InputFieldModule
 
 class RegisterFragment : FormFragment() {
 
+    private lateinit var viewModel : RegisterViewModel
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProviders.of(this).get(RegisterViewModel::class.java)
     }
 
     override fun getTitle() = R.string.register_title
@@ -20,13 +27,15 @@ class RegisterFragment : FormFragment() {
     override fun getButtonText() = R.string.register_title
 
     override fun initFields() {
-//        putField(NAME, InputFieldModule(requireContext(), getString(R.string.name_text_field)))
-//        putField(SURNAME, InputFieldModule(requireContext(), getString(R.string.surname_text_field)))
-//        putField(BIRTH_DATE, InputFieldModule(requireContext(), getString(R.string.birthday_text_field)))
-//        putField(EMAIL, InputFieldModule(requireContext(), getString(R.string.email_text_field)))
-//        putField(PASS, InputFieldModule(requireContext(), getString(R.string.pass_text_field), KeyboardType.ALPHANUMERIC_PASSWORD))
-//        putField(PROFILE_TYPE, InputFieldModule(requireContext(), getString(R.string.profile_type_text_field)))
+        addInputField(NAME, R.string.name_field_label, EditTextInputFieldItem(requireContext(), EmailInputValidator()))
+        addInputField(SURNAME, R.string.surname_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(), KeyboardType.ALPHANUMERIC_PASSWORD))
+        addInputField(BIRTH_DATE, R.string.birthday_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(), KeyboardType.ALPHANUMERIC_PASSWORD))
+        addInputField(EMAIL, R.string.email_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(), KeyboardType.ALPHANUMERIC_PASSWORD))
+        addInputField(PASS, R.string.pass_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(), KeyboardType.ALPHANUMERIC_PASSWORD))
+        addInputField(PROFILE_TYPE, R.string.profile_type_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(), KeyboardType.ALPHANUMERIC_PASSWORD))
     }
+
+    override fun proceedLoading() = viewModel.register()
 
     companion object {
         private const val NAME = "NAME"
