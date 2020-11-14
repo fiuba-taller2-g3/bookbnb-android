@@ -17,6 +17,7 @@ import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.forms.inputFields.EditTextInputFieldItem
 import com.fiuba.bookbnb.forms.validators.EmailInputValidator
 import com.fiuba.bookbnb.forms.validators.PassInputValidator
+import com.fiuba.bookbnb.forms.validators.PostFixDefaultMsgValidator
 import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
@@ -98,8 +99,8 @@ class LoginFragment : FormFragment() {
     override fun getButtonText(): Int = R.string.login_text_button
 
     override fun initFields() {
-        addInputField(EMAIL, R.string.email_field_label, EditTextInputFieldItem(requireContext(), EmailInputValidator()))
-        addInputField(PASS, R.string.pass_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(), KeyboardType.ALPHANUMERIC_PASSWORD))
+        addInputField(EMAIL, R.string.email_field_label, EditTextInputFieldItem(requireContext(), EmailInputValidator(PostFixDefaultMsgValidator.POSTFIX_EMAIL.msg)))
+        addInputField(PASS, R.string.pass_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(PostFixDefaultMsgValidator.POSTFIX_PASSWORD.msg), KeyboardType.ALPHANUMERIC_PASSWORD))
     }
 
     override fun proceedLoading() = viewModel.login(getLoginRequest())

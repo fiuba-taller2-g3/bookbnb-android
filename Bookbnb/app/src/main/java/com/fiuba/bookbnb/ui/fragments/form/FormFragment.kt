@@ -45,10 +45,10 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         }
     }
 
-    protected fun setButtonListener() {
+    private fun setButtonListener() {
         form_button.setOnClickListener {
             var isFormsValidated = true
-            fields.values.forEach { field -> if (!field.isValidated() || isFormsValidated) isFormsValidated = false }
+            fields.values.forEach { field -> if (!field.isValidated() && isFormsValidated) isFormsValidated = false }
             if (isFormsValidated) proceedLoading()
         }
     }

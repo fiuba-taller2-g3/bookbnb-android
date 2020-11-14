@@ -21,6 +21,7 @@ class EditTextInputFieldItem(context: Context,
         LayoutInflater.from(context).inflate(R.layout.bookbnb_text_input_field_item, this)
         setLayoutParams()
         setInputType(type)
+        validation.msgValidator.observeForever { msgValidation -> validation_text.text = msgValidation }
     }
 
     override fun enableInput() = setInputStatus(true, R.color.colorTitle, R.color.colorWhite)
@@ -34,7 +35,7 @@ class EditTextInputFieldItem(context: Context,
         return validation.checkValidation(textContent).also { isValid ->
             validation_text.isVisible = !isValid
             validation_text.startAnimation(animation)
-            validation_text.text = validation.getTextValidation(textContent)
+            validation.updateTextValidation(textContent)
         }
     }
 
