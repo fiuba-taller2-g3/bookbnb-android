@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Larger red circle in back -->
+    <item android:drawable="@drawable/radio_button_unchecked" />
+
+    <!-- Smaller red circle in front -->
+    <item>
+        <shape android:shape="oval">
+            <stroke android:color="@android:color/transparent"
+                android:width="@dimen/bkbnb14dp"/>
+
+            <solid android:color="@color/colorRed" />
+
+            <size
+                android:width="@dimen/bkbnb14dp"
+                android:height="@dimen/bkbnb14dp"/>
+        </shape>
+    </item>
+
+</layer-list>

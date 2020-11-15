@@ -5,43 +5,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/text_input_field_shape"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
-    <RadioButton
-        android:id="@+id/guest_radio_button"
-        style="@style/bkbnbLabelInputField"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:buttonTint="@color/colorRed"
-        android:checked="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Huesped" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="@dimen/bkbnb1dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorTextInputFieldBorder"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <RadioButton
-        android:id="@+id/host_radio_button"
-        style="@style/bkbnbLabelInputField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/colorRed"
-        android:checked="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Anfitrion" />
+        <RadioButton
+            android:id="@+id/first_radio_button"
+            style="@style/bkbnbRadioButtonInputField"
+            android:button="@drawable/radio_button_selector"
+            android:background="@drawable/radio_button_item_start_background"
+            android:checked="true"
+            tools:text="Opción 1" />
+
+        <RadioButton
+            android:id="@+id/second_radio_button"
+            android:button="@drawable/radio_button_selector"
+            style="@style/bkbnbRadioButtonInputField"
+            android:background="@drawable/radio_button_item_end_background"
+            tools:text="Opción 2" />
+
+    </RadioGroup>
+
 </merge>
