@@ -10,11 +10,19 @@ object InputFieldBuilder {
 
     fun build(context: Context, inputField: InputField): AbstractInputFieldItem {
         return when (inputField) {
-            InputField.NAME -> EditTextInputFieldItem(context, DefaultInputValidator(DEFAULT_NAME_TEXT_VALIDATION))
-            InputField.SURNAME -> EditTextInputFieldItem(context, DefaultInputValidator(DEFAULT_SURNAME_TEXT_VALIDATION))
             InputField.EMAIL -> EditTextInputFieldItem(context, EmailInputValidator(DEFAULT_EMAIL_TEXT_VALIDATION))
             InputField.PASSWORD -> EditTextInputFieldItem(context, PassInputValidator(DEFAULT_PASSWORD_TEXT_VALIDATION), KeyboardType.ALPHANUMERIC_PASSWORD)
             InputField.BIRTHDAY -> EditTextInputFieldItem(context, DefaultInputValidator(DEFAULT_BIRTHDAY_TEXT_VALIDATION))
+            else -> buildDefaultInputField(context, inputField)
+        }
+    }
+
+    private fun buildDefaultInputField(context: Context, inputField: InputField) = EditTextInputFieldItem(context, DefaultInputValidator(getTextEmptyValidation(inputField)))
+
+    private fun getTextEmptyValidation(inputField: InputField): String {
+        return when (inputField) {
+            InputField.NAME -> DEFAULT_NAME_TEXT_VALIDATION
+            InputField.SURNAME -> DEFAULT_SURNAME_TEXT_VALIDATION
             else -> throw Exception("Error: The input type entered does not exist")
         }
     }

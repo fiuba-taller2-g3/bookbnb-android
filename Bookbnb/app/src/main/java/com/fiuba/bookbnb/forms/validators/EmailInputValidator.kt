@@ -1,6 +1,6 @@
 package com.fiuba.bookbnb.forms.validators
 
-class EmailInputValidator(defaultMsg: String) : Validator(defaultMsg) {
+class EmailInputValidator(textEmptyValidation: String) : Validator(textEmptyValidation) {
 
     private val emailPattern = Regex(PATTERN)
 

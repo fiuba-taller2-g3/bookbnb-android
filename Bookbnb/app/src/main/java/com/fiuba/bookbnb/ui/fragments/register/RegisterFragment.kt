@@ -26,9 +26,9 @@ class RegisterFragment : FormFragment() {
     override fun initFields() {
         addInputField(InputField.NAME, R.string.name_field_label)
         addInputField(InputField.SURNAME, R.string.surname_field_label)
-        addInputField(InputField.BIRTHDAY, R.string.birthday_field_label)
         addInputField(InputField.EMAIL, R.string.email_field_label)
         addInputField(InputField.PASSWORD, R.string.pass_field_label)
+        addInputField(InputField.BIRTHDAY, R.string.birthday_field_label)
     }
 
     override fun proceedLoading() = viewModel.register()
