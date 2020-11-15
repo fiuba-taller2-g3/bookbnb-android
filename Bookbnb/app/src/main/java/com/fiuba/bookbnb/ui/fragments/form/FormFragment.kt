@@ -5,14 +5,17 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fiuba.bookbnb.R
+import com.fiuba.bookbnb.forms.InputField
+import com.fiuba.bookbnb.forms.InputFieldBuilder
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
 import com.fiuba.bookbnb.forms.inputFields.InputFieldModule
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
+import java.util.*
 
 abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
 
-    private val fields by lazy { HashMap<String, AbstractInputFieldItem>() }
+    private val fields by lazy { EnumMap<InputField, AbstractInputFieldItem>(InputField::class.java)}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,9 +42,9 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         fields.values.forEach { field -> if (loadingEnabled) field.disableInput() else field.enableInput() }
     }
 
-    protected fun addInputField(fieldId: String, labelResource: Int, abstractInputFieldItem: AbstractInputFieldItem) {
-        fields[fieldId] = abstractInputFieldItem.also {
-            input_fields_container.addView(InputFieldModule(abstractInputFieldItem.context, getString(labelResource), it))
+    protected fun addInputField(fieldId: InputField, labelResource: Int) {
+        fields[fieldId] = InputFieldBuilder.build(requireContext(), fieldId).also {
+            input_fields_container.addView(InputFieldModule(requireContext(), getString(labelResource), it))
         }
     }
 
@@ -53,7 +56,7 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         }
     }
 
-    protected fun getFieldContent(fieldId: String) = fields[fieldId]?.getContentField() ?: StringUtils.EMPTY
+    protected fun getFieldContent(fieldId: InputField) = fields[fieldId]?.getContentField() ?: StringUtils.EMPTY
 
     protected abstract fun getTitle() : Int
 

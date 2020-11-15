@@ -3,21 +3,19 @@ package com.fiuba.bookbnb.forms.validators
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-abstract class Validator(private val postFixDefaultMsg: String) {
+abstract class Validator(private val defaultMsg: String) {
 
     protected val msgValidatorMutable = MutableLiveData<String>()
     val msgValidator : LiveData<String>
         get() = msgValidatorMutable
 
     init {
-        msgValidatorMutable.value = getDefaultMsg()
+        msgValidatorMutable.value = defaultMsg
     }
 
     abstract fun checkValidation(content: String) : Boolean
 
     open fun updateTextValidation(content: String) {
-        if (content.isEmpty()) msgValidatorMutable.value = getDefaultMsg()
+        if (content.isEmpty()) msgValidatorMutable.value = defaultMsg
     }
-
-    private fun getDefaultMsg() = "Ingrese $postFixDefaultMsg"
 }

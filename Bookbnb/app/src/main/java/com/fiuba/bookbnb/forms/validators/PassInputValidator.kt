@@ -2,7 +2,7 @@ package com.fiuba.bookbnb.forms.validators
 
 import org.apache.commons.lang3.StringUtils
 
-class PassInputValidator(postFixDefaultMsg: String) : Validator(postFixDefaultMsg) {
+class PassInputValidator(defaultMsg: String) : Validator(defaultMsg) {
 
     override fun checkValidation(content: String): Boolean {
         return with(content) { !contains(StringUtils.SPACE) && isNotEmpty() && length >= MIN_LENGTH_PASSWORD_REQUIRED }

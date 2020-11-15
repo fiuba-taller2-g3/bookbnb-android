@@ -14,14 +14,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
-import com.fiuba.bookbnb.forms.inputFields.EditTextInputFieldItem
-import com.fiuba.bookbnb.forms.validators.EmailInputValidator
-import com.fiuba.bookbnb.forms.validators.PassInputValidator
-import com.fiuba.bookbnb.forms.validators.PostFixDefaultMsgValidator
+import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
-import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 
@@ -59,7 +55,7 @@ class LoginFragment : FormFragment() {
         viewModel.hideLoading()
     }
 
-    private fun getLoginRequest() = LoginRequest(getFieldContent(EMAIL), getFieldContent(PASS))
+    private fun getLoginRequest() = LoginRequest(getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD))
 
     private fun buildAdditionalContainer() {
         val notRegisterText = AdditionalContentForm(requireContext(), buildNotRegisterText()).also {
@@ -99,14 +95,10 @@ class LoginFragment : FormFragment() {
     override fun getButtonText(): Int = R.string.login_text_button
 
     override fun initFields() {
-        addInputField(EMAIL, R.string.email_field_label, EditTextInputFieldItem(requireContext(), EmailInputValidator(PostFixDefaultMsgValidator.POSTFIX_EMAIL.msg)))
-        addInputField(PASS, R.string.pass_field_label, EditTextInputFieldItem(requireContext(), PassInputValidator(PostFixDefaultMsgValidator.POSTFIX_PASSWORD.msg), KeyboardType.ALPHANUMERIC_PASSWORD))
+        addInputField(InputField.EMAIL, R.string.email_field_label)
+        addInputField(InputField.PASSWORD, R.string.pass_field_label)
     }
 
     override fun proceedLoading() = viewModel.login(getLoginRequest())
 
-    companion object {
-        private const val EMAIL = "EMAIL"
-        private const val PASS = "PASS"
-    }
 }
