@@ -28,6 +28,7 @@ class RegisterFragment : FormFragment() {
         addInputField(InputField.SURNAME, R.string.surname_field_label)
         addInputField(InputField.EMAIL, R.string.email_field_label)
         addInputField(InputField.PASSWORD, R.string.pass_field_label)
+        addInputField(InputField.BIRTHDAY, R.string.birthday_field_label)
         addInputField(InputField.PROFILE_TYPE, R.string.profile_type_field_label)
     }
 

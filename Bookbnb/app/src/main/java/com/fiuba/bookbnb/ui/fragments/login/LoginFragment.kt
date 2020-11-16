@@ -15,9 +15,11 @@ import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.forms.InputField
+import com.fiuba.bookbnb.forms.InputFieldBuilder
 import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
+import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 
@@ -96,7 +98,7 @@ class LoginFragment : FormFragment() {
 
     override fun initFields() {
         addInputField(InputField.EMAIL, R.string.email_field_label)
-        addInputField(InputField.PASSWORD, R.string.pass_field_label)
+        addDefaultInputField(InputField.PASSWORD, R.string.pass_field_label, KeyboardType.ALPHANUMERIC_PASSWORD)
     }
 
     override fun proceedLoading() = viewModel.login(getLoginRequest())

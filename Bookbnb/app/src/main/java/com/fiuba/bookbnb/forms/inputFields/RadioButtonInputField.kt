@@ -20,6 +20,8 @@ class RadioButtonInputField(context: Context, optionsText: Pair<String, String>)
 
     override fun isValidated(): Boolean = true
 
+    override fun getContentField() = if (first_radio_button.isChecked) first_radio_button.text.toString() else second_radio_button.text.toString()
+
     private fun setInputStatus(isEnabled: Boolean) {
         first_radio_button.isEnabled = isEnabled
         second_radio_button.isEnabled = isEnabled

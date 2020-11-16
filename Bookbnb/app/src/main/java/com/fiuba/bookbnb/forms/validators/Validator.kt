@@ -1,9 +1,10 @@
 package com.fiuba.bookbnb.forms.validators
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-abstract class Validator(private val textEmptyValidation: String) {
+abstract class Validator(protected val context: Context, private val textEmptyValidation: String) {
 
     protected val msgValidatorMutable = MutableLiveData<String>()
     val msgValidator : LiveData<String>

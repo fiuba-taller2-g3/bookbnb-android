@@ -1,6 +1,8 @@
 package com.fiuba.bookbnb.forms.validators
 
-class DefaultInputValidator(textEmptyValidation: String) : Validator(textEmptyValidation) {
+import android.content.Context
+
+class DefaultInputValidator(context: Context, textEmptyValidation: String) : Validator(context, textEmptyValidation) {
 
     override fun checkValidation(content: String): Boolean = content.isNotEmpty()
 

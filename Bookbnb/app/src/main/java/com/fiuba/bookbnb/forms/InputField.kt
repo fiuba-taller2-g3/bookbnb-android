@@ -8,6 +8,8 @@ enum class InputField(private val postfixTextEmptyValidator: String) {
     EMAIL("un correo electrónico"),
     PASSWORD("una contraseña"),
     BIRTHDAY("una fecha de nacimiento"),
+    PHONE_NUMBER("un número de teléfono"),
+    GENDER(StringUtils.EMPTY),
     PROFILE_TYPE(StringUtils.EMPTY);
 
     fun getTextEmptyValidator() = "Ingrese $postfixTextEmptyValidator"

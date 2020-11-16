@@ -1,6 +1,9 @@
 package com.fiuba.bookbnb.forms.validators
 
-class EmailInputValidator(textEmptyValidation: String) : Validator(textEmptyValidation) {
+import android.content.Context
+import com.fiuba.bookbnb.R
+
+class EmailInputValidator(context: Context, textEmptyValidation: String) : Validator(context, textEmptyValidation) {
 
     private val emailPattern = Regex(PATTERN)
 
@@ -10,11 +13,10 @@ class EmailInputValidator(textEmptyValidation: String) : Validator(textEmptyVali
 
     override fun updateTextValidation(content: String) {
         super.updateTextValidation(content)
-        if (content.isNotEmpty()) msgValidatorMutable.value = EMAIL_INVALID_VALIDATION_TEXT
+        if (content.isNotEmpty()) msgValidatorMutable.value = context.resources.getString(R.string.email_invalid_msg_validation)
     }
 
     companion object {
         private const val PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
-        private const val EMAIL_INVALID_VALIDATION_TEXT = "El formato de email no es válido"
     }
 }

@@ -11,10 +11,15 @@ object InputFieldBuilder {
 
     fun build(context: Context, inputField: InputField): AbstractInputFieldItem {
         return when (inputField) {
-            InputField.EMAIL -> EditTextInputFieldItem(context, EmailInputValidator(inputField.getTextEmptyValidator()))
-            InputField.PASSWORD -> EditTextInputFieldItem(context, PassInputValidator(inputField.getTextEmptyValidator()), KeyboardType.ALPHANUMERIC_PASSWORD)
+            InputField.EMAIL -> EditTextInputFieldItem(context, EmailInputValidator(context, inputField.getTextEmptyValidator()))
+            InputField.PASSWORD -> EditTextInputFieldItem(context, PassInputValidator(context, inputField.getTextEmptyValidator()), KeyboardType.ALPHANUMERIC_PASSWORD)
             InputField.PROFILE_TYPE -> RadioButtonInputField(context, Pair("Huesped","Anfitrión"))
-            else -> EditTextInputFieldItem(context, DefaultInputValidator(inputField.getTextEmptyValidator()))
+            InputField.GENDER -> RadioButtonInputField(context, Pair("Hombre","Mujer"))
+            else -> defaultBuild(context, inputField, KeyboardType.ALPHANUMERIC_PASSWORD)
         }
+    }
+
+    fun defaultBuild(context: Context, inputField: InputField, keyboardType: KeyboardType): AbstractInputFieldItem {
+        return EditTextInputFieldItem(context, DefaultInputValidator(context, inputField.getTextEmptyValidator()), keyboardType)
     }
 }

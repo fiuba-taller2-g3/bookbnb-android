@@ -39,6 +39,8 @@ class EditTextInputFieldItem(context: Context,
         }
     }
 
+    override fun getContentField() = edit_text.text.toString()
+
     private fun setInputStatus(isEnabled: Boolean, textColor: Int, backgroundColor: Int) {
         edit_text.isEnabled = isEnabled
         edit_text.setTextColor(ContextCompat.getColor(context, textColor))

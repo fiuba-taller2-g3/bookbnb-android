@@ -20,4 +20,11 @@
     <string name="surname_field_label">Apellido</string>
     <string name="birthday_field_label">Fecha de nacimiento</string>
     <string name="profile_type_field_label">Tipo de perfil</string>
+    <string name="gender_field_label">Género</string>
+    <string name="phone_number_field_label">Número de teléfono</string>
+
+    <!-- Validation -->
+    <string name="email_invalid_msg_validation">El formato de email no es válido</string>
+    <string name="pass_spaces_msg_validation">La contraseña no debe tener espacios</string>
+    <string name="pass_min_length_msg_validation">La contraseña debe tener al menos 4 caracteres</string>
 </resources>
