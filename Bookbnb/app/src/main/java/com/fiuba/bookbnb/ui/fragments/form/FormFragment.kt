@@ -8,7 +8,7 @@ import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.forms.InputFieldBuilder
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
-import com.fiuba.bookbnb.forms.inputFields.InputFieldModule
+import com.fiuba.bookbnb.forms.InputFieldModule
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils

@@ -19,6 +19,6 @@ class PassInputValidator(context: Context, textEmptyValidation: String) : Valida
     private fun isMinLengthValidate(content: String) = content.length >= MIN_LENGTH_PASSWORD_REQUIRED
 
     companion object {
-        private const val MIN_LENGTH_PASSWORD_REQUIRED = 4
+        private const val MIN_LENGTH_PASSWORD_REQUIRED = 8
     }
 }

@@ -5,6 +5,10 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
 
+    <action
+        android:id="@+id/startDialogs"
+        app:destination="@id/nav_dialogs" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.login.LoginFragment"
@@ -23,5 +27,8 @@
         android:id="@+id/registerFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.register.RegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/bookbnb_register" />
+        tools:layout="@layout/bookbnb_form" />
+
+    <!-- Include all dialogs -->
+    <include app:graph="@navigation/nav_dialogs" />
 </navigation>

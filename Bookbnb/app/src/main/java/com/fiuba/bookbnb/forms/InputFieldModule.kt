@@ -1,4 +1,4 @@
-package com.fiuba.bookbnb.forms.inputFields
+package com.fiuba.bookbnb.forms
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
+import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
 import kotlinx.android.synthetic.main.bookbnb_input_field_module.view.*
 import org.apache.commons.lang3.StringUtils
 

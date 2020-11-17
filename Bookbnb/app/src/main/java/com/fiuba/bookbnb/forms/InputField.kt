@@ -7,7 +7,7 @@ enum class InputField(private val postfixTextEmptyValidator: String) {
     SURNAME("un apellido"),
     EMAIL("un correo electrónico"),
     PASSWORD("una contraseña"),
-    BIRTHDAY("una fecha de nacimiento"),
+    BIRTHDATE("una fecha de nacimiento"),
     PHONE_NUMBER("un número de teléfono"),
     GENDER(StringUtils.EMPTY),
     PROFILE_TYPE(StringUtils.EMPTY);

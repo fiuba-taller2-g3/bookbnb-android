@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_dialogs"
+    app:startDestination="@id/emptyFragment">
+
+    <fragment
+        android:id="@+id/emptyFragment"
+        android:name="androidx.fragment.app.Fragment"
+        android:label="EmptyFragment" />
+
+    <action
+        android:id="@+id/showDatePickerDialogFragment"
+        app:destination="@+id/datePickerDialogFragment"
+        app:popUpTo="@id/nav_dialogs"
+        app:popUpToInclusive="true" />
+
+    <dialog
+        android:id="@+id/datePickerDialogFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment"
+        android:label="DatePickerDialogFragment"
+        tools:layout="@layout/date_picker_dialog_fragment" />
+</navigation>
