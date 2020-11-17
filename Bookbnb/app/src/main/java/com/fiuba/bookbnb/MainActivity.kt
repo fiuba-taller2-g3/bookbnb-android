@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         initNavigation()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
     private fun initAppBar() {
         setSupportActionBar(app_toolbar as Toolbar)
         supportActionBar?.apply {

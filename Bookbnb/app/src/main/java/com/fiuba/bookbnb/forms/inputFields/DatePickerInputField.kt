@@ -2,10 +2,8 @@ package com.fiuba.bookbnb.forms.inputFields
 
 import android.content.Context
 import android.view.LayoutInflater
-import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.validators.Validator
-import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment
 import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragmentDirections
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
