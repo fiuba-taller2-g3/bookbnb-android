@@ -20,5 +20,12 @@
         android:id="@+id/datePickerDialogFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment"
         android:label="DatePickerDialogFragment"
-        tools:layout="@layout/date_picker_dialog_fragment" />
+        tools:layout="@layout/date_picker_dialog_fragment" >
+        <argument
+            android:name="selectedDate"
+            app:argType="java.util.Calendar" />
+        <argument
+            android:name="onDateSetListener"
+            app:argType="com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment$OnDateSetListener" />
+    </dialog>
 </navigation>
