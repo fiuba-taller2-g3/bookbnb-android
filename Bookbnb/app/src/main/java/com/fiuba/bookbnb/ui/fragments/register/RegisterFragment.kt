@@ -26,9 +26,9 @@ class RegisterFragment : FormFragment() {
     override fun initFields() {
         addInputField(InputField.NAME, R.string.name_field_label)
         addInputField(InputField.SURNAME, R.string.surname_field_label)
-        addInputField(InputField.EMAIL, R.string.email_field_label)
+        addInputField(InputField.EMAIL, R.string.email_field_label, R.string.email_register_description_text)
         addInputField(InputField.PASSWORD, R.string.pass_field_label)
-        addInputField(InputField.BIRTHDATE, R.string.birthdate_field_label)
+        addInputField(InputField.BIRTHDATE, R.string.birthdate_field_label, R.string.birthdate_register_description_text)
         addInputField(InputField.PROFILE_TYPE, R.string.profile_type_field_label)
     }
 

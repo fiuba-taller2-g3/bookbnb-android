@@ -9,12 +9,11 @@ import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
 import kotlinx.android.synthetic.main.bookbnb_input_field_module.view.*
-import org.apache.commons.lang3.StringUtils
 
 
 class InputFieldModule @JvmOverloads constructor(context: Context, label: String,
                                                  inputFieldItem: AbstractInputFieldItem,
-                                                 description: String = StringUtils.EMPTY,
+                                                 descriptionRes: Int?,
                                                  attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr) {
 
     init {
@@ -22,7 +21,13 @@ class InputFieldModule @JvmOverloads constructor(context: Context, label: String
         LayoutInflater.from(context).inflate(R.layout.bookbnb_input_field_module, this).also {
             it.label.text = label
         }
-        description_text.isVisible = description.isNotEmpty()
+
+        descriptionRes?.let {
+            val description = context.resources.getString(it)
+            description_text.isVisible = description.isNotEmpty()
+            description_text.text = description
+        }
+
         input_field.addView(inputFieldItem)
     }
 

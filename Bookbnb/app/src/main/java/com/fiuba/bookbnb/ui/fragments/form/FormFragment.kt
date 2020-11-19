@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.forms.InputFieldBuilder
-import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
 import com.fiuba.bookbnb.forms.InputFieldModule
+import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
@@ -43,17 +43,19 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         fields.values.forEach { field -> if (loadingEnabled) field.disableInput() else field.enableInput() }
     }
 
-    private fun addInputField(fieldId: InputField, labelResource: Int, abstractInputFieldItem: AbstractInputFieldItem) {
+    private fun addInputField(fieldId: InputField, labelResource: Int, abstractInputFieldItem: AbstractInputFieldItem, descriptionRes: Int?) {
         fields[fieldId] = abstractInputFieldItem.also {
-            input_fields_container.addView(InputFieldModule(requireContext(), getString(labelResource), it))
+            input_fields_container.addView(InputFieldModule(requireContext(), getString(labelResource), it, descriptionRes))
         }
     }
 
-    protected fun addDefaultInputField(fieldId: InputField, labelResource: Int, keyboardType: KeyboardType) {
-        return addInputField(fieldId, labelResource, InputFieldBuilder.defaultBuild(requireContext(), fieldId, keyboardType))
+    protected fun addDefaultInputField(fieldId: InputField, labelResource: Int, keyboardType: KeyboardType, descriptionRes: Int? = null) {
+        return addInputField(fieldId, labelResource, InputFieldBuilder.defaultBuild(requireContext(), fieldId, keyboardType), descriptionRes)
     }
 
-    protected fun addInputField(fieldId: InputField, labelResource: Int) = addInputField(fieldId, labelResource, InputFieldBuilder.build(requireContext(), fieldId))
+    protected fun addInputField(fieldId: InputField, labelResource: Int, descriptionRes: Int? = null) {
+        addInputField(fieldId, labelResource, InputFieldBuilder.build(requireContext(), fieldId), descriptionRes)
+    }
 
     private fun setButtonListener() {
         form_button.setOnClickListener {
