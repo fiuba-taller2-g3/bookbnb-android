@@ -1,11 +1,7 @@
 package com.fiuba.bookbnb.forms.inputFields
 
 import android.content.Context
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
-import android.view.animation.AlphaAnimation
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.validators.Validator
 import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment

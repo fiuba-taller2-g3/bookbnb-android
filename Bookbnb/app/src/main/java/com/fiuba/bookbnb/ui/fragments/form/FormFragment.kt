@@ -61,9 +61,20 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         form_button.setOnClickListener {
             var isFormsValidated = true
             fields.values.forEach { field -> if (!field.isValidated() && isFormsValidated) isFormsValidated = false }
-            if (isFormsValidated) proceedLoading()
+            if (isFormsValidated) proceedLoading() else jumpToFirstInputFieldInvalid()
         }
     }
+
+    private fun jumpToFirstInputFieldInvalid() {
+        for (i in 0 until input_fields_container.childCount) {
+            if (!(input_fields_container.getChildAt(i) as InputFieldModule).getInputFieldItem().isValidated()) {
+                form_scroll_view.post { form_scroll_view.smoothScrollTo(0, getPositionOfInputField(i)) }
+                break
+            }
+        }
+    }
+
+    private fun getPositionOfInputField(index: Int) = with(input_fields_container) {top + getChildAt(index).top }
 
     protected fun getFieldContent(fieldId: InputField) = fields[fieldId]?.getContentField() ?: StringUtils.EMPTY
 

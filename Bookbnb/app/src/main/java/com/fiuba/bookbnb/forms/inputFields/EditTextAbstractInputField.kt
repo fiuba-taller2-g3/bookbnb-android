@@ -20,8 +20,8 @@ abstract class EditTextAbstractInputField(context: Context, private val validati
         val animation = AlphaAnimation(0.0f, 1.0f).also { it.duration = 1000 }
 
         return validation.checkValidation(textContent).also { isValid ->
+            if (!validation_text.isVisible) validation_text.startAnimation(animation)
             validation_text.isVisible = !isValid
-            validation_text.startAnimation(animation)
             validation.updateTextValidation(textContent)
         }
     }

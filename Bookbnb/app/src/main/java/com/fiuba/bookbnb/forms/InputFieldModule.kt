@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.bookbnb_input_field_module.view.*
 
 
 class InputFieldModule @JvmOverloads constructor(context: Context, label: String,
-                                                 inputFieldItem: AbstractInputFieldItem,
+                                                 private val inputFieldItem: AbstractInputFieldItem,
                                                  descriptionRes: Int?,
                                                  attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr) {
 
@@ -38,4 +38,6 @@ class InputFieldModule @JvmOverloads constructor(context: Context, label: String
         )
         orientation = VERTICAL
     }
+
+    fun getInputFieldItem() = inputFieldItem
 }
