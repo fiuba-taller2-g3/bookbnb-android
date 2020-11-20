@@ -1,5 +1,6 @@
 package com.fiuba.bookbnb.ui.fragments.form
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
@@ -9,14 +10,16 @@ import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.forms.InputFieldBuilder
 import com.fiuba.bookbnb.forms.InputFieldModule
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
+import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 
-abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
+abstract class FormFragment<T : FormViewModel> : Fragment(R.layout.bookbnb_form) {
 
     private val fields by lazy { EnumMap<InputField, AbstractInputFieldItem>(InputField::class.java)}
+    protected lateinit var viewModel : T
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,6 +30,27 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
 
         initFields()
         setButtonListener()
+        setViewModelObserver()
+    }
+
+    private fun setViewModelObserver() {
+        viewModel.loadingStatus.observe(viewLifecycleOwner) { loginStatus ->
+            when (loginStatus) {
+                LoadingStatus.SUCCESS -> showDialog()
+                LoadingStatus.FAILURE -> showDialog()
+                LoadingStatus.LOADING -> showLoading(true)
+                LoadingStatus.ERROR -> showDialog()
+                else -> {}
+            }
+        }
+    }
+
+    private fun showDialog() {
+        showLoading(false)
+        AlertDialog.Builder(context).run {
+            setMessage(viewModel.getMessageResponse())
+        }.show()
+        viewModel.hideLoading()
     }
 
     private fun setButtonLoading(loadingEnabled: Boolean) {
@@ -35,7 +59,7 @@ abstract class FormFragment : Fragment(R.layout.bookbnb_form) {
         form_button.isEnabled = !loadingEnabled
     }
 
-    protected fun showLoading(loadingEnabled: Boolean) {
+    private fun showLoading(loadingEnabled: Boolean) {
         setButtonLoading(loadingEnabled)
         for (i in 0 until additional_container.childCount) {
             additional_container.getChildAt(i).isEnabled = !loadingEnabled

@@ -17,7 +17,7 @@ object InputFieldBuilder {
             InputField.PROFILE_TYPE -> RadioButtonInputField(context, Pair("Huesped","Anfitrión"))
             InputField.GENDER -> RadioButtonInputField(context, Pair("Hombre","Mujer"))
             InputField.BIRTHDATE -> DatePickerInputField(context, DatePickerInputValidator(context, inputField.getTextEmptyValidator()))
-            else -> defaultBuild(context, inputField, KeyboardType.ALPHANUMERIC_PASSWORD)
+            else -> defaultBuild(context, inputField, KeyboardType.ALPHANUMERIC)
         }
     }
 

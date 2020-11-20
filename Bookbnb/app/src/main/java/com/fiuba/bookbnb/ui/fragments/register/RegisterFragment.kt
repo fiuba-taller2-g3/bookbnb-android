@@ -8,14 +8,11 @@ import com.fiuba.bookbnb.domain.register.RegisterRequest
 import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 
-class RegisterFragment : FormFragment() {
-
-    private lateinit var viewModel : RegisterViewModel
+class RegisterFragment : FormFragment<RegisterViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         viewModel = ViewModelProviders.of(this).get(RegisterViewModel::class.java)
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun getTitle() = R.string.register_title

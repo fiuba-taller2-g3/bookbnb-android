@@ -1,6 +1,5 @@
 package com.fiuba.bookbnb.ui.fragments.login
 
-import android.app.AlertDialog
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
@@ -15,45 +14,18 @@ import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.forms.InputField
-import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form.*
 import org.apache.commons.lang3.StringUtils
 
-
-class LoginFragment : FormFragment() {
-
-    private lateinit var viewModel : LoginViewModel
+class LoginFragment : FormFragment<LoginViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-
+        super.onViewCreated(view, savedInstanceState)
         buildAdditionalContainer()
-        setViewModelObserver()
-    }
-
-    private fun setViewModelObserver() {
-        viewModel.loadingStatus.observe(viewLifecycleOwner) { loginStatus ->
-            when (loginStatus) {
-                LoadingStatus.SUCCESS -> showDialog()
-                LoadingStatus.FAILURE -> showDialog()
-                LoadingStatus.LOADING -> showLoading(true)
-                LoadingStatus.ERROR -> showDialog()
-                else -> {}
-            }
-        }
-    }
-
-    private fun showDialog() {
-        showLoading(false)
-        AlertDialog.Builder(context).run {
-            setMessage(viewModel.getMessageResponse())
-        }.show()
-        viewModel.hideLoading()
     }
 
     private fun buildAdditionalContainer() {
