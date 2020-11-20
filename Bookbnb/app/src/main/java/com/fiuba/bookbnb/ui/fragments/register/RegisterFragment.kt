@@ -1,19 +1,11 @@
 package com.fiuba.bookbnb.ui.fragments.register
 
-import android.os.Bundle
-import android.view.View
-import androidx.lifecycle.ViewModelProviders
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.register.RegisterRequest
 import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 
 class RegisterFragment : FormFragment<RegisterViewModel>() {
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProviders.of(this).get(RegisterViewModel::class.java)
-        super.onViewCreated(view, savedInstanceState)
-    }
 
     override fun getTitle() = R.string.register_title
 
@@ -36,5 +28,7 @@ class RegisterFragment : FormFragment<RegisterViewModel>() {
             getFieldContent(InputField.PHONE_NUMBER), getFieldContent(InputField.BIRTHDATE))
         viewModel.register(request)
     }
+
+    override fun getViewModelClass(): Class<RegisterViewModel> = RegisterViewModel::class.java
 
 }

@@ -9,7 +9,6 @@ import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.view.View
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
@@ -23,7 +22,6 @@ import org.apache.commons.lang3.StringUtils
 class LoginFragment : FormFragment<LoginViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)
         buildAdditionalContainer()
     }
@@ -74,5 +72,7 @@ class LoginFragment : FormFragment<LoginViewModel>() {
         val request = LoginRequest(getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD))
         viewModel.login(request)
     }
+
+    override fun getViewModelClass() = LoginViewModel::class.java
 
 }

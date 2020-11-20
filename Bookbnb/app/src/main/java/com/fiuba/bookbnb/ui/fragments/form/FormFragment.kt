@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.forms.InputFieldBuilder
@@ -27,6 +28,8 @@ abstract class FormFragment<T : FormViewModel> : Fragment(R.layout.bookbnb_form)
         bkbnb_form_title.text = getString(getTitle())
         bkbnb_form_subtitle.text = getString(getSubtitle())
         form_button.text = getString(getButtonText())
+
+        viewModel = ViewModelProviders.of(this).get(getViewModelClass())
 
         initFields()
         setButtonListener()
@@ -111,5 +114,7 @@ abstract class FormFragment<T : FormViewModel> : Fragment(R.layout.bookbnb_form)
     protected abstract fun initFields()
 
     protected abstract fun proceedLoading()
+
+    protected abstract fun getViewModelClass() : Class<T>
 
 }
