@@ -37,6 +37,6 @@ class DatePickerInputField(context: Context, validation: Validator) : EditTextAb
         val selectedDay = date.get(Calendar.DAY_OF_MONTH)
 
         selectedDate.set(selectedYear, selectedMonth, selectedDay)
-        edit_text.setText("${selectedDay}/${selectedMonth.inc()}/${selectedYear}")
+        edit_text.setText("${selectedDay}-${selectedMonth.inc()}-${selectedYear}")
     }
 }
