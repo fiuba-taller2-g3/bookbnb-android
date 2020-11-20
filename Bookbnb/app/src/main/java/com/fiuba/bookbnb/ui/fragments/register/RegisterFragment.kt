@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.fiuba.bookbnb.R
+import com.fiuba.bookbnb.domain.register.RegisterRequest
 import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 
@@ -32,6 +33,11 @@ class RegisterFragment : FormFragment() {
         addInputField(InputField.PROFILE_TYPE, R.string.profile_type_field_label)
     }
 
-    override fun proceedLoading() = viewModel.register()
+    override fun proceedLoading() {
+        val request = RegisterRequest(getFieldContent(InputField.NAME), getFieldContent(InputField.SURNAME), getFieldContent(InputField.EMAIL),
+            getFieldContent(InputField.PASSWORD), getFieldContent(InputField.PROFILE_TYPE), getFieldContent(InputField.GENDER),
+            getFieldContent(InputField.PHONE_NUMBER), getFieldContent(InputField.BIRTHDATE))
+        viewModel.register(request)
+    }
 
 }

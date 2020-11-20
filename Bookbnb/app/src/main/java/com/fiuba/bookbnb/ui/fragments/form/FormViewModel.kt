@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.fiuba.bookbnb.repository.LoadingStatus
 import org.apache.commons.lang3.StringUtils
 
-abstract class  FormViewModel : ViewModel() {
+abstract class FormViewModel : ViewModel() {
 
     protected var msgResponse = StringUtils.EMPTY
     protected val loadingStatusMutable = MutableLiveData<LoadingStatus>()

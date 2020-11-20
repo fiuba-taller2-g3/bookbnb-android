@@ -56,8 +56,6 @@ class LoginFragment : FormFragment() {
         viewModel.hideLoading()
     }
 
-    private fun getLoginRequest() = LoginRequest(getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD))
-
     private fun buildAdditionalContainer() {
         val notRegisterText = AdditionalContentForm(requireContext(), buildNotRegisterText()).also {
             it.setOnClickListener { view -> view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
@@ -100,6 +98,9 @@ class LoginFragment : FormFragment() {
         addDefaultInputField(InputField.PASSWORD, R.string.pass_field_label, KeyboardType.ALPHANUMERIC_PASSWORD)
     }
 
-    override fun proceedLoading() = viewModel.login(getLoginRequest())
+    override fun proceedLoading() {
+        val request = LoginRequest(getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD))
+        viewModel.login(request)
+    }
 
 }

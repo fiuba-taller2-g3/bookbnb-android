@@ -18,10 +18,10 @@ class LoginViewModel : FormViewModel() {
 
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
-                    msgResponse = response.body()?.msg.toString()
+                    msgResponse = response.body()?.apiToken.toString()
                     loadingStatusMutable.value = LoadingStatus.SUCCESS
                 } else {
-                    msgResponse = response.errorBody()?.let { Gson().fromJson(it.string(), LoginResponse::class.java) }?.msg.toString()
+                    msgResponse = response.errorBody()?.let { Gson().fromJson(it.string(), LoginResponse::class.java) }?.error.toString()
                     loadingStatusMutable.value = LoadingStatus.FAILURE
                 }
             }
