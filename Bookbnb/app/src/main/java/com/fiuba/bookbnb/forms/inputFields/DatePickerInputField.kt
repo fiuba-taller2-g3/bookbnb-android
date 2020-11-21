@@ -7,6 +7,7 @@ import com.fiuba.bookbnb.forms.validators.Validator
 import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment
 import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragmentDirections
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
+import com.fiuba.bookbnb.utils.DateUtils
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
 import java.util.*
 
@@ -31,12 +32,15 @@ class DatePickerInputField(context: Context, validation: Validator) : EditTextAb
         }
     }
 
+    private fun formatDateToString(date: Calendar): String = DateUtils.getDateFormat().format(date.time)
+
     override fun onDateSet(date: Calendar, requestCode: Int) {
         val selectedYear = date.get(Calendar.YEAR)
         val selectedMonth = date.get(Calendar.MONTH)
         val selectedDay = date.get(Calendar.DAY_OF_MONTH)
 
         selectedDate.set(selectedYear, selectedMonth, selectedDay)
-        edit_text.setText("${selectedDay}-${selectedMonth.inc()}-${selectedYear}")
+        edit_text.setText(formatDateToString(selectedDate))
     }
+
 }

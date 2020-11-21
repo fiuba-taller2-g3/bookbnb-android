@@ -8,7 +8,7 @@ import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.fiuba.bookbnb.R
-import kotlinx.android.synthetic.main.date_picker_dialog_fragment.view.*
+import kotlinx.android.synthetic.main.bookbnb_date_picker_dialog_fragment.view.*
 import java.io.Serializable
 import java.util.*
 
@@ -27,7 +27,7 @@ class DatePickerDialogFragment : DialogFragment(), DatePicker.OnDateChangedListe
     }
 
     private fun getBodyView(): View? {
-        val datePickerView = View.inflate(context, R.layout.date_picker_dialog_fragment, null)
+        val datePickerView = View.inflate(context, R.layout.bookbnb_date_picker_dialog_fragment, null)
 
         with(datePickerView) {
             date_picker.init(selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH), selectedDate.get(Calendar.DAY_OF_MONTH), this@DatePickerDialogFragment)

@@ -31,6 +31,7 @@
     <string name="email_invalid_msg_validation">El formato de email no es válido</string>
     <string name="pass_spaces_msg_validation">La contraseña no debe tener espacios</string>
     <string name="pass_min_length_msg_validation">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="birthdate_min_age_validation">Debes tener al menos 18 años para registrarte</string>
 
     <!-- Dialogs -->
     <string name="title_date_picker_dialog">Indica tu fecha de nacimiento</string>
