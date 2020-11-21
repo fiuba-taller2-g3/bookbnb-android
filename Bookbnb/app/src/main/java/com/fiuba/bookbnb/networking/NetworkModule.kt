@@ -14,7 +14,6 @@ object NetworkModule {
 
     private val gson = GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-        .setDateFormat("yyyy-MM-dd")
         .create()
 
     private val okHttpClient = OkHttpClient.Builder()
