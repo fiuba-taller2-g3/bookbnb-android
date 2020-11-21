@@ -1,8 +1,6 @@
 package com.fiuba.bookbnb.forms.inputFields
 
 import android.content.Context
-import android.view.LayoutInflater
-import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.validators.Validator
 import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment
 import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragmentDirections
@@ -17,9 +15,6 @@ class DatePickerInputField(context: Context, validation: Validator) : EditTextAb
     private val selectedDate by lazy { Calendar.getInstance() }
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.bookbnb_text_input_field_item, this)
-        setLayoutParams()
-        validation.msgValidator.observeForever { msgValidation -> validation_text.text = msgValidation }
         edit_text.isFocusable = false
         edit_text.isLongClickable = false;
         edit_text.setTextIsSelectable(false);
@@ -41,6 +36,19 @@ class DatePickerInputField(context: Context, validation: Validator) : EditTextAb
 
         selectedDate.set(selectedYear, selectedMonth, selectedDay)
         edit_text.setText(formatDateToString(selectedDate))
+    }
+
+    override fun getContentField(): String {
+        with(edit_text.text.toString()) {
+            if (isNotEmpty()) {
+                val initDate = DateUtils.getDateFormat().parse(this)
+                val outputFormat = DateUtils.getDateOutputFormat()
+
+                return outputFormat.format(initDate!!)
+            }
+        }
+
+        return super.getContentField()
     }
 
 }

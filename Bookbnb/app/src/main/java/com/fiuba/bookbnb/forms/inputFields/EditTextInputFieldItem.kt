@@ -3,8 +3,6 @@ package com.fiuba.bookbnb.forms.inputFields
 import android.content.Context
 import android.text.InputType
 import android.text.method.PasswordTransformationMethod
-import android.view.LayoutInflater
-import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.validators.Validator
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
@@ -14,8 +12,6 @@ class EditTextInputFieldItem(context: Context,
                              type: KeyboardType = KeyboardType.ALPHANUMERIC) : EditTextAbstractInputField(context, validation) {
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.bookbnb_text_input_field_item, this)
-        setLayoutParams()
         setInputType(type)
         validation.msgValidator.observeForever { msgValidation -> validation_text.text = msgValidation }
     }

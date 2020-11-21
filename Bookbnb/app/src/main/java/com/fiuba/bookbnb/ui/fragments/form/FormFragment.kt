@@ -13,11 +13,11 @@ import com.fiuba.bookbnb.forms.InputFieldModule
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
 import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.utils.KeyboardType
-import kotlinx.android.synthetic.main.bookbnb_form.*
+import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 
-abstract class FormFragment<T : FormViewModel> : Fragment(R.layout.bookbnb_form) {
+abstract class FormFragment<T : FormViewModel> : Fragment(R.layout.bookbnb_form_fragment) {
 
     private val fields by lazy { EnumMap<InputField, AbstractInputFieldItem>(InputField::class.java)}
     protected lateinit var viewModel : T

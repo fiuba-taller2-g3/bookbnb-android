@@ -16,7 +16,7 @@ import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
 import com.fiuba.bookbnb.ui.utils.KeyboardType
-import kotlinx.android.synthetic.main.bookbnb_form.*
+import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 import org.apache.commons.lang3.StringUtils
 
 class LoginFragment : FormFragment<LoginViewModel>() {

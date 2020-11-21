@@ -2,6 +2,9 @@ package com.fiuba.bookbnb.forms.inputFields
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.animation.AlphaAnimation
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -10,6 +13,13 @@ import com.fiuba.bookbnb.forms.validators.Validator
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
 
 abstract class EditTextAbstractInputField(context: Context, private val validation: Validator) : AbstractInputFieldItem(context) {
+
+    init {
+        LayoutInflater.from(context).inflate(R.layout.bookbnb_text_input_field_item, this)
+        setLayoutParams()
+        validation.msgValidator.observeForever { msgValidation -> validation_text.text = msgValidation }
+        onChangedTextListener()
+    }
 
     override fun enableInput() = setInputStatus(true, R.color.colorTitle, R.color.colorWhite)
 
@@ -27,6 +37,22 @@ abstract class EditTextAbstractInputField(context: Context, private val validati
     }
 
     override fun getContentField() = edit_text.text.toString()
+
+    private fun onChangedTextListener() {
+        edit_text.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                // Do nothing
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                validation_container.isVisible = false
+            }
+        })
+    }
 
     private fun setInputStatus(isEnabled: Boolean, textColor: Int, backgroundColor: Int) {
         edit_text.isEnabled = isEnabled
