@@ -30,6 +30,6 @@ class ConfirmationFragment : BaseFragment(R.layout.bookbnb_confirmation_fragment
     }
 
     companion object {
-        private const val MILLISECONDS_WAIT : Long = 3000
+        private const val MILLISECONDS_WAIT : Long = 5000
     }
 }
