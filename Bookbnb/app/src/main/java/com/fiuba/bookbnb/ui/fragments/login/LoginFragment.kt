@@ -14,6 +14,7 @@ import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
+import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
@@ -28,7 +29,7 @@ class LoginFragment : FormFragment<LoginViewModel>() {
 
     private fun buildAdditionalContainer() {
         val notRegisterText = AdditionalContentForm(requireContext(), buildNotRegisterText()).also {
-            it.setOnClickListener { view -> view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
+            it.setOnClickListener { NavigationManager.moveForward(LoginFragmentDirections.actionLoginFragmentToRegisterFragment()) }
         }
 
         additional_container.isVisible = true
