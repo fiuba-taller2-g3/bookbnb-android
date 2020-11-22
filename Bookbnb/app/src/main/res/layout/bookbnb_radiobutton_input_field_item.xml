@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/first_radio_button"
+            style="@style/bkbnbRadioButtonInputField"
+            android:button="@drawable/radio_button_selector"
+            android:background="@drawable/radio_button_item_start_background"
+            android:checked="true"
+            tools:text="Opción 1" />
+
+        <RadioButton
+            android:id="@+id/second_radio_button"
+            android:button="@drawable/radio_button_selector"
+            style="@style/bkbnbRadioButtonInputField"
+            android:background="@drawable/radio_button_item_end_background"
+            tools:text="Opción 2" />
+
+    </RadioGroup>
+
+</merge>

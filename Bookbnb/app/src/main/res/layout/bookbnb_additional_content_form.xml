@@ -8,16 +8,10 @@
 
     <TextView
         android:id="@+id/label"
+        style="@style/bkbnbSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/bkbnbLabelInputField"
-        tools:text="LABEL DE PRUEBA" />
-
-    <EditText
-        android:id="@+id/edit_text"
-        android:layout_marginTop="@dimen/bkbnb6dp"
-        android:layout_marginBottom="@dimen/bkbnb18dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/bkbnbTextInputField" />
+        android:layout_marginTop="@dimen/bkbnb8dp"
+        android:layout_marginBottom="@dimen/bkbnb8dp"
+        tools:text="¿No tienes una cuenta? Regístrate" />
 </merge>

@@ -1,80 +1,78 @@
 package com.fiuba.bookbnb.ui.fragments.login
 
-import android.annotation.SuppressLint
-import android.app.AlertDialog
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
+import android.text.style.UnderlineSpan
 import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.core.view.isVisible
+import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
-import com.fiuba.bookbnb.repository.LoadingStatus
+import com.fiuba.bookbnb.forms.InputField
+import com.fiuba.bookbnb.ui.fragments.form.FormFragment
+import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
 import com.fiuba.bookbnb.ui.utils.KeyboardType
-import com.fiuba.bookbnb.ui.utils.TextInputField
-import kotlinx.android.synthetic.main.bookbnb_login.*
+import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
+import org.apache.commons.lang3.StringUtils
 
+class LoginFragment : FormFragment<LoginViewModel>() {
 
-class LoginFragment : Fragment(R.layout.bookbnb_login) {
-
-    private lateinit var viewModel : LoginViewModel
-    private val emailInputField by lazy { TextInputField(requireContext(), getString(R.string.email_text_field)) }
-    private val passwordInputField by lazy { TextInputField(requireContext(), getString(R.string.pass_text_field), KeyboardType.ALPHANUMERIC_PASSWORD) }
-
-    @SuppressLint("InflateParams")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-
-        input_fields_container.apply {
-            addView(emailInputField)
-            addView(passwordInputField)
-        }
-
-        setViewModelObserver()
-        setButtonLoginListener()
+        buildAdditionalContainer()
     }
 
-    private fun setViewModelObserver() {
-        viewModel.loadingStatus.observe(viewLifecycleOwner) { loginStatus ->
-            when (loginStatus) {
-                LoadingStatus.SUCCESS -> showDialog()
-                LoadingStatus.FAILURE -> showDialog()
-                LoadingStatus.LOADING -> showLoading(true)
-                LoadingStatus.ERROR -> showDialog()
-                else -> {}
+    private fun buildAdditionalContainer() {
+        val notRegisterText = AdditionalContentForm(requireContext(), buildNotRegisterText()).also {
+            it.setOnClickListener { view -> view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
+        }
+
+        additional_container.isVisible = true
+        additional_container.addView(notRegisterText)
+        additional_container.addView(AdditionalContentForm(requireContext(), buildForgottenPassText()))
+    }
+
+    private fun buildNotRegisterText(): SpannableStringBuilder {
+        return SpannableStringBuilder().apply {
+            append(getString(R.string.text_question_not_register) + StringUtils.SPACE)
+            append(buildTextStyled(getString(R.string.text_register)))
+        }
+    }
+
+    private fun buildForgottenPassText(): SpannableStringBuilder {
+        return SpannableStringBuilder().apply {
+            append(buildTextStyled(getString(R.string.text_forgotten_pass)))
+        }
+    }
+
+    private fun buildTextStyled(text: String): SpannableString {
+        return SpannableString(text).apply {
+            arrayListOf(UnderlineSpan(), StyleSpan(Typeface.BOLD)).forEach { styleSpan ->
+                setSpan(styleSpan, 0, length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
             }
         }
     }
 
-    private fun showLoading(enabled: Boolean) {
-        progress_login.visibility = getLoadingVisibility(enabled)
-        login_button.isEnabled = !enabled
-        login_button.setTextColor(getTextColorButton(enabled))
-        login_button.setBackgroundColor(getBackgroundColorButton(enabled))
-        emailInputField.setInputFieldStatus(!enabled)
-        passwordInputField.setInputFieldStatus(!enabled)
+    override fun getTitle() = R.string.login_title
+
+    override fun getSubtitle() = R.string.login_subtitle
+
+    override fun getButtonText(): Int = R.string.login_text_button
+
+    override fun initFields() {
+        addInputField(InputField.EMAIL, R.string.email_field_label)
+        addDefaultInputField(InputField.PASSWORD, R.string.pass_field_label, KeyboardType.ALPHANUMERIC_PASSWORD)
     }
 
-    private fun setButtonLoginListener() {
-        login_button.setOnClickListener {
-            viewModel.login(getLoginRequest())
-        }
+    override fun proceedLoading() {
+        val request = LoginRequest(getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD))
+        viewModel.login(request)
     }
 
-    private fun showDialog() {
-        showLoading(false)
-        AlertDialog.Builder(context).run {
-            setMessage(viewModel.getMsgResponse())
-        }.show()
-    }
+    override fun getViewModelClass() = LoginViewModel::class.java
 
-    private fun getLoginRequest() = LoginRequest(emailInputField.getContentField(), passwordInputField.getContentField())
-
-    private fun getLoadingVisibility(showLoading: Boolean) = if (showLoading) View.VISIBLE else View.INVISIBLE
-
-    private fun getTextColorButton(showLoading: Boolean) = ContextCompat.getColor(requireContext(), if (!showLoading) R.color.colorWhite else R.color.colorTextButtonDisabled)
-
-    private fun getBackgroundColorButton(showLoading: Boolean) = ContextCompat.getColor(requireContext(), if (!showLoading) R.color.colorButton else R.color.colorBackgroundButtonDisabled)
 }

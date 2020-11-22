@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/form_scroll_view">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/bkbnb24dp"
+        android:paddingEnd="@dimen/bkbnb24dp"
+        android:paddingBottom="@dimen/bkbnb64dp">
+
+        <TextView
+            android:id="@+id/bkbnb_form_title"
+            style="@style/bkbnbTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bkbnb32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constrainedWidth="true"
+            tools:text="Título" />
+
+        <TextView
+            android:id="@+id/bkbnb_form_subtitle"
+            style="@style/bkbnbSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bkbnb8dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_title"
+            tools:text="Subtítulo" />
+
+        <LinearLayout
+            android:id="@+id/input_fields_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/bkbnb40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_subtitle" />
+
+        <LinearLayout
+            android:id="@+id/additional_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/bkbnb12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_fields_container" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bkbnb40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/bkbnb_form_title"
+            app:layout_constraintTop_toBottomOf="@+id/additional_container">
+
+            <Button
+                android:id="@+id/form_button"
+                style="@style/bkbnbButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_ripple"
+                android:elevation="1dp"
+                android:paddingStart="@dimen/bkbnb32dp"
+                android:paddingEnd="@dimen/bkbnb32dp"
+                tools:text="Seleccionar" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="@dimen/bkbnb24dp"
+                android:layout_height="@dimen/bkbnb24dp"
+                style="?android:attr/progressBarStyleSmall"
+                android:indeterminateTint="@color/colorWhite"
+                android:indeterminateTintMode="src_in"
+                android:indeterminate="true"
+                android:elevation="2dp"
+                android:visibility="gone"
+                android:layout_alignBottom="@+id/form_button"
+                android:layout_alignTop="@+id/form_button"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -4,11 +4,10 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorTitle">#3A3837</color>
+    <color name="colorDescription">#8C8583</color>
     <color name="colorTextInputFieldBorder">#C2C2C2</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorButton">#D72345</color>
-    <color name="colorTextButtonDisabled">#888888</color>
-    <color name="colorBackgroundButtonDisabled">#CCCCCC</color>
+    <color name="colorRed">#D72345</color>
     <color name="colorTextInputFieldDisabled">#9A9A9A</color>
     <color name="colorBackgroundInputFieldDisabled">#E1E1E1</color>
 </resources>

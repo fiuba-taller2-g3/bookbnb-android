@@ -1,11 +1,40 @@
 <resources>
     <string name="app_name">Bookbnb</string>
+
+    <!-- Login -->
     <string name="login_title">Tu perfil</string>
     <string name="login_subtitle">Inicia sesión y empieza a planificar tu próximo viaje.</string>
-    <string name="email_text_field">EMAIL</string>
-    <string name="pass_text_field">CONTRASEÑA</string>
     <string name="text_question_not_register">¿No tienes una cuenta?</string>
-    <string name="text_register"><u>Regístrate</u></string>
+    <string name="text_register">Regístrate</string>
+    <string name="text_forgotten_pass">¿Olvidaste tu contraseña?</string>
     <string name="login_text_button">Iniciar sesión</string>
-    <string name="text_logging_spinner">Iniciando sesión…</string>
+
+    <!-- Register -->
+    <string name="register_title">Registrarse</string>
+    <string name="register_subtitle">Agrega la información</string>
+
+    <!-- Forms -->
+    <string name="email_field_label">Correo electrónico</string>
+    <string name="pass_field_label">Contraseña</string>
+    <string name="name_field_label">Nombre</string>
+    <string name="surname_field_label">Apellido</string>
+    <string name="birthdate_field_label">Fecha de nacimiento</string>
+    <string name="profile_type_field_label">Tipo de perfil</string>
+    <string name="gender_field_label">Género</string>
+    <string name="phone_number_field_label">Número de teléfono</string>
+
+    <!-- Descriptions forms -->
+    <string name="email_register_description_text">Te enviaremos una confirmación de reservación por correo electrónico.</string>
+    <string name="birthdate_register_description_text">Debes tener al menos 18 años para registrarte. Los otros usuarios de Bookbnb no podrán ver tu fecha de nacimiento.</string>
+
+    <!-- Validation -->
+    <string name="email_invalid_msg_validation">El formato de email no es válido</string>
+    <string name="pass_spaces_msg_validation">La contraseña no debe tener espacios</string>
+    <string name="pass_min_length_msg_validation">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="birthdate_min_age_validation">Debes tener al menos 18 años para registrarte</string>
+
+    <!-- Dialogs -->
+    <string name="title_date_picker_dialog">Indica tu fecha de nacimiento</string>
+    <string name="accept_text_button_dialog">ACEPTAR</string>
+    <string name="cancel_text_button_dialog">CANCELAR</string>
 </resources>
