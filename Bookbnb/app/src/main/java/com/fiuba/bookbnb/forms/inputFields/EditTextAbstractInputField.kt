@@ -5,14 +5,15 @@ import android.graphics.drawable.GradientDrawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.animation.AlphaAnimation
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.validators.Validator
+import com.fiuba.bookbnb.utils.AnimUtils
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
 
 abstract class EditTextAbstractInputField(context: Context, private val validation: Validator) : AbstractInputFieldItem(context) {
+
+    private var isTextValidationDisplayed = false
 
     init {
         LayoutInflater.from(context).inflate(R.layout.bookbnb_text_input_field_item, this)
@@ -27,11 +28,13 @@ abstract class EditTextAbstractInputField(context: Context, private val validati
 
     override fun isValidated(): Boolean {
         val textContent = edit_text.text.toString()
-        val animation = AlphaAnimation(0.0f, 1.0f).also { it.duration = 1000 }
 
         return validation.checkValidation(textContent).also { isValid ->
-            if (!validation_container.isVisible) validation_container.startAnimation(animation)
-            validation_container.isVisible = !isValid
+            if (!isValid && !isTextValidationDisplayed) {
+                AnimUtils.expandLayout(validation_text)
+                validation_text.startAnimation(AnimUtils.fadeInit())
+                isTextValidationDisplayed = true
+            }
             validation.updateTextValidation(textContent)
         }
     }
@@ -49,7 +52,10 @@ abstract class EditTextAbstractInputField(context: Context, private val validati
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                validation_container.isVisible = false
+                if (isTextValidationDisplayed) {
+                    AnimUtils.collapseLayout(validation_text)
+                    isTextValidationDisplayed = false
+                }
             }
         })
     }

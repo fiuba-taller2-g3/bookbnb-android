@@ -17,31 +17,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/validation_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+    <TextView
+        android:id="@+id/validation_text"
+        style="@style/bkbnbValidationTextInputField"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/bkbnb8dp"
+        android:drawablePadding="@dimen/bkbnb4dp"
+        app:drawableLeftCompat="@drawable/ic_invalid_field"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_text"
         app:layout_constraintTop_toBottomOf="@+id/edit_text"
-        tools:visibility="visible" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_invalid_field"
-            android:layout_marginTop="@dimen/bkbnb1dp"
-            android:layout_marginEnd="@dimen/bkbnb4dp"/>
-
-        <TextView
-            android:id="@+id/validation_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/bkbnbValidationTextInputField"
-            tools:text="El campo es obligatorio" />
-
-    </LinearLayout>
+        tools:text="El campo es obligatorio" />
 
 </merge>
