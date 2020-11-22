@@ -39,7 +39,7 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
     private fun setViewModelObserver() {
         viewModel.loadingStatus.observe(viewLifecycleOwner) { loginStatus ->
             when (loginStatus) {
-                LoadingStatus.SUCCESS -> showDialog()
+                LoadingStatus.SUCCESS -> showLoading(false)
                 LoadingStatus.FAILURE -> showDialog()
                 LoadingStatus.LOADING -> showLoading(true)
                 LoadingStatus.ERROR -> showDialog()

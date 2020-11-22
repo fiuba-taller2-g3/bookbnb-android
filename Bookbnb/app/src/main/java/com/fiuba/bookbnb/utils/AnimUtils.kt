@@ -4,19 +4,8 @@ import android.animation.ValueAnimator
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
-import androidx.navigation.NavOptions
-import com.fiuba.bookbnb.R
 
 object AnimUtils {
-
-    fun slideFragments(): NavOptions {
-        return NavOptions.Builder()
-            .setEnterAnim(R.anim.slide_in_right)
-            .setExitAnim(R.anim.slide_out_left)
-            .setPopEnterAnim(R.anim.slide_in_left)
-            .setPopExitAnim(R.anim.slide_out_right)
-            .build()
-    }
 
     fun fadeInit() = AlphaAnimation(0.0f, 1.0f).also { it.duration = 1000 }
 

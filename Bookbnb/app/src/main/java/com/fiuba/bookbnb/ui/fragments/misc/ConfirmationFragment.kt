@@ -11,7 +11,7 @@ class ConfirmationFragment : BaseFragment(R.layout.bookbnb_confirmation_fragment
 
     private val navArguments by navArgs<ConfirmationFragmentArgs>()
     private val img by lazy { navArguments.imgRes }
-    private val title by lazy { navArguments.titleRes }
+    private val title by lazy { navArguments.title }
     private val subtitle by lazy { navArguments.subtitleRes }
 
     override val shouldShowToolbar: Boolean
@@ -21,7 +21,7 @@ class ConfirmationFragment : BaseFragment(R.layout.bookbnb_confirmation_fragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         check_img.setImageResource(img)
-        confirmation_title.text = getString(title)
+        confirmation_title.text = title
         confirmation_subtitle.text = getString(subtitle)
     }
 }

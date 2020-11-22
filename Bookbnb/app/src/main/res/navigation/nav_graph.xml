@@ -29,7 +29,8 @@
         tools:layout="@layout/bookbnb_form_fragment" >
         <action
             android:id="@+id/action_registerFragment_to_confirmationFragment"
-            app:destination="@id/confirmationFragment" />
+            app:destination="@id/confirmationFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -41,8 +42,8 @@
             android:name="imgRes"
             app:argType="integer" />
         <argument
-            android:name="titleRes"
-            app:argType="integer" />
+            android:name="title"
+            app:argType="string" />
         <argument
             android:name="subtitleRes"
             app:argType="integer" />

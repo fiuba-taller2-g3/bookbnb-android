@@ -12,7 +12,6 @@
     <!-- Register -->
     <string name="register_title">Registrarse</string>
     <string name="register_subtitle">Agrega la información</string>
-    <string name="register_confirmed_title">Registro satisfactorio</string>
     <string name="register_confirmed_description">Verifica la casilla de correo electrónico para confirmar el registro.</string>
 
     <!-- Forms -->
