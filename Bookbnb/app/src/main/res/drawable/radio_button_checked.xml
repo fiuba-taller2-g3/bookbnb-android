@@ -2,15 +2,27 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Larger red circle in back -->
-    <item android:drawable="@drawable/radio_button_unchecked" />
+    <!-- TODO -->
+    <!-- This item can be replaced by: <item android:drawable="@drawable/radio_button_unchecked" />
+    But it causes color rendering problems in API 25 and earlier versions. Meanwhile, i use this. -->
+    <item>
+        <shape
+            android:innerRadiusRatio="3"
+            android:shape="ring"
+            android:thickness="@dimen/bkbnb2dp"
+            android:useLevel="false" >
+
+            <size
+                android:height="@dimen/bkbnb24dp"
+                android:width="@dimen/bkbnb24dp" />
+        </shape>
+    </item>
 
     <!-- Smaller red circle in front -->
     <item>
         <shape android:shape="oval">
             <stroke android:color="@android:color/transparent"
                 android:width="@dimen/bkbnb14dp"/>
-
-            <solid android:color="@color/colorRed" />
 
             <size
                 android:width="@dimen/bkbnb14dp"

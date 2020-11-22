@@ -8,8 +8,6 @@
             android:thickness="@dimen/bkbnb2dp"
             android:useLevel="false" >
 
-            <solid android:color="@color/colorRed" />
-
             <size
                 android:height="@dimen/bkbnb24dp"
                 android:width="@dimen/bkbnb24dp" />
