@@ -16,11 +16,16 @@ object NavigationManager {
         mutableNavigationLiveData.value = NavigationUpdate.GlobalAction(R.id.nav_dialogs)
         mutableNavigationLiveData.value = NavigationUpdate.Dialog(creator)
     }
+
+    fun moveForward(navigationDirections: NavDirections) {
+        mutableNavigationLiveData.value = NavigationUpdate.Action(navigationDirections)
+    }
 }
 
 typealias ShowDialogLazyCreator = () -> NavDirections
 
 sealed class NavigationUpdate {
     data class GlobalAction(@IdRes val action: Int) : NavigationUpdate()
+    data class Action(val directions: NavDirections) : NavigationUpdate()
     data class Dialog(val creator: ShowDialogLazyCreator) : NavigationUpdate()
 }

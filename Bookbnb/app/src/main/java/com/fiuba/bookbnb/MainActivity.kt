@@ -10,6 +10,7 @@ import com.facebook.stetho.Stetho
 import com.fiuba.bookbnb.ui.ShareViewModel
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
+import com.fiuba.bookbnb.utils.AnimUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         NavigationManager.navigationLiveData.observe(this) { navigationUpdate ->
             when (navigationUpdate) {
                 is NavigationUpdate.GlobalAction -> navController.navigate(navigationUpdate.action)
+                is NavigationUpdate.Action -> navController.navigate(navigationUpdate.directions, AnimUtils.slideFragments())
                 is NavigationUpdate.Dialog -> navController.navigate(navigationUpdate.creator())
             }
         }
