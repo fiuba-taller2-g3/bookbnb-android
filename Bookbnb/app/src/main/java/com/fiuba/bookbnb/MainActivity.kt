@@ -1,10 +1,13 @@
 package com.fiuba.bookbnb
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import com.facebook.stetho.Stetho
+import com.fiuba.bookbnb.ui.ShareViewModel
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.app_navigation_container) }
+    private val sharedViewModel by viewModels<ShareViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +23,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initAppBar()
         initNavigation()
+        checkToolbar()
+    }
+
+    private fun checkToolbar() {
+        sharedViewModel.toolbarVisible.observe(this) { isToolbarVisible ->
+            app_toolbar.isVisible = isToolbarVisible
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

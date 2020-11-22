@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.InputField
@@ -12,12 +11,13 @@ import com.fiuba.bookbnb.forms.InputFieldBuilder
 import com.fiuba.bookbnb.forms.InputFieldModule
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
 import com.fiuba.bookbnb.repository.LoadingStatus
+import com.fiuba.bookbnb.ui.fragments.BaseFragment
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 
-abstract class FormFragment<T : FormViewModel> : Fragment(R.layout.bookbnb_form_fragment) {
+abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_form_fragment) {
 
     private val fields by lazy { EnumMap<InputField, AbstractInputFieldItem>(InputField::class.java)}
     protected lateinit var viewModel : T
