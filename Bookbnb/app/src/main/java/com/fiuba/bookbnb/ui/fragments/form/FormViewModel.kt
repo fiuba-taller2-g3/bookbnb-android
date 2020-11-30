@@ -23,6 +23,9 @@ abstract class FormViewModel : ViewModel() {
 
     fun getMessageResponse() = msgResponse
 
+    /* This function fixes a bug with the loading status during user login */
+    open fun isLoginUser() = false
+
     protected fun <T> executeCallback(request: Serializable, callResponse: CallResponse<T>, call: (request: Serializable) -> Call<T>) {
         loadingStatusMutable.value = LoadingStatus.LOADING
         call(request).enqueue(object : Callback<T> {
@@ -30,7 +33,7 @@ abstract class FormViewModel : ViewModel() {
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 if (response.isSuccessful) {
                     callResponse.onSuccessful(response)
-                    loadingStatusMutable.value = LoadingStatus.SUCCESS
+                    if (!isLoginUser()) loadingStatusMutable.value = LoadingStatus.SUCCESS
                 } else {
                     callResponse.onFailure(response)
                     loadingStatusMutable.value = LoadingStatus.FAILURE

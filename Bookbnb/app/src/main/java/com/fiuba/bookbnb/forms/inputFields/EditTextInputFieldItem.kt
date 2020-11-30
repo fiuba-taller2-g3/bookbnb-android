@@ -7,9 +7,8 @@ import com.fiuba.bookbnb.forms.validators.Validator
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
 
-class EditTextInputFieldItem(context: Context,
-                             validation: Validator,
-                             type: KeyboardType = KeyboardType.ALPHANUMERIC) : EditTextAbstractInputField(context, validation) {
+class EditTextInputFieldItem(context: Context, validation: Validator, initialContent: String,
+                             type: KeyboardType = KeyboardType.ALPHANUMERIC) : EditTextAbstractInputField(context, validation, initialContent) {
 
     init {
         setInputType(type)

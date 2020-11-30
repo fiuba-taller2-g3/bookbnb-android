@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/nav_login_graph"
     app:startDestination="@id/loginFragment">
-
-    <!-- Include all dialogs -->
-    <include app:graph="@navigation/nav_dialogs" />
-
-    <action
-        android:id="@+id/startDialogs"
-        app:destination="@id/nav_dialogs" />
 
     <fragment
         android:id="@+id/loginFragment"
@@ -20,6 +14,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_profileMenuFragment"
+            app:destination="@id/profileMenuFragment" />
     </fragment>
 
     <fragment
@@ -47,6 +44,29 @@
         <argument
             android:name="subtitleRes"
             app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileMenuFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.profile.ProfileMenuFragment"
+        android:label="ProfileMenuFragment"
+        tools:layout="@layout/bookbnb_profile_fragment" >
+        <action
+            android:id="@+id/action_profileMenuFragment_to_profileEditFragment"
+            app:destination="@id/profileEditFragment" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileEditFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.profile.ProfileEditFragment"
+        android:label="ProfileEditFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_profileEditFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
     </fragment>
 
 </navigation>

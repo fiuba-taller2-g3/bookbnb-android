@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/confirmation_title"
-        style="@style/bkbnbTitle"
+        style="@style/bkbnbNormalTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bkbnb48dp"

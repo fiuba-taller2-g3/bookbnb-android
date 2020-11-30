@@ -10,4 +10,6 @@
     <color name="colorRed">#D72345</color>
     <color name="colorTextInputFieldDisabled">#9A9A9A</color>
     <color name="colorBackgroundInputFieldDisabled">#E1E1E1</color>
+    <color name="colorButtonFormRipple">#E97779</color>
+    <color name="colorProfileButtonRipple">#DADADA</color>
 </resources>

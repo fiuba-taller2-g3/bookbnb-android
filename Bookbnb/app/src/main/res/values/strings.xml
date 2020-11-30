@@ -38,4 +38,18 @@
     <string name="title_date_picker_dialog">Indica tu fecha de nacimiento</string>
     <string name="accept_text_button_dialog">ACEPTAR</string>
     <string name="cancel_text_button_dialog">CANCELAR</string>
+
+    <!-- Profile menu -->
+    <string name="view_profile_text">Ver perfil</string>
+    <string name="view_profile_account_config_title_text">CONFIGURACIÓN DE LA CUENTA</string>
+    <string name="view_profile_account_info_text">Información personal</string>
+    <string name="view_profile_logout_text">Cerrar sesión</string>
+    <string name="view_profile_version_text">VERSIÓN</string>
+
+    <!-- Profile edit account -->
+    <string name="edit_info_profile_already_exists_error_description">El correo ingresado ya existe, introduzca un correo diferente.</string>
+    <string name="edit_info_profile_title">Información personal</string>
+    <string name="edit_info_profile_text">Edita tu información</string>
+    <string name="edit_info_profile_button">Editar información</string>
+    <string name="edit_info_profile_confirmed_description">La información personal ha sido actualizada.</string>
 </resources>

@@ -2,7 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Larger red circle in back -->
-    <!-- TODO -->
     <!-- This item can be replaced by: <item android:drawable="@drawable/radio_button_unchecked" />
     But it causes color rendering problems in API 25 and earlier versions. Meanwhile, i use this. -->
     <item>

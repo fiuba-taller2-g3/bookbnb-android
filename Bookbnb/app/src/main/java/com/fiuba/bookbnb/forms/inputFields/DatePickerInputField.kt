@@ -7,10 +7,12 @@ import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragmentDirections
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.utils.DateUtils
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
+import org.apache.commons.lang3.StringUtils
 import java.util.*
 
 
-class DatePickerInputField(context: Context, validation: Validator) : EditTextAbstractInputField(context, validation), DatePickerDialogFragment.OnDateSetListener {
+class DatePickerInputField(context: Context, validation: Validator, initialContent: String = StringUtils.EMPTY)
+    : EditTextAbstractInputField(context, validation, initialContent), DatePickerDialogFragment.OnDateSetListener {
 
     private val selectedDate by lazy { Calendar.getInstance() }
 
@@ -19,6 +21,7 @@ class DatePickerInputField(context: Context, validation: Validator) : EditTextAb
         edit_text.isLongClickable = false;
         edit_text.setTextIsSelectable(false);
         inputClickListener()
+        if (initialContent.isNotEmpty()) formatInitialContentToDate(initialContent)
     }
 
     private fun inputClickListener() {
@@ -28,6 +31,13 @@ class DatePickerInputField(context: Context, validation: Validator) : EditTextAb
     }
 
     private fun formatDateToString(date: Calendar): String = DateUtils.getDateFormat().format(date.time)
+
+    private fun formatInitialContentToDate(content: String) {
+        val initDate = DateUtils.getDateOutputFormat().parse(content)
+        selectedDate.time = initDate!!
+        val outputFormat = DateUtils.getDateFormat()
+        edit_text.setText(outputFormat.format(initDate))
+    }
 
     override fun onDateSet(date: Calendar, requestCode: Int) {
         val selectedYear = date.get(Calendar.YEAR)

@@ -12,7 +12,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "0.20.0 (PRE-ALPHA)"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -84,5 +84,8 @@ dependencies {
 
     // Stetho
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
+    // Jwt
+    implementation "com.auth0:java-jwt:3.3.0"
 
 }

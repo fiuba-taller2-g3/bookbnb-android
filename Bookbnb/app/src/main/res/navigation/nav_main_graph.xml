@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main_graph"
+    app:startDestination="@id/homeFragment">
+
+    <!-- Include all dialogs -->
+    <include app:graph="@navigation/nav_dialogs" />
+
+    <action
+        android:id="@+id/startDialogs"
+        app:destination="@id/nav_dialogs" />
+
+    <!-- Include login graph -->
+    <include app:graph="@navigation/nav_user_graph" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/bookbnb_home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_nav_login_graph"
+            app:destination="@id/nav_login_graph" />
+    </fragment>
+
+</navigation>

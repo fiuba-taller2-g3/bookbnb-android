@@ -11,13 +11,15 @@ import com.fiuba.bookbnb.forms.validators.Validator
 import com.fiuba.bookbnb.utils.AnimUtils
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
 
-abstract class EditTextAbstractInputField(context: Context, private val validation: Validator) : AbstractInputFieldItem(context) {
+abstract class EditTextAbstractInputField(context: Context, private val validation: Validator,
+                                          initialContent: String) : AbstractInputFieldItem(context) {
 
     private var isTextValidationDisplayed = false
 
     init {
         LayoutInflater.from(context).inflate(R.layout.bookbnb_text_input_field_item, this)
         setLayoutParams()
+        edit_text.setText(initialContent)
         validation.msgValidator.observeForever { msgValidation -> validation_text.text = msgValidation }
         onChangedTextListener()
     }

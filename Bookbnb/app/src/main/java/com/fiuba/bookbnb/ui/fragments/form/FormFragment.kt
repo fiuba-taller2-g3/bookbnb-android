@@ -37,9 +37,12 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
     }
 
     private fun setViewModelObserver() {
-        viewModel.loadingStatus.observe(viewLifecycleOwner) { loginStatus ->
-            when (loginStatus) {
-                LoadingStatus.SUCCESS -> showLoading(false)
+        viewModel.loadingStatus.observe(viewLifecycleOwner) { loadStatus ->
+            when (loadStatus) {
+                LoadingStatus.SUCCESS -> {
+                    showLoading(false)
+                    proceedSuccess()
+                }
                 LoadingStatus.FAILURE -> showDialog()
                 LoadingStatus.LOADING -> showLoading(true)
                 LoadingStatus.ERROR -> showDialog()
@@ -76,12 +79,12 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
         }
     }
 
-    protected fun addDefaultInputField(fieldId: InputField, labelResource: Int, keyboardType: KeyboardType, descriptionRes: Int? = null) {
-        return addInputField(fieldId, labelResource, InputFieldBuilder.defaultBuild(requireContext(), fieldId, keyboardType), descriptionRes)
+    protected fun addDefaultInputField(fieldId: InputField, labelResource: Int, keyboardType: KeyboardType, descriptionRes: Int? = null, initialContent: String = StringUtils.EMPTY) {
+        return addInputField(fieldId, labelResource, InputFieldBuilder.defaultBuild(requireContext(), fieldId, keyboardType, initialContent), descriptionRes)
     }
 
-    protected fun addInputField(fieldId: InputField, labelResource: Int, descriptionRes: Int? = null) {
-        addInputField(fieldId, labelResource, InputFieldBuilder.build(requireContext(), fieldId), descriptionRes)
+    protected fun addInputField(fieldId: InputField, labelResource: Int, descriptionRes: Int? = null, initialContent: String = StringUtils.EMPTY) {
+        addInputField(fieldId, labelResource, InputFieldBuilder.build(requireContext(), fieldId, initialContent), descriptionRes)
     }
 
     private fun setButtonListener() {
@@ -104,6 +107,10 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
     private fun getPositionOfInputField(index: Int) = with(input_fields_container) {top + getChildAt(index).top }
 
     protected fun getFieldContent(fieldId: InputField) = fields[fieldId]?.getContentField() ?: StringUtils.EMPTY
+
+    protected open fun proceedSuccess() {
+        // Do nothing
+    }
 
     protected abstract fun getTitle() : Int
 

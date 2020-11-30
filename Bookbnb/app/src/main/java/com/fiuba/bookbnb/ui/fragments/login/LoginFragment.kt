@@ -9,7 +9,6 @@ import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.view.View
 import androidx.core.view.isVisible
-import androidx.navigation.findNavController
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.forms.InputField

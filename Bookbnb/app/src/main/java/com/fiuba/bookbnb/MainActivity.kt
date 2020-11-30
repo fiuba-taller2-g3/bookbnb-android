@@ -11,7 +11,7 @@ import com.facebook.stetho.Stetho
 import com.fiuba.bookbnb.ui.ShareViewModel
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bookbnb_activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Stetho.initializeWithDefaults(this)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.bookbnb_activity_main)
         initAppBar()
         initNavigation()
         checkToolbar()
