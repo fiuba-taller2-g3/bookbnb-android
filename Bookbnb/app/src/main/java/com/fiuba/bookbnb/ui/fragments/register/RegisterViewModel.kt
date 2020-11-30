@@ -22,7 +22,7 @@ class RegisterViewModel : FormViewModel(), FormViewModel.CallResponse<MsgRespons
         msgResponse = response.body()?.msg.toString()
         Log.i(TAG, "User registered successfully")
         NavigationManager.moveForwardWithPopUpTo(RegisterFragmentDirections.actionRegisterFragmentToConfirmationFragment(
-            R.drawable.ic_checked, msgResponse, R.string.register_confirmed_description), R.id.loginFragment)
+            R.drawable.ic_checked, msgResponse, R.string.register_confirmed_description), R.id.startLoginFragment)
     }
 
     override fun onFailure(response: Response<MsgResponse>) {

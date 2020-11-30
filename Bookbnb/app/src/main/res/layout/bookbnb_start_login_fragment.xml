@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/bkbnb24dp"
+        android:paddingEnd="@dimen/bkbnb24dp"
+        android:paddingBottom="@dimen/bkbnb64dp">
+
+        <TextView
+            android:id="@+id/bkbnb_start_login_title"
+            style="@style/bkbnbNormalTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bkbnb32dp"
+            android:text="@string/start_login_title_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constrainedWidth="true" />
+
+        <TextView
+            android:id="@+id/bkbnb_start_login_subtitle"
+            style="@style/bkbnbSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bkbnb8dp"
+            android:text="@string/start_login_subtitle_text"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bkbnb_start_login_title" />
+
+        <Button
+            android:id="@+id/email_login_button"
+            style="@style/bkbnbButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"
+            android:paddingStart="@dimen/bkbnb32dp"
+            android:paddingEnd="@dimen/bkbnb32dp"
+            android:layout_marginTop="@dimen/bkbnb28dp"
+            android:text="@string/start_login_email_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bkbnb_start_login_subtitle" />
+
+        <LinearLayout
+            android:id="@+id/not_register_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bkbnb24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_login_button">
+
+            <TextView
+                style="@style/bkbnbSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/bkbnb4dp"
+                android:text="@string/text_question_not_register" />
+
+            <TextView
+                style="@style/bkbnbRegisterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_register" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

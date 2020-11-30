@@ -67,9 +67,7 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
 
     private fun showLoading(loadingEnabled: Boolean) {
         setButtonLoading(loadingEnabled)
-        for (i in 0 until additional_container.childCount) {
-            additional_container.getChildAt(i).isEnabled = !loadingEnabled
-        }
+        additional_text.isEnabled = !loadingEnabled
         fields.values.forEach { field -> if (loadingEnabled) field.disableInput() else field.enableInput() }
     }
 
