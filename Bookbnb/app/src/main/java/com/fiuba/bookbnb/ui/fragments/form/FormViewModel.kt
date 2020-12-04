@@ -8,7 +8,6 @@ import org.apache.commons.lang3.StringUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.Serializable
 
 abstract class FormViewModel : ViewModel() {
 
@@ -26,9 +25,9 @@ abstract class FormViewModel : ViewModel() {
     /* This function fixes a bug with the loading status during user login */
     open fun isLoginUser() = false
 
-    protected fun <T> executeCallback(request: Serializable, callResponse: CallResponse<T>, call: (request: Serializable) -> Call<T>) {
+    protected fun <T> executeCallback(call: Call<T>, callResponse: CallResponse<T>) {
         loadingStatusMutable.value = LoadingStatus.LOADING
-        call(request).enqueue(object : Callback<T> {
+        call.enqueue(object : Callback<T> {
 
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 if (response.isSuccessful) {
@@ -41,8 +40,10 @@ abstract class FormViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {
-                msgResponse = t.message.toString()
-                loadingStatusMutable.value = LoadingStatus.ERROR
+                if (!call.isCanceled) {
+                    msgResponse = t.message.toString()
+                    loadingStatusMutable.value = LoadingStatus.ERROR
+                }
             }
         })
     }

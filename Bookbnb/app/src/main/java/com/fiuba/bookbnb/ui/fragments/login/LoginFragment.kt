@@ -11,12 +11,14 @@ import android.view.View
 import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
+import com.fiuba.bookbnb.domain.login.LoginResponse
 import com.fiuba.bookbnb.forms.InputField
+import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 
-class LoginFragment : FormFragment<LoginViewModel>() {
+class LoginFragment : FormFragment<LoginViewModel, LoginResponse>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,7 +53,7 @@ class LoginFragment : FormFragment<LoginViewModel>() {
 
     override fun proceedLoading() {
         val request = LoginRequest(getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD))
-        viewModel.login(request)
+        viewModel.login(NetworkModule.buildRetrofitClient().login(request).also { currentRunningCall = it })
     }
 
     override fun getViewModelClass() = LoginViewModel::class.java

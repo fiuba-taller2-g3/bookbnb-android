@@ -1,12 +1,14 @@
 package com.fiuba.bookbnb.ui.fragments.profile
 
 import com.fiuba.bookbnb.R
+import com.fiuba.bookbnb.domain.misc.MsgResponse
 import com.fiuba.bookbnb.domain.user.UserData
 import com.fiuba.bookbnb.forms.InputField
+import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
 import com.fiuba.bookbnb.user.UserManager
 
-class ProfileEditFragment : FormFragment<ProfileEditViewModel>() {
+class ProfileEditFragment : FormFragment<ProfileEditViewModel, MsgResponse>() {
 
     override fun getTitle() = R.string.edit_info_profile_title
 
@@ -25,7 +27,13 @@ class ProfileEditFragment : FormFragment<ProfileEditViewModel>() {
         }
     }
 
-    override fun proceedLoading() = viewModel.update(getUserData())
+    override fun proceedLoading() {
+        viewModel.update(with(UserManager.getUserInfo()) {
+            NetworkModule.buildRetrofitClient().updateUser(getUserId(), getToken(), getUserData()).also {
+                currentRunningCall = it
+            }
+        })
+    }
 
     override fun getViewModelClass(): Class<ProfileEditViewModel> = ProfileEditViewModel::class.java
 

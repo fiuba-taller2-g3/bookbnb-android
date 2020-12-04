@@ -10,6 +10,11 @@ class ShareViewModel : ViewModel() {
     val toolbarVisible: LiveData<Boolean>
         get() = mutableToolbarVisible
 
+    private var isFragmentWithNetwork = false
+
     fun showToolbar(show: Boolean) { mutableToolbarVisible.value = show }
+
+    fun setFragmentWithNetwork(haveNetwork: Boolean) { isFragmentWithNetwork = haveNetwork }
+    fun fragmentHaveNetwork() = isFragmentWithNetwork
 
 }

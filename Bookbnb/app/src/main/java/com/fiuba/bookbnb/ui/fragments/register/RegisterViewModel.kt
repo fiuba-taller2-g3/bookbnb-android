@@ -4,18 +4,17 @@ import android.util.Log
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginResponse
 import com.fiuba.bookbnb.domain.misc.MsgResponse
-import com.fiuba.bookbnb.domain.user.UserData
-import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.fragments.form.FormViewModel
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.google.gson.Gson
+import retrofit2.Call
 import retrofit2.Response
 
 class RegisterViewModel : FormViewModel(), FormViewModel.CallResponse<MsgResponse> {
 
-    fun register(request: UserData) {
+    fun register(call: Call<MsgResponse>) {
         Log.i(TAG, "Registering user...")
-        executeCallback(request, this) { NetworkModule.buildRetrofitClient().register(request) }
+        executeCallback(call, this)
     }
 
     override fun onSuccessful(response: Response<MsgResponse>) {

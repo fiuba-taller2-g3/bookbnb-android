@@ -3,7 +3,6 @@ package com.fiuba.bookbnb.ui.fragments.login
 import android.util.Log
 import com.auth0.jwt.JWT
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.domain.login.LoginResponse
 import com.fiuba.bookbnb.domain.user.UserData
 import com.fiuba.bookbnb.networking.NetworkModule
@@ -20,9 +19,9 @@ import java.util.*
 
 class LoginViewModel : FormViewModel(), FormViewModel.CallResponse<LoginResponse> {
 
-    fun login(request: LoginRequest) {
+    fun login(call: Call<LoginResponse>) {
         Log.i(TAG, "Login user...")
-        executeCallback(request, this) { NetworkModule.buildRetrofitClient().login(request) }
+        executeCallback(call, this)
     }
 
     override fun onSuccessful(response: Response<LoginResponse>) {
