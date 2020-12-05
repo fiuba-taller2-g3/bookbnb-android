@@ -1,7 +1,6 @@
 package com.fiuba.bookbnb.ui.fragments.misc
 
 import android.util.Log
-import com.auth0.jwt.JWT
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.user.UserData
 import com.fiuba.bookbnb.networking.NetworkViewModel

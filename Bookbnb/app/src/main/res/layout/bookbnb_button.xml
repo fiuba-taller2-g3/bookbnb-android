@@ -6,6 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/button_ripple"
-    android:paddingStart="@dimen/bkbnb32dp"
-    android:paddingEnd="@dimen/bkbnb32dp"
+    android:paddingStart="@dimen/bkbnb12dp"
+    android:paddingEnd="@dimen/bkbnb12dp"
     tools:text="Ingresar" />

@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.auth0.jwt.JWT
+import com.auth0.android.jwt.JWT
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.user.UserData
 import com.fiuba.bookbnb.networking.NetworkModule
@@ -24,11 +24,11 @@ class LoadingProfileFragment : NetworkFragment<UserData>(R.layout.bookbnb_loadin
 
     private fun loginUser(token: String) {
         Log.i(LoadingProfileViewModel.TAG, "Decoding token...")
-        val decode = JWT.decode(token)
-        decode.claims?.let { claim ->
+        val decode = JWT(token)
+        decode.claims.let { claim ->
             val id = claim["id"]?.asInt()
             val exp = decode.expiresAt
-            loadingProfileViewModel.loadUserData(NetworkModule.buildRetrofitClient().getUser(id!!, token), id, token, exp)
+            loadingProfileViewModel.loadUserData(NetworkModule.buildRetrofitClient().getUser(id!!, token), id, token, exp!!)
         }
     }
 }
