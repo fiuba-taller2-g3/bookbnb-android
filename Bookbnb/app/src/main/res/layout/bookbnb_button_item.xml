@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     tools:parentTag="android.widget.LinearLayout">
 
-    <include layout="@layout/bookbnb_button" />
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/bookbnb_button"
+        android:layout_marginBottom="@dimen/bkbnb16dp"/>
 
 </merge>

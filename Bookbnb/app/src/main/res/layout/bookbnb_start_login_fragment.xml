@@ -72,6 +72,42 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/o_well_text_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bkbnb28dp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/not_register_text">
+
+            <include layout="@layout/bookbnb_simple_divider" />
+
+            <TextView
+                android:id="@+id/o_well"
+                style="@style/bkbnbSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/bkbnb14dp"
+                android:layout_marginEnd="@dimen/bkbnb14dp"
+                android:text="@string/o_well_text" />
+
+            <include layout="@layout/bookbnb_simple_divider" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bkbnb20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/o_well_text_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -23,4 +23,7 @@
     <!-- Forms -->
     <dimen name="inputFieldBorder">1dp</dimen>
     <dimen name="inputFieldRadius">4dp</dimen>
+
+    <!-- Button -->
+    <dimen name="buttonRadius">4dp</dimen>
 </resources>
