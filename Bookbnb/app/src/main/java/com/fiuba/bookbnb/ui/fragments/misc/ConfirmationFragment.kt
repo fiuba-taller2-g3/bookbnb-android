@@ -15,6 +15,7 @@ class ConfirmationFragment : BaseFragment(R.layout.bookbnb_confirmation_fragment
     private val img by lazy { navArguments.imgRes }
     private val title by lazy { navArguments.title }
     private val subtitle by lazy { navArguments.subtitleRes }
+    private val handler by lazy { Handler() }
 
     override val shouldShowToolbar: Boolean
         get() = false
@@ -26,7 +27,12 @@ class ConfirmationFragment : BaseFragment(R.layout.bookbnb_confirmation_fragment
         confirmation_title.text = title
         confirmation_subtitle.text = getString(subtitle)
 
-        Handler().postDelayed({ NavigationManager.popBackStack() }, MILLISECONDS_WAIT)
+        handler.postDelayed({ NavigationManager.popBackStack() }, MILLISECONDS_WAIT)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacksAndMessages(null)
     }
 
     companion object {
