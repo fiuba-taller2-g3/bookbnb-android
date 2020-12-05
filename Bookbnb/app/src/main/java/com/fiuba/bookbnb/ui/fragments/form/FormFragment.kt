@@ -10,7 +10,8 @@ import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.forms.InputFieldBuilder
 import com.fiuba.bookbnb.forms.InputFieldModule
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
-import com.fiuba.bookbnb.networking.NetworkFragment
+import com.fiuba.bookbnb.networking.NetworkViewModel
+import com.fiuba.bookbnb.ui.fragments.NetworkFragment
 import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.utils.KeyboardType
@@ -19,7 +20,7 @@ import org.apache.commons.lang3.StringUtils
 import java.io.Serializable
 import java.util.*
 
-abstract class FormFragment<T : FormViewModel, S: Serializable> : NetworkFragment<S>(R.layout.bookbnb_form_fragment) {
+abstract class FormFragment<T : NetworkViewModel, S: Serializable> : NetworkFragment<S>(R.layout.bookbnb_form_fragment) {
 
     private val fields by lazy { EnumMap<InputField, AbstractInputFieldItem>(InputField::class.java)}
     protected lateinit var viewModel : T

@@ -12,7 +12,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
-        versionName "0.20.0 (PRE-ALPHA)"
+        versionName "0.21.0 (PRE-ALPHA)"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

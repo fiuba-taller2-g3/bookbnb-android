@@ -3,12 +3,12 @@ package com.fiuba.bookbnb.ui.fragments.profile
 import android.util.Log
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.misc.MsgResponse
-import com.fiuba.bookbnb.ui.fragments.form.FormViewModel
+import com.fiuba.bookbnb.networking.NetworkViewModel
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import retrofit2.Call
 import retrofit2.Response
 
-class ProfileEditViewModel : FormViewModel(), FormViewModel.CallResponse<MsgResponse> {
+class ProfileEditViewModel : NetworkViewModel(), NetworkViewModel.CallResponse<MsgResponse> {
 
     fun update(call: Call<MsgResponse>) {
         Log.i(TAG, "Updating profile...")

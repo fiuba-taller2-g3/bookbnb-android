@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.facebook.stetho.Stetho
-import com.fiuba.bookbnb.networking.NetworkViewModel
 import com.fiuba.bookbnb.ui.ShareViewModel
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
@@ -18,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.app_navigation_container) }
     private val sharedViewModel by viewModels<ShareViewModel>()
-    private val networkViewModel by viewModels<NetworkViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,14 +35,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return if (sharedViewModel.fragmentHaveNetwork()) {
-            networkViewModel.closeFragment()
+            sharedViewModel.closeFragment()
             true
         } else navController.navigateUp()
     }
 
     override fun onBackPressed() {
         if (sharedViewModel.fragmentHaveNetwork()) {
-            networkViewModel.closeFragment()
+            sharedViewModel.closeFragment()
         } else super.onBackPressed()
     }
 
