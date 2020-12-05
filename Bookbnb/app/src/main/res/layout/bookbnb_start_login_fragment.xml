@@ -38,16 +38,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bkbnb_start_login_title" />
 
-        <Button
-            android:id="@+id/email_login_button"
-            style="@style/bkbnbButton"
+        <include
+            layout="@layout/bookbnb_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_ripple"
-            android:paddingStart="@dimen/bkbnb32dp"
-            android:paddingEnd="@dimen/bkbnb32dp"
             android:layout_marginTop="@dimen/bkbnb28dp"
-            android:text="@string/start_login_email_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bkbnb_start_login_subtitle" />
@@ -60,7 +55,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/email_login_button">
+            app:layout_constraintTop_toBottomOf="@id/button">
 
             <TextView
                 style="@style/bkbnbSubtitle"

@@ -15,6 +15,7 @@ import com.fiuba.bookbnb.ui.fragments.NetworkFragment
 import com.fiuba.bookbnb.repository.LoadingStatus
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.utils.KeyboardType
+import kotlinx.android.synthetic.main.bookbnb_button.*
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 import org.apache.commons.lang3.StringUtils
 import java.io.Serializable
@@ -30,7 +31,7 @@ abstract class FormFragment<T : NetworkViewModel, S: Serializable> : NetworkFrag
 
         bkbnb_form_title.text = getString(getTitle())
         bkbnb_form_subtitle.text = getString(getSubtitle())
-        form_button.text = getString(getButtonText())
+        button.text = getString(getButtonText())
 
         viewModel = ViewModelProviders.of(this).get(getViewModelClass())
 
@@ -64,8 +65,8 @@ abstract class FormFragment<T : NetworkViewModel, S: Serializable> : NetworkFrag
 
     private fun setButtonLoading(loadingEnabled: Boolean) {
         progress.visibility = if (loadingEnabled) View.VISIBLE else View.INVISIBLE
-        form_button.text = if (progress.isVisible) StringUtils.EMPTY else getString(getButtonText())
-        form_button.isEnabled = !loadingEnabled
+        button.text = if (progress.isVisible) StringUtils.EMPTY else getString(getButtonText())
+        button.isEnabled = !loadingEnabled
     }
 
     private fun showLoading(loadingEnabled: Boolean) {
@@ -89,7 +90,7 @@ abstract class FormFragment<T : NetworkViewModel, S: Serializable> : NetworkFrag
     }
 
     private fun setButtonListener() {
-        form_button.setOnClickListener {
+        button.setOnClickListener {
             var isFormsValidated = true
             fields.values.forEach { field -> if (!field.isValidated() && isFormsValidated) isFormsValidated = false }
             if (isFormsValidated) proceedLoading() else jumpToFirstInputFieldInvalid()
