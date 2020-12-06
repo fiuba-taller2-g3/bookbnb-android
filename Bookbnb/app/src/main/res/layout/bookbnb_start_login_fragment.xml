@@ -97,16 +97,30 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/buttons_container"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/bkbnb20dp"
-            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/o_well_text_container"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/facebook_login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/facebook_login_custom_button"
+                android:background="@drawable/facebook_button_ripple"
+                style="@style/bkbnbButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/start_login_facebook_text" />
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

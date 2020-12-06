@@ -57,5 +57,10 @@
     <string name="start_login_title_text">Tu perfil</string>
     <string name="start_login_subtitle_text">Inicia sesión y empieza a planificar tu próximo viaje.</string>
     <string name="start_login_email_text">Iniciar con tu correo electrónico</string>
+    <string name="start_login_facebook_text">Iniciar con Facebook</string>
     <string name="o_well_text">o bien</string>
+
+    <!-- Facebook -->
+    <string name="facebook_app_id">412582140100480</string>
+    <string name="fb_login_protocol_scheme">fb412582140100480</string>
 </resources>
