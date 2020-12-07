@@ -14,6 +14,9 @@ import kotlinx.android.synthetic.main.bookbnb_start_login_fragment.*
 
 class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
 
+    override val shouldShowFooterBarMenu: Boolean
+        get() = true
+
     private val callbackManager by lazy { CallbackManager.Factory.create() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

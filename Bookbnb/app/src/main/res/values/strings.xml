@@ -63,4 +63,10 @@
     <!-- Facebook -->
     <string name="facebook_app_id">412582140100480</string>
     <string name="fb_login_protocol_scheme">fb412582140100480</string>
+
+    <!-- Footer bar menu -->
+    <string name="footer_bar_search_menu">Explora</string>
+    <string name="footer_bar_favorites_menu">Favoritos</string>
+    <string name="footer_bar_messages_menu">Mensajes</string>
+    <string name="footer_bar_profile_menu">Perfil</string>
 </resources>

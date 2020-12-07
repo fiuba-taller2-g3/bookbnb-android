@@ -16,6 +16,9 @@ class ProfileMenuFragment : BaseFragment(R.layout.bookbnb_profile_fragment) {
     override val shouldShowToolbar: Boolean
         get() = false
 
+    override val shouldShowFooterBarMenu: Boolean
+        get() = true
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -9,6 +9,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.facebook.stetho.Stetho
 import com.fiuba.bookbnb.ui.ShareViewModel
+import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarMenuItem
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
 import kotlinx.android.synthetic.main.bookbnb_activity_main.*
@@ -24,12 +25,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.bookbnb_activity_main)
         initAppBar()
         initNavigation()
+        initFooterBarMenu()
         checkToolbar()
+        checkFooterBarMenu()
     }
 
     private fun checkToolbar() {
         sharedViewModel.toolbarVisible.observe(this) { isToolbarVisible ->
             app_toolbar.isVisible = isToolbarVisible
+        }
+    }
+
+    private fun checkFooterBarMenu() {
+        sharedViewModel.footerBarMenu.observe(this) { isFooterBarMenuVisible ->
+            footer_bar_menu.isVisible = isFooterBarMenuVisible
+        }
+    }
+
+    private fun initFooterBarMenu() {
+        with(footer_bar_menu) {
+            addView(FooterBarMenuItem(this@MainActivity, R.string.footer_bar_search_menu, R.drawable.ic_search))
+            addView(FooterBarMenuItem(this@MainActivity, R.string.footer_bar_favorites_menu, R.drawable.ic_favorites))
+            addView(FooterBarMenuItem(this@MainActivity, R.string.footer_bar_messages_menu, R.drawable.ic_messages))
+            addView(FooterBarMenuItem(this@MainActivity, R.string.footer_bar_profile_menu, R.drawable.ic_profile))
         }
     }
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/bkbnb6dp"
+        android:paddingBottom="@dimen/bkbnb6dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/footer_bar_menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/bkbnb2dp"
+            android:fontFamily="@font/rubik_regular"
+            android:textColor="@color/colorDescription"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:drawableTopCompat="@drawable/ic_accountinfo"
+            tools:text="Perfil" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge>

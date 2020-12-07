@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import com.fiuba.bookbnb.R
 import kotlinx.android.synthetic.main.bookbnb_title_profile_menu.view.*
 
-class ProfileTitleMenuSection(context: Context, titleRes: Int, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
+class ProfileTitleMenuSection @JvmOverloads constructor(context: Context, titleRes: Int, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : LinearLayout(context, attrs, defStyleAttr) {
 
     init {
