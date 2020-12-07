@@ -9,15 +9,17 @@ import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.facebook.stetho.Stetho
 import com.fiuba.bookbnb.ui.ShareViewModel
-import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarMenuItem
+import com.fiuba.bookbnb.ui.fragments.footerbar.*
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
 import kotlinx.android.synthetic.main.bookbnb_activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.app_navigation_container) }
     private val sharedViewModel by viewModels<ShareViewModel>()
+    private val footerBarButtons by lazy { EnumMap<FooterBarButtons, FooterBarMenuItem>(FooterBarButtons::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         initFooterBarMenu()
         checkToolbar()
         checkFooterBarMenu()
+        checkFooterBarMenuOptionSelected()
     }
 
     private fun checkToolbar() {
@@ -43,11 +46,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFooterBarMenu() {
-        with(footer_bar_menu) {
-            addView(FooterBarMenuItem(this@MainActivity, R.string.footer_bar_search_menu, R.drawable.ic_search))
-            addView(FooterBarMenuItem(this@MainActivity, R.string.footer_bar_favorites_menu, R.drawable.ic_favorites))
-            addView(FooterBarMenuItem(this@MainActivity, R.string.footer_bar_messages_menu, R.drawable.ic_messages))
-            addView(FooterBarMenuItem(this@MainActivity, R.string.footer_bar_profile_menu, R.drawable.ic_profile))
+        addFooterBarButton(FooterBarButtons.SEARCH)
+        addFooterBarButton(FooterBarButtons.FAVOURITES)
+        addFooterBarButton(FooterBarButtons.MESSAGES)
+        addFooterBarButton(FooterBarButtons.PROFILE)
+    }
+
+    private fun addFooterBarButton(idButton: FooterBarButtons) {
+        footerBarButtons[idButton] = getFooterBarButtonItem(idButton).also { footer_bar_menu.addView(it) }
+    }
+
+    private fun getFooterBarButtonItem(idButton: FooterBarButtons) : FooterBarMenuItem {
+        return when(idButton) {
+            FooterBarButtons.SEARCH -> FooterBarMenuSearchItem(this@MainActivity)
+            FooterBarButtons.FAVOURITES -> FooterBarMenuFavoritesItem(this@MainActivity)
+            FooterBarButtons.MESSAGES -> FooterBarMenuMessagesItem(this@MainActivity)
+            FooterBarButtons.PROFILE -> FooterBarMenuProfileItem(this@MainActivity)
+        }
+    }
+
+    private fun checkFooterBarMenuOptionSelected() {
+        FooterBarMenuManager.footerBarMenuOptionSelected.observe(this) { option ->
+            disableAllFooterBarButtons()
+            footerBarButtons[option]?.activeButton()
+        }
+    }
+
+    private fun disableAllFooterBarButtons() {
+        footerBarButtons.values.forEach {
+            it.disableButton()
         }
     }
 

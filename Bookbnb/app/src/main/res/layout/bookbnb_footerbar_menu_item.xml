@@ -5,25 +5,34 @@
     tools:parentTag="android.widget.LinearLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer_bar_menu_button"
+        android:background="@drawable/button_profile_menu_ripple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/bkbnb6dp"
         android:paddingBottom="@dimen/bkbnb6dp"
         android:layout_weight="1">
 
+        <ImageView
+            android:id="@+id/footer_bar_menu_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_accountinfo" />
+
         <TextView
             android:id="@+id/footer_bar_menu_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="@dimen/bkbnb2dp"
+            android:layout_marginTop="@dimen/bkbnb2dp"
             android:fontFamily="@font/rubik_regular"
-            android:textColor="@color/colorDescription"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:drawableTopCompat="@drawable/ic_accountinfo"
+            app:layout_constraintEnd_toEndOf="@+id/footer_bar_menu_img"
+            app:layout_constraintStart_toStartOf="@+id/footer_bar_menu_img"
+            app:layout_constraintTop_toBottomOf="@+id/footer_bar_menu_img"
             tools:text="Perfil" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
