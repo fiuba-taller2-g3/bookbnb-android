@@ -36,6 +36,10 @@ object NavigationManager {
     fun popBackStack() {
         mutableNavigationLiveData.value = NavigationUpdate.PopBackStack
     }
+
+    fun cleanAction() {
+        mutableNavigationLiveData.value = NavigationUpdate.NoAction
+    }
 }
 
 typealias ShowDialogLazyCreator = () -> NavDirections
@@ -45,4 +49,5 @@ sealed class NavigationUpdate {
     data class Action(val directions: NavDirections, val popUpTo: Int?, val popUpToInclusive: Boolean) : NavigationUpdate()
     data class Dialog(val creator: ShowDialogLazyCreator) : NavigationUpdate()
     object PopBackStack : NavigationUpdate()
+    object NoAction : NavigationUpdate()
 }

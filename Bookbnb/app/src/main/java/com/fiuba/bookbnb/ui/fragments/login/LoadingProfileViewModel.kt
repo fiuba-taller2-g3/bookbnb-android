@@ -15,7 +15,7 @@ class LoadingProfileViewModel : NetworkViewModel(), NetworkViewModel.CallRespons
 
     private var userInfoDecoded : UserInfoDecoded? = null
 
-    fun loadUserData(call: Call<UserData>, userId: Int, token: String, exp: Date) {
+    fun loadUserData(call: Call<UserData>, userId: String, token: String, exp: Date) {
         userInfoDecoded = UserInfoDecoded(userId, token, exp)
         Log.i(TAG, "Getting logged user information...")
         executeCallback(call, this)
@@ -39,6 +39,6 @@ class LoadingProfileViewModel : NetworkViewModel(), NetworkViewModel.CallRespons
         const val TAG = "TOKEN"
     }
 
-    data class UserInfoDecoded(val id: Int, val token: String, val exp: Date)
+    data class UserInfoDecoded(val id: String, val token: String, val exp: Date)
 
 }

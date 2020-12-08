@@ -26,7 +26,7 @@ class LoadingProfileFragment : NetworkFragment<UserData>(R.layout.bookbnb_loadin
         Log.i(LoadingProfileViewModel.TAG, "Decoding token...")
         val decode = JWT(token)
         decode.claims.let { claim ->
-            val id = claim["id"]?.asInt()
+            val id = claim["id"]?.asString()
             val exp = decode.expiresAt
             loadingProfileViewModel.loadUserData(NetworkModule.buildRetrofitClient().getUser(id!!, token), id, token, exp!!)
         }

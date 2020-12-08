@@ -2,6 +2,9 @@ package com.fiuba.bookbnb.user
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.facebook.AccessToken
+import com.facebook.Profile
+import com.facebook.login.LoginManager
 import com.fiuba.bookbnb.domain.user.UserData
 import com.fiuba.bookbnb.repository.UserLoggedInData
 import org.apache.commons.lang3.StringUtils
@@ -35,8 +38,18 @@ object UserManager {
     }
 
     fun logout() {
+        LoginManager.getInstance().logOut()
         userLoggedInfo = null
         cleanUser()
+    }
+
+    fun loginWithFacebook() {
+        Profile.getCurrentProfile()?.let {
+            val currentToken = AccessToken.getCurrentAccessToken()
+            val userData = UserData(it.firstName, it.lastName, "", null, "", "", "", "", currentToken.userId)
+            val userInfo = with(currentToken) { UserInfo(userId, userId, expires, userData) }
+            setUserInfo(userInfo)
+        }
     }
 
     private fun cleanUser() {

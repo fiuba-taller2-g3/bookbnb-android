@@ -2,7 +2,6 @@ package com.fiuba.bookbnb.ui.fragments.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.facebook.*
 import com.facebook.login.LoginResult
@@ -38,20 +37,13 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
         facebook_login_button.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
 
             override fun onSuccess(result: LoginResult) {
-                Log.i("LOGIN", result.accessToken.token)
-                Log.i("LOGIN", result.accessToken.userId)
                 val profileTracker = object : ProfileTracker() {
                     override fun onCurrentProfileChanged(oldProfile: Profile?, currentProfile: Profile?) {
                         this.stopTracking()
                         Profile.setCurrentProfile(currentProfile)
                         currentProfile?.let {
-                            val userData = UserData(it.name, it.lastName, "", null, "", "", "", "", result.accessToken.userId)
-                            val userInfo = with(result.accessToken) { UserInfo(userId, userId.toInt(), expires, userData) }
-                            UserManager.setUserInfo(userInfo)
-                            NavigationManager.moveForwardWithPopUpTo(StartProfileFragmentDirections.actionStartProfileFragmentToProfileMenuFragment(), R.id.homeFragment)
-                            Log.i("LOGIN", it.name)
-                            Log.i("LOGIN", it.firstName)
-                            Log.i("LOGIN", it.lastName)
+                            UserManager.loginWithFacebook()
+                            NavigationManager.moveForwardWithPopUpTo(StartLoginFragmentDirections.actionStartLoginFragmentToProfileMenuFragment(), R.id.homeFragment)
                         }
                     }
                 }

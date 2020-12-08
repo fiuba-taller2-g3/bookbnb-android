@@ -1,6 +1,7 @@
 package com.fiuba.bookbnb.ui.fragments.profile.options
 
 import android.content.Context
+import com.facebook.login.LoginManager
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.profile.ProfileButtonMenu
 import com.fiuba.bookbnb.ui.fragments.profile.ProfileMenuFragmentDirections

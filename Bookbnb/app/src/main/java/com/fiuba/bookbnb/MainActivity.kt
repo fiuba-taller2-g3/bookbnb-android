@@ -12,6 +12,7 @@ import com.fiuba.bookbnb.ui.ShareViewModel
 import com.fiuba.bookbnb.ui.fragments.footerbar.*
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
+import com.fiuba.bookbnb.user.UserManager
 import kotlinx.android.synthetic.main.bookbnb_activity_main.*
 import java.util.*
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         checkToolbar()
         checkFooterBarMenu()
         checkFooterBarMenuOptionSelected()
+        UserManager.loginWithFacebook()
     }
 
     private fun checkToolbar() {
@@ -107,6 +109,7 @@ class MainActivity : AppCompatActivity() {
                 is NavigationUpdate.Action -> with(navigationUpdate) { navController.navigate(directions, buildNavigationOptions(popUpTo, popUpToInclusive)) }
                 is NavigationUpdate.Dialog -> navController.navigate(navigationUpdate.creator())
                 is NavigationUpdate.PopBackStack -> navController.popBackStack()
+                else -> {}
             }
         }
     }
@@ -122,5 +125,10 @@ class MainActivity : AppCompatActivity() {
         popUpTo?.let { navOptions.setPopUpTo(it, popUpToInclusive) }
 
         return navOptions.build()
+    }
+
+    override fun onDestroy() {
+        NavigationManager.cleanAction()
+        super.onDestroy()
     }
 }
