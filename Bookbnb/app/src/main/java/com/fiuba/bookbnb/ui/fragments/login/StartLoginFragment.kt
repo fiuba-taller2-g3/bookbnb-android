@@ -7,9 +7,12 @@ import android.view.View
 import com.facebook.*
 import com.facebook.login.LoginResult
 import com.fiuba.bookbnb.R
+import com.fiuba.bookbnb.domain.user.UserData
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
 import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarButtons
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
+import com.fiuba.bookbnb.user.UserInfo
+import com.fiuba.bookbnb.user.UserManager
 import kotlinx.android.synthetic.main.bookbnb_button.*
 import kotlinx.android.synthetic.main.bookbnb_start_login_fragment.*
 
@@ -42,6 +45,11 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
                         this.stopTracking()
                         Profile.setCurrentProfile(currentProfile)
                         currentProfile?.let {
+                            val userData = UserData(it.name, it.lastName, "", null, "", "", "", "", result.accessToken.userId)
+                            val userInfo = with(result.accessToken) { UserInfo(userId, userId.toInt(), expires, userData) }
+                            UserManager.setUserInfo(userInfo)
+                            NavigationManager.moveForwardWithPopUpTo(StartProfileFragmentDirections.actionStartProfileFragmentToProfileMenuFragment(), R.id.homeFragment)
+                            Log.i("LOGIN", it.name)
                             Log.i("LOGIN", it.firstName)
                             Log.i("LOGIN", it.lastName)
                         }

@@ -77,6 +77,9 @@
         <action
             android:id="@+id/action_startLoginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_startLoginFragment_to_profileMenuFragment"
+            app:destination="@id/profileMenuFragment" />
     </fragment>
 
     <fragment
