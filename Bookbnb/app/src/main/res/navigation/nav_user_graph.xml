@@ -52,8 +52,8 @@
             android:id="@+id/action_profileMenuFragment_to_profileEditFragment"
             app:destination="@id/profileEditFragment" />
         <action
-            android:id="@+id/action_profileMenuFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_profileMenuFragment_to_startLoginFragment"
+            app:destination="@id/startLoginFragment" />
     </fragment>
 
     <fragment

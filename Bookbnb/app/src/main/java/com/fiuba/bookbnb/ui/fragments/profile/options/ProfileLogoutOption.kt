@@ -16,7 +16,7 @@ class ProfileLogoutOption(context: Context, labelRes: Int, img: Int) : ProfileBu
 
     override fun loadAction() {
         profile_option_container.setOnClickListener {
-            NavigationManager.moveForwardWithPopUpTo(ProfileMenuFragmentDirections.actionProfileMenuFragmentToLoginFragment(), R.id.homeFragment)
+            NavigationManager.moveForwardWithPopUpTo(ProfileMenuFragmentDirections.actionProfileMenuFragmentToStartLoginFragment(), R.id.homeFragment)
             UserManager.logout()
         }
     }
