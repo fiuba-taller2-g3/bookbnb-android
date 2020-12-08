@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkFooterBarMenuOptionSelected() {
-        FooterBarMenuManager.footerBarMenuOptionSelected.observe(this) { option ->
+        sharedViewModel.footerBarMenuOptionSelected.observe(this) { option ->
             disableAllFooterBarButtons()
             footerBarButtons[option]?.activeButton()
         }

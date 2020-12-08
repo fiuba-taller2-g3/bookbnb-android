@@ -1,4 +1,4 @@
-package com.fiuba.bookbnb.ui.fragments.misc
+package com.fiuba.bookbnb.ui.fragments.login
 
 import android.util.Log
 import com.fiuba.bookbnb.R

@@ -18,6 +18,8 @@ object UserManager {
         cleanUser()
     }
 
+    fun isUserLogged() = (userLoggedInfo != null)
+
     fun setUserInfo(userInfo: UserInfo) {
         userLoggedInfo = userInfo
         mutableUserLoggedInLiveData.value = UserLoggedInData(userInfo.getUserData().name)

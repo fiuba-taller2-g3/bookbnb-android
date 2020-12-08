@@ -6,6 +6,7 @@ import android.view.View
 import com.fiuba.bookbnb.BuildConfig
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
+import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarButtons
 import com.fiuba.bookbnb.ui.fragments.profile.options.ProfileAccountInfoOption
 import com.fiuba.bookbnb.ui.fragments.profile.options.ProfileLogoutOption
 import com.fiuba.bookbnb.user.UserManager
@@ -36,5 +37,10 @@ class ProfileMenuFragment : BaseFragment(R.layout.bookbnb_profile_fragment) {
             addView(ProfileAccountInfoOption(requireContext(), R.string.view_profile_account_info_text, R.drawable.ic_accountinfo))
             addView(ProfileLogoutOption(requireContext(), R.string.view_profile_logout_text, R.drawable.ic_logout))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sharedViewModel.setOption(FooterBarButtons.PROFILE)
     }
 }

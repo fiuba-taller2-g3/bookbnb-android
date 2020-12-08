@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_login_graph"
-    app:startDestination="@id/startLoginFragment">
+    app:startDestination="@id/startProfileFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -81,7 +81,7 @@
 
     <fragment
         android:id="@+id/loadingFragment"
-        android:name="com.fiuba.bookbnb.ui.fragments.misc.LoadingProfileFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.login.LoadingProfileFragment"
         android:label="LoadingFragment"
         tools:layout="@layout/bookbnb_loading_fragment" >
         <action
@@ -90,6 +90,19 @@
         <argument
             android:name="token"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/startProfileFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.login.StartProfileFragment"
+        android:label="StartProfileFragment"
+        tools:layout="@layout/bookbnb_loading_fragment" >
+        <action
+            android:id="@+id/action_startProfileFragment_to_startLoginFragment"
+            app:destination="@id/startLoginFragment" />
+        <action
+            android:id="@+id/action_startProfileFragment_to_profileMenuFragment"
+            app:destination="@id/profileMenuFragment" />
     </fragment>
 
 </navigation>

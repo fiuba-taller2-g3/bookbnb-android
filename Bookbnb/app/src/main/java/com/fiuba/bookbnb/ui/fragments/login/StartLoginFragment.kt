@@ -8,6 +8,7 @@ import com.facebook.*
 import com.facebook.login.LoginResult
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
+import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarButtons
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import kotlinx.android.synthetic.main.bookbnb_button.*
 import kotlinx.android.synthetic.main.bookbnb_start_login_fragment.*
@@ -62,6 +63,11 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sharedViewModel.setOption(FooterBarButtons.PROFILE)
     }
 
     companion object {
