@@ -46,7 +46,7 @@ object UserManager {
     fun loginWithFacebook() {
         Profile.getCurrentProfile()?.let {
             val currentToken = AccessToken.getCurrentAccessToken()
-            val userData = UserData(it.firstName, it.lastName, "", null, "", "", "", "", currentToken.userId)
+            val userData = UserData(it.firstName, it.lastName, "", null, "", "", "", currentToken.userId)
             val userInfo = with(currentToken) { UserInfo(userId, userId, expires, userData) }
             setUserInfo(userInfo)
         }

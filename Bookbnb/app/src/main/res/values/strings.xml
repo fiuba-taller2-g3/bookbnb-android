@@ -20,7 +20,6 @@
     <string name="name_field_label">Nombre</string>
     <string name="surname_field_label">Apellido</string>
     <string name="birthdate_field_label">Fecha de nacimiento</string>
-    <string name="profile_type_field_label">Tipo de perfil</string>
     <string name="gender_field_label">Género</string>
     <string name="phone_number_field_label">Número de teléfono</string>
 

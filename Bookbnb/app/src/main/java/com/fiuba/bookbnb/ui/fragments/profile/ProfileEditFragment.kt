@@ -22,8 +22,6 @@ class ProfileEditFragment : FormFragment<ProfileEditViewModel, MsgResponse>() {
             addInputField(InputField.SURNAME, R.string.surname_field_label, initialContent = surname)
             addInputField(InputField.EMAIL, R.string.email_field_label, initialContent = email)
             addInputField(InputField.BIRTHDATE, R.string.birthdate_field_label, initialContent = birthDate)
-            // TODO: El profile type hay que sacarlo
-            addInputField(InputField.PROFILE_TYPE, R.string.profile_type_field_label)
         }
     }
 
@@ -42,8 +40,7 @@ class ProfileEditFragment : FormFragment<ProfileEditViewModel, MsgResponse>() {
     }
 
     private fun getUserData(): UserData = UserData(getFieldContent(InputField.NAME), getFieldContent(InputField.SURNAME),
-        getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD), getFieldContent(InputField.PROFILE_TYPE),
-        getFieldContent(InputField.GENDER), getFieldContent(InputField.PHONE_NUMBER), getFieldContent(InputField.BIRTHDATE),
-        UserManager.getUserInfo().getUserId().toString())
+        getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD), getFieldContent(InputField.GENDER),
+        getFieldContent(InputField.PHONE_NUMBER), getFieldContent(InputField.BIRTHDATE), UserManager.getUserInfo().getUserId())
 
 }

@@ -17,7 +17,7 @@ object InputFieldBuilder {
         return when (inputField) {
             InputField.EMAIL -> EditTextInputFieldItem(context, EmailInputValidator(context, inputField.getTextEmptyValidator()), initialContent)
             InputField.PASSWORD -> EditTextInputFieldItem(context, PassInputValidator(context, inputField.getTextEmptyValidator()), initialContent, KeyboardType.ALPHANUMERIC_PASSWORD)
-            InputField.PROFILE_TYPE -> RadioButtonInputField(context, Pair("Huesped","Anfitrión"))
+            // TODO: Para el GENDER, además de hombre y mujer, también debería haber una tercera opción que diga "otros"
             InputField.GENDER -> RadioButtonInputField(context, Pair("Hombre","Mujer"))
             InputField.BIRTHDATE -> DatePickerInputField(context, DatePickerInputValidator(context, inputField.getTextEmptyValidator()), initialContent)
             else -> defaultBuild(context, inputField, KeyboardType.ALPHANUMERIC, initialContent)

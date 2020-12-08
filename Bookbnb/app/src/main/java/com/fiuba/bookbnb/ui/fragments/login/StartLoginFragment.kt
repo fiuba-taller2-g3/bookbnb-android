@@ -1,16 +1,15 @@
 package com.fiuba.bookbnb.ui.fragments.login
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.facebook.*
 import com.facebook.login.LoginResult
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.domain.user.UserData
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
 import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarButtons
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
-import com.fiuba.bookbnb.user.UserInfo
 import com.fiuba.bookbnb.user.UserManager
 import kotlinx.android.synthetic.main.bookbnb_button.*
 import kotlinx.android.synthetic.main.bookbnb_start_login_fragment.*
@@ -42,6 +41,7 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
                         this.stopTracking()
                         Profile.setCurrentProfile(currentProfile)
                         currentProfile?.let {
+                            // TODO: Estaría bueno chequear la fecha de nacimiento para comprobar si el usuario es mayor de 18
                             UserManager.loginWithFacebook()
                             NavigationManager.moveForwardWithPopUpTo(StartLoginFragmentDirections.actionStartLoginFragmentToProfileMenuFragment(), R.id.homeFragment)
                         }
@@ -55,7 +55,9 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
             }
 
             override fun onError(error: FacebookException) {
-                // Do Nothing
+                AlertDialog.Builder(context).run {
+                    setMessage(error.message)
+                }.show()
             }
         })
     }
