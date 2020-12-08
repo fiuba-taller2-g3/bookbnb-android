@@ -14,7 +14,7 @@ class HomeFragment : BaseFragment(R.layout.bookbnb_home_fragment) {
 
     init {
         // TODO: Cuando se empiece a trabajar en la home se puede eliminar esta transición
-        NavigationManager.moveForward(HomeFragmentDirections.actionHomeFragmentToNavLoginGraph())
+        //NavigationManager.moveForward(HomeFragmentDirections.actionHomeFragmentToNavLoginGraph())
     }
 
 }

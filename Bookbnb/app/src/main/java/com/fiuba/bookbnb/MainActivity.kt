@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
     private fun initNavigation() {
         NavigationManager.navigationLiveData.observe(this) { navigationUpdate ->
             when (navigationUpdate) {
-                is NavigationUpdate.GlobalAction -> navController.navigate(navigationUpdate.action)
+                is NavigationUpdate.GlobalAction -> with(navigationUpdate) { navController.navigate(action, null, buildNavigationOptions(popUpTo, popUpToInclusive)) }
                 is NavigationUpdate.Action -> with(navigationUpdate) { navController.navigate(directions, buildNavigationOptions(popUpTo, popUpToInclusive)) }
                 is NavigationUpdate.Dialog -> navController.navigate(navigationUpdate.creator())
                 is NavigationUpdate.PopBackStack -> navController.popBackStack()

@@ -5,6 +5,11 @@
     android:id="@+id/nav_main_graph"
     app:startDestination="@id/homeFragment">
 
+    <!-- Global actions -->
+    <action
+        android:id="@+id/startProfile"
+        app:destination="@id/nav_login_graph" />
+
     <!-- Include all dialogs -->
     <include app:graph="@navigation/nav_dialogs" />
 
@@ -19,10 +24,6 @@
         android:id="@+id/homeFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/bookbnb_home_fragment">
-        <action
-            android:id="@+id/action_homeFragment_to_nav_login_graph"
-            app:destination="@id/nav_login_graph" />
-    </fragment>
+        tools:layout="@layout/bookbnb_home_fragment"/>
 
 </navigation>
