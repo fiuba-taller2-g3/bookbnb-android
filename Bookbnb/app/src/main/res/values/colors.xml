@@ -15,4 +15,5 @@
     <color name="colorFacebookButton">#3B5998</color>
     <color name="colorFacebookButtonRipple">#6E82AE</color>
     <color name="colorFooterBarMenuTextButtonSelected">#232222</color>
+    <color name="colorFooterBarMenuDivider">#EFEFEF</color>
 </resources>

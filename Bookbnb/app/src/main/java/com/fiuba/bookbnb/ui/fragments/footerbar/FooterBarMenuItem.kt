@@ -1,7 +1,6 @@
 package com.fiuba.bookbnb.ui.fragments.footerbar
 
 import android.content.Context
-import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
