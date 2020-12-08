@@ -32,7 +32,7 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
 
     private fun onFacebookLoginResult() {
         facebook_login_button.fragment = this
-        facebook_login_button.setPermissions(listOf(EMAIL));
+        with(UserManager) { facebook_login_button.setPermissions(listOf(EMAIL, BIRTHDAY)) }
         facebook_login_button.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
 
             override fun onSuccess(result: LoginResult) {
@@ -73,6 +73,6 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
     }
 
     companion object {
-        private const val EMAIL = "email"
+        private const val BIRTHDAY = "user_birthday"
     }
 }

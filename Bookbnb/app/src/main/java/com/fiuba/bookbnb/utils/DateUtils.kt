@@ -5,9 +5,16 @@ import java.util.*
 
 object DateUtils {
     private const val DATE_SEPARATOR = "-"
+    private const val DATE_FACEBOOK_SEPARATOR = "/"
     private const val DATE_FORMAT = "dd${DATE_SEPARATOR}MM${DATE_SEPARATOR}yyyy"
+    private const val DATE_FACEBOOK_FORMAT = "MM${DATE_FACEBOOK_SEPARATOR}dd${DATE_FACEBOOK_SEPARATOR}yyyy"
     private const val DATE_FORMAT_OUTPUT = "yyyy${DATE_SEPARATOR}MM${DATE_SEPARATOR}dd"
 
     fun getDateFormat() = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
     fun getDateOutputFormat() = SimpleDateFormat(DATE_FORMAT_OUTPUT, Locale.getDefault())
+
+    fun convertFacebookFormatToStandard(date: String) : String {
+        val inputDate = SimpleDateFormat(DATE_FACEBOOK_FORMAT, Locale.getDefault()).parse(date)
+        return getDateOutputFormat().format(inputDate!!)
+    }
 }
