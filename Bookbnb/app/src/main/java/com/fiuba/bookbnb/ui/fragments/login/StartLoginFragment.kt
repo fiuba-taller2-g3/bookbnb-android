@@ -32,7 +32,7 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
 
     private fun onFacebookLoginResult() {
         facebook_login_button.fragment = this
-        with(UserManager) { facebook_login_button.setPermissions(listOf(EMAIL, BIRTHDAY)) }
+        with(UserManager) { facebook_login_button.setPermissions(listOf(EMAIL, BIRTHDAY, LOCATION)) }
         facebook_login_button.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
 
             override fun onSuccess(result: LoginResult) {
@@ -41,7 +41,6 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
                         this.stopTracking()
                         Profile.setCurrentProfile(currentProfile)
                         currentProfile?.let {
-                            // TODO: Estaría bueno chequear la fecha de nacimiento para comprobar si el usuario es mayor de 18
                             UserManager.loginWithFacebook()
                             NavigationManager.moveForwardWithPopUpTo(StartLoginFragmentDirections.actionStartLoginFragmentToProfileMenuFragment(), R.id.homeFragment)
                         }
@@ -74,5 +73,6 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
 
     companion object {
         private const val BIRTHDAY = "user_birthday"
+        private const val LOCATION = "user_location"
     }
 }
