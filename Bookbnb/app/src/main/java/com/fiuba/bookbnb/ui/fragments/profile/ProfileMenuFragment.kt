@@ -34,6 +34,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.bookbnb_profile_fragment) {
         with(profile_menu_container) {
             /* Account config */
             addView(ProfileTitleMenuSection(requireContext(), R.string.view_profile_account_config_title_text))
+            // TODO: Hay que confirmar si el usuario logueado con Facebook puede editar la información personal o registar los campos que faltan
             addView(ProfileAccountInfoOption(requireContext(), R.string.view_profile_account_info_text, R.drawable.ic_accountinfo))
             addView(ProfileLogoutOption(requireContext(), R.string.view_profile_logout_text, R.drawable.ic_logout))
         }
