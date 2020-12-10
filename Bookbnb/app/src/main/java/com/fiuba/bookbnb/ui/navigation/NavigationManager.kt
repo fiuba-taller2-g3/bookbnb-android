@@ -13,7 +13,7 @@ object NavigationManager {
         get() = mutableNavigationLiveData
 
     fun showDialog(creator: ShowDialogLazyCreator) {
-        mutableNavigationLiveData.value = NavigationUpdate.GlobalAction(R.id.nav_dialogs)
+        moveGlobalTo(R.id.nav_dialogs)
         mutableNavigationLiveData.value = NavigationUpdate.Dialog(creator)
     }
 
@@ -25,16 +25,29 @@ object NavigationManager {
         mutableNavigationLiveData.value = NavigationUpdate.Action(navigationDirections, popUpTo, popUpToInclusive)
     }
 
+    fun moveGlobalTo(@IdRes action: Int) {
+        moveGlobalToWithPopUpTo(action, null)
+    }
+
+    fun moveGlobalToWithPopUpTo(@IdRes action: Int, popUpTo: Int?, popUpToInclusive: Boolean = false) {
+        mutableNavigationLiveData.value = NavigationUpdate.GlobalAction(action, popUpTo, popUpToInclusive)
+    }
+
     fun popBackStack() {
         mutableNavigationLiveData.value = NavigationUpdate.PopBackStack
+    }
+
+    fun cleanAction() {
+        mutableNavigationLiveData.value = NavigationUpdate.NoAction
     }
 }
 
 typealias ShowDialogLazyCreator = () -> NavDirections
 
 sealed class NavigationUpdate {
-    data class GlobalAction(@IdRes val action: Int) : NavigationUpdate()
+    data class GlobalAction(@IdRes val action: Int, val popUpTo: Int?, val popUpToInclusive: Boolean) : NavigationUpdate()
     data class Action(val directions: NavDirections, val popUpTo: Int?, val popUpToInclusive: Boolean) : NavigationUpdate()
     data class Dialog(val creator: ShowDialogLazyCreator) : NavigationUpdate()
     object PopBackStack : NavigationUpdate()
+    object NoAction : NavigationUpdate()
 }

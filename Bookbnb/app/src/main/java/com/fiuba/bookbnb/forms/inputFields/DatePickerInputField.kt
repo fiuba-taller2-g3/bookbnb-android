@@ -8,6 +8,7 @@ import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.utils.DateUtils
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
 import org.apache.commons.lang3.StringUtils
+import java.text.SimpleDateFormat
 import java.util.*
 
 

@@ -16,10 +16,10 @@ interface BookbnbAPIService {
     fun register(@Body userData: UserData) : Call<MsgResponse>
 
     @GET("users/{${USER_ID}}")
-    fun getUser(@Path(USER_ID) id: Int, @Header(API_TOKEN) apiToken: String) : Call<UserData>
+    fun getUser(@Path(USER_ID) id: String, @Header(API_TOKEN) apiToken: String) : Call<UserData>
 
     @PUT("users/{${USER_ID}}")
-    fun updateUser(@Path(USER_ID) id: Int, @Header(API_TOKEN) apiToken: String, @Body userData: UserData) : Call<MsgResponse>
+    fun updateUser(@Path(USER_ID) id: String, @Header(API_TOKEN) apiToken: String, @Body userData: UserData) : Call<MsgResponse>
 
     companion object {
         private const val USER_ID = "id"

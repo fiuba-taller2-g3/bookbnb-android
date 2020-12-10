@@ -11,36 +11,19 @@ import android.view.View
 import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
+import com.fiuba.bookbnb.domain.login.LoginResponse
 import com.fiuba.bookbnb.forms.InputField
+import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.fragments.form.FormFragment
-import com.fiuba.bookbnb.ui.navigation.NavigationManager
-import com.fiuba.bookbnb.ui.utils.AdditionalContentForm
 import com.fiuba.bookbnb.ui.utils.KeyboardType
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
-import org.apache.commons.lang3.StringUtils
 
-class LoginFragment : FormFragment<LoginViewModel>() {
+class LoginFragment : FormFragment<LoginViewModel, LoginResponse>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        buildAdditionalContainer()
-    }
-
-    private fun buildAdditionalContainer() {
-        val notRegisterText = AdditionalContentForm(requireContext(), buildNotRegisterText()).also {
-            it.setOnClickListener { NavigationManager.moveForward(LoginFragmentDirections.actionLoginFragmentToRegisterFragment()) }
-        }
-
-        additional_container.isVisible = true
-        additional_container.addView(notRegisterText)
-        additional_container.addView(AdditionalContentForm(requireContext(), buildForgottenPassText()))
-    }
-
-    private fun buildNotRegisterText(): SpannableStringBuilder {
-        return SpannableStringBuilder().apply {
-            append(getString(R.string.text_question_not_register) + StringUtils.SPACE)
-            append(buildTextStyled(getString(R.string.text_register)))
-        }
+        additional_text.isVisible = true
+        additional_text.text = buildForgottenPassText()
     }
 
     private fun buildForgottenPassText(): SpannableStringBuilder {
@@ -70,7 +53,7 @@ class LoginFragment : FormFragment<LoginViewModel>() {
 
     override fun proceedLoading() {
         val request = LoginRequest(getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD))
-        viewModel.login(request)
+        viewModel.login(NetworkModule.buildRetrofitClient().login(request).also { currentRunningCall = it })
     }
 
     override fun getViewModelClass() = LoginViewModel::class.java

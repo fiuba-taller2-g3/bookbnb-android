@@ -10,6 +10,8 @@
     <dimen name="bkbnb14dp">14dp</dimen>
     <dimen name="bkbnb16dp">16dp</dimen>
     <dimen name="bkbnb18dp">18dp</dimen>
+    <dimen name="bkbnb20dp">20dp</dimen>
+    <dimen name="bkbnb22dp">22dp</dimen>
     <dimen name="bkbnb24dp">24dp</dimen>
     <dimen name="bkbnb28dp">28dp</dimen>
     <dimen name="bkbnb32dp">32dp</dimen>
@@ -21,4 +23,7 @@
     <!-- Forms -->
     <dimen name="inputFieldBorder">1dp</dimen>
     <dimen name="inputFieldRadius">4dp</dimen>
+
+    <!-- Button -->
+    <dimen name="buttonRadius">4dp</dimen>
 </resources>

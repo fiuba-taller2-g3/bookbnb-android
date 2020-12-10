@@ -9,14 +9,18 @@ import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.facebook.stetho.Stetho
 import com.fiuba.bookbnb.ui.ShareViewModel
+import com.fiuba.bookbnb.ui.fragments.footerbar.*
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
+import com.fiuba.bookbnb.user.UserManager
 import kotlinx.android.synthetic.main.bookbnb_activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.app_navigation_container) }
     private val sharedViewModel by viewModels<ShareViewModel>()
+    private val footerBarButtons by lazy { EnumMap<FooterBarButtons, FooterBarMenuItem>(FooterBarButtons::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +28,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.bookbnb_activity_main)
         initAppBar()
         initNavigation()
+        initFooterBarMenu()
         checkToolbar()
+        checkFooterBarMenu()
+        checkFooterBarMenuOptionSelected()
+        UserManager.loginWithFacebook()
     }
 
     private fun checkToolbar() {
@@ -33,8 +41,56 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkFooterBarMenu() {
+        sharedViewModel.footerBarMenu.observe(this) { isFooterBarMenuVisible ->
+            footer_bar_menu.isVisible = isFooterBarMenuVisible
+        }
+    }
+
+    private fun initFooterBarMenu() {
+        addFooterBarButton(FooterBarButtons.SEARCH)
+        addFooterBarButton(FooterBarButtons.FAVOURITES)
+        addFooterBarButton(FooterBarButtons.MESSAGES)
+        addFooterBarButton(FooterBarButtons.PROFILE)
+    }
+
+    private fun addFooterBarButton(idButton: FooterBarButtons) {
+        footerBarButtons[idButton] = getFooterBarButtonItem(idButton).also { footer_bar_menu.addView(it) }
+    }
+
+    private fun getFooterBarButtonItem(idButton: FooterBarButtons) : FooterBarMenuItem {
+        return when(idButton) {
+            FooterBarButtons.SEARCH -> FooterBarMenuSearchItem(this@MainActivity)
+            FooterBarButtons.FAVOURITES -> FooterBarMenuFavoritesItem(this@MainActivity)
+            FooterBarButtons.MESSAGES -> FooterBarMenuMessagesItem(this@MainActivity)
+            FooterBarButtons.PROFILE -> FooterBarMenuProfileItem(this@MainActivity)
+        }
+    }
+
+    private fun checkFooterBarMenuOptionSelected() {
+        sharedViewModel.footerBarMenuOptionSelected.observe(this) { option ->
+            disableAllFooterBarButtons()
+            footerBarButtons[option]?.activeButton()
+        }
+    }
+
+    private fun disableAllFooterBarButtons() {
+        footerBarButtons.values.forEach {
+            it.disableButton()
+        }
+    }
+
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp()
+        return if (sharedViewModel.fragmentHaveNetwork()) {
+            sharedViewModel.closeFragment()
+            true
+        } else navController.navigateUp()
+    }
+
+    override fun onBackPressed() {
+        if (sharedViewModel.fragmentHaveNetwork()) {
+            sharedViewModel.closeFragment()
+        } else super.onBackPressed()
     }
 
     private fun initAppBar() {
@@ -49,10 +105,11 @@ class MainActivity : AppCompatActivity() {
     private fun initNavigation() {
         NavigationManager.navigationLiveData.observe(this) { navigationUpdate ->
             when (navigationUpdate) {
-                is NavigationUpdate.GlobalAction -> navController.navigate(navigationUpdate.action)
+                is NavigationUpdate.GlobalAction -> with(navigationUpdate) { navController.navigate(action, null, buildNavigationOptions(popUpTo, popUpToInclusive)) }
                 is NavigationUpdate.Action -> with(navigationUpdate) { navController.navigate(directions, buildNavigationOptions(popUpTo, popUpToInclusive)) }
                 is NavigationUpdate.Dialog -> navController.navigate(navigationUpdate.creator())
                 is NavigationUpdate.PopBackStack -> navController.popBackStack()
+                else -> {}
             }
         }
     }
@@ -68,5 +125,10 @@ class MainActivity : AppCompatActivity() {
         popUpTo?.let { navOptions.setPopUpTo(it, popUpToInclusive) }
 
         return navOptions.build()
+    }
+
+    override fun onDestroy() {
+        NavigationManager.cleanAction()
+        super.onDestroy()
     }
 }

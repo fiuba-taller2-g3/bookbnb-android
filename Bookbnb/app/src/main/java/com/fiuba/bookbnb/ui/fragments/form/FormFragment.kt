@@ -10,14 +10,18 @@ import com.fiuba.bookbnb.forms.InputField
 import com.fiuba.bookbnb.forms.InputFieldBuilder
 import com.fiuba.bookbnb.forms.InputFieldModule
 import com.fiuba.bookbnb.forms.inputFields.AbstractInputFieldItem
+import com.fiuba.bookbnb.networking.NetworkViewModel
+import com.fiuba.bookbnb.ui.fragments.NetworkFragment
 import com.fiuba.bookbnb.repository.LoadingStatus
-import com.fiuba.bookbnb.ui.fragments.BaseFragment
+import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.utils.KeyboardType
+import kotlinx.android.synthetic.main.bookbnb_button.*
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 import org.apache.commons.lang3.StringUtils
+import java.io.Serializable
 import java.util.*
 
-abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_form_fragment) {
+abstract class FormFragment<T : NetworkViewModel, S: Serializable> : NetworkFragment<S>(R.layout.bookbnb_form_fragment) {
 
     private val fields by lazy { EnumMap<InputField, AbstractInputFieldItem>(InputField::class.java)}
     protected lateinit var viewModel : T
@@ -27,7 +31,7 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
 
         bkbnb_form_title.text = getString(getTitle())
         bkbnb_form_subtitle.text = getString(getSubtitle())
-        form_button.text = getString(getButtonText())
+        button.text = getString(getButtonText())
 
         viewModel = ViewModelProviders.of(this).get(getViewModelClass())
 
@@ -46,7 +50,7 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
                 LoadingStatus.FAILURE -> showDialog()
                 LoadingStatus.LOADING -> showLoading(true)
                 LoadingStatus.ERROR -> showDialog()
-                else -> {}
+                else -> showLoading(false)
             }
         }
     }
@@ -61,15 +65,13 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
 
     private fun setButtonLoading(loadingEnabled: Boolean) {
         progress.visibility = if (loadingEnabled) View.VISIBLE else View.INVISIBLE
-        form_button.text = if (progress.isVisible) StringUtils.EMPTY else getString(getButtonText())
-        form_button.isEnabled = !loadingEnabled
+        button.text = if (progress.isVisible) StringUtils.EMPTY else getString(getButtonText())
+        button.isEnabled = !loadingEnabled
     }
 
     private fun showLoading(loadingEnabled: Boolean) {
         setButtonLoading(loadingEnabled)
-        for (i in 0 until additional_container.childCount) {
-            additional_container.getChildAt(i).isEnabled = !loadingEnabled
-        }
+        additional_text.isEnabled = !loadingEnabled
         fields.values.forEach { field -> if (loadingEnabled) field.disableInput() else field.enableInput() }
     }
 
@@ -88,7 +90,7 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
     }
 
     private fun setButtonListener() {
-        form_button.setOnClickListener {
+        button.setOnClickListener {
             var isFormsValidated = true
             fields.values.forEach { field -> if (!field.isValidated() && isFormsValidated) isFormsValidated = false }
             if (isFormsValidated) proceedLoading() else jumpToFirstInputFieldInvalid()
@@ -104,7 +106,12 @@ abstract class FormFragment<T : FormViewModel> : BaseFragment(R.layout.bookbnb_f
         }
     }
 
-    private fun getPositionOfInputField(index: Int) = with(input_fields_container) {top + getChildAt(index).top }
+    override fun setNetworkAdditionalObserver() {
+        viewModel.hideLoading()
+        NavigationManager.popBackStack()
+    }
+
+    private fun getPositionOfInputField(index: Int) = with(input_fields_container) { top + getChildAt(index).top }
 
     protected fun getFieldContent(fieldId: InputField) = fields[fieldId]?.getContentField() ?: StringUtils.EMPTY
 

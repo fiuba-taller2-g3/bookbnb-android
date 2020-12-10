@@ -12,7 +12,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
-        versionName "0.20.0 (PRE-ALPHA)"
+        versionName "0.22.0 (PRE-ALPHA)"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -86,6 +86,9 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 
     // Jwt
-    implementation "com.auth0:java-jwt:3.3.0"
+    implementation "com.auth0.android:jwtdecode:2.0.0"
+
+    // Facebook
+    implementation 'com.facebook.android:facebook-login:5.0.1'
 
 }

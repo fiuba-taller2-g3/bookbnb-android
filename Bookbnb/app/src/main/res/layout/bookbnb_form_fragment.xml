@@ -50,35 +50,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_subtitle" />
 
-        <LinearLayout
-            android:id="@+id/additional_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/bkbnb12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_fields_container" />
-
         <RelativeLayout
+            android:id="@+id/form_button_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/bkbnb40dp"
+            android:layout_marginTop="@dimen/bkbnb20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/bkbnb_form_title"
-            app:layout_constraintTop_toBottomOf="@+id/additional_container">
+            app:layout_constraintTop_toBottomOf="@+id/input_fields_container">
 
-            <Button
-                android:id="@+id/form_button"
-                style="@style/bkbnbButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_ripple"
-                android:elevation="1dp"
-                android:paddingStart="@dimen/bkbnb32dp"
-                android:paddingEnd="@dimen/bkbnb32dp"
-                tools:text="Seleccionar" />
+            <include
+                layout="@layout/bookbnb_button"
+                android:elevation="1dp" />
 
             <ProgressBar
                 android:id="@+id/progress"
@@ -90,11 +73,24 @@
                 android:indeterminate="true"
                 android:elevation="2dp"
                 android:visibility="gone"
-                android:layout_alignBottom="@+id/form_button"
-                android:layout_alignTop="@+id/form_button"
+                android:layout_alignBottom="@+id/button"
+                android:layout_alignTop="@+id/button"
                 android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/additional_text"
+            style="@style/bkbnbSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/bkbnb28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/form_button_container"
+            tools:visibility="visible"
+            tools:text="¿Olvidaste tu contraseña?"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
