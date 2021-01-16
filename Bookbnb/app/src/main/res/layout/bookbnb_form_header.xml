@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/bkbnb32dp"
+    android:paddingBottom="@dimen/bkbnb20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/bkbnb_form_title"
+        style="@style/bkbnbNormalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Título" />
+
+    <TextView
+        android:id="@+id/bkbnb_form_subtitle"
+        style="@style/bkbnbSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb8dp"
+        tools:text="Subtítulo" />
+
+</LinearLayout>

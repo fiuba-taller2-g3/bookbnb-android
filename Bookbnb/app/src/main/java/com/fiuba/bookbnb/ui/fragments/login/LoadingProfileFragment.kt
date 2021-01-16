@@ -17,6 +17,9 @@ class LoadingProfileFragment : NetworkFragment<UserData>(R.layout.bookbnb_loadin
     private val token by lazy { navArguments.token }
     private val loadingProfileViewModel by viewModels<LoadingProfileViewModel>()
 
+    override val shouldShowToolbar: Boolean
+        get() = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginUser(token)
@@ -27,8 +30,9 @@ class LoadingProfileFragment : NetworkFragment<UserData>(R.layout.bookbnb_loadin
         val decode = JWT(token)
         decode.claims.let { claim ->
             val id = claim["id"]?.asString()
+            val addressWallet = claim["wallet_address"]?.asString()
             val exp = decode.expiresAt
-            loadingProfileViewModel.loadUserData(NetworkModule.buildRetrofitClient().getUser(id!!, token), id, token, exp!!)
+            loadingProfileViewModel.loadUserData(NetworkModule.buildRetrofitClient().getUser(id!!, token), id, token, addressWallet!!, exp!!)
         }
     }
 }

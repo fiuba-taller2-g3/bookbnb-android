@@ -16,16 +16,102 @@
         app:popUpTo="@id/nav_dialogs"
         app:popUpToInclusive="true" />
 
+    <action
+        android:id="@+id/showContextMenuDialogFragment"
+        app:destination="@+id/contextMenuDialogFragment"
+        app:popUpTo="@id/nav_dialogs"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/showBedDistributionDialogFragment"
+        app:destination="@+id/bedDistributionDialogFragment"
+        app:popUpTo="@id/nav_dialogs"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/showCheckingLocationDialogFragment"
+        app:destination="@+id/checkingLocationDialogFragment"
+        app:popUpTo="@id/nav_dialogs"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/showUploadPhotoDialog"
+        app:destination="@+id/uploadPhotoDialog"
+        app:popUpTo="@id/nav_dialogs"
+        app:popUpToInclusive="true" />
+
     <dialog
         android:id="@+id/datePickerDialogFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment"
         android:label="DatePickerDialogFragment"
         tools:layout="@layout/bookbnb_date_picker_dialog_fragment" >
         <argument
+            android:name="titleDialogRes"
+            app:argType="integer" />
+        <argument
             android:name="selectedDate"
             app:argType="java.util.Calendar" />
+        <argument
+            android:name="minDate"
+            app:argType="java.util.Date"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="maxDate"
+            app:argType="java.util.Date"
+            app:nullable="true"
+            android:defaultValue="@null" />
         <argument
             android:name="onDateSetListener"
             app:argType="com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment$OnDateSetListener" />
     </dialog>
+
+    <dialog
+        android:id="@+id/contextMenuDialogFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.dialogs.ContextMenuDialogFragment"
+        android:label="ContextMenuDialogFragment"
+        tools:layout="@layout/bookbnb_context_menu_dialog_fragment" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="contentItemList"
+            app:argType="com.fiuba.bookbnb.ui.recyclerView.ContextMenuItemData[]" />
+        <argument
+            android:name="onClickItemListener"
+            app:argType="com.fiuba.bookbnb.ui.fragments.dialogs.ContextMenuDialogFragment$OnClickItemListener" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/bedDistributionDialogFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.dialogs.BedDistributionDialogFragment"
+        android:label="BedDistributionDialogFragment"
+        tools:layout="@layout/bookbnb_abstract_dialog_fragment">
+        <argument
+            android:name="room"
+            app:argType="integer" />
+        <argument
+            android:name="singleBeds"
+            app:argType="integer" />
+        <argument
+            android:name="doubleBeds"
+            app:argType="integer" />
+        <argument
+            android:name="cribs"
+            app:argType="integer" />
+        <argument
+            android:name="updateAdapterListener"
+            app:argType="com.fiuba.bookbnb.ui.fragments.dialogs.BedDistributionDialogFragment$UpdateAdapterListener" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/uploadPhotoDialog"
+        android:name="com.fiuba.bookbnb.ui.fragments.dialogs.UploadPhotoDialog"
+        android:label="UploadPhotoDialog"
+        tools:layout="@layout/bookbnb_upload_photo_dialog_fragment">
+        <argument
+            android:name="updateImagesListener"
+            app:argType="com.fiuba.bookbnb.ui.fragments.form.adapters.PhotoAdapter$UpdateImagesListener" />
+    </dialog>
+
 </navigation>

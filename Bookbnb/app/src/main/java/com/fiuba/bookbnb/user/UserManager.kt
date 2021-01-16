@@ -20,8 +20,13 @@ object UserManager {
     val userLoggedInLiveData: LiveData<UserLoggedInData>
         get() = mutableUserLoggedInLiveData
 
+    private val mutableFacebookLoginIsProcessingLiveData = MutableLiveData<Boolean>()
+    val facebookLoginIsProcessingLiveData: LiveData<Boolean>
+        get() = mutableFacebookLoginIsProcessingLiveData
+
     init {
         cleanUser()
+        mutableFacebookLoginIsProcessingLiveData.value = false
     }
 
     fun isUserLogged() = (userLoggedInfo != null)
@@ -51,14 +56,17 @@ object UserManager {
             val currentToken = AccessToken.getCurrentAccessToken()
             val request = GraphRequest.newMeRequest(currentToken) { obj, _ ->
                 val birthday = DateUtils.convertFacebookFormatToStandard(obj.getString(BIRTHDAY))
-                val userData = UserData(it.firstName, it.lastName, obj.getString(EMAIL), null, StringUtils.EMPTY, StringUtils.EMPTY, birthday, currentToken.userId)
-                val userInfo = with(currentToken) { UserInfo(userId, userId, expires, userData) }
+                val userData = UserData(it.firstName, it.lastName, obj.getString(EMAIL), null, StringUtils.EMPTY,
+                    StringUtils.EMPTY, birthday, currentToken.userId, StringUtils.EMPTY)
+                val userInfo = with(currentToken) { UserInfo(userId, userId, StringUtils.EMPTY, expires, userData) }
                 setUserInfo(userInfo)
+                mutableFacebookLoginIsProcessingLiveData.value = false
             }
 
             Bundle().run {
                 putString(FIELDS, "${BIRTHDAY + COMMA}${EMAIL + COMMA}${LOCATION}")
                 request.parameters = this
+                mutableFacebookLoginIsProcessingLiveData.value = true
                 request.executeAsync()
             }
         }

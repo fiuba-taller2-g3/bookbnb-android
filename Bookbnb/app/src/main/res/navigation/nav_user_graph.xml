@@ -6,6 +6,9 @@
     android:id="@+id/nav_login_graph"
     app:startDestination="@id/startProfileFragment">
 
+    <!-- Include graph -->
+    <include app:graph="@navigation/nav_publish_graph" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.login.LoginFragment"
@@ -54,6 +57,9 @@
         <action
             android:id="@+id/action_profileMenuFragment_to_startLoginFragment"
             app:destination="@id/startLoginFragment" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_nav_publish_graph"
+            app:destination="@id/nav_publish_graph" />
     </fragment>
 
     <fragment
@@ -78,8 +84,8 @@
             android:id="@+id/action_startLoginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/action_startLoginFragment_to_profileMenuFragment"
-            app:destination="@id/profileMenuFragment" />
+            android:id="@+id/action_startLoginFragment_to_startProfileFragment"
+            app:destination="@id/startProfileFragment" />
     </fragment>
 
     <fragment

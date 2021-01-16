@@ -12,18 +12,30 @@ import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.domain.login.LoginResponse
-import com.fiuba.bookbnb.forms.InputField
+import com.fiuba.bookbnb.forms.FormInputData
+import com.fiuba.bookbnb.forms.FormInputType
 import com.fiuba.bookbnb.networking.NetworkModule
-import com.fiuba.bookbnb.ui.fragments.form.FormFragment
-import com.fiuba.bookbnb.ui.utils.KeyboardType
+import com.fiuba.bookbnb.ui.fragments.form.FormWithNetworkStatusFragment
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
+import retrofit2.Call
 
-class LoginFragment : FormFragment<LoginViewModel, LoginResponse>() {
+class LoginFragment : FormWithNetworkStatusFragment<LoginViewModel, LoginResponse>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         additional_text.isVisible = true
         additional_text.text = buildForgottenPassText()
+    }
+
+    override fun getTitleTextRes(): Int = R.string.login_title
+    override fun getSubtitleTextRes(): Int = R.string.login_subtitle
+    override fun getButtonTextRes(): Int = R.string.login_text_button
+
+    override fun getInputList(): List<FormInputData> {
+        return listOf(
+            FormInputData(FormInputType.EMAIL),
+            FormInputData(FormInputType.PASSWORD_LOGIN)
+        )
     }
 
     private fun buildForgottenPassText(): SpannableStringBuilder {
@@ -40,22 +52,11 @@ class LoginFragment : FormFragment<LoginViewModel, LoginResponse>() {
         }
     }
 
-    override fun getTitle() = R.string.login_title
-
-    override fun getSubtitle() = R.string.login_subtitle
-
-    override fun getButtonText(): Int = R.string.login_text_button
-
-    override fun initFields() {
-        addInputField(InputField.EMAIL, R.string.email_field_label)
-        addDefaultInputField(InputField.PASSWORD, R.string.pass_field_label, KeyboardType.ALPHANUMERIC_PASSWORD)
-    }
-
-    override fun proceedLoading() {
-        val request = LoginRequest(getFieldContent(InputField.EMAIL), getFieldContent(InputField.PASSWORD))
-        viewModel.login(NetworkModule.buildRetrofitClient().login(request).also { currentRunningCall = it })
+    private fun getRequest(): LoginRequest = with(formViewModel) {
+        LoginRequest(getContentFromItem(FormInputType.EMAIL), getContentFromItem(FormInputType.PASSWORD_LOGIN))
     }
 
     override fun getViewModelClass() = LoginViewModel::class.java
+    override fun call(): Call<LoginResponse> = NetworkModule.buildRetrofitClient().login(getRequest())
 
 }

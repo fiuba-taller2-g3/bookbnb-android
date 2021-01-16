@@ -7,7 +7,7 @@ import android.view.animation.AlphaAnimation
 
 object AnimUtils {
 
-    fun fadeInit() = AlphaAnimation(0.0f, 1.0f).also { it.duration = 1000 }
+    fun fadeIn(mSec: Long) = AlphaAnimation(0.0f, 1.0f).also { it.duration = mSec }
 
     fun expandLayout(view: View) {
         val widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)

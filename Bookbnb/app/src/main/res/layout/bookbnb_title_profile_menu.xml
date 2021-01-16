@@ -11,6 +11,7 @@
         android:layout_marginStart="@dimen/bkbnb24dp"
         android:layout_marginEnd="@dimen/bkbnb24dp"
         android:layout_marginBottom="@dimen/bkbnb4dp"
+        android:layout_marginTop="@dimen/bkbnb24dp"
         tools:text="@string/view_profile_account_config_title_text" />
 
 </merge>

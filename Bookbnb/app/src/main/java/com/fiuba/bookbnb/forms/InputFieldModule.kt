@@ -19,6 +19,7 @@ class InputFieldModule @JvmOverloads constructor(context: Context, label: String
     init {
         setLayoutParams()
         LayoutInflater.from(context).inflate(R.layout.bookbnb_input_field_module, this).also {
+            it.label.isVisible = label != context.getString(R.string.string_empty)
             it.label.text = label
         }
 

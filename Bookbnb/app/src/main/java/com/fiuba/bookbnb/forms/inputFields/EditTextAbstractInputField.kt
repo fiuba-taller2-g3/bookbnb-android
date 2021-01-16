@@ -7,19 +7,23 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.forms.validators.Validator
+import com.fiuba.bookbnb.forms.FormInputData
+import com.fiuba.bookbnb.forms.FormInputType
+import com.fiuba.bookbnb.forms.validators.InputValidator
 import com.fiuba.bookbnb.utils.AnimUtils
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
 
-abstract class EditTextAbstractInputField(context: Context, private val validation: Validator,
-                                          initialContent: String) : AbstractInputFieldItem(context) {
+abstract class EditTextAbstractInputField(context: Context,
+                                          private val inputData: FormInputData,
+                                          private val storeInputContent: (formInputData: FormInputData) -> Unit,
+                                          private val validation: InputValidator) : AbstractInputFieldItem(context) {
 
     private var isTextValidationDisplayed = false
 
     init {
         LayoutInflater.from(context).inflate(R.layout.bookbnb_text_input_field_item, this)
         setLayoutParams()
-        edit_text.setText(initialContent)
+        edit_text.setText(inputData.content)
         validation.msgValidator.observeForever { msgValidation -> validation_text.text = msgValidation }
         onChangedTextListener()
     }
@@ -34,14 +38,12 @@ abstract class EditTextAbstractInputField(context: Context, private val validati
         return validation.checkValidation(textContent).also { isValid ->
             if (!isValid && !isTextValidationDisplayed) {
                 AnimUtils.expandLayout(validation_text)
-                validation_text.startAnimation(AnimUtils.fadeInit())
+                validation_text.startAnimation(AnimUtils.fadeIn(1000))
                 isTextValidationDisplayed = true
             }
             validation.updateTextValidation(textContent)
         }
     }
-
-    override fun getContentField() = edit_text.text.toString()
 
     private fun onChangedTextListener() {
         edit_text.addTextChangedListener(object : TextWatcher {
@@ -54,6 +56,7 @@ abstract class EditTextAbstractInputField(context: Context, private val validati
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                setInputContentInStore(inputData.inputField, s.toString())
                 if (isTextValidationDisplayed) {
                     AnimUtils.collapseLayout(validation_text)
                     isTextValidationDisplayed = false
@@ -66,6 +69,10 @@ abstract class EditTextAbstractInputField(context: Context, private val validati
         edit_text.isEnabled = isEnabled
         edit_text.setTextColor(ContextCompat.getColor(context, textColor))
         (edit_text.background as GradientDrawable).setColor(ContextCompat.getColor(context, backgroundColor))
+    }
+
+    protected open fun setInputContentInStore(inputField: FormInputType, content: String) {
+        storeInputContent(FormInputData(inputField, content))
     }
 
 }

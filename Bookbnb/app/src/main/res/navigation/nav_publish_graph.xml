@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_publish_graph"
+    app:startDestination="@id/publishStayStepFormFragment">
+
+    <fragment
+        android:id="@+id/publishStayStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayStepFormFragment"
+        android:label="PublishStayStepFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_publishStayStepFormFragment_to_publishStayQuantitiesStepFormFragment"
+            app:destination="@id/publishStayQuantitiesStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayQuantitiesStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayQuantitiesStepFormFragment"
+        android:label="PublishStayQuantitiesStepFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_publishStayQuantitiesStepFormFragment_to_publishStayBedDistributionFormFragment"
+            app:destination="@id/publishStayBedDistributionFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayBedDistributionFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayBedDistributionFormFragment"
+        android:label="PublishStayBedDistributionFormFragment"
+        tools:layout="@layout/bookbnb_form_list_fragment" >
+        <action
+            android:id="@+id/action_publishStayBedDistributionFormFragment_to_publishStayLocationStepFormFragment"
+            app:destination="@id/publishStayLocationStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayLocationStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayLocationStepFormFragment"
+        android:label="PublishStayLocationStepFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_publishStayLocationStepFormFragment_to_publishStayMapConfirmationStepFormFragment"
+            app:destination="@id/publishStayMapConfirmationStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayMapConfirmationStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayMapConfirmationStepFormFragment"
+        android:label="PublishStayMapConfirmationStepFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_publishStayMapConfirmationStepFormFragment_to_publishStayDescriptionFormFragment"
+            app:destination="@id/publishStayDescriptionFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayDescriptionFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayDescriptionFormFragment"
+        android:label="PublishStayDescriptionFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_publishStayDescriptionFormFragment_to_publishStayServicesStepFormFragment"
+            app:destination="@id/publishStayServicesStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayServicesStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayServicesStepFormFragment"
+        android:label="PublishStayServicesStepFormFragment"
+        tools:layout="@layout/bookbnb_form_list_fragment" >
+        <action
+            android:id="@+id/action_publishStayServicesStepFormFragment_to_publishStaySecurityStepFormFragment"
+            app:destination="@id/publishStaySecurityStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStaySecurityStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStaySecurityStepFormFragment"
+        android:label="PublishStaySecurityStepFormFragment"
+        tools:layout="@layout/bookbnb_form_list_fragment" >
+        <action
+            android:id="@+id/action_publishStaySecurityStepFormFragment_to_publishStayInstallationsStepFormFragment"
+            app:destination="@id/publishStayInstallationsStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayInstallationsStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayInstallationsStepFormFragment"
+        android:label="PublishStayInstallationsStepFormFragment"
+        tools:layout="@layout/bookbnb_form_list_fragment" >
+        <action
+            android:id="@+id/action_publishStayInstallationsStepFormFragment_to_publishStayUploadPhotoStepFormFragment"
+            app:destination="@id/publishStayUploadPhotoStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayUploadPhotoStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayUploadPhotoStepFormFragment"
+        android:label="PublishStayUploadPhotoStepFormFragment"
+        tools:layout="@layout/bookbnb_form_list_fragment" >
+        <action
+            android:id="@+id/action_publishStayUploadPhotoStepFormFragment_to_publishStayRangeDatePickerStepFormFragment"
+            app:destination="@id/publishStayRangeDatePickerStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayRangeDatePickerStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayRangeDatePickerStepFormFragment"
+        android:label="PublishStayRangeDatePickerStepFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_publishStayRangeDatePickerStepFormFragment_to_publishStayPriceStepFormFragment"
+            app:destination="@id/publishStayPriceStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayPriceStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayPriceStepFormFragment"
+        android:label="PublishStayPriceStepFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_publishStayPriceStepFormFragment_to_publishStayFinishStepFormFragment"
+            app:destination="@id/publishStayFinishStepFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishStayFinishStepFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.PublishStayFinishStepFormFragment"
+        android:label="PublishStayFinishStepFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <action
+            android:id="@+id/action_publishStayFinishStepFormFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.misc.ConfirmationFragment"
+        android:label="ConfirmationFragment"
+        tools:layout="@layout/bookbnb_confirmation_fragment">
+        <argument
+            android:name="imgRes"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="subtitleRes"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>

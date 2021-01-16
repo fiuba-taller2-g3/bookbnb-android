@@ -22,24 +22,40 @@
     <string name="birthdate_field_label">Fecha de nacimiento</string>
     <string name="gender_field_label">Género</string>
     <string name="phone_number_field_label">Número de teléfono</string>
+    <string name="next_button_text">Siguiente</string>
 
     <!-- Descriptions forms -->
-    <string name="email_register_description_text">Te enviaremos una confirmación de reservación por correo electrónico.</string>
     <string name="birthdate_register_description_text">Debes tener al menos 18 años para registrarte. Los otros usuarios de Bookbnb no podrán ver tu fecha de nacimiento.</string>
 
     <!-- Validation -->
+    <string name="prefix_empty_msg_validation">Ingrese %s</string>
+    <string name="email_empty_msg_validation">un correo electrónico</string>
+    <string name="pass_empty_msg_validation">una contraseña</string>
+    <string name="date_picker_empty_msg_validation">una fecha de nacimiento</string>
+    <string name="name_empty_msg_validation">un nombre</string>
+    <string name="surname_empty_msg_validation">un apellido</string>
+    <string name="address_empty_msg_validation">una dirección</string>
+    <string name="city_empty_msg_validation">una ciudad</string>
+    <string name="country_empty_msg_validation">un país</string>
+    <string name="title_empty_msg_validation">un título</string>
+    <string name="subtitle_empty_msg_validation">una descripción</string>
+    <string name="price_empty_msg_validation">un precio</string>
     <string name="email_invalid_msg_validation">El formato de email no es válido</string>
     <string name="pass_spaces_msg_validation">La contraseña no debe tener espacios</string>
     <string name="pass_min_length_msg_validation">La contraseña debe tener al menos 8 caracteres</string>
-    <string name="birthdate_min_age_validation">Debes tener al menos 18 años para registrarte</string>
+    <string name="birth_date_min_age_validation">Debes tener al menos 18 años para registrarte</string>
+    <string name="phone_number_validation">Ingrese un número de teléfono válido</string>
 
     <!-- Dialogs -->
-    <string name="title_date_picker_dialog">Indica tu fecha de nacimiento</string>
+    <string name="title_birth_date_picker_dialog">Indica tu fecha de nacimiento</string>
+    <string name="title_date_picker_dialog">Seleccione una fecha</string>
     <string name="accept_text_button_dialog">ACEPTAR</string>
     <string name="cancel_text_button_dialog">CANCELAR</string>
 
     <!-- Profile menu -->
     <string name="view_profile_text">Ver perfil</string>
+    <string name="view_profile_host_title_text">ANFITRIÓN</string>
+    <string name="view_profile_publish_text">Realizar una publicación</string>
     <string name="view_profile_account_config_title_text">CONFIGURACIÓN DE LA CUENTA</string>
     <string name="view_profile_account_info_text">Información personal</string>
     <string name="view_profile_logout_text">Cerrar sesión</string>
@@ -51,6 +67,8 @@
     <string name="edit_info_profile_text">Edita tu información</string>
     <string name="edit_info_profile_button">Editar información</string>
     <string name="edit_info_profile_confirmed_description">La información personal ha sido actualizada.</string>
+    <string name="edit_info_profile_male_genre">Hombre</string>
+    <string name="edit_info_profile_female_genre">Mujer</string>
 
     <!-- Start login -->
     <string name="start_login_title_text">Tu perfil</string>
@@ -68,4 +86,152 @@
     <string name="footer_bar_favorites_menu">Favoritos</string>
     <string name="footer_bar_messages_menu">Mensajes</string>
     <string name="footer_bar_profile_menu">Perfil</string>
+
+    <!-- Publish Stays Form -->
+    <string name="publish_title">Publica tu alojamiento</string>
+    <string name="publish_subtitle">Completa los datos de tu alojamiento que será publicado y visto por otros usuarios.</string>
+    <string name="publish_text_button">Publicar</string>
+    <string name="publish_welcome_title">¡Hola, %s! Vamos a empezar creando la publicación de tu alojamiento.</string>
+    <string name="publish_guest_quantity_title">¿Cuántos huéspedes pueden alojarse?</string>
+    <string name="publish_guest_quantity_subtitle">Asegúrate de tener camas suficientes para que todos tus huéspedes duerman cómodamente.</string>
+    <string name="publish_bed_distribution_title">¿Cómo son las camas?</string>
+    <string name="publish_bed_distribution_subtitle">Ayuda a los huéspedes a entender dónde pueden dormir indicando el tipo de cama que hay en cada habitación.</string>
+    <string name="publish_location_title">¿Dónde se encuentra tu lugar?</string>
+    <string name="publish_location_subtitle">Solo los huéspedes con reservación confirmada podrán consultar tu dirección exacta, a los demás les mostraremos una ubicación aproximada.</string>
+    <string name="publish_map_location_title">¿Está el pin en el lugar correcto?</string>
+    <string name="publish_map_location_subtitle">Comprueba si la ubicación en el mapa de acuerdo a los datos ingresados es correcta.</string>
+    <string name="publish_stay_name_title">Dale un nombre a tu espacio</string>
+    <string name="publish_stay_name_subtitle">Describe tu alojamiento a grandes rasgos para que los huéspedes puedan hacerse una idea general antes de entrar en detalles.</string>
+    <string name="publish_stay_services_title">¿Qué servicios ofrecerás?</string>
+    <string name="publish_stay_services_subtitle">Los huéspedes se sentirán como en casa si les ofreces algunos elementos básicos durante su estancia.</string>
+    <string name="publish_stay_security_title">Seguridad en el hogar</string>
+    <string name="publish_stay_installations_title">¿Qué pueden utilizar los huéspedes?</string>
+    <string name="publish_stay_installations_subtitle">Los espacios deben encontrarse dentro de los límites de la propiedad.</string>
+    <string name="publish_price_title">Precio estándar</string>
+    <string name="publish_price_subtitle">Tu precio estándar es la tarifa por noche que se aplica por defecto.</string>
+
+    <string name="publish_availability_type_label">¿De qué dispondrán los huéspedes?</string>
+    <string name="publish_entire_stay_text_item">Alojamiento entero</string>
+    <string name="publish_entire_stay_text_description">Los huéspedes disponen del alojamiento entero solo para ellos: cuenta con una entrada independiente y no se comparten espacios. Por lo general, incluye un dormitorio, un baño y una cocina.</string>
+    <string name="publish_private_room_text_item">Habitación privada</string>
+    <string name="publish_private_room_text_description">Los huéspedes disponen de un dormitorio privado. Podrían compartirse otras zonas.</string>
+    <string name="publish_shared_room_text_item">Habitación compartida</string>
+    <string name="publish_shared_room_text_description">Los huéspedes duermen en un dormitorio o zona común que podrían compartir con otras personas.</string>
+
+    <string name="publish_stay_type_label">¿Qué tipo de alojamiento es?</string>
+    <string name="publish_home_type_text_item">Casa</string>
+    <string name="publish_home_type_text_description">Suelen ser estructuras independientes, pero algunas viviendas, como los dúplex, pueden ser adosadas o compartir las zonas exteriores con otras.</string>
+    <string name="publish_hotel_type_text_item">Hotel</string>
+    <string name="publish_hotel_type_text_description">Suelen encontrarse en edificios o complejos residenciales, en donde viven otras personas.</string>
+
+    <string name="publish_guest_quantity_label">¿Cuántos huéspedes pueden alojarse?</string>
+    <string name="publish_guest_quantity_item_label">Huéspedes</string>
+    <string name="publish_bed_quantity_label">¿Cuántas camas hay?</string>
+    <string name="publish_bed_quantity_item_label">Camas</string>
+    <string name="publish_bathroom_quantity_label">¿Cuántos baños hay?</string>
+    <string name="publish_bathroom_quantity_item_label">Baños</string>
+    <string name="publish_bedroom_quantity_label">¿Cuántos dormitorios hay?</string>
+    <string name="publish_bedroom_quantity_item_label">Dormitorios</string>
+
+    <string name="publish_bed_distribution_label">Distribución de camas por habitación</string>
+    <string name="publish_bed_distribution_item_label">Habitación %d</string>
+    <string name="publish_bed_distribution_add_beds_link_text">Agregar camas</string>
+    <string name="publish_bed_distribution_edit_link_text">Editar</string>
+    <string name="publish_bed_distribution_empty_text">No se agregaron habitaciones</string>
+    <string name="publish_bed_distribution_dialog_title">¿Cuántas camas de cada tipo tiene esta habitación?</string>
+    <string name="publish_single_bed_label">Camas individuales</string>
+    <string name="publish_double_bed_label">Camas matrimoniales</string>
+    <string name="publish_cribs_bed_label">Cunas</string>
+
+    <string name="check_location_button_text">Comprobando dirección…</string>
+    <string name="invalid_location_text">Dirección inválida</string>
+
+    <string name="publish_element_basics_service_label">Elementos básicos</string>
+    <string name="publish_element_basics_service_description">Toallas, sábanas, jabón, papel higiénico y almohadas</string>
+    <string name="publish_wifi_service_label">Wifi</string>
+    <string name="publish_shampoo_service_label">Shampoo</string>
+    <string name="publish_tv_service_label">TV</string>
+    <string name="publish_cable_tv_service_label">Televisión por cable</string>
+    <string name="publish_heating_service_label">Calefacción</string>
+    <string name="publish_air_conditioning_service_label">Aire acondicionado</string>
+    <string name="publish_fans_service_label">Ventiladores</string>
+    <string name="publish_breakfast_service_label">Desayuno, café, té</string>
+    <string name="publish_fireplace_service_label">Chimenea</string>
+    <string name="publish_griddle_service_label">Plancha</string>
+    <string name="publish_hair_dryer_service_label">Secador de pelo</string>
+    <string name="publish_desk_service_label">Escritorio/zona para trabajar</string>
+    <string name="publish_pets_service_label">Mascotas en la casa</string>
+    <string name="publish_private_entrance_service_label">Entrada privada</string>
+    <string name="publish_fridge_service_label">Refrigerador</string>
+    <string name="publish_oven_service_label">Horno</string>
+    <string name="publish_microwave_service_label">Microondas</string>
+    <string name="publish_coffee_maker_service_label">Cafetera</string>
+    <string name="publish_kit_service_label">Botiquín</string>
+    <string name="publish_smoke_detector_service_label">Detector de humo</string>
+    <string name="publish_fire_extinguisher_service_label">Extintor de incendios</string>
+    <string name="publish_safety_instructions_sheet_service_label">Ficha de instrucciones de seguridad</string>
+    <string name="publish_look_bedroom_door_service_label">Cerradura en la puerta de los dormitorios</string>
+    <string name="publish_private_lounge_service_label">Salón privado</string>
+    <string name="publish_swimming_pool_service_label">Piscina</string>
+    <string name="publish_kitchen_service_label">Cocina</string>
+    <string name="publish_washing_machine_service_label">Lavadora</string>
+    <string name="publish_parking_service_label">Aparcamiento</string>
+    <string name="publish_lift_service_label">Ascensor</string>
+    <string name="publish_jacuzzi_service_label">Jacuzzi</string>
+    <string name="publish_gym_service_label">Gimnasio</string>
+    <string name="publish_courtyard_service_label">Patio</string>
+    <string name="publish_terrace_service_label">Terraza</string>
+
+    <string name="publish_upload_photo_label">Agrega fotos a tu publicación</string>
+    <string name="publish_upload_photo_description">Las fotos ayudan a que los huéspedes se imaginen cómo es alojarse en tu espacio.</string>
+    <string name="publish_image_label">Imagen %d</string>
+    <string name="publish_remove_image_button_label">Eliminar</string>
+    <string name="publish_images_empty_text">No se agregaron imágenes</string>
+    <string name="publish_add_photo_text">Agregar foto</string>
+    <string name="publish_exit_dialog">X</string>
+    <string name="publish_choose_photo_button">Seleccionar</string>
+    <string name="publish_upload_photo_button">Cargar</string>
+    <string name="publish_upload_progress_label">Subiendo %d%%</string>
+    <string name="publish_select_image_label">Seleccionar imagen</string>
+    <string name="publish_upload_image_success_label">Carga satisfactoria</string>
+
+    <string name="publish_range_date_picker_title">¿Cuándo puedes hospedar?</string>
+    <string name="publish_range_date_picker_description">Bloquea las fechas en las que no puedas recibir huéspedes.</string>
+    <string name="publish_range_date_picker_start_label">Fecha inicial</string>
+    <string name="publish_range_date_picker_end_label">Fecha final</string>
+
+    <string name="publish_ready_to_finish_title">¡Todo listo para publicar tu alojamiento!</string>
+    <string name="publish_ready_to_finish_subtitle">Puede revisar los campos anteriores para asegurarse que la información ingresada es correcta.</string>
+
+    <string name="publish_confirmed_description">¡Felicidades! Tu alojamiento ya se encuentra publicado.</string>
+
+    <!-- Location -->
+    <string name="publish_location_address_label">Dirección</string>
+    <string name="publish_location_country_label">País/Región</string>
+    <string name="publish_location_city_label">Ciudad</string>
+    <string name="publish_location_apartment_label">Piso/Departamento (opcional)</string>
+
+    <!-- Map Location Confirm -->
+    <string name="publish_location_detail_title_label">Detalles de la ubicación</string>
+    <string name="publish_address_detail_label">Dirección: %s</string>
+    <string name="publish_city_detail_label">Ciudad: %s</string>
+    <string name="publish_country_detail_label">País: %s</string>
+    <string name="publish_zip_code_detail_label">Código postal: %s</string>
+    <string name="publish_locality_detail_label">Localidad: %s</string>
+    <string name="publish_apartment_detail_label">Departamento: %s</string>
+
+    <!-- Stay name -->
+    <string name="publish_stay_title_label">Título</string>
+    <string name="publish_stay_description_label">Descripción</string>
+
+    <!-- Stay price -->
+    <string name="publish_price_label">Precio por noche (USD)</string>
+
+    <!-- Stay post -->
+    <string name="stay_post_text_button">Comprar</string>
+    <string name="stay_post_per_night_text">por noche</string>
+    <string name="stay_post_price_text">$%s</string>
+
+    <!-- Utils -->
+    <string name="string_empty" />
 </resources>

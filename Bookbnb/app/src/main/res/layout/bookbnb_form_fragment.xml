@@ -14,31 +14,14 @@
         android:paddingEnd="@dimen/bkbnb24dp"
         android:paddingBottom="@dimen/bkbnb64dp">
 
-        <TextView
-            android:id="@+id/bkbnb_form_title"
-            style="@style/bkbnbNormalTitle"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/header_container"
+            layout="@layout/bookbnb_form_header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/bkbnb32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constrainedWidth="true"
-            tools:text="Título" />
-
-        <TextView
-            android:id="@+id/bkbnb_form_subtitle"
-            style="@style/bkbnbSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/bkbnb8dp"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_title"
-            tools:text="Subtítulo" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/input_fields_container"
@@ -48,7 +31,7 @@
             android:layout_marginTop="@dimen/bkbnb40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bkbnb_form_subtitle" />
+            app:layout_constraintTop_toBottomOf="@+id/header_container" />
 
         <RelativeLayout
             android:id="@+id/form_button_container"

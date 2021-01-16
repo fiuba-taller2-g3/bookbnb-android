@@ -1,51 +1,32 @@
 package com.fiuba.bookbnb.ui.fragments.dialogs
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.os.Bundle
-import android.view.View
 import android.widget.DatePicker
-import androidx.fragment.app.DialogFragment
+import android.widget.LinearLayout
 import androidx.navigation.fragment.navArgs
-import com.fiuba.bookbnb.R
-import kotlinx.android.synthetic.main.bookbnb_date_picker_dialog_fragment.view.*
 import java.io.Serializable
 import java.util.*
 
-class DatePickerDialogFragment : DialogFragment(), DatePicker.OnDateChangedListener {
+class DatePickerDialogFragment : AbstractDialogFragment(), DatePicker.OnDateChangedListener {
 
     private val navArguments by navArgs<DatePickerDialogFragmentArgs>()
+    private val titleDialogRes by lazy { navArguments.titleDialogRes }
     private val selectedDate by lazy { navArguments.selectedDate }
     private val onDateSetListener by lazy { navArguments.onDateSetListener }
+    private val minDate by lazy { navArguments.minDate }
+    private val maxDate by lazy { navArguments.maxDate }
 
+    private val datePickerItem by lazy { DatePickerItem(requireContext(), selectedDate, minDate, maxDate, this) }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return AlertDialog.Builder(context).run {
-            setView(getBodyView())
-            create()
-        }
+    override fun getDialogTitleRes(): Int = titleDialogRes
+
+    override fun getItemList(): List<LinearLayout> {
+        return listOf(datePickerItem)
     }
 
-    private fun getBodyView(): View? {
-        val datePickerView = View.inflate(context, R.layout.bookbnb_date_picker_dialog_fragment, null)
-
-        with(datePickerView) {
-            date_picker.init(selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH), selectedDate.get(Calendar.DAY_OF_MONTH), this@DatePickerDialogFragment)
-            date_picker.maxDate = Date().time
-            date_picker.descendantFocusability = DatePicker.FOCUS_BLOCK_DESCENDANTS
-
-            cancel_button.setOnClickListener {
-                dismiss()
-            }
-
-            accept_button.setOnClickListener {
-                val date = getDate(date_picker.year, date_picker.month, date_picker.dayOfMonth)
-                onDateSetListener.onDateSet(date, targetRequestCode)
-                dismiss()
-            }
-        }
-
-        return datePickerView
+    override fun setAcceptFunction() {
+        val date = with(datePickerItem) { getDate(getYear(), getMonth(), getDay()) }
+        onDateSetListener.onDateSet(date, targetRequestCode)
+        dismiss()
     }
 
     private fun getDate(year: Int, monthOfYear: Int, dayOfMonth: Int): Calendar {

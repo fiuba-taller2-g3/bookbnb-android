@@ -10,11 +10,11 @@ import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Response
 
-class RegisterViewModel : NetworkViewModel(), NetworkViewModel.CallResponse<MsgResponse> {
+class RegisterViewModel : NetworkViewModel<MsgResponse>() {
 
-    fun register(call: Call<MsgResponse>) {
+    override fun execute(call: Call<MsgResponse>) {
         Log.i(TAG, "Registering user...")
-        executeCallback(call, this)
+        executeCallback(call)
     }
 
     override fun onSuccessful(response: Response<MsgResponse>) {

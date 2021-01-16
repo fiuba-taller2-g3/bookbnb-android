@@ -19,6 +19,5 @@ abstract class AbstractInputFieldItem @JvmOverloads constructor(context: Context
     abstract fun enableInput()
     abstract fun disableInput()
     abstract fun isValidated() : Boolean
-    abstract fun getContentField() : String
 
 }

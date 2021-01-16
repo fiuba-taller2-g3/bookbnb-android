@@ -8,6 +8,8 @@ import androidx.core.view.isVisible
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.facebook.stetho.Stetho
+import com.fiuba.bookbnb.forms.FormViewModel
+import com.fiuba.bookbnb.networking.NetworkManagerViewModel
 import com.fiuba.bookbnb.ui.ShareViewModel
 import com.fiuba.bookbnb.ui.fragments.footerbar.*
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
@@ -20,6 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.app_navigation_container) }
     private val sharedViewModel by viewModels<ShareViewModel>()
+    private val formViewModel by viewModels<FormViewModel>()
+    private val networkManagerViewModel by viewModels<NetworkManagerViewModel>()
     private val footerBarButtons by lazy { EnumMap<FooterBarButtons, FooterBarMenuItem>(FooterBarButtons::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,16 +85,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return if (sharedViewModel.fragmentHaveNetwork()) {
-            sharedViewModel.closeFragment()
-            true
-        } else navController.navigateUp()
+        formViewModel.checkClearInputs()
+        networkManagerViewModel.cancelCurrentRunningCall()
+        return navController.navigateUp()
     }
 
     override fun onBackPressed() {
-        if (sharedViewModel.fragmentHaveNetwork()) {
-            sharedViewModel.closeFragment()
-        } else super.onBackPressed()
+        formViewModel.checkClearInputs()
+        networkManagerViewModel.cancelCurrentRunningCall()
+        super.onBackPressed()
     }
 
     private fun initAppBar() {

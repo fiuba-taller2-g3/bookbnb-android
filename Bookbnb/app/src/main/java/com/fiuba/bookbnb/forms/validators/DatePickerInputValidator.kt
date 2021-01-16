@@ -5,13 +5,15 @@ import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.utils.DateUtils
 import java.util.*
 
-class DatePickerInputValidator(context: Context, textEmptyValidation: String) : Validator(context, textEmptyValidation) {
+class DatePickerInputValidator(context: Context) : InputValidator(context) {
 
     override fun checkValidation(content: String): Boolean = with(content) { isNotEmpty() && isOlder(content) }
 
+    override fun getMsgEmptyRes(): Int = R.string.date_picker_empty_msg_validation
+
     override fun updateTextValidation(content: String) {
         super.updateTextValidation(content)
-        if (content.isNotEmpty() && !isOlder(content)) msgValidatorMutable.value = context.resources.getString(R.string.birthdate_min_age_validation)
+        if (content.isNotEmpty() && !isOlder(content)) msgValidatorMutable.value = context.getString(R.string.birth_date_min_age_validation)
     }
 
     private fun isOlder(content: String): Boolean {

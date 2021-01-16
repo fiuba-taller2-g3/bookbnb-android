@@ -26,4 +26,12 @@
 
     <!-- Button -->
     <dimen name="buttonRadius">4dp</dimen>
+
+    <!-- Google Maps -->
+    <dimen name="gMapHeight">400dp</dimen>
+
+    <!-- Publish Photo -->
+    <dimen name="imgWidth">96dp</dimen>
+    <dimen name="imgHeight">58dp</dimen>
+    <dimen name="imgPreviewWidth">240dp</dimen>
 </resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/bkbnb14dp"
+        android:paddingStart="@dimen/bkbnb18dp"
+        android:paddingEnd="@dimen/bkbnb18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/bkbnbContextMenuTitleDialog"
+            android:text="@string/publish_add_photo_text"/>
+
+        <TextView
+            android:id="@+id/close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            style="@style/bkbnbXButton"
+            android:text="@string/publish_exit_dialog"/>
+
+    </FrameLayout>
+
+    <View style="@style/bkbnbDivider" />
+
+    <ImageView
+        android:id="@+id/img_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/imgPreviewWidth"
+        android:visibility="gone"
+        android:layout_margin="@dimen/bkbnb24dp"/>
+
+    <LinearLayout
+        android:id="@+id/progress_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/bkbnb28dp"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="@dimen/bkbnb24dp"
+            android:layout_height="@dimen/bkbnb24dp"
+            style="?android:attr/progressBarStyleSmall"
+            android:indeterminateTint="@color/colorRed"
+            android:indeterminateTintMode="src_in"
+            android:indeterminate="true" />
+
+        <TextView
+            android:id="@+id/progress_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bkbnb10dp"
+            style="@style/bkbnbSubtitle"
+            tools:text="Updating..."/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/bkbnb24dp">
+
+        <Button
+            android:id="@+id/btn_choose"
+            style="@style/bkbnbButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_ripple"
+            android:text="@string/publish_choose_photo_button" />
+
+        <Button
+            android:id="@+id/btn_upload"
+            style="@style/bkbnbButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_ripple"
+            android:layout_marginStart="@dimen/bkbnb16dp"
+            android:text="@string/publish_upload_photo_button" />
+
+    </LinearLayout>
+
+</LinearLayout>

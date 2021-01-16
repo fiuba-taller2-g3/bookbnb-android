@@ -11,21 +11,25 @@ import retrofit2.Call
 import retrofit2.Response
 import java.util.*
 
-class LoadingProfileViewModel : NetworkViewModel(), NetworkViewModel.CallResponse<UserData> {
+class LoadingProfileViewModel : NetworkViewModel<UserData>() {
 
     private var userInfoDecoded : UserInfoDecoded? = null
 
-    fun loadUserData(call: Call<UserData>, userId: String, token: String, exp: Date) {
-        userInfoDecoded = UserInfoDecoded(userId, token, exp)
+    fun loadUserData(call: Call<UserData>, userId: String, token: String, addressWallet: String, exp: Date) {
+        userInfoDecoded = UserInfoDecoded(userId, token, addressWallet, exp)
+        execute(call)
+    }
+
+    override fun execute(call: Call<UserData>) {
         Log.i(TAG, "Getting logged user information...")
-        executeCallback(call, this)
+        executeCallback(call)
     }
 
     override fun onSuccessful(response: Response<UserData>) {
         response.body()?.let {
             userInfoDecoded?.let { userInfo ->
                 Log.i(TAG, "Getting logged successfully with id: ${userInfo.id}")
-                UserManager.setUserInfo(UserInfo(userInfo.token, userInfo.id, userInfo.exp, it))
+                UserManager.setUserInfo(UserInfo(userInfo.token, userInfo.id, userInfo.addressWallet, userInfo.exp, it))
                 NavigationManager.moveForwardWithPopUpTo(LoadingProfileFragmentDirections.actionLoadingFragmentToProfileMenuFragment(), R.id.homeFragment)
             }
         }
@@ -39,6 +43,6 @@ class LoadingProfileViewModel : NetworkViewModel(), NetworkViewModel.CallRespons
         const val TAG = "TOKEN"
     }
 
-    data class UserInfoDecoded(val id: String, val token: String, val exp: Date)
+    data class UserInfoDecoded(val id: String, val token: String, val addressWallet: String, val exp: Date)
 
 }

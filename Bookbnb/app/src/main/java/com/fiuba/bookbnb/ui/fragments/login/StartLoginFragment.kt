@@ -36,17 +36,18 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
         facebook_login_button.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
 
             override fun onSuccess(result: LoginResult) {
-                val profileTracker = object : ProfileTracker() {
-                    override fun onCurrentProfileChanged(oldProfile: Profile?, currentProfile: Profile?) {
-                        this.stopTracking()
-                        Profile.setCurrentProfile(currentProfile)
-                        currentProfile?.let {
-                            UserManager.loginWithFacebook()
-                            NavigationManager.moveForwardWithPopUpTo(StartLoginFragmentDirections.actionStartLoginFragmentToProfileMenuFragment(), R.id.homeFragment)
+                Profile.getCurrentProfile()?.let {
+                    startUserProfile()
+                } ?: run {
+                    val profileTracker = object : ProfileTracker() {
+                        override fun onCurrentProfileChanged(oldProfile: Profile?, currentProfile: Profile?) {
+                            this.stopTracking()
+                            Profile.setCurrentProfile(currentProfile)
+                            currentProfile?.let { startUserProfile() }
                         }
                     }
+                    profileTracker.startTracking()
                 }
-                profileTracker.startTracking()
             }
 
             override fun onCancel() {
@@ -59,6 +60,11 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
                 }.show()
             }
         })
+    }
+
+    private fun startUserProfile() {
+        UserManager.loginWithFacebook()
+        NavigationManager.moveForwardWithPopUpTo(StartLoginFragmentDirections.actionStartLoginFragmentToStartProfileFragment(), R.id.homeFragment)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

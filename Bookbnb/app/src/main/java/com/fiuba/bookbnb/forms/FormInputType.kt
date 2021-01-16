@@ -1,0 +1,32 @@
+package com.fiuba.bookbnb.forms
+
+enum class FormInputType {
+    NAME,
+    SURNAME,
+    EMAIL,
+    PASSWORD,
+    PASSWORD_LOGIN,
+    PHONE_NUMBER,
+    BIRTH_DATE,
+    BIRTH_DATE_EDIT,
+    GENDER,
+    AVAILABILITY_TYPE,
+    STAY_TYPE,
+    GUEST_QUANTITY,
+    BEDROOM_QUANTITY,
+    BED_QUANTITY,
+    BATHROOM_QUANTITY,
+    SINGLE_BEDS,
+    DOUBLE_BEDS,
+    CRIBS,
+    ADDRESS,
+    CITY,
+    COUNTRY,
+    APARTMENT,
+    LOCATION,
+    STAY_TITLE,
+    STAY_DESCRIPTION,
+    START_DATE,
+    END_DATE,
+    PRICE
+}

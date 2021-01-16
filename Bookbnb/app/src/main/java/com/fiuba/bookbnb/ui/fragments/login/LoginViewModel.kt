@@ -8,11 +8,11 @@ import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Response
 
-class LoginViewModel : NetworkViewModel(), NetworkViewModel.CallResponse<LoginResponse> {
+class LoginViewModel : NetworkViewModel<LoginResponse>() {
 
-    fun login(call: Call<LoginResponse>) {
+    override fun execute(call: Call<LoginResponse>) {
         Log.i(TAG, "Login user...")
-        executeCallback(call, this)
+        executeCallback(call)
     }
 
     override fun onSuccessful(response: Response<LoginResponse>) {

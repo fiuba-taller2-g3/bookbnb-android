@@ -8,8 +8,9 @@ import org.apache.commons.lang3.StringUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.Serializable
 
-abstract class NetworkViewModel : ViewModel() {
+abstract class NetworkViewModel<S : Serializable> : ViewModel() {
 
     protected var msgResponse = StringUtils.EMPTY
     protected val loadingStatusMutable = MutableLiveData<LoadingStatus>()
@@ -22,21 +23,21 @@ abstract class NetworkViewModel : ViewModel() {
 
     fun getMessageResponse() = msgResponse
 
-    protected fun <T> executeCallback(call: Call<T>, callResponse: CallResponse<T>) {
+    protected fun executeCallback(call: Call<S>) {
         loadingStatusMutable.value = LoadingStatus.LOADING
-        call.enqueue(object : Callback<T> {
+        call.enqueue(object : Callback<S> {
 
-            override fun onResponse(call: Call<T>, response: Response<T>) {
+            override fun onResponse(call: Call<S>, response: Response<S>) {
                 if (response.isSuccessful) {
-                    callResponse.onSuccessful(response)
+                    onSuccessful(response)
                     loadingStatusMutable.value = LoadingStatus.SUCCESS
                 } else {
-                    callResponse.onFailure(response)
+                    onFailure(response)
                     loadingStatusMutable.value = LoadingStatus.FAILURE
                 }
             }
 
-            override fun onFailure(call: Call<T>, t: Throwable) {
+            override fun onFailure(call: Call<S>, t: Throwable) {
                 if (!call.isCanceled) {
                     msgResponse = t.message.toString()
                     loadingStatusMutable.value = LoadingStatus.ERROR
@@ -45,9 +46,8 @@ abstract class NetworkViewModel : ViewModel() {
         })
     }
 
-    interface CallResponse<T> {
-        fun onSuccessful(response: Response<T>)
-        fun onFailure(response: Response<T>)
-    }
+    protected abstract fun onSuccessful(response: Response<S>)
+    protected abstract fun onFailure(response: Response<S>)
+    abstract fun execute(call: Call<S>)
 
 }

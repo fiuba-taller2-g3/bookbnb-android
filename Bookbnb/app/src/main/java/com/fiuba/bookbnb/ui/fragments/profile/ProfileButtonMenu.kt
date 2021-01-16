@@ -16,6 +16,7 @@ abstract class ProfileButtonMenu @JvmOverloads constructor(context: Context, lab
         layoutParams = LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         profile_option_text.text = context.getString(labelRes)
         profile_option_img.setImageResource(img)
+        profile_option_container.setOnClickListener { loadAction() }
     }
 
     protected abstract fun loadAction()

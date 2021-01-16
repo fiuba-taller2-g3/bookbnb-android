@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/form_button_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/bkbnb32dp">
+
+    <include
+        layout="@layout/bookbnb_button"
+        android:elevation="1dp" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="@dimen/bkbnb24dp"
+        android:layout_height="@dimen/bkbnb24dp"
+        style="?android:attr/progressBarStyleSmall"
+        android:indeterminateTint="@color/colorWhite"
+        android:indeterminateTintMode="src_in"
+        android:indeterminate="true"
+        android:elevation="2dp"
+        android:visibility="gone"
+        android:layout_alignBottom="@+id/button"
+        android:layout_alignTop="@+id/button"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

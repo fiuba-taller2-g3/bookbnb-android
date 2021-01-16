@@ -66,6 +66,7 @@
     <style name="bkbnbTextTitleDialog">
         <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
     </style>
 
     <style name="bkbnbTextButtonDialog">
@@ -79,6 +80,14 @@
 
     <style name="bkbnbAcceptTextButtonDialog" parent="bkbnbTextButtonDialog">
         <item name="android:textColor">@color/colorRed</item>
+    </style>
+
+    <style name="bkbnbStayPostTitle" parent="bkbnbTitle">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="bkbnbStayPostPrice" parent="bkbnbTitle">
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="bkbnbLargeTitle" parent="bkbnbTitle">
@@ -106,6 +115,31 @@
         <item name="android:paddingTop">@dimen/bkbnb12dp</item>
         <item name="android:paddingBottom">@dimen/bkbnb14dp</item>
         <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="bkbnbDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/bkbnb1dp</item>
+        <item name="android:background">@color/colorBackgroundInputFieldDisabled</item>
+        <item name="android:layout_marginTop">@dimen/bkbnb14dp</item>
+    </style>
+
+    <style name="bkbnbContextMenuTitleDialog" parent="bkbnbTitle">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="bkbnbContextMenuTitleItem" parent="bkbnbTitle">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="bkbnbAddPhotoLabel" parent="bkbnbTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorAddPhotoText</item>
+    </style>
+
+    <style name="bkbnbXButton" parent="bkbnbSubtitle">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/colorDescription</item>
     </style>
 
 </resources>

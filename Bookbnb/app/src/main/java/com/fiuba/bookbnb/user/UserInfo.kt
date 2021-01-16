@@ -3,11 +3,13 @@ package com.fiuba.bookbnb.user
 import com.fiuba.bookbnb.domain.user.UserData
 import java.util.*
 
-class UserInfo(private val token: String, private val id: String, private val exp: Date, private var userData: UserData) {
+class UserInfo(private val token: String, private val id: String, private val addressWallet: String,
+               private val exp: Date, private var userData: UserData) {
 
     fun getUserId() = id
     fun getExpirationDate() = exp
     fun getToken() = token
+    fun getAddressWallet() = addressWallet
     fun getUserData() = userData
 
     fun updateUserData(userDataUpdated: UserData) {

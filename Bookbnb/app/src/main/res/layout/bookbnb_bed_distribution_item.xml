@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/button_profile_menu_ripple"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb22dp"
+        android:layout_marginStart="@dimen/bkbnb12dp"
+        android:layout_marginEnd="@dimen/bkbnb12dp">
+
+        <TextView
+            android:id="@+id/bed_distribution_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/bkbnbOptionProfileMenu"
+            tools:text="Habitación 1"/>
+
+        <TextView
+            android:id="@+id/link_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textColor="@color/colorBedDistributionEditText"
+            style="@style/bkbnbOptionProfileMenu"
+            tools:text="Editar"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/bed_distribution_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb8dp"
+        android:layout_marginStart="@dimen/bkbnb12dp"
+        android:layout_marginEnd="@dimen/bkbnb12dp"
+        android:visibility="gone"
+        style="@style/bkbnbDescriptionTextInputField"
+        tools:text="Camas individuales: 1\nCamas matrimoniales: 1\nSofá cama: 1\nCuna: 1"/>
+
+    <View style="@style/bkbnbDivider"
+        android:layout_marginTop="@dimen/bkbnb22dp"/>
+
+</LinearLayout>

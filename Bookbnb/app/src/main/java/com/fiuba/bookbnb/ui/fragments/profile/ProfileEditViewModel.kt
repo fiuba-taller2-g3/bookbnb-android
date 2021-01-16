@@ -8,11 +8,11 @@ import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import retrofit2.Call
 import retrofit2.Response
 
-class ProfileEditViewModel : NetworkViewModel(), NetworkViewModel.CallResponse<MsgResponse> {
+class ProfileEditViewModel : NetworkViewModel<MsgResponse>(){
 
-    fun update(call: Call<MsgResponse>) {
+    override fun execute(call: Call<MsgResponse>) {
         Log.i(TAG, "Updating profile...")
-        executeCallback(call, this)
+        executeCallback(call)
     }
 
     override fun onSuccessful(response: Response<MsgResponse>) {

@@ -19,7 +19,6 @@
             style="@style/bkbnbOptionProfileMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_marginEnd="@dimen/bkbnb14dp"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="@+id/profile_option_img"
@@ -34,16 +33,12 @@
             style="@style/bkbnbSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_accountinfo" />
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bkbnb2dp"
-            android:background="@color/colorBackgroundInputFieldDisabled"
-            android:layout_marginTop="@dimen/bkbnb14dp"
+            style="@style/bkbnbDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -29,7 +29,7 @@ object NavigationManager {
         moveGlobalToWithPopUpTo(action, null)
     }
 
-    fun moveGlobalToWithPopUpTo(@IdRes action: Int, popUpTo: Int?, popUpToInclusive: Boolean = false) {
+    private fun moveGlobalToWithPopUpTo(@IdRes action: Int, popUpTo: Int?, popUpToInclusive: Boolean = false) {
         mutableNavigationLiveData.value = NavigationUpdate.GlobalAction(action, popUpTo, popUpToInclusive)
     }
 
