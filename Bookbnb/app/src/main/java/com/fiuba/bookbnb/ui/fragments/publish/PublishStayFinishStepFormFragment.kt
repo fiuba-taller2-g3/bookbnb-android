@@ -13,7 +13,7 @@ import retrofit2.Call
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PublishStayFinishStepFormFragment : FormWithNetworkStatusFragment<PublishViewModel, PublishResponse>() {
+class PublishStayFinishStepFormFragment : FormWithNetworkStatusFragment<PublishViewModel, PublishData>() {
 
     override fun getTitleTextRes(): Int = R.string.publish_ready_to_finish_title
     override fun getSubtitleTextRes(): Int = R.string.publish_ready_to_finish_subtitle
@@ -21,7 +21,9 @@ class PublishStayFinishStepFormFragment : FormWithNetworkStatusFragment<PublishV
 
     override fun getInputList(): List<FormInputData> = listOf()
 
-    private fun getRequest(): PublishRequest {
+    override fun shouldClearInputsWhenBackPressed(): Boolean = false
+
+    private fun getRequest(): PublishData {
         val imagesUrl = ArrayList<String>().also { imageList ->
             formViewModel.photosUrls.forEach { imageList.add(it.imgUrl) }
         }
@@ -33,7 +35,9 @@ class PublishStayFinishStepFormFragment : FormWithNetworkStatusFragment<PublishV
         }
 
         return with(formViewModel) {
-            PublishRequest(
+            PublishData(
+                null,
+                false,
                 UserManager.getUserInfo().getUserId(),
                 getContentFromItem(STAY_TITLE),
                 getContentFromItem(STAY_DESCRIPTION),
@@ -92,6 +96,6 @@ class PublishStayFinishStepFormFragment : FormWithNetworkStatusFragment<PublishV
     }
 
     override fun getViewModelClass(): Class<PublishViewModel> = PublishViewModel::class.java
-    override fun call(): Call<PublishResponse> = NetworkModule.buildRetrofitClient().publish(getRequest(), UserManager.getUserInfo().getToken())
+    override fun call(): Call<PublishData> = NetworkModule.buildRetrofitClient().publish(getRequest(), UserManager.getUserInfo().getToken())
 
 }
