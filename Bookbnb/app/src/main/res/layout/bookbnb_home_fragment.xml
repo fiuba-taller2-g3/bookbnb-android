@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="@dimen/bkbnb18dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/bkbnb24dp"
+    android:background="@drawable/scr_home"
     android:orientation="vertical">
 
-    <!-- TODO: Este contenido está exclusivamente para la entrega del checkpoint 3,
-     después hay que eliminarlo y cambiarlo por la búsqueda -->
-    <include layout="@layout/bookbnb_button" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/publish_list"
-        android:layout_marginTop="@dimen/bkbnb18dp"
+    <EditText
+        android:id="@+id/edit_text"
+        style="@style/bkbnbTextInputField"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="@string/home_search_hint"
+        android:saveEnabled="false" />
+
+    <TextView
+        android:id="@+id/bkbnb_form_title"
+        style="@style/bkbnbHomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb40dp"
+        android:text="@string/home_search_title" />
+
+    <TextView
+        android:id="@+id/bkbnb_form_subtitle"
+        style="@style/bkbnbHomeSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb8dp"
+        android:text="@string/home_search_subtitle" />
 
 </LinearLayout>

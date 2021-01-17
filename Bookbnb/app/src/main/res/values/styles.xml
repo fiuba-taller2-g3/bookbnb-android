@@ -142,4 +142,12 @@
         <item name="android:textColor">@color/colorDescription</item>
     </style>
 
+    <style name="bkbnbHomeTitle" parent="bkbnbNormalTitle">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="bkbnbHomeSubtitle" parent="bkbnbSubtitle">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
 </resources>

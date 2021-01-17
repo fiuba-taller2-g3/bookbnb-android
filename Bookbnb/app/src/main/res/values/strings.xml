@@ -232,6 +232,11 @@
     <string name="stay_post_per_night_text">por noche</string>
     <string name="stay_post_price_text">$%s</string>
 
+    <!-- Home -->
+    <string name="home_search_hint">¿A dónde vas?</string>
+    <string name="home_search_title">Escápate</string>
+    <string name="home_search_subtitle">Encuentra los mejores alojamientos</string>
+
     <!-- Utils -->
     <string name="string_empty" />
 </resources>
