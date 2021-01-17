@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/bkbnb24dp"
@@ -8,12 +9,13 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/search_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
 
         <EditText
-            android:id="@+id/edit_text"
+            android:id="@+id/search_field"
             style="@style/bkbnbTextInputField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bkbnb40dp"
-        android:text="@string/home_search_title" />
+        tools:text="@string/home_search_title" />
 
     <TextView
         android:id="@+id/bkbnb_form_subtitle"
@@ -46,6 +48,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bkbnb8dp"
-        android:text="@string/home_search_subtitle" />
+        tools:text="@string/home_search_subtitle" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/bkbnbHomeLoginButton"
+        android:layout_marginTop="@dimen/bkbnb28dp"
+        android:background="@drawable/button_home_login_ripple"
+        android:paddingStart="@dimen/bkbnb16dp"
+        android:paddingEnd="@dimen/bkbnb16dp"
+        android:text="@string/login_title"/>
 
 </LinearLayout>

@@ -235,7 +235,9 @@
     <!-- Home -->
     <string name="home_search_hint">¿A dónde vas?</string>
     <string name="home_search_title">Escápate</string>
+    <string name="home_search_title_not_logged">Bienvenido a Bookbnb</string>
     <string name="home_search_subtitle">Encuentra los mejores alojamientos</string>
+    <string name="home_search_subtitle_not_logged">Inicia sesión para poder buscar alojamientos</string>
 
     <!-- Utils -->
     <string name="string_empty" />
