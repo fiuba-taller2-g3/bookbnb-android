@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.fiuba.bookbnb.repository.LoadingStatus
 
-class HomeViewModel : ViewModel() {
+class SearchViewModel : ViewModel() {
 
     private val mutableStatusLiveData = MutableLiveData<LoadingStatus>()
-    private val statusLiveData : LiveData<LoadingStatus>
+    val statusLiveData : LiveData<LoadingStatus>
         get() = mutableStatusLiveData
 
     fun search() {

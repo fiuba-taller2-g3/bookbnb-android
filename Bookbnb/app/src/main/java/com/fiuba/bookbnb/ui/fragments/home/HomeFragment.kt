@@ -9,6 +9,7 @@ import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarButtons
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.user.UserManager
 import kotlinx.android.synthetic.main.bookbnb_home_fragment.*
+import kotlinx.android.synthetic.main.bookbnb_search_item.*
 
 class HomeFragment : BaseFragment(R.layout.bookbnb_home_fragment) {
 
@@ -22,6 +23,11 @@ class HomeFragment : BaseFragment(R.layout.bookbnb_home_fragment) {
         login_button.setOnClickListener {
             NavigationManager.moveGlobalTo(R.id.startProfile)
         }
+
+        search_button.setOnClickListener {
+            NavigationManager.moveForward(HomeFragmentDirections.actionHomeFragmentToSearchFragment())
+        }
+
     }
 
     private fun getTitle() : Int {
