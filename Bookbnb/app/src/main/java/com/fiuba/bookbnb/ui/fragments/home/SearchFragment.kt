@@ -1,42 +1,47 @@
 package com.fiuba.bookbnb.ui.fragments.home
 
-import android.os.Bundle
-import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.repository.LoadingStatus
-import com.fiuba.bookbnb.ui.fragments.BaseFragment
-import kotlinx.android.synthetic.main.bookbnb_search_item.*
+import com.fiuba.bookbnb.domain.publish.PublishData
+import com.fiuba.bookbnb.forms.FormInputData
+import com.fiuba.bookbnb.forms.FormInputType
+import com.fiuba.bookbnb.networking.NetworkModule
+import com.fiuba.bookbnb.ui.fragments.form.FormWithNetworkStatusFragment
+import com.fiuba.bookbnb.user.UserManager
+import retrofit2.Call
 
-class SearchFragment : BaseFragment(R.layout.bookbnb_search_fragment) {
-
-    private val searchViewModel : SearchViewModel by activityViewModels()
+class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<PublishData>>() {
 
     override val isNetworkRequired: Boolean
         get() = true
 
-    override val shouldShowToolbar: Boolean
-        get() = false
+    override fun getTitleTextRes(): Int = R.string.search_title
+    override fun getSubtitleTextRes(): Int = R.string.search_subtitle
+    override fun getButtonTextRes(): Int = R.string.search_button
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        checkStatus()
+    override fun getInputList(): List<FormInputData> {
+        return listOf(
+            FormInputData(FormInputType.STAY_TYPE_SEARCH),
+            FormInputData(FormInputType.CITY),
+            FormInputData(FormInputType.START_DATE),
+            FormInputData(FormInputType.END_DATE),
+            FormInputData(FormInputType.MIN_PRICE),
+            FormInputData(FormInputType.MAX_PRICE)
+        )
     }
 
-    private fun checkStatus() {
-        searchViewModel.statusLiveData.observe(viewLifecycleOwner) { status ->
-            when(status) {
-                LoadingStatus.LOADING -> setSearchStatus(true)
-                else -> setSearchStatus(false)
-            }
-        }
+    private fun getPrice(formInputType: FormInputType) : String? {
+        val price = formViewModel.getContentFromItem(formInputType)
+        return if (price.isNotEmpty()) price else null
     }
 
-    private fun setSearchStatus(isLoading: Boolean) {
-        val editTextColor = if (isLoading) R.color.colorTextInputFieldDisabled else R.color.colorWhite
-        search_field.setTextColor(ContextCompat.getColor(requireContext(), editTextColor))
-        search_button.isEnabled = !isLoading
-    }
+    override fun getViewModelClass(): Class<SearchViewModel> = SearchViewModel::class.java
+    override fun call(): Call<List<PublishData>> = NetworkModule.buildRetrofitClient().getPosts(
+        formViewModel.getContentFromItem(FormInputType.STAY_TYPE_SEARCH),
+        getPrice(FormInputType.MIN_PRICE),
+        getPrice(FormInputType.MAX_PRICE),
+        formViewModel.getContentFromItem(FormInputType.START_DATE),
+        formViewModel.getContentFromItem(FormInputType.END_DATE),
+        UserManager.getUserInfo().getUserId(),
+        UserManager.getUserInfo().getToken())
 
 }

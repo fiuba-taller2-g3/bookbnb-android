@@ -7,8 +7,6 @@
     android:background="@drawable/scr_home"
     android:orientation="vertical">
 
-    <include layout="@layout/bookbnb_search_item" />
-
     <TextView
         android:id="@+id/bkbnb_form_title"
         style="@style/bkbnbHomeTitle"
@@ -26,7 +24,7 @@
         tools:text="@string/home_search_subtitle" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/bkbnbHomeLoginButton"
@@ -34,6 +32,6 @@
         android:background="@drawable/button_home_login_ripple"
         android:paddingStart="@dimen/bkbnb16dp"
         android:paddingEnd="@dimen/bkbnb16dp"
-        android:text="@string/login_title"/>
+        tools:text="@string/login_title"/>
 
 </LinearLayout>

@@ -27,9 +27,9 @@ interface BookbnbAPIService {
     fun updateUser(@Path(USER_ID) id: String, @Header(API_TOKEN) apiToken: String, @Body userData: UserData) : Call<MsgResponse>
 
     @GET("posts")
-    fun getPosts(@Query(TYPE) type: String, @Query(MIN_PRICE) minPrice: String,
-                 @Query(MAX_PRICE) maxPrice: String, @Query(BEGIN_DATE) beginPrice: String,
-                 @Query(END_DATE) endPrice: String, @Query(USER_ID_PARAM) userId: String,
+    fun getPosts(@Query(TYPE) type: String?, @Query(MIN_PRICE) minPrice: String?,
+                 @Query(MAX_PRICE) maxPrice: String?, @Query(BEGIN_DATE) beginDate: String?,
+                 @Query(END_DATE) endDate: String?, @Query(USER_ID_PARAM) userId: String?,
                  @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
 
     @POST("bookings")

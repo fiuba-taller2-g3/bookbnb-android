@@ -12,6 +12,7 @@ enum class FormInputType {
     GENDER,
     AVAILABILITY_TYPE,
     STAY_TYPE,
+    STAY_TYPE_SEARCH,
     GUEST_QUANTITY,
     BEDROOM_QUANTITY,
     BED_QUANTITY,
@@ -28,5 +29,7 @@ enum class FormInputType {
     STAY_DESCRIPTION,
     START_DATE,
     END_DATE,
+    MIN_PRICE,
+    MAX_PRICE,
     PRICE
 }

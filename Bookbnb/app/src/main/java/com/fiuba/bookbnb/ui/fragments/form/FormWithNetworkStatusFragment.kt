@@ -13,9 +13,8 @@ import kotlinx.android.synthetic.main.bookbnb_button.*
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 import org.apache.commons.lang3.StringUtils
 import retrofit2.Call
-import java.io.Serializable
 
-abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Serializable> : FormFragment() {
+abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Any> : FormFragment() {
 
     private lateinit var networkViewModel : T
 

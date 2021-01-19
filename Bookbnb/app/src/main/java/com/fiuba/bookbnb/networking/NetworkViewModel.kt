@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.Serializable
 
-abstract class NetworkViewModel<S : Serializable> : ViewModel() {
+abstract class NetworkViewModel<S : Any> : ViewModel() {
 
     protected var msgResponse = StringUtils.EMPTY
     protected val loadingStatusMutable = MutableLiveData<LoadingStatus>()

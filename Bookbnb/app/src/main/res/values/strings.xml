@@ -31,7 +31,8 @@
     <string name="prefix_empty_msg_validation">Ingrese %s</string>
     <string name="email_empty_msg_validation">un correo electrónico</string>
     <string name="pass_empty_msg_validation">una contraseña</string>
-    <string name="date_picker_empty_msg_validation">una fecha de nacimiento</string>
+    <string name="birth_date_picker_empty_msg_validation">una fecha de nacimiento</string>
+    <string name="date_picker_empty_msg_validation">una fecha</string>
     <string name="name_empty_msg_validation">un nombre</string>
     <string name="surname_empty_msg_validation">un apellido</string>
     <string name="address_empty_msg_validation">una dirección</string>
@@ -238,6 +239,15 @@
     <string name="home_search_title_not_logged">Bienvenido a Bookbnb</string>
     <string name="home_search_subtitle">Encuentra los mejores alojamientos</string>
     <string name="home_search_subtitle_not_logged">Inicia sesión para poder buscar alojamientos</string>
+    <string name="home_search_button">Buscar alojamientos</string>
+
+    <!-- Search -->
+    <string name="search_title">Buscar alojamientos</string>
+    <string name="search_subtitle">Completa los campos para encontrar los alojamientos de acuerdo a tus necesidades.</string>
+    <string name="search_button">Buscar</string>
+    <string name="search_stay_type_label">Tipo de alojamiento</string>
+    <string name="search_min_price_label">Precio mínimo (USD)</string>
+    <string name="search_max_price_label">Precio máximo (USD)</string>
 
     <!-- Utils -->
     <string name="string_empty" />
