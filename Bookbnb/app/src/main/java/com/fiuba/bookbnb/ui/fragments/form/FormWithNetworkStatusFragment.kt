@@ -53,7 +53,7 @@ abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Any> : 
         networkViewModel.hideLoading()
     }
 
-    private fun showLoading(loadingEnabled: Boolean) {
+    protected fun showLoading(loadingEnabled: Boolean) {
         setButtonLoading(loadingEnabled)
         additional_text.isEnabled = !loadingEnabled
         input_fields_container.forEach { inputFieldModuleItem ->

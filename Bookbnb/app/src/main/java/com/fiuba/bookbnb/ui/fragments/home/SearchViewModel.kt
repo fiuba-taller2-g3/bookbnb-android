@@ -18,20 +18,6 @@ class SearchViewModel : NetworkViewModel<List<PublishData>>() {
     val statusLiveData : LiveData<LoadingStatus>
         get() = mutableStatusLiveData
 
-    fun search() {
-        NetworkModule.buildRetrofitClient().getPosts(null, null, null, null, null, UserManager.getUserInfo().getUserId(), UserManager.getUserInfo().getToken())
-//        NetworkModule.buildRetrofitClient().getPosts(UserManager.getUserInfo().getToken()).enqueue(object :
-//            Callback<List<PublishResponse>> {
-//            override fun onResponse(call: Call<List<PublishResponse>>, response: Response<List<PublishResponse>>) {
-//
-//            }
-//
-//            override fun onFailure(call: Call<List<PublishResponse>>, t: Throwable) {
-//                // Do Nothing
-//            }
-//        })
-    }
-
     override fun onSuccessful(response: Response<List<PublishData>>) {
         TODO("Not yet implemented")
     }
@@ -43,6 +29,5 @@ class SearchViewModel : NetworkViewModel<List<PublishData>>() {
     override fun execute(call: Call<List<PublishData>>) {
         TODO("Not yet implemented")
     }
-
 
 }
