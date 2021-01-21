@@ -1,33 +1,28 @@
 package com.fiuba.bookbnb.ui.fragments.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.util.Log
 import com.fiuba.bookbnb.domain.publish.PublishData
-import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.networking.NetworkViewModel
-import com.fiuba.bookbnb.repository.LoadingStatus
-import com.fiuba.bookbnb.user.UserManager
-import org.apache.commons.lang3.StringUtils
 import retrofit2.Call
 import retrofit2.Response
 
 class SearchViewModel : NetworkViewModel<List<PublishData>>() {
 
-    private val mutableStatusLiveData = MutableLiveData<LoadingStatus>()
-    val statusLiveData : LiveData<LoadingStatus>
-        get() = mutableStatusLiveData
+    override fun execute(call: Call<List<PublishData>>) {
+        Log.i(TAG, "Searching...")
+        executeCallback(call)
+    }
 
     override fun onSuccessful(response: Response<List<PublishData>>) {
-        TODO("Not yet implemented")
+        Log.i(TAG, "Search successfully")
     }
 
     override fun onFailure(response: Response<List<PublishData>>) {
-        TODO("Not yet implemented")
+        Log.e(TAG, "Search error")
     }
 
-    override fun execute(call: Call<List<PublishData>>) {
-        TODO("Not yet implemented")
+    companion object {
+        private const val TAG = "SEARCH"
     }
 
 }
