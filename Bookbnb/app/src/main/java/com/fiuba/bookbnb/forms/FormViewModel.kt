@@ -18,7 +18,6 @@ class FormViewModel : ViewModel() {
     val photosUrls by lazy { ArrayList<PhotoFormItemData>() }
 
     var locationInfo : Address? = null
-    var shouldClearInputsWhenBackPressed = true
 
     private fun setInputItems(inputItems: List<FormInputData>) {
         inputItems.forEach { inputItem ->
@@ -83,10 +82,6 @@ class FormViewModel : ViewModel() {
         return if (index < bedDistributionItems.size) {
             bedDistributionItems[index].bedDistribution
         } else BedDistribution(roomNumber)
-    }
-
-    fun checkClearInputs() {
-        if (shouldClearInputsWhenBackPressed) clearInputs()
     }
 
     fun clearInputs() {

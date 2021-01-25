@@ -20,6 +20,9 @@ abstract class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
         sharedViewModel.showToolbar(shouldShowToolbar)
         sharedViewModel.showFooterBarMenu(shouldShowFooterBarMenu)
         sharedViewModel.setFragmentWithNetwork(isNetworkRequired)
+        sharedViewModel.shouldClearInputsWhenBackPressed = shouldClearInputsWhenBackPressed()
     }
+
+    protected open fun shouldClearInputsWhenBackPressed() = true
 
 }

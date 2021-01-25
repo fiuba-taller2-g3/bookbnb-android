@@ -24,14 +24,13 @@ class ShareViewModel : ViewModel() {
         get() = mutableFooterBarMenuOptionSelected
 
     private var isFragmentWithNetwork = false
+    var shouldClearInputsWhenBackPressed = true
 
     fun showToolbar(show: Boolean) { mutableToolbarVisible.value = show }
     fun showFooterBarMenu(show: Boolean) { mutableFooterBarMenuVisible.value = show }
 
     fun setFragmentWithNetwork(haveNetwork: Boolean) { isFragmentWithNetwork = haveNetwork }
-    fun fragmentHaveNetwork() = isFragmentWithNetwork
 
-    fun closeFragment() { mutableFragmentIsOpen.value = false }
     fun openFragment() { mutableFragmentIsOpen.value = true }
 
     fun setOption(option: FooterBarButtons) {

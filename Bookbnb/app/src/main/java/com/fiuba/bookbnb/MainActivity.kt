@@ -85,15 +85,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        formViewModel.checkClearInputs()
+        checkClearInputs()
         networkManagerViewModel.cancelCurrentRunningCall()
         return navController.navigateUp()
     }
 
     override fun onBackPressed() {
-        formViewModel.checkClearInputs()
+        checkClearInputs()
         networkManagerViewModel.cancelCurrentRunningCall()
         super.onBackPressed()
+    }
+
+    private fun checkClearInputs() {
+        if (sharedViewModel.shouldClearInputsWhenBackPressed) formViewModel.clearInputs()
     }
 
     private fun initAppBar() {

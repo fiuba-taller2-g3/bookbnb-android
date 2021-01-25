@@ -5,6 +5,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
@@ -21,8 +22,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import java.io.IOException
+import java.util.*
 
 class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<PublishData>>() {
+
+    private val searchResultsViewModel by activityViewModels<SearchResultsViewModel>()
 
     private val checkLocationMutable = MutableLiveData<LoadingStatus>()
     private val checkLocation : LiveData<LoadingStatus>
@@ -43,11 +47,20 @@ class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<Publi
                 }
                 LoadingStatus.SUCCESS -> {
                     super.setActionEventButton()
-                    checkLocationMutable.value = LoadingStatus.HIDE
                 }
                 else -> { showLoading(false) }
             }
         }
+    }
+
+    override fun onSuccessStatus(cleanInputs: Boolean) {
+        networkViewModel.searchResults?.let{ searchResultsViewModel.setResults(it) }
+        super.onSuccessStatus(false)
+    }
+
+    override fun onDestroy() {
+        checkLocationMutable.value = LoadingStatus.HIDE
+        super.onDestroy()
     }
 
     override fun getTitleTextRes(): Int = R.string.search_title
@@ -131,8 +144,9 @@ class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<Publi
     }
 
     override fun getViewModelClass(): Class<SearchViewModel> = SearchViewModel::class.java
+
     override fun call(): Call<List<PublishData>> = NetworkModule.buildRetrofitClient().getPosts(
-        formViewModel.getContentFromItem(FormInputType.STAY_TYPE_SEARCH),
+        formViewModel.getContentFromItem(FormInputType.STAY_TYPE_SEARCH).toLowerCase(Locale.ROOT),
         formViewModel.locationInfo?.latitude.toString(),
         formViewModel.locationInfo?.longitude.toString(),
         getPrice(FormInputType.MIN_PRICE),

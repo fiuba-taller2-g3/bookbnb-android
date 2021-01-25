@@ -41,9 +41,9 @@ class ProfileEditFragment : FormWithNetworkStatusFragment<ProfileEditViewModel, 
             UserManager.getUserInfo().getUserData().walletId)
     }
 
-    override fun onSuccessStatus() {
+    override fun onSuccessStatus(cleanInputs: Boolean) {
         UserManager.updateUser(getRequest())
-        super.onSuccessStatus()
+        super.onSuccessStatus(cleanInputs)
     }
 
     override fun getViewModelClass(): Class<ProfileEditViewModel> = ProfileEditViewModel::class.java

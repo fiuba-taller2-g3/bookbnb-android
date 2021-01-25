@@ -16,7 +16,7 @@ import retrofit2.Call
 
 abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Any> : FormFragment() {
 
-    private lateinit var networkViewModel : T
+    protected lateinit var networkViewModel : T
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +36,7 @@ abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Any> : 
     private fun setViewModelObserver() {
         networkViewModel.loadingStatus.observe(viewLifecycleOwner) { loadStatus ->
             when (loadStatus) {
-                LoadingStatus.SUCCESS -> onSuccessStatus()
+                LoadingStatus.SUCCESS -> onSuccessStatus(true)
                 LoadingStatus.FAILURE -> showDialog()
                 LoadingStatus.LOADING -> showLoading(true)
                 LoadingStatus.ERROR -> showDialog()
@@ -67,9 +67,9 @@ abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Any> : 
         button.isEnabled = !loadingEnabled
     }
 
-    protected open fun onSuccessStatus() {
+    protected open fun onSuccessStatus(cleanInputs: Boolean) {
         showLoading(false)
-        formViewModel.clearInputs()
+        if (cleanInputs) formViewModel.clearInputs()
         networkManagerViewModel.clearCancelRunningCallReference()
     }
 
