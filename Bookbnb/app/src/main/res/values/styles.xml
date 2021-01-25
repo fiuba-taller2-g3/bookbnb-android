@@ -92,12 +92,12 @@
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="bkbnbStayPostPrice" parent="bkbnbTitle">
-        <item name="android:textSize">20sp</item>
-    </style>
-
     <style name="bkbnbLargeTitle" parent="bkbnbTitle">
         <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="bkbnbSmallTitle" parent="bkbnbTitle">
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="bkbnbTitleProfileMenu" >
@@ -154,6 +154,10 @@
 
     <style name="bkbnbHomeSubtitle" parent="bkbnbSubtitle">
         <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="bkbnbStayPostDescription" parent="bkbnbSubtitle">
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>

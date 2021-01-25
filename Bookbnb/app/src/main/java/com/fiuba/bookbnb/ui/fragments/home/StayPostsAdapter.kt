@@ -12,7 +12,10 @@ import com.fiuba.bookbnb.domain.publish.PublishData
 import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.user.UserManager
 import com.fiuba.bookbnb.utils.DateUtils
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.bookbnb_photo_item.view.*
 import kotlinx.android.synthetic.main.bookbnb_stay_post_card_view.view.*
+import kotlinx.android.synthetic.main.bookbnb_stay_post_card_view.view.image
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,7 +37,14 @@ class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Ad
             stay_description.text = itemData.description
             price.text = context.getString(R.string.stay_post_price_text, itemData.price)
 
-            purchase_button.setOnClickListener {
+            image.setImageResource(R.drawable.ic_photoimgdefault)
+
+//            Picasso.get()
+//                .load(itemData.images.firstOrNull())
+//                .placeholder(R.drawable.ic_photoimgdefault)
+//                .into(image)
+
+            setOnClickListener {
                 // TODO: En cuanto estén las fechas de inicio y final de la publicación, agregarlas a los parámetros correspondientes
                 val currentDate = DateUtils.getDateOutputFormat().format(Date().time)
 //                val bookingRequest = BookingRequest(UserManager.getUserInfo().getUserId(), itemData.id, currentDate, currentDate)

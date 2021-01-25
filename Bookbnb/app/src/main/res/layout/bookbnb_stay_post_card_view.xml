@@ -10,22 +10,31 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/bkbnb16dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imgPostListHeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/stay_title"
-            style="@style/bkbnbStayPostTitle"
+            style="@style/bkbnbSmallTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/bkbnb12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/bkbnb8dp"
+            app:layout_constraintEnd_toEndOf="@+id/image"
+            app:layout_constraintStart_toStartOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/image"
             tools:text="Título" />
 
         <TextView
             android:id="@+id/stay_description"
-            style="@style/bkbnbSubtitle"
+            style="@style/bkbnbStayPostDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/bkbnb4dp"
@@ -34,54 +43,30 @@
             app:layout_constraintTop_toBottomOf="@id/stay_title"
             tools:text="Descripción" />
 
-        <ImageView
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bkbnb1dp"
-            android:layout_marginTop="@dimen/bkbnb12dp"
-            android:layout_weight="1"
-            android:background="@color/colorBackgroundInputFieldDisabled"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stay_description" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/bkbnb12dp"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
+            android:layout_marginTop="@dimen/bkbnb12dp"
+            app:layout_constraintTop_toBottomOf="@+id/stay_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/price"
-                style="@style/bkbnbStayPostPrice"
+                style="@style/bkbnbSmallTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="$17" />
 
             <TextView
-                style="@style/bkbnbSubtitle"
-                android:layout_width="wrap_content"
+                style="@style/bkbnbStayPostDescription"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/bkbnb4dp"
                 android:layout_marginEnd="@dimen/bkbnb12dp"
                 android:layout_weight="1"
                 android:text="@string/stay_post_per_night_text" />
-
-            <Button
-                android:id="@+id/purchase_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:gravity="center"
-                android:padding="@dimen/bkbnb6dp"
-                style="@style/bkbnbButton"
-                android:background="@drawable/button_ripple"
-                android:text="@string/stay_post_text_button"/>
 
         </LinearLayout>
 

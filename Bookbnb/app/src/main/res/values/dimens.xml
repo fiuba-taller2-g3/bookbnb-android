@@ -36,4 +36,5 @@
     <dimen name="imgWidth">96dp</dimen>
     <dimen name="imgHeight">58dp</dimen>
     <dimen name="imgPreviewWidth">240dp</dimen>
+    <dimen name="imgPostListHeight">240dp</dimen>
 </resources>
