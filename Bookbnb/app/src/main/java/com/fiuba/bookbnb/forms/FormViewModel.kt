@@ -87,6 +87,8 @@ class FormViewModel : ViewModel() {
     fun clearInputs() {
         formInputItems.clear()
         bedDistributionItems.clear()
+        services.clear()
+        photosUrls.clear()
         locationInfo = null
     }
 

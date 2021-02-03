@@ -37,12 +37,10 @@ class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Ad
             stay_description.text = itemData.description
             price.text = context.getString(R.string.stay_post_price_text, itemData.price)
 
-            image.setImageResource(R.drawable.ic_photoimgdefault)
-
-//            Picasso.get()
-//                .load(itemData.images.firstOrNull())
-//                .placeholder(R.drawable.ic_photoimgdefault)
-//                .into(image)
+            Picasso.get()
+                .load(itemData.images.firstOrNull())
+                .placeholder(R.drawable.ic_photoimgdefault)
+                .into(image)
 
             setOnClickListener {
                 // TODO: En cuanto estén las fechas de inicio y final de la publicación, agregarlas a los parámetros correspondientes
