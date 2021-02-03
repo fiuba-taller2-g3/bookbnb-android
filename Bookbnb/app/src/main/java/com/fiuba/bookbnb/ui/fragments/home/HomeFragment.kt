@@ -2,45 +2,38 @@ package com.fiuba.bookbnb.ui.fragments.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.domain.publish.PublishResponse
-import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
 import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarButtons
-import com.fiuba.bookbnb.ui.recyclerView.ContextMenuAdapter
+import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.user.UserManager
-import kotlinx.android.synthetic.main.bookbnb_button.*
-import kotlinx.android.synthetic.main.bookbnb_context_menu_dialog_fragment.view.*
 import kotlinx.android.synthetic.main.bookbnb_home_fragment.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HomeFragment : BaseFragment(R.layout.bookbnb_home_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkpoint3Fix()
-        publish_list.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context)
+        bkbnb_form_title.setText(getTitle())
+        bkbnb_form_subtitle.setText(getSubtitle())
+        start_button.text = getButtonText()
+
+        start_button.setOnClickListener {
+            if (UserManager.isUserLogged()) NavigationManager.moveForward(HomeFragmentDirections.actionHomeFragmentToSearchFragment())
+            else NavigationManager.moveGlobalTo(R.id.startProfile)
         }
+
     }
 
-    private fun checkpoint3Fix() {
-        button.text = "Actualizar lista"
-        button.setOnClickListener {
-            NetworkModule.buildRetrofitClient().getPosts(UserManager.getUserInfo().getToken()).enqueue(object : Callback<List<PublishResponse>> {
-                override fun onResponse(call: Call<List<PublishResponse>>, response: Response<List<PublishResponse>>) {
-                    response.body()?.let { publish_list.adapter = StayPostsAdapter(it) }
-                }
+    private fun getTitle() : Int {
+        return if (UserManager.isUserLogged()) R.string.home_search_title else R.string.home_search_title_not_logged
+    }
 
-                override fun onFailure(call: Call<List<PublishResponse>>, t: Throwable) {
-                    // Do Nothing
-                }
-            })
-        }
+    private fun getSubtitle() : Int {
+        return if (UserManager.isUserLogged()) R.string.home_search_subtitle else R.string.home_search_subtitle_not_logged
+    }
+
+    private fun getButtonText() : String {
+        return getString(if (UserManager.isUserLogged()) R.string.home_search_button else R.string.login_title)
     }
 
     override val shouldShowToolbar: Boolean

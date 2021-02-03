@@ -16,6 +16,8 @@
     <dimen name="bkbnb28dp">28dp</dimen>
     <dimen name="bkbnb32dp">32dp</dimen>
     <dimen name="bkbnb40dp">40dp</dimen>
+    <dimen name="bkbnb42dp">42dp</dimen>
+    <dimen name="bkbnb44dp">44dp</dimen>
     <dimen name="bkbnb48dp">48dp</dimen>
     <dimen name="bkbnb64dp">64dp</dimen>
     <dimen name="bkbnb78dp">78dp</dimen>
@@ -34,4 +36,5 @@
     <dimen name="imgWidth">96dp</dimen>
     <dimen name="imgHeight">58dp</dimen>
     <dimen name="imgPreviewWidth">240dp</dimen>
+    <dimen name="imgPostListHeight">240dp</dimen>
 </resources>

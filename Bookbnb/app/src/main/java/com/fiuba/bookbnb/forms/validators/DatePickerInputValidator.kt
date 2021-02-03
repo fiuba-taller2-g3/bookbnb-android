@@ -9,7 +9,7 @@ class DatePickerInputValidator(context: Context) : InputValidator(context) {
 
     override fun checkValidation(content: String): Boolean = with(content) { isNotEmpty() && isOlder(content) }
 
-    override fun getMsgEmptyRes(): Int = R.string.date_picker_empty_msg_validation
+    override fun getMsgEmptyRes(): Int = R.string.birth_date_picker_empty_msg_validation
 
     override fun updateTextValidation(content: String) {
         super.updateTextValidation(content)

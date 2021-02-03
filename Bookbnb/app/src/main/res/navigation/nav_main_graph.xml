@@ -24,6 +24,26 @@
         android:id="@+id/homeFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/bookbnb_home_fragment"/>
+        tools:layout="@layout/bookbnb_home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.home.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/bookbnb_form_fragment">
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.home.SearchResultsFragment"
+        android:label="SearchResultsFragment"
+        tools:layout="@layout/bookbnb_search_results_fragment"/>
 
 </navigation>

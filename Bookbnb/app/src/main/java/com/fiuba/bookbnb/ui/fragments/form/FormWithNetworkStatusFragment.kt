@@ -13,11 +13,10 @@ import kotlinx.android.synthetic.main.bookbnb_button.*
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 import org.apache.commons.lang3.StringUtils
 import retrofit2.Call
-import java.io.Serializable
 
-abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Serializable> : FormFragment() {
+abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Any> : FormFragment() {
 
-    private lateinit var networkViewModel : T
+    protected lateinit var networkViewModel : T
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,7 +36,7 @@ abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Seriali
     private fun setViewModelObserver() {
         networkViewModel.loadingStatus.observe(viewLifecycleOwner) { loadStatus ->
             when (loadStatus) {
-                LoadingStatus.SUCCESS -> onSuccessStatus()
+                LoadingStatus.SUCCESS -> onSuccessStatus(true)
                 LoadingStatus.FAILURE -> showDialog()
                 LoadingStatus.LOADING -> showLoading(true)
                 LoadingStatus.ERROR -> showDialog()
@@ -54,7 +53,7 @@ abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Seriali
         networkViewModel.hideLoading()
     }
 
-    private fun showLoading(loadingEnabled: Boolean) {
+    protected fun showLoading(loadingEnabled: Boolean) {
         setButtonLoading(loadingEnabled)
         additional_text.isEnabled = !loadingEnabled
         input_fields_container.forEach { inputFieldModuleItem ->
@@ -68,9 +67,9 @@ abstract class FormWithNetworkStatusFragment<T : NetworkViewModel<S>, S: Seriali
         button.isEnabled = !loadingEnabled
     }
 
-    protected open fun onSuccessStatus() {
+    protected open fun onSuccessStatus(cleanInputs: Boolean) {
         showLoading(false)
-        formViewModel.clearInputs()
+        if (cleanInputs) formViewModel.clearInputs()
         networkManagerViewModel.clearCancelRunningCallReference()
     }
 

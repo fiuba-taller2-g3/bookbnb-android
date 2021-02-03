@@ -23,7 +23,8 @@ class InputItemsManager(private val context: Context, private val storeInputCont
             FormInputType.GENDER -> buildInputModule(R.string.gender_field_label, RadioButtonInputField(context, inputData, storeInputContent, getGenderOptions()))
             FormInputType.PHONE_NUMBER -> buildInputModule(R.string.phone_number_field_label, buildInputFieldItem(inputData, PhoneNumberInputValidator(context), KeyboardType.NUMERIC))
             FormInputType.AVAILABILITY_TYPE -> buildAvailabilityTypeInputField(inputData)
-            FormInputType.STAY_TYPE -> buildStayType(inputData)
+            FormInputType.STAY_TYPE -> buildStayType(inputData, false)
+            FormInputType.STAY_TYPE_SEARCH -> buildStayType(inputData, true)
             FormInputType.GUEST_QUANTITY -> buildInputModule(R.string.publish_guest_quantity_label, getQuantityControllerInput(R.string.publish_guest_quantity_item_label, inputData))
             FormInputType.BED_QUANTITY -> buildInputModule(R.string.publish_bed_quantity_label, getQuantityControllerInput(R.string.publish_bed_quantity_item_label, inputData))
             FormInputType.BATHROOM_QUANTITY -> buildInputModule(R.string.publish_bathroom_quantity_label, getQuantityControllerInput(R.string.publish_bathroom_quantity_item_label, inputData, maxLimit = 8))
@@ -40,12 +41,18 @@ class InputItemsManager(private val context: Context, private val storeInputCont
             FormInputType.STAY_DESCRIPTION -> buildInputModule(R.string.publish_stay_description_label, EditTextMultilineInputField(context, inputData, storeInputContent, NotEmptyInputValidator(context, R.string.subtitle_empty_msg_validation)))
             FormInputType.START_DATE -> buildRangeDatePickerInputField(R.string.publish_range_date_picker_start_label, inputData)
             FormInputType.END_DATE -> buildRangeDatePickerInputField(R.string.publish_range_date_picker_end_label, inputData)
+            FormInputType.MIN_PRICE -> buildPriceSearchInputField(R.string.search_min_price_label, inputData)
+            FormInputType.MAX_PRICE -> buildPriceSearchInputField(R.string.search_max_price_label, inputData)
             FormInputType.PRICE -> buildInputModule(R.string.publish_price_label, buildInputFieldItem(inputData, NotEmptyInputValidator(context, R.string.price_empty_msg_validation), KeyboardType.NUMERIC))
         }
     }
 
+    private fun buildPriceSearchInputField(labelRes: Int, inputData: FormInputData) : InputFieldModule {
+        return buildInputModule(labelRes, buildInputFieldItem(inputData, DisabledInputValidator(context), KeyboardType.NUMERIC))
+    }
+
     private fun buildRangeDatePickerInputField(labelRes: Int, inputData: FormInputData) : InputFieldModule {
-        return buildInputModule(labelRes, DatePickerInputField(context, inputData, R.string.title_date_picker_dialog, storeInputContent, Date(), validator =  DisabledInputValidator(context)))
+        return buildInputModule(labelRes, DatePickerInputField(context, inputData, R.string.title_date_picker_dialog, storeInputContent, Date(), validator =  NotEmptyInputValidator(context, R.string.date_picker_empty_msg_validation)))
     }
 
     private fun getGenderOptions() = Pair(context.getString(R.string.edit_info_profile_male_genre), context.getString(R.string.edit_info_profile_female_genre))
@@ -92,13 +99,14 @@ class InputItemsManager(private val context: Context, private val storeInputCont
         }
     }
 
-    private fun buildStayType(inputData: FormInputData) : InputFieldModule {
+    private fun buildStayType(inputData: FormInputData, isSearchField: Boolean) : InputFieldModule {
         with(context) {
             val itemList = arrayOf(ContextMenuItemData(getString(R.string.publish_home_type_text_item), getString(R.string.publish_home_type_text_description)),
                 ContextMenuItemData(getString(R.string.publish_hotel_type_text_item), getString(R.string.publish_hotel_type_text_description)))
-            val title = getString(R.string.publish_stay_type_label)
+            val title = getString(if (isSearchField) R.string.search_stay_type_label else R.string.publish_stay_type_label)
+            val inputLabel = if (isSearchField) R.string.search_stay_type_label else R.string.publish_availability_type_label
 
-            return buildInputModule(R.string.publish_availability_type_label, buildContextMenuInputField(title, itemList, inputData))
+            return buildInputModule(inputLabel, buildContextMenuInputField(title, itemList, inputData))
         }
     }
 

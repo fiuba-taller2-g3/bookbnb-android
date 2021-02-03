@@ -15,15 +15,11 @@ abstract class FormBaseFragment(@LayoutRes layout: Int) : BaseFragment(layout) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setButtonText(getButtonTextRes())
-        shouldClearInputsWhenBackPressed()
-        formViewModel.shouldClearInputsWhenBackPressed = shouldClearInputsWhenBackPressed()
     }
 
     protected fun setButtonText(buttonTextRes: Int) {
         button.text = getString(buttonTextRes)
     }
-
-    protected open fun shouldClearInputsWhenBackPressed() = true
 
     protected abstract fun getTitleTextRes() : Int
     protected abstract fun getSubtitleTextRes() : Int
