@@ -44,6 +44,20 @@
         android:id="@+id/searchResultsFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.home.SearchResultsFragment"
         android:label="SearchResultsFragment"
-        tools:layout="@layout/bookbnb_search_results_fragment"/>
+        tools:layout="@layout/bookbnb_search_results_fragment">
+        <action
+            android:id="@+id/action_searchResultsFragment_to_publishViewFragment"
+            app:destination="@id/publishViewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/publishViewFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.publish.publishView.PublishViewFragment"
+        android:label="PublishViewFragment"
+        tools:layout="@layout/bookbnb_publish_view_fragment">
+        <argument
+            android:name="publishData"
+            app:argType="com.fiuba.bookbnb.domain.publish.PublishData" />
+    </fragment>
 
 </navigation>

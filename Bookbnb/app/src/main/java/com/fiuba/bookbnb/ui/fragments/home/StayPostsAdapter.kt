@@ -10,6 +10,7 @@ import com.fiuba.bookbnb.domain.booking.BookingRequest
 import com.fiuba.bookbnb.domain.misc.MsgResponse
 import com.fiuba.bookbnb.domain.publish.PublishData
 import com.fiuba.bookbnb.networking.NetworkModule
+import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.user.UserManager
 import com.fiuba.bookbnb.utils.DateUtils
 import com.squareup.picasso.Picasso
@@ -43,8 +44,9 @@ class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Ad
                 .into(image)
 
             setOnClickListener {
+                NavigationManager.moveForward(SearchResultsFragmentDirections.actionSearchResultsFragmentToPublishViewFragment(itemData))
                 // TODO: En cuanto estén las fechas de inicio y final de la publicación, agregarlas a los parámetros correspondientes
-                val currentDate = DateUtils.getDateOutputFormat().format(Date().time)
+                //val currentDate = DateUtils.getDateOutputFormat().format(Date().time)
 //                val bookingRequest = BookingRequest(UserManager.getUserInfo().getUserId(), itemData.id, currentDate, currentDate)
 //                NetworkModule.buildRetrofitClient().purchase(bookingRequest, UserManager.getUserInfo().getToken()).enqueue(object : Callback<MsgResponse> {
 //                    override fun onResponse(call: Call<MsgResponse>, response: Response<MsgResponse>) {
