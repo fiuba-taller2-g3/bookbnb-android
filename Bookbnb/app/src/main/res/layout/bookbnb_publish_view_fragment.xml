@@ -12,31 +12,40 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/imgPostViewHeight"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="@dimen/imgPostViewHeight">
 
-            <TextView
-                android:id="@+id/img_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                style="@style/bkbnbSubtitle"
-                android:padding="@dimen/bkbnb4dp"
-                app:layout_constraintEnd_toEndOf="@+id/view_pager"
-                app:layout_constraintStart_toStartOf="@+id/view_pager"
-                app:layout_constraintTop_toBottomOf="@id/view_pager"
-                tools:text="1/7"/>
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/img_number"
+                    style="@style/bkbnbSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/bkbnb22dp"
+                    android:paddingStart="@dimen/bkbnb14dp"
+                    android:paddingEnd="@dimen/bkbnb14dp"
+                    android:paddingTop="@dimen/bkbnb12dp"
+                    android:paddingBottom="@dimen/bkbnb12dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/publish_view_img_count_background"
+                    android:textColor="@color/colorWhite"
+                    android:padding="@dimen/bkbnb4dp"
+                    tools:text="1/7" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 
