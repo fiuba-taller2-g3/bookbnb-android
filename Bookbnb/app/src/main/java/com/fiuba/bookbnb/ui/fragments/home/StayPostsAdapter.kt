@@ -44,7 +44,7 @@ class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Ad
                 .into(image)
 
             setOnClickListener {
-                NavigationManager.moveForward(SearchResultsFragmentDirections.actionSearchResultsFragmentToPublishViewFragment(itemData))
+                NavigationManager.moveForward(SearchResultsFragmentDirections.actionSearchResultsFragmentToLoadingPublishViewFragment(itemData))
                 // TODO: En cuanto estén las fechas de inicio y final de la publicación, agregarlas a los parámetros correspondientes
                 //val currentDate = DateUtils.getDateOutputFormat().format(Date().time)
 //                val bookingRequest = BookingRequest(UserManager.getUserInfo().getUserId(), itemData.id, currentDate, currentDate)
