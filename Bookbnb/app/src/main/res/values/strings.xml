@@ -249,6 +249,9 @@
     <string name="search_min_price_label">Precio mínimo (USD)</string>
     <string name="search_max_price_label">Precio máximo (USD)</string>
 
+    <!-- Publish view -->
+    <string name="publish_view_host_name">Anfitrión: %s</string>
+
     <!-- Utils -->
     <string name="string_empty" />
 </resources>

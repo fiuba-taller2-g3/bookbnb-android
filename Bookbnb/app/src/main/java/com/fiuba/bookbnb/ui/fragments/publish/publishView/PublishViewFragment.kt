@@ -13,6 +13,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
 
     private val navArguments by navArgs<PublishViewFragmentArgs>()
     private val publishData by lazy { navArguments.publishData }
+    private val userData by lazy { navArguments.userData }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,6 +33,10 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
             }
 
         })
+
+        publish_title.text = publishData.title
+        publish_location.text = with(publishData.location) { "${city}, $country" }
+        host_name.text = getString(R.string.publish_view_host_name, "${userData.name} ${userData.surname}")
     }
 
     @SuppressLint("SetTextI18n")

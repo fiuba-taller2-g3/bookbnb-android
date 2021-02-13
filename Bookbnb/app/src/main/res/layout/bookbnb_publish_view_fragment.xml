@@ -12,14 +12,18 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/imgPostViewHeight">
+                android:layout_height="@dimen/imgPostViewHeight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/view_pager"
@@ -31,21 +35,71 @@
                     style="@style/bkbnbSubtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/bkbnb22dp"
-                    android:paddingStart="@dimen/bkbnb14dp"
-                    android:paddingEnd="@dimen/bkbnb14dp"
-                    android:paddingTop="@dimen/bkbnb12dp"
-                    android:paddingBottom="@dimen/bkbnb12dp"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/bkbnb22dp"
                     android:background="@drawable/publish_view_img_count_background"
-                    android:textColor="@color/colorWhite"
                     android:padding="@dimen/bkbnb4dp"
+                    android:paddingStart="@dimen/bkbnb14dp"
+                    android:paddingTop="@dimen/bkbnb12dp"
+                    android:paddingEnd="@dimen/bkbnb14dp"
+                    android:paddingBottom="@dimen/bkbnb12dp"
+                    android:textColor="@color/colorWhite"
                     tools:text="1/7" />
 
             </RelativeLayout>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/publish_title"
+                style="@style/bkbnbLargeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/publishViewMargin"
+                android:layout_marginStart="@dimen/publishViewMargin"
+                android:layout_marginEnd="@dimen/publishViewMargin"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+                tools:text="Hotel Enjoy" />
+
+            <TextView
+                android:id="@+id/publish_location"
+                style="@style/bkbnbSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb6dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/publish_title"
+                tools:text="Punta del Este, Maldonado, Uruguay" />
+
+            <View
+                android:id="@+id/divider_1"
+                style="@style/bkbnbDivider"
+                android:layout_width="0dp"
+                app:layout_constraintTop_toBottomOf="@id/publish_location"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"/>
+
+            <TextView
+                android:id="@+id/host_name"
+                style="@style/bkbnbContextMenuTitleItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb12dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider_1"
+                tools:text="Anfitrión: Pablo Test" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
