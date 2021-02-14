@@ -41,6 +41,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         host_name.text = getString(R.string.publish_view_host_name, "${userData.name} ${userData.surname}")
         stay_type.text = "${publishData.type} \u2022 ${publishData.availabilityType}"
         stay_summary.text = buildStaySummary()
+        stay_description.text = publishData.description
     }
 
     @SuppressLint("SetTextI18n")
