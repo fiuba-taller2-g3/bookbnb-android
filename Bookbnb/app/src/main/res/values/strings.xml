@@ -251,6 +251,14 @@
 
     <!-- Publish view -->
     <string name="publish_view_host_name">Anfitrión: %s</string>
+    <string name="publish_view_guest_singular_label">%s huésped</string>
+    <string name="publish_view_guest_plural_label">%s huéspedes</string>
+    <string name="publish_view_bedroom_singular_label">%s habitación</string>
+    <string name="publish_view_bedroom_plural_label">%s habitaciones</string>
+    <string name="publish_view_beds_singular_label">%s cama</string>
+    <string name="publish_view_beds_plural_label">%s camas</string>
+    <string name="publish_view_bathroom_singular_label">%s baño</string>
+    <string name="publish_view_bathroom_plural_label">%s baños</string>
 
     <!-- Utils -->
     <string name="string_empty" />

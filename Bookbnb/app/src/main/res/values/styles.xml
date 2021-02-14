@@ -130,12 +130,23 @@
         <item name="android:layout_marginTop">@dimen/bkbnb14dp</item>
     </style>
 
+    <style name="bkbnbPublishViewDivider" parent="bkbnbDivider">
+        <item name="android:layout_marginTop">@dimen/bkbnb20dp</item>
+    </style>
+
     <style name="bkbnbContextMenuTitleDialog" parent="bkbnbTitle">
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="bkbnbContextMenuTitleItem" parent="bkbnbTitle">
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="bkbnbStayTypePublishViewLabel" parent="bkbnbTitle">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="bkbnbHostNamePublishViewLabel" parent="bkbnbTitle">
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="bkbnbAddPhotoLabel" parent="bkbnbTitle">
