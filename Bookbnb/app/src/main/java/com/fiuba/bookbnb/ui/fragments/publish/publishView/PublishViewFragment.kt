@@ -33,7 +33,6 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
             override fun onPageScrollStateChanged(state: Int) {
                 // Do nothing
             }
-
         })
 
         publish_title.text = publishData.title
@@ -42,6 +41,16 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         stay_type.text = "${publishData.type} \u2022 ${publishData.availabilityType}"
         stay_summary.text = buildStaySummary()
         stay_description.text = publishData.description
+        stay_beds_distribution_title.text = getString(R.string.publish_view_bed_distribution_title)
+        buildBedsDistribution()
+    }
+
+    private fun buildBedsDistribution() {
+        if (publishData.bedsDistribution.isNotEmpty()) {
+            publishData.bedsDistribution.forEach { bedDistribution ->
+                stay_beds_distribution_list.addView(PublishViewBedDistributionItem(requireContext(), bedDistribution))
+            }
+        } else stay_beds_distribution_list.addView(PublishViewBedDistributionEmptyItem(requireContext()))
     }
 
     @SuppressLint("SetTextI18n")
@@ -52,7 +61,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
     private fun buildStaySummary(): String {
         val staySummary = StringJoiner("  •  ")
         staySummary.apply {
-            //add(buildGuestText())
+            add(buildGuestText())
             add(buildBedroomText())
             add(buildBedsText())
             add(buildBathroomText())
