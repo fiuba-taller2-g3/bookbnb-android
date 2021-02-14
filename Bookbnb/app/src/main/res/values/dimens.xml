@@ -42,4 +42,5 @@
     <!-- Publish view -->
     <dimen name="publishViewMargin">16dp</dimen>
     <dimen name="publishViewProfileImg">48dp</dimen>
+    <dimen name="publishViewItemBorder">1dp</dimen>
 </resources>

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.booking.BookingRequest
@@ -24,10 +25,10 @@ import java.util.*
 
 class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Adapter<StayPostsAdapter.StayPostsViewHolder>() {
 
-    inner class StayPostsViewHolder(itemView: CardView) : RecyclerView.ViewHolder(itemView)
+    inner class StayPostsViewHolder(itemView: ConstraintLayout) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StayPostsViewHolder {
-        (LayoutInflater.from(parent.context).inflate(R.layout.bookbnb_stay_post_card_view, parent, false) as CardView)
+        (LayoutInflater.from(parent.context).inflate(R.layout.bookbnb_stay_post_card_view, parent, false) as ConstraintLayout)
             .also { return StayPostsViewHolder(it) }
     }
 

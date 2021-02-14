@@ -259,6 +259,14 @@
     <string name="publish_view_beds_plural_label">%s camas</string>
     <string name="publish_view_bathroom_singular_label">%s baño</string>
     <string name="publish_view_bathroom_plural_label">%s baños</string>
+    <string name="publish_view_single_bed_singular_label">%s cama individual</string>
+    <string name="publish_view_single_bed_plural_label">%s camas individuales</string>
+    <string name="publish_view_double_bed_singular_label">%s cama matrimonial</string>
+    <string name="publish_view_double_bed_plural_label">%s camas matrimoniales</string>
+    <string name="publish_view_cribs_bed_singular_label">%s cuna</string>
+    <string name="publish_view_cribs_bed_plural_label">%s cunas</string>
+    <string name="publish_view_bed_distribution_title">Distribución de las camas</string>
+    <string name="publish_view_bed_distribution_empty_text">Este alojamiento no cuenta con habitaciones</string>
 
     <!-- Utils -->
     <string name="string_empty" />
