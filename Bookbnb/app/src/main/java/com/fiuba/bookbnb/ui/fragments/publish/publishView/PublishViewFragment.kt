@@ -3,10 +3,12 @@ package com.fiuba.bookbnb.ui.fragments.publish.publishView
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
+import kotlinx.android.synthetic.main.bookbnb_publish_img_item.view.*
 import kotlinx.android.synthetic.main.bookbnb_publish_view_fragment.*
 import java.util.*
 
@@ -20,6 +22,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view_pager.adapter = ViewPagerAdapter(publishData.images)
+        if (publishData.images.isEmpty()) view_pager.setBackgroundResource(R.drawable.ic_photoimgdefault)
         setCurrentPositionImageText(view_pager.currentItem)
 
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -56,6 +59,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
     @SuppressLint("SetTextI18n")
     private fun setCurrentPositionImageText(position: Int) {
         img_number.text = "${position + 1}/${publishData.images.size}"
+        img_number.isVisible = publishData.images.isNotEmpty()
     }
 
     private fun buildStaySummary(): String {
