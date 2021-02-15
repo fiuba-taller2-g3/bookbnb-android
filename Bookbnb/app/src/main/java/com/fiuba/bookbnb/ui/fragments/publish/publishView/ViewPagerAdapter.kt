@@ -25,6 +25,7 @@ class ViewPagerAdapter(private val images: ArrayList<String>) : PagerAdapter() {
             Picasso.get()
                 .load(images[position])
                 .placeholder(R.drawable.ic_photoimgdefault)
+                .error(R.drawable.ic_photoimgdefault)
                 .into(publish_view_img)
         }
 

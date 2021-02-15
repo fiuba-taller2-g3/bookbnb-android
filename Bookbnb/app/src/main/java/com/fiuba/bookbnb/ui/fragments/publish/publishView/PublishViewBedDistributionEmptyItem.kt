@@ -13,7 +13,7 @@ class PublishViewBedDistributionEmptyItem @JvmOverloads constructor(context: Con
     : LinearLayout(context, attrs, defStyleAttr) {
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.bookbnb_publish_view_bed_distribution_item, this)
+        LayoutInflater.from(context).inflate(R.layout.bookbnb_publish_view_empty_bedrooms_text, this)
         setLayoutParams()
     }
 
