@@ -44,8 +44,8 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         stay_type.text = "${publishData.type} \u2022 ${publishData.availabilityType}"
         stay_summary.text = buildStaySummary()
         stay_description.text = publishData.description
-        stay_beds_distribution_title.text = getString(R.string.publish_view_bed_distribution_title)
         buildBedsDistribution()
+        buildServices()
     }
 
     private fun buildBedsDistribution() {
@@ -54,6 +54,12 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
                 stay_beds_distribution_list.addView(PublishViewBedDistributionItem(requireContext(), bedDistribution))
             }
         } else stay_beds_distribution_list.addView(PublishViewBedDistributionEmptyItem(requireContext()))
+    }
+
+    private fun buildServices() {
+        publishData.services
+        publishData.security
+        publishData.installations
     }
 
     @SuppressLint("SetTextI18n")
