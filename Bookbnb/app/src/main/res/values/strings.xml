@@ -267,6 +267,7 @@
     <string name="publish_view_cribs_bed_plural_label">%s cunas</string>
     <string name="publish_view_bed_distribution_title">Distribución de las camas</string>
     <string name="publish_view_bed_distribution_empty_text">Este alojamiento no cuenta con habitaciones</string>
+    <string name="publish_view_services_title">Servicios</string>
 
     <!-- Utils -->
     <string name="string_empty" />
