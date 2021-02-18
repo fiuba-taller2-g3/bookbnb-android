@@ -1,6 +1,9 @@
 package com.fiuba.bookbnb.domain.publish
 
+import com.fiuba.bookbnb.ui.fragments.form.services.Services
 import java.io.Serializable
+import java.util.*
+import kotlin.collections.ArrayList
 
 data class PublishData(val id: String?,
                        val isBlocked: Boolean,
@@ -18,8 +21,6 @@ data class PublishData(val id: String?,
                        val bathrooms: String,
                        val bedsDistribution: ArrayList<BedDistribution>,
                        val location: Location,
-                       val services: Services,
-                       val security: Security,
-                       val installations: Installations,
+                       val services: EnumMap<Services, Boolean>,
                        val date: String,
                        val walletId: String) : Serializable
