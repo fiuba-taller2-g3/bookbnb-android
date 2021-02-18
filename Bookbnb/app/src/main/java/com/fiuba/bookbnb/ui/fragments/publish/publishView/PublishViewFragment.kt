@@ -58,8 +58,6 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
 
     private fun buildServices() {
         publishData.services
-        publishData.security
-        publishData.installations
     }
 
     @SuppressLint("SetTextI18n")
