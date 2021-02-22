@@ -38,7 +38,7 @@
             tools:src="@drawable/ic_accountinfo" />
 
         <View
-            style="@style/bkbnbDivider"
+            style="@style/bkbnbDividerWithMarginTop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

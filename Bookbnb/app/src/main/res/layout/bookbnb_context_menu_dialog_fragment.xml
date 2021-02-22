@@ -16,7 +16,7 @@
         style="@style/bkbnbContextMenuTitleDialog"
         tools:text="Title"/>
 
-    <View style="@style/bkbnbDivider" />
+    <View style="@style/bkbnbDividerWithMarginTop" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/context_menu_list"

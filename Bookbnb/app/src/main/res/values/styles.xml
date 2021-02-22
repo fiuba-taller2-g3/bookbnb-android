@@ -46,6 +46,10 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="bkbnbBorderedButton" parent="bkbnbButton">
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
     <style name="bkbnbHomeLoginButton">
         <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="android:textSize">16sp</item>
@@ -124,6 +128,12 @@
     </style>
 
     <style name="bkbnbDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/bkbnb1dp</item>
+        <item name="android:background">@color/colorBackgroundInputFieldDisabled</item>
+    </style>
+
+    <style name="bkbnbDividerWithMarginTop" parent="bkbnbDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/bkbnb1dp</item>
         <item name="android:background">@color/colorBackgroundInputFieldDisabled</item>

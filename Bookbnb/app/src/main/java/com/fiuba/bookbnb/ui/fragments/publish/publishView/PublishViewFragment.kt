@@ -48,6 +48,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         stay_description.text = publishData.description
         buildBedsDistribution()
         buildServices()
+        price.text = getString(R.string.stay_post_price_text, publishData.price)
     }
 
     private fun buildBedsDistribution() {
@@ -65,6 +66,8 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
             val serviceData = servicesItemBuilder.build(service)
             stay_services_list.addView(PublishViewServiceTextItem(requireContext(), serviceData.label, serviceData.description))
         }
+
+        btn_services.text = getString(R.string.publish_view_services_button_text, servicesList.size)
     }
 
     @SuppressLint("SetTextI18n")
