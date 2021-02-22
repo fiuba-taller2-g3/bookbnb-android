@@ -23,8 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/bkbnb12dp"
-        android:paddingEnd="@dimen/bkbnb12dp" >
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:paddingEnd="@dimen/bkbnb12dp" />
 
 </LinearLayout>

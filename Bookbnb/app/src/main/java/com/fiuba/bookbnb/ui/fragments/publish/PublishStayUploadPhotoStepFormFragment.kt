@@ -7,7 +7,7 @@ import android.os.Parcelable
 import android.view.View
 import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.ui.fragments.dialogs.UploadPhotoDialogDirections
+import com.fiuba.bookbnb.ui.fragments.dialogs.UploadPhotoDialogFragmentDirections
 import com.fiuba.bookbnb.ui.fragments.form.FormListFragment
 import com.fiuba.bookbnb.ui.fragments.form.adapters.FormAdapter
 import com.fiuba.bookbnb.ui.fragments.form.adapters.PhotoAdapter
@@ -34,7 +34,7 @@ class PublishStayUploadPhotoStepFormFragment() : FormListFragment(), PhotoAdapte
         add_photo_button.isVisible = true
         add_photo_button.setOnClickListener {
             if (formViewModel.photosUrls.size < MAX_IMAGES) {
-                NavigationManager.showDialog { UploadPhotoDialogDirections.showUploadPhotoDialog(this) }
+                NavigationManager.showDialog { UploadPhotoDialogFragmentDirections.showUploadPhotoDialog(this) }
             } else AlertDialog.Builder(context).setMessage("No se permite subir más imágenes, elimine alguna de las imágenes para poder subir otra.").show()
         }
     }

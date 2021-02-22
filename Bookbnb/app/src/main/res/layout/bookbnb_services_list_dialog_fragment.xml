@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/bkbnb14dp"
+        android:paddingStart="@dimen/bkbnb18dp"
+        android:paddingEnd="@dimen/bkbnb18dp">
+
+        <TextView
+            android:id="@+id/close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            style="@style/bkbnbXButton"
+            android:text="@string/publish_exit_dialog"/>
+
+    </FrameLayout>
+
+    <View style="@style/bkbnbDividerWithMarginTop" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/services_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/bkbnb20dp"
+        android:paddingEnd="@dimen/bkbnb20dp"
+        android:paddingBottom="@dimen/bkbnb28dp"/>
+
+</LinearLayout>

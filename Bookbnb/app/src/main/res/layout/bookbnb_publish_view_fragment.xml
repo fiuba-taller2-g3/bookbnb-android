@@ -281,7 +281,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_choose"
+            android:id="@+id/btn_booking"
             style="@style/bkbnbButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

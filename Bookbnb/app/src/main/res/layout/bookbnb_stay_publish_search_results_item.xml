@@ -22,7 +22,7 @@
         style="@style/bkbnbSmallTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/bkbnb8dp"
+        android:layout_marginTop="@dimen/bkbnb16dp"
         android:maxLines="2"
         android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="@+id/image"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/stay_description"
-        style="@style/bkbnbStayPostDescription"
+        style="@style/bkbnbSubtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="3"
@@ -60,7 +60,7 @@
             tools:text="$17" />
 
         <TextView
-            style="@style/bkbnbStayPostDescription"
+            style="@style/bkbnbSubtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bkbnb4dp"
