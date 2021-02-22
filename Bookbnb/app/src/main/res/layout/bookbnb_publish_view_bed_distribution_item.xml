@@ -5,8 +5,7 @@
     tools:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginStart="@dimen/bkbnb16dp"
-        android:layout_marginEnd="@dimen/bkbnb16dp"
+        style="@style/bkbnbStayPostHorizontalMargins"
         android:layout_marginTop="@dimen/bkbnb8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

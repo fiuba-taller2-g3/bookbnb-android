@@ -8,7 +8,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
-import kotlinx.android.synthetic.main.bookbnb_publish_img_item.view.*
+import com.fiuba.bookbnb.ui.fragments.form.services.ServicesItemBuilder
 import kotlinx.android.synthetic.main.bookbnb_publish_view_fragment.*
 import java.util.*
 
@@ -17,6 +17,8 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
     private val navArguments by navArgs<PublishViewFragmentArgs>()
     private val publishData by lazy { navArguments.publishData }
     private val userData by lazy { navArguments.userData }
+
+    private val servicesItemBuilder by lazy { ServicesItemBuilder(requireContext()) }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,7 +59,12 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
     }
 
     private fun buildServices() {
-        publishData.services
+        val servicesList = publishData.services.filterValues { it }.keys
+
+        servicesList.take(SERVICES_LIST_MAX_LIMIT).forEach { service ->
+            val serviceData = servicesItemBuilder.build(service)
+            stay_services_list.addView(PublishViewServiceTextItem(requireContext(), serviceData.label, serviceData.description))
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -97,5 +104,9 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
     private fun isSingular(number: Int) = number == 1
 
     override fun shouldClearInputsWhenBackPressed(): Boolean = false
+
+    companion object {
+        private const val SERVICES_LIST_MAX_LIMIT = 5
+    }
 
 }

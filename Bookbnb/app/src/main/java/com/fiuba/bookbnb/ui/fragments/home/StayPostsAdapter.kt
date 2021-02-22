@@ -1,34 +1,22 @@
 package com.fiuba.bookbnb.ui.fragments.home
 
-import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.domain.booking.BookingRequest
-import com.fiuba.bookbnb.domain.misc.MsgResponse
 import com.fiuba.bookbnb.domain.publish.PublishData
-import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
-import com.fiuba.bookbnb.user.UserManager
-import com.fiuba.bookbnb.utils.DateUtils
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.bookbnb_photo_item.view.*
-import kotlinx.android.synthetic.main.bookbnb_stay_post_card_view.view.*
-import kotlinx.android.synthetic.main.bookbnb_stay_post_card_view.view.image
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.*
+import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.*
+import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.image
 
 class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Adapter<StayPostsAdapter.StayPostsViewHolder>() {
 
     inner class StayPostsViewHolder(itemView: ConstraintLayout) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StayPostsViewHolder {
-        (LayoutInflater.from(parent.context).inflate(R.layout.bookbnb_stay_post_card_view, parent, false) as ConstraintLayout)
+        (LayoutInflater.from(parent.context).inflate(R.layout.bookbnb_stay_publish_search_results_item, parent, false) as ConstraintLayout)
             .also { return StayPostsViewHolder(it) }
     }
 

@@ -216,9 +216,10 @@
 
             <LinearLayout
                 android:id="@+id/stay_services_list"
+                style="@style/bkbnbStayPostHorizontalMargins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/bkbnb12dp"
+                android:layout_marginTop="@dimen/bkbnb2dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/stay_services_title"
                 app:layout_constraintEnd_toEndOf="parent"
