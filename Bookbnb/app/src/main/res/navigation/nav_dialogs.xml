@@ -40,6 +40,12 @@
         app:popUpTo="@id/nav_dialogs"
         app:popUpToInclusive="true" />
 
+    <action
+        android:id="@+id/showServicesListDialog"
+        app:destination="@+id/servicesListDialog"
+        app:popUpTo="@id/nav_dialogs"
+        app:popUpToInclusive="true" />
+
     <dialog
         android:id="@+id/datePickerDialogFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment"
@@ -106,12 +112,22 @@
 
     <dialog
         android:id="@+id/uploadPhotoDialog"
-        android:name="com.fiuba.bookbnb.ui.fragments.dialogs.UploadPhotoDialog"
+        android:name="com.fiuba.bookbnb.ui.fragments.dialogs.UploadPhotoDialogFragment"
         android:label="UploadPhotoDialog"
         tools:layout="@layout/bookbnb_upload_photo_dialog_fragment">
         <argument
             android:name="updateImagesListener"
             app:argType="com.fiuba.bookbnb.ui.fragments.form.adapters.PhotoAdapter$UpdateImagesListener" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/servicesListDialog"
+        android:name="com.fiuba.bookbnb.ui.fragments.dialogs.ServicesListDialogFragment"
+        android:label="ServicesListDialog"
+        tools:layout="@layout/bookbnb_services_list_dialog_fragment">
+        <argument
+            android:name="publishData"
+            app:argType="com.fiuba.bookbnb.domain.publish.PublishData" />
     </dialog>
 
 </navigation>

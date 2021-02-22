@@ -8,7 +8,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
+import com.fiuba.bookbnb.ui.fragments.dialogs.ServicesListDialogFragmentDirections
 import com.fiuba.bookbnb.ui.fragments.form.services.ServicesItemBuilder
+import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import kotlinx.android.synthetic.main.bookbnb_publish_view_fragment.*
 import java.util.*
 
@@ -68,6 +70,10 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         }
 
         btn_services.text = getString(R.string.publish_view_services_button_text, servicesList.size)
+        btn_services.setOnClickListener {
+            NavigationManager.showDialog { ServicesListDialogFragmentDirections.showServicesListDialog(publishData) }
+        }
+
     }
 
     @SuppressLint("SetTextI18n")
