@@ -29,7 +29,7 @@
 
     </FrameLayout>
 
-    <View style="@style/bkbnbDivider" />
+    <View style="@style/bkbnbDividerWithMarginTop" />
 
     <ImageView
         android:id="@+id/img_view"

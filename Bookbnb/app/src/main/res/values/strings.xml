@@ -268,6 +268,8 @@
     <string name="publish_view_bed_distribution_title">Distribución de las camas</string>
     <string name="publish_view_bed_distribution_empty_text">Este alojamiento no cuenta con habitaciones</string>
     <string name="publish_view_services_title">Servicios</string>
+    <string name="publish_view_services_button_text">Mostrar los %d servicios</string>
+    <string name="publish_view_booking_button_text">Reservar</string>
 
     <!-- Utils -->
     <string name="string_empty" />
