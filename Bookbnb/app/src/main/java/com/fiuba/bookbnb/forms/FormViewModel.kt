@@ -9,6 +9,7 @@ import com.fiuba.bookbnb.ui.fragments.form.data.PhotoFormItemData
 import com.fiuba.bookbnb.ui.fragments.form.data.ServicesFormItemData
 import com.fiuba.bookbnb.ui.fragments.form.services.Services
 import java.util.*
+import kotlin.collections.LinkedHashMap
 
 class FormViewModel : ViewModel() {
 
@@ -61,7 +62,7 @@ class FormViewModel : ViewModel() {
 
     fun getValueFromService(service: Services) : Boolean = services[service] ?: false
 
-    fun getPublishServices() = services
+    fun getPublishServices() = LinkedHashMap(services)
 
     fun getContentFromItem(formInputType: FormInputType) = formInputItems[formInputType] ?: throw Exception("Error: Input $formInputType is not found!")
 
