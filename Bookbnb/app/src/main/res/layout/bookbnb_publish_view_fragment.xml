@@ -216,10 +216,9 @@
 
             <LinearLayout
                 android:id="@+id/stay_services_list"
-                style="@style/bkbnbStayPostHorizontalMargins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/bkbnb2dp"
+                android:layout_marginTop="@dimen/bkbnb12dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -312,7 +311,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/price_footer_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bkbnb16dp"
@@ -346,10 +345,10 @@
             android:layout_marginStart="@dimen/bkbnb20dp"
             android:layout_marginEnd="@dimen/bkbnb16dp"
             android:background="@drawable/button_ripple"
-            android:text="@string/publish_view_booking_button_text"
+            android:text="@string/publish_view_select_date_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toEndOf="@+id/price_footer_container"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

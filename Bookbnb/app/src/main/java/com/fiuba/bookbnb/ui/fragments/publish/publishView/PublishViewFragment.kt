@@ -65,22 +65,25 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
             publishData.bedsDistribution.forEach { bedDistribution ->
                 stay_beds_distribution_list.addView(PublishViewBedDistributionItem(requireContext(), bedDistribution))
             }
-        } else stay_beds_distribution_list.addView(PublishViewBedDistributionEmptyItem(requireContext()))
+        } else stay_beds_distribution_list.addView(PublishViewEmptyItem(requireContext(), getString(R.string.publish_view_bed_distribution_empty_text)))
     }
 
     private fun buildServices() {
         val servicesList = publishData.services.filterValues { it }.keys
 
-        servicesList.take(SERVICES_LIST_MAX_LIMIT).forEach { service ->
-            val serviceData = servicesItemBuilder.build(service)
-            stay_services_list.addView(PublishViewServiceTextItem(requireContext(), serviceData.label, serviceData.description))
-        }
+        if (servicesList.isNotEmpty()) {
+            servicesList.take(SERVICES_LIST_MAX_LIMIT).forEach { service ->
+                val serviceData = servicesItemBuilder.build(service)
+                stay_services_list.addView(PublishViewServiceTextItem(requireContext(), serviceData.label))
+            }
 
-        btn_services.text = getString(R.string.publish_view_services_button_text, servicesList.size)
-        btn_services.setOnClickListener {
-            NavigationManager.showDialog { ServicesListDialogFragmentDirections.showServicesListDialog(publishData) }
-        }
+            btn_services.text = getString(R.string.publish_view_services_button_text, servicesList.size)
+            btn_services.setOnClickListener {
+                NavigationManager.showDialog { ServicesListDialogFragmentDirections.showServicesListDialog(publishData) }
+            }
+        } else stay_services_list.addView(PublishViewEmptyItem(requireContext(), getString(R.string.publish_view_services_empty_text)))
 
+        btn_services.isVisible = servicesList.isNotEmpty()
     }
 
     @SuppressLint("SetTextI18n")

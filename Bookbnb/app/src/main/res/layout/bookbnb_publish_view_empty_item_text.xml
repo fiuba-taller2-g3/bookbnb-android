@@ -14,6 +14,6 @@
         android:padding="@dimen/bkbnb12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/publish_view_bed_distribution_empty_text"/>
+        tools:text="@string/publish_view_bed_distribution_empty_text"/>
 
 </merge>
