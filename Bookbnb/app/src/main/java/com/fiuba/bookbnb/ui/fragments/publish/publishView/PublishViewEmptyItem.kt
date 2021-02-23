@@ -6,14 +6,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.fiuba.bookbnb.R
+import kotlinx.android.synthetic.main.bookbnb_publish_view_empty_item_text.view.*
 
-class PublishViewBedDistributionEmptyItem @JvmOverloads constructor(context: Context,
-                                                                    attrs: AttributeSet? = null,
-                                                                    defStyleAttr: Int = 0)
+class PublishViewEmptyItem @JvmOverloads constructor(context: Context,
+                                                     text: String,
+                                                     attrs: AttributeSet? = null,
+                                                     defStyleAttr: Int = 0)
     : LinearLayout(context, attrs, defStyleAttr) {
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.bookbnb_publish_view_empty_bedrooms_text, this)
+        LayoutInflater.from(context).inflate(R.layout.bookbnb_publish_view_empty_item_text, this)
+        bedroom_empty_text.text = text
         setLayoutParams()
     }
 
