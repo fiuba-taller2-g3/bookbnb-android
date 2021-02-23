@@ -21,8 +21,6 @@
 
     </FrameLayout>
 
-    <View style="@style/bkbnbDividerWithMarginTop" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/services_list"
         android:layout_width="match_parent"
