@@ -11,16 +11,21 @@ import com.fiuba.bookbnb.ui.fragments.BaseFragment
 import com.fiuba.bookbnb.ui.fragments.dialogs.ServicesListDialogFragmentDirections
 import com.fiuba.bookbnb.ui.fragments.form.services.ServicesItemBuilder
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.bookbnb_publish_view_fragment.*
 import java.util.*
 
-class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment) {
+class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment), OnMapReadyCallback {
 
     private val navArguments by navArgs<PublishViewFragmentArgs>()
     private val publishData by lazy { navArguments.publishData }
     private val userData by lazy { navArguments.userData }
 
     private val servicesItemBuilder by lazy { ServicesItemBuilder(requireContext()) }
+    private lateinit var mMap : GoogleMap
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,6 +55,8 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         stay_description.text = publishData.description
         buildBedsDistribution()
         buildServices()
+        setUpMap()
+        location_description.text = publish_location.text
         price.text = getString(R.string.stay_post_price_text, publishData.price)
     }
 
@@ -110,9 +117,40 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         if (isSingular(publishData.bedrooms.toInt())) R.string.publish_view_bedroom_singular_label else R.string.publish_view_bedroom_plural_label, publishData.bedrooms
     )
 
+    private fun setUpMap() {
+        val supportMapFragment = childFragmentManager.findFragmentById(R.id.stay_map) as SupportMapFragment
+        supportMapFragment.getMapAsync(this)
+    }
+
     private fun isSingular(number: Int) = number == 1
 
     override fun shouldClearInputsWhenBackPressed(): Boolean = false
+
+    override fun onMapReady(map: GoogleMap) {
+        mMap = map
+        mMap.uiSettings.setAllGesturesEnabled(false)
+        loadLatLng()
+    }
+
+    private fun loadLatLng() {
+        val latLng = LatLng(publishData.location.lat!!.toDouble(), publishData.location.lng!!.toDouble())
+        val cameraPosition: CameraPosition = CameraPosition.Builder().target(latLng).zoom(17.0f).build()
+        val cameraUpdate: CameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
+        mMap.addMarker(MarkerOptions().position(latLng))
+        mMap.moveCamera(cameraUpdate)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        activity?.supportFragmentManager?.apply {
+            findFragmentById(R.id.stay_map)?.let { mapFragment ->
+                beginTransaction().apply {
+                    remove(mapFragment)
+                    commit()
+                }
+            }
+        }
+    }
 
     companion object {
         private const val SERVICES_LIST_MAX_LIMIT = 5

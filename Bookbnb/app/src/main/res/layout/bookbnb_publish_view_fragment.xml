@@ -237,6 +237,64 @@
                 app:layout_constraintTop_toBottomOf="@id/stay_services_list"
                 tools:text="Mostrar los 26 servicios" />
 
+            <View
+                android:id="@+id/divider_5"
+                style="@style/bkbnbPublishViewDivider"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@id/btn_services" />
+
+            <TextView
+                android:id="@+id/stay_location_title"
+                style="@style/bkbnbStayTypePublishViewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                android:layout_marginEnd="@dimen/bkbnb8dp"
+                android:text="@string/publish_view_location_title"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider_5" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:id="@+id/stay_map"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gMapHeight"
+                android:layout_margin="@dimen/bkbnb20dp"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/stay_location_title" />
+
+            <TextView
+                android:id="@+id/location_description"
+                style="@style/bkbnbSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb16dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/stay_map"
+                tools:text="Punta del Este, Maldonado, Uruguay" />
+
+            <TextView
+                android:id="@+id/location_disclaimer"
+                style="@style/bkbnbDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb8dp"
+                android:text="@string/publish_view_location_disclaimer_text"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/location_description" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
