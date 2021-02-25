@@ -74,6 +74,19 @@
         <argument
             android:name="userData"
             app:argType="com.fiuba.bookbnb.domain.user.UserData" />
+        <action
+            android:id="@+id/action_publishViewFragment_to_bookingFormFragment"
+            app:destination="@id/bookingFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookingFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.booking.BookingFormFragment"
+        android:label="BookingFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment" >
+        <argument
+            android:name="publishData"
+            app:argType="com.fiuba.bookbnb.domain.publish.PublishData" />
     </fragment>
 
 </navigation>

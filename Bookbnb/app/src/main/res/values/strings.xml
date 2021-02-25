@@ -276,6 +276,11 @@
     <string name="publish_view_services_button_text">Mostrar los %d servicios</string>
     <string name="publish_view_select_date_button_text">Seleccionar fechas</string>
 
+    <!-- Booking -->
+    <string name="booking_title_text">Selección de fechas y confirmación de reserva</string>
+    <string name="booking_subtitle_text">Seleccione el período de fechas en la que desee reservar el alojamiento.</string>
+    <string name="booking_button_text">Confirmar reserva</string>
+
     <!-- Utils -->
     <string name="string_empty" />
 

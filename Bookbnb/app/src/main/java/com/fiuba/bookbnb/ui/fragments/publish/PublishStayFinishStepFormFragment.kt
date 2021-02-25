@@ -1,12 +1,14 @@
 package com.fiuba.bookbnb.ui.fragments.publish
 
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.domain.publish.*
+import com.fiuba.bookbnb.domain.publish.AvailabilityDates
+import com.fiuba.bookbnb.domain.publish.BedDistribution
+import com.fiuba.bookbnb.domain.publish.Location
+import com.fiuba.bookbnb.domain.publish.PublishData
 import com.fiuba.bookbnb.forms.FormInputData
 import com.fiuba.bookbnb.forms.FormInputType.*
 import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.fragments.form.FormWithNetworkStatusFragment
-import com.fiuba.bookbnb.ui.fragments.form.services.Services.*
 import com.fiuba.bookbnb.user.UserManager
 import com.fiuba.bookbnb.utils.DateUtils
 import retrofit2.Call
