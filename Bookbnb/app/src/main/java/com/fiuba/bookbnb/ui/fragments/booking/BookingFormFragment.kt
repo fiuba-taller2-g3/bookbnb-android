@@ -21,10 +21,15 @@ class BookingFormFragment : FormWithNetworkStatusFragment<BookingViewModel, MsgR
     override fun getSubtitleTextRes(): Int = R.string.booking_subtitle_text
     override fun getButtonTextRes(): Int = R.string.booking_button_text
 
+    override fun shouldClearInputsWhenBackPressed(): Boolean = false
+
     override fun getInputList(): List<FormInputData> {
+        val startDate = DateUtils.getDateOutputFormat().parse(publishData.availabilityDates.startDate)
+        val endDate = DateUtils.getDateOutputFormat().parse(publishData.availabilityDates.endDate)
+
         return listOf(
-            FormInputData(FormInputType.START_DATE, DateUtils.getDateOutputFormat().format(publishData.availabilityDates.startDate)),
-            FormInputData(FormInputType.END_DATE, DateUtils.getDateOutputFormat().format(publishData.availabilityDates.endDate))
+            FormInputData(FormInputType.START_DATE, DateUtils.getDateOutputFormat().format(startDate!!)),
+            FormInputData(FormInputType.END_DATE, DateUtils.getDateOutputFormat().format(endDate!!))
         )
     }
 
@@ -33,7 +38,8 @@ class BookingFormFragment : FormWithNetworkStatusFragment<BookingViewModel, MsgR
             UserManager.getUserInfo().getUserId(),
             publishData.id!!,
             getContentFromItem(FormInputType.START_DATE),
-            getContentFromItem(FormInputType.END_DATE)
+            getContentFromItem(FormInputType.END_DATE),
+            UserManager.getUserInfo().getUserData().walletId
         )
     }
 

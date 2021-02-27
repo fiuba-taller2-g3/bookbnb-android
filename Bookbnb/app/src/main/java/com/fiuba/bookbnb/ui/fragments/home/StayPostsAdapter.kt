@@ -34,22 +34,6 @@ class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Ad
 
             setOnClickListener {
                 NavigationManager.moveForward(SearchResultsFragmentDirections.actionSearchResultsFragmentToLoadingPublishViewFragment(itemData))
-                // TODO: En cuanto estén las fechas de inicio y final de la publicación, agregarlas a los parámetros correspondientes
-                //val currentDate = DateUtils.getDateOutputFormat().format(Date().time)
-//                val bookingRequest = BookingRequest(UserManager.getUserInfo().getUserId(), itemData.id, currentDate, currentDate)
-//                NetworkModule.buildRetrofitClient().purchase(bookingRequest, UserManager.getUserInfo().getToken()).enqueue(object : Callback<MsgResponse> {
-//                    override fun onResponse(call: Call<MsgResponse>, response: Response<MsgResponse>) {
-//                        AlertDialog.Builder(context).run {
-//                            setMessage("Compra satisfactoria")
-//                        }.show()
-//                    }
-//
-//                    override fun onFailure(call: Call<MsgResponse>, t: Throwable) {
-//                        AlertDialog.Builder(context).run {
-//                            setMessage("Error en la compra")
-//                        }.show()
-//                    }
-//                })
             }
         }
     }

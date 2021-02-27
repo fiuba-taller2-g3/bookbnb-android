@@ -153,7 +153,6 @@ class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<Publi
         getPrice(FormInputType.MAX_PRICE),
         formViewModel.getContentFromItem(FormInputType.START_DATE),
         formViewModel.getContentFromItem(FormInputType.END_DATE),
-        UserManager.getUserInfo().getUserId(),
         UserManager.getUserInfo().getToken())
 
     companion object {
