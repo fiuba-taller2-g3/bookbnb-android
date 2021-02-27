@@ -31,7 +31,7 @@ interface BookbnbAPIService {
     fun getPosts(@Query(TYPE) type: String, @Query(LAT) lat: String, @Query(LNG) lng: String,
                  @Query(MIN_PRICE) minPrice: String?, @Query(MAX_PRICE) maxPrice: String?,
                  @Query(BEGIN_DATE) beginDate: String, @Query(END_DATE) endDate: String,
-                 @Query(USER_ID_PARAM) userId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
+                 @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
 
     @POST("bookings")
     fun purchase(@Body userData: BookingRequest, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
@@ -49,6 +49,5 @@ interface BookbnbAPIService {
         private const val END_DATE = "endDate"
         private const val LAT = "lat"
         private const val LNG = "lng"
-        private const val USER_ID_PARAM = "user_id"
     }
 }

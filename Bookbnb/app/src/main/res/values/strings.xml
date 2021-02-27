@@ -281,6 +281,8 @@
     <string name="booking_subtitle_text">Seleccione el período de fechas en la que desee reservar el alojamiento.</string>
     <string name="booking_button_text">Confirmar reserva</string>
 
+    <string name="purchase_confirmed_description">¡Felicidades! Has reservado el alojamiento.</string>
+
     <!-- Utils -->
     <string name="string_empty" />
 

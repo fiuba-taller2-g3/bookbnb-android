@@ -87,6 +87,26 @@
         <argument
             android:name="publishData"
             app:argType="com.fiuba.bookbnb.domain.publish.PublishData" />
+        <action
+            android:id="@+id/action_bookingFormFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.misc.ConfirmationFragment"
+        android:label="ConfirmationFragment"
+        tools:layout="@layout/bookbnb_confirmation_fragment">
+        <argument
+            android:name="imgRes"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="subtitleRes"
+            app:argType="integer" />
+    </fragment>
+
 
 </navigation>
