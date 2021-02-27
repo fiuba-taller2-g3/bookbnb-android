@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "851049532305",
-    "project_id": "windy-album-299205",
-    "storage_bucket": "windy-album-299205.appspot.com"
+    "project_number": "636063143479",
+    "project_id": "taller2-grupo3",
+    "storage_bucket": "taller2-grupo3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:851049532305:android:1f1b6b50f1caa8152de830",
+        "mobilesdk_app_id": "1:636063143479:android:cd213563071fe9453951b2",
         "android_client_info": {
           "package_name": "com.fiuba.bookbnb"
         }
       },
       "oauth_client": [
         {
-          "client_id": "851049532305-5h3t48akgeidpkqq1ie1vsj3f68pltti.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.fiuba.bookbnb",
-            "certificate_hash": "cf84ecfbbde0a155e0988a7fc560619aeac9d445"
-          }
-        },
-        {
-          "client_id": "851049532305-k3tkngpecujanqvja0ii1c91bhhtr7vt.apps.googleusercontent.com",
+          "client_id": "636063143479-o1qj3iq7671atu66d1tpudfnj2fsmirr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDW4V4UlS6PZ3ezxIxtkkWDVqpU9BCH4bM"
+          "current_key": "AIzaSyABbAwssh2LkW2oHS0YpkN-sIBsZpkq-l8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "851049532305-k3tkngpecujanqvja0ii1c91bhhtr7vt.apps.googleusercontent.com",
+              "client_id": "636063143479-o1qj3iq7671atu66d1tpudfnj2fsmirr.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
