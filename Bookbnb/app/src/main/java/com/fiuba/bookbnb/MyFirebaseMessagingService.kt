@@ -13,6 +13,9 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import com.fiuba.bookbnb.domain.misc.TokenData
+import com.fiuba.bookbnb.networking.NetworkModule
+import com.fiuba.bookbnb.user.UserManager
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     /**
@@ -84,8 +87,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @param token The new token.
      */
     private fun sendRegistrationToServer(token: String?) {
-        // TODO: Implement this method to send token to your app server.
-        Log.d(TAG, "sendRegistrationTokenToServer($token)")
+        val userId = UserManager.getUserInfo().getUserId()
+        NetworkModule.buildRetrofitClient().registerToken(
+            TokenData(
+                userId,
+                token
+            )
+        )
+        Log.d(TAG, "sendRegistrationTokenToServer($token) for userId $userId")
     }
 
     /**
