@@ -11,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object NetworkModule {
 
     private const val BASE_URL = "https://facade-server-develop.herokuapp.com/"
+    // private const val BASE_URL = "http://192.168.0.122:5000/" para probar local, poner la ip de la maquina
 
     private val gson = GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)

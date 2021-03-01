@@ -37,7 +37,7 @@ interface BookbnbAPIService {
     fun purchase(@Body userData: BookingRequest, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
 
     @POST("tokens")
-    fun registerToken(@Body tokenId: TokenData) : Call<MsgResponse>
+    fun registerToken(@Body tokenData: TokenData) : Call<MsgResponse>
 
     companion object {
         private const val USER_ID = "id"

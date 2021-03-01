@@ -13,9 +13,13 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import com.fiuba.bookbnb.domain.misc.MsgResponse
 import com.fiuba.bookbnb.domain.misc.TokenData
 import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.user.UserManager
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     /**
@@ -23,20 +27,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      *
      * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
      */
-    // [START receive_message]
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        // [START_EXCLUDE]
-        // There are two types of messages data messages and notification messages. Data messages are handled
-        // here in onMessageReceived whether the app is in the foreground or background. Data messages are the type
-        // traditionally used with GCM. Notification messages are only received here in onMessageReceived when the app
-        // is in the foreground. When the app is in the background an automatically generated notification is displayed.
-        // When the user taps on the notification they are returned to the app. Messages containing both notification
-        // and data payloads are treated as notification messages. The Firebase console always sends notification
-        // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
-        // [END_EXCLUDE]
-
-        // TODO(developer): Handle FCM messages here.
-        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: ${remoteMessage.from}")
 
         // Check if message contains a data payload.
@@ -70,6 +61,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      */
     override fun onNewToken(token: String) {
         Log.d(TAG, "Refreshed token: $token")
+        RegistrationToken.setToken(token)
 
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
@@ -87,17 +79,65 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @param token The new token.
      */
     private fun sendRegistrationToServer(token: String?) {
-        val userId = UserManager.getUserInfo().getUserId()
-        NetworkModule.buildRetrofitClient().registerToken(
-            TokenData(
-                userId,
-                token
+        if (UserManager.isUserLogged()) {
+            val userId = UserManager.getUserInfo().getUserId()
+            NetworkModule.buildRetrofitClient().registerToken(
+                TokenData(
+                    userId,
+                    token
+                )
             )
-        )
-        Log.d(TAG, "sendRegistrationTokenToServer($token) for userId $userId")
+            Log.d(TAG, "sendRegistrationTokenToServer($token) for userId $userId")
+        } else {
+            Log.d(TAG, "no se puede guardar token de un usuario no logueado")
+        }
     }
 
-    /**
+    fun sendRegistrationToServer() {
+        val userId = UserManager.getUserInfo().getUserId()
+
+        Log.d(TAG, "Enviando user id: $userId, token: ${RegistrationToken.getToken()}")
+
+        val call = NetworkModule.buildRetrofitClient().registerToken(
+            TokenData(
+                userId,
+                RegistrationToken.getToken()
+            )
+        )
+        executeCallback(call)
+    }
+
+    private fun executeCallback(call: Call<MsgResponse>) {
+        call.enqueue(object : Callback<MsgResponse> {
+
+            override fun onResponse(call: Call<MsgResponse>, response: Response<MsgResponse>) {
+                if (response.isSuccessful) {
+                    onSuccessful(response)
+                } else {
+                    onFailure(response)
+                }
+            }
+
+            override fun onFailure(call: Call<MsgResponse>, t: Throwable) {
+                if (!call.isCanceled) {
+                    Log.d(TAG, "sendRegistrationTokenToServer(${RegistrationToken.getToken()}) with error")
+                }
+            }
+        })
+    }
+
+    fun onSuccessful(response: Response<MsgResponse>) {
+        response.body()?.let {
+            Log.d(TAG, "sendRegistrationTokenToServer(${RegistrationToken.getToken()}) successfully")
+
+        }
+    }
+
+    fun onFailure(response: Response<MsgResponse>) {
+        Log.d(TAG, "sendRegistrationTokenToServer(${RegistrationToken.getToken()}) with error")
+    }
+
+        /**
      * Schedule async work using WorkManager.
      */
     private fun scheduleJob() {
