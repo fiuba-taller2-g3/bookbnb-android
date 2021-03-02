@@ -1,5 +1,6 @@
 package com.fiuba.bookbnb.networking
 
+import com.fiuba.bookbnb.domain.misc.TokenData
 import com.fiuba.bookbnb.domain.booking.BookingRequest
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.domain.login.LoginResponse
@@ -34,6 +35,9 @@ interface BookbnbAPIService {
 
     @POST("bookings")
     fun purchase(@Body userData: BookingRequest, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
+
+    @POST("tokens")
+    fun registerToken(@Body tokenData: TokenData) : Call<MsgResponse>
 
     companion object {
         private const val USER_ID = "id"
