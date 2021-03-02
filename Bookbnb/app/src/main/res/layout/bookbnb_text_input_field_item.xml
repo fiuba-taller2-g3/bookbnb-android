@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edit_text"
-        android:src="@drawable/ic_search"/>
+        android:src="@drawable/ic_clearfield"/>
 
     <TextView
         android:id="@+id/validation_text"
