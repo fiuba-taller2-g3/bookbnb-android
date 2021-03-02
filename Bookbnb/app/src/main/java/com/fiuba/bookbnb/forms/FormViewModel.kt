@@ -92,6 +92,10 @@ class FormViewModel : ViewModel() {
         bedDistributionItems.clear()
         services.clear()
         photosUrls.clear()
+        clearLocationInfo()
+    }
+
+    fun clearLocationInfo() {
         locationInfo = null
     }
 

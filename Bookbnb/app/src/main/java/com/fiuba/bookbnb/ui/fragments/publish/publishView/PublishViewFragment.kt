@@ -50,7 +50,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         publish_title.text = publishData.title
         publish_location.text = with(publishData.location) { "${city}, $country" }
         host_name.text = getString(R.string.publish_view_host_name, "${userData.name} ${userData.surname}")
-        stay_type.text = "${publishData.type} \u2022 ${publishData.availabilityType}"
+        stay_type.text = "${publishData.type.capitalize(Locale.ROOT)} \u2022 ${publishData.availabilityType}"
         stay_summary.text = buildStaySummary()
         stay_description.text = publishData.description
         buildBedsDistribution()
