@@ -6,11 +6,13 @@ import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.forms.FormInputData
+import com.fiuba.bookbnb.forms.FormInputType
 import com.fiuba.bookbnb.forms.InputFieldModule
 import com.fiuba.bookbnb.forms.InputItemsManager
 import kotlinx.android.synthetic.main.bookbnb_button.*
 import kotlinx.android.synthetic.main.bookbnb_form_fragment.*
 import kotlinx.android.synthetic.main.bookbnb_form_header.*
+import java.util.*
 
 abstract class FormFragment : FormBaseFragment(R.layout.bookbnb_form_fragment) {
 
@@ -33,7 +35,8 @@ abstract class FormFragment : FormBaseFragment(R.layout.bookbnb_form_fragment) {
 
     private fun initInputs() {
         formViewModel.loadInputItems(getInputList()).forEach { inputItem ->
-            input_fields_container.addView(inputItemsManager.getInputModule(FormInputData(inputItem.key, inputItem.value)))
+            val inputData = getInputList().firstOrNull { it.inputField == inputItem.key }
+            input_fields_container.addView(inputItemsManager.getInputModule(FormInputData(inputItem.key, inputItem.value, inputData?.minDate, inputData?.maxDate)))
         }
     }
 

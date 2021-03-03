@@ -32,6 +32,8 @@ enum class FormInputType {
     SEARCH_CITY,
     SEARCH_START_DATE,
     SEARCH_END_DATE,
+    BOOKING_START_DATE,
+    BOOKING_END_DATE,
     MIN_PRICE,
     MAX_PRICE,
     PRICE

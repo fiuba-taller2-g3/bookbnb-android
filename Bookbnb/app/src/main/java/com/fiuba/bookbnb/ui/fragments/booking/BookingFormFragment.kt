@@ -28,8 +28,8 @@ class BookingFormFragment : FormWithNetworkStatusFragment<BookingViewModel, MsgR
         val endDate = DateUtils.getDateOutputFormat().parse(publishData.availabilityDates.endDate)
 
         return listOf(
-            FormInputData(FormInputType.START_DATE, DateUtils.getDateOutputFormat().format(startDate!!)),
-            FormInputData(FormInputType.END_DATE, DateUtils.getDateOutputFormat().format(endDate!!))
+            FormInputData(FormInputType.BOOKING_START_DATE, DateUtils.getDateOutputFormat().format(startDate!!), startDate, endDate!!),
+            FormInputData(FormInputType.BOOKING_END_DATE, DateUtils.getDateOutputFormat().format(endDate), startDate, endDate)
         )
     }
 
@@ -37,8 +37,8 @@ class BookingFormFragment : FormWithNetworkStatusFragment<BookingViewModel, MsgR
         BookingRequest(
             UserManager.getUserInfo().getUserId(),
             publishData.id!!,
-            getContentFromItem(FormInputType.START_DATE),
-            getContentFromItem(FormInputType.END_DATE),
+            getContentFromItem(FormInputType.BOOKING_START_DATE),
+            getContentFromItem(FormInputType.BOOKING_END_DATE),
             UserManager.getUserInfo().getUserData().walletId
         )
     }
