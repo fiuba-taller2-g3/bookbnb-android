@@ -41,7 +41,10 @@ interface BookbnbAPIService {
     fun registerToken(@Body tokenData: TokenData) : Call<MsgResponse>
 
     @GET("bookings")
-    fun pendingBookings(@Query(USER_BOOKINGS_ID) userId: String, @Query(STATUS) status: String) : Call<List<BookingResponse>>
+    fun pendingBookingsHost(@Query(HOST_USER_ID) hostUserId: String, @Query(STATUS) status: String) : Call<List<BookingResponse>>
+
+    @GET("bookings")
+    fun bookingsGuest(@Query(GUEST_USER_ID) guestUserId: String) : Call<List<BookingResponse>>
 
     @POST("bookings")
     fun acceptBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
@@ -57,7 +60,8 @@ interface BookbnbAPIService {
         private const val HIDE_USER_ID = "hide_user_id"
         private const val LAT = "lat"
         private const val LNG = "lng"
-        private const val USER_BOOKINGS_ID = "user_id"
+        private const val HOST_USER_ID = "user_id"
+        private const val GUEST_USER_ID = "guest_user_id"
         private const val STATUS = "status"
     }
 }
