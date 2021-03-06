@@ -278,12 +278,19 @@
     <string name="publish_view_select_date_button_text">Seleccionar fechas</string>
 
     <!-- Booking -->
-    <string name="booking_title_text">Selección de fechas y confirmación de reserva</string>
-    <string name="booking_subtitle_text">Seleccione el período de fechas en la que desee reservar el alojamiento.</string>
+    <string name="booking_dates_title_text">Selección de fechas</string>
+    <string name="booking_dates_subtitle_text">Seleccione el período de fechas en la que desee reservar el alojamiento.</string>
+    <string name="booking_confirm_title_text">Confirmación de reserva</string>
+    <string name="booking_confirm_subtitle_text">Revise los siguientes datos antes de confirmar la reserva.</string>
     <string name="booking_button_text">Confirmar reserva</string>
 
     <string name="purchase_confirmed_title">Has reservado el alojamiento.</string>
     <string name="purchase_confirmed_description">Hemos enviado una solicitud de aceptación al anfitrión sobre esta reserva.</string>
+
+    <string name="purchase_init_date">Fecha inicial: %s</string>
+    <string name="purchase_finish_date">Fecha final: %s</string>
+    <string name="purchase_night_counts">Cantidad de noches: %d</string>
+    <string name="purchase_total_price">Precio total: $%s</string>
 
     <!-- Utils -->
     <string name="string_empty" />

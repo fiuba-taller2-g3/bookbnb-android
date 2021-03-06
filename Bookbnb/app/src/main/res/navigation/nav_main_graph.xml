@@ -75,20 +75,33 @@
             android:name="userData"
             app:argType="com.fiuba.bookbnb.domain.user.UserData" />
         <action
-            android:id="@+id/action_publishViewFragment_to_bookingFormFragment"
-            app:destination="@id/bookingFormFragment" />
+            android:id="@+id/action_publishViewFragment_to_bookingSelectDateFormFragment"
+            app:destination="@id/bookingSelectDateFormFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/bookingFormFragment"
-        android:name="com.fiuba.bookbnb.ui.fragments.booking.BookingFormFragment"
-        android:label="BookingFormFragment"
-        tools:layout="@layout/bookbnb_form_fragment" >
+        android:id="@+id/bookingSelectDateFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.booking.BookingSelectDateFormFragment"
+        android:label="BookingSelectDateFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment">
         <argument
             android:name="publishData"
             app:argType="com.fiuba.bookbnb.domain.publish.PublishData" />
         <action
-            android:id="@+id/action_bookingFormFragment_to_confirmationFragment"
+            android:id="@+id/action_bookingSelectDateFormFragment_to_bookingConfirmFormFragment"
+            app:destination="@id/bookingConfirmFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookingConfirmFormFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.booking.BookingConfirmFormFragment"
+        android:label="BookingConfirmFormFragment"
+        tools:layout="@layout/bookbnb_form_fragment">
+        <argument
+            android:name="publishData"
+            app:argType="com.fiuba.bookbnb.domain.publish.PublishData" />
+        <action
+            android:id="@+id/action_bookingConfirmFormFragment_to_confirmationFragment"
             app:destination="@id/confirmationFragment" />
     </fragment>
 
