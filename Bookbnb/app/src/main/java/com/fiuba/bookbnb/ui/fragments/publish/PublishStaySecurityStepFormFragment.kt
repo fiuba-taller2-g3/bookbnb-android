@@ -2,6 +2,7 @@ package com.fiuba.bookbnb.ui.fragments.publish
 
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.form.services.Services
+import com.fiuba.bookbnb.ui.fragments.form.services.ServicesUtils
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 
 class PublishStaySecurityStepFormFragment : PublishStayServicesAbstractStepFormFragment() {
@@ -16,14 +17,6 @@ class PublishStaySecurityStepFormFragment : PublishStayServicesAbstractStepFormF
         NavigationManager.moveForward(PublishStaySecurityStepFormFragmentDirections.actionPublishStaySecurityStepFormFragmentToPublishStayInstallationsStepFormFragment())
     }
 
-    override fun getServices(): List<Services> {
-        return listOf(
-            Services.KIT,
-            Services.SMOKE_DETECTOR,
-            Services.FIRE_EXTINGUISHER,
-            Services.SAFETY_INSTRUCTIONS_SHEET,
-            Services.LOOK_BEDROOM_DOOR
-        )
-    }
+    override fun getServices(): List<Services> = ServicesUtils.getSecurityServices()
 
 }

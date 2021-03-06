@@ -1,5 +1,6 @@
 package com.fiuba.bookbnb.domain.publish
 
+import com.fiuba.bookbnb.ui.fragments.form.services.Services
 import java.io.Serializable
 
 data class PublishData(val id: String?,
@@ -18,8 +19,6 @@ data class PublishData(val id: String?,
                        val bathrooms: String,
                        val bedsDistribution: ArrayList<BedDistribution>,
                        val location: Location,
-                       val services: Services,
-                       val security: Security,
-                       val installations: Installations,
+                       val services: LinkedHashMap<Services, Boolean>,
                        val date: String,
                        val walletId: String) : Serializable

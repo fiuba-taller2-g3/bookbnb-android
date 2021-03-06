@@ -248,6 +248,42 @@
     <string name="search_stay_type_label">Tipo de alojamiento</string>
     <string name="search_min_price_label">Precio mínimo (USD)</string>
     <string name="search_max_price_label">Precio máximo (USD)</string>
+    <string name="search_empty_results_text">¡Ups! No se encontraron resultados para su búsqueda. Intente realizar otra.</string>
+
+    <!-- Publish view -->
+    <string name="publish_view_host_name">Anfitrión: %s</string>
+    <string name="publish_view_guest_singular_label">%s huésped</string>
+    <string name="publish_view_guest_plural_label">%s huéspedes</string>
+    <string name="publish_view_bedroom_singular_label">%s habitación</string>
+    <string name="publish_view_bedroom_plural_label">%s habitaciones</string>
+    <string name="publish_view_beds_singular_label">%s cama</string>
+    <string name="publish_view_beds_plural_label">%s camas</string>
+    <string name="publish_view_bathroom_singular_label">%s baño</string>
+    <string name="publish_view_bathroom_plural_label">%s baños</string>
+    <string name="publish_view_single_bed_singular_label">%s cama individual</string>
+    <string name="publish_view_single_bed_plural_label">%s camas individuales</string>
+    <string name="publish_view_double_bed_singular_label">%s cama matrimonial</string>
+    <string name="publish_view_double_bed_plural_label">%s camas matrimoniales</string>
+    <string name="publish_view_cribs_bed_singular_label">%s cuna</string>
+    <string name="publish_view_cribs_bed_plural_label">%s cunas</string>
+    <string name="publish_view_bed_distribution_title">Distribución de las camas</string>
+    <string name="publish_view_bed_distribution_empty_text">Este alojamiento no cuenta con habitaciones</string>
+    <string name="publish_view_services_empty_text">Este alojamiento no cuenta con servicios</string>
+    <string name="publish_view_services_title">Servicios</string>
+    <string name="publish_view_location_title">Ubicación</string>
+    <string name="publish_view_location_disclaimer_text">Te proporcionaremos más datos de la ubicación una vez que reserves.</string>
+    <string name="publish_view_installations_title">Instalaciones</string>
+    <string name="publish_view_services_not_included_title">No incluidos</string>
+    <string name="publish_view_services_button_text">Mostrar los %d servicios</string>
+    <string name="publish_view_select_date_button_text">Seleccionar fechas</string>
+
+    <!-- Booking -->
+    <string name="booking_title_text">Selección de fechas y confirmación de reserva</string>
+    <string name="booking_subtitle_text">Seleccione el período de fechas en la que desee reservar el alojamiento.</string>
+    <string name="booking_button_text">Confirmar reserva</string>
+
+    <string name="purchase_confirmed_title">Has reservado el alojamiento.</string>
+    <string name="purchase_confirmed_description">Hemos enviado una solicitud de aceptación al anfitrión sobre esta reserva.</string>
 
     <!-- Utils -->
     <string name="string_empty" />

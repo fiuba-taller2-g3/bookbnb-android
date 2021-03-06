@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/publish_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/bkbnb20dp">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/imgPostViewHeight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/img_number"
+                    style="@style/bkbnbSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/bkbnb22dp"
+                    android:background="@drawable/publish_view_img_count_background"
+                    android:padding="@dimen/bkbnb4dp"
+                    android:paddingStart="@dimen/bkbnb14dp"
+                    android:paddingTop="@dimen/bkbnb12dp"
+                    android:paddingEnd="@dimen/bkbnb14dp"
+                    android:paddingBottom="@dimen/bkbnb12dp"
+                    android:textColor="@color/colorWhite"
+                    tools:text="1/7" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/publish_title"
+                style="@style/bkbnbLargeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/publishViewMargin"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                android:layout_marginEnd="@dimen/publishViewMargin"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+                tools:text="Hotel Enjoy" />
+
+            <TextView
+                android:id="@+id/publish_location"
+                style="@style/bkbnbSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb6dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/publish_title"
+                tools:text="Punta del Este, Maldonado, Uruguay" />
+
+            <View
+                android:id="@+id/divider_1"
+                style="@style/bkbnbPublishViewDivider"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@id/publish_location" />
+
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="@dimen/publishViewProfileImg"
+                android:layout_height="@dimen/publishViewProfileImg"
+                android:src="@drawable/ic_avprofile"
+                app:layout_constraintBottom_toBottomOf="@+id/host_name"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintTop_toTopOf="@+id/stay_type" />
+
+            <TextView
+                android:id="@+id/stay_type"
+                style="@style/bkbnbStayTypePublishViewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                android:layout_marginEnd="@dimen/bkbnb8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toStartOf="@+id/profile_img"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider_1"
+                tools:text="Casa entera" />
+
+            <TextView
+                android:id="@+id/host_name"
+                style="@style/bkbnbHostNamePublishViewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb4dp"
+                android:layout_marginEnd="@dimen/bkbnb8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toStartOf="@+id/profile_img"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/stay_type"
+                tools:text="Anfitrión: Pablo Test" />
+
+            <TextView
+                android:id="@+id/stay_summary"
+                style="@style/bkbnbSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/host_name"
+                tools:text="4 huéspedes • 1 habitación • 3 camas • 1 baño" />
+
+            <View
+                android:id="@+id/divider_2"
+                style="@style/bkbnbPublishViewDivider"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@id/stay_summary" />
+
+            <TextView
+                android:id="@+id/stay_description"
+                style="@style/bkbnbSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                android:layout_marginEnd="@dimen/bkbnb8dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider_2"
+                tools:text="Lujoso hotel de tres estrellas ubicado en frente de la playa." />
+
+            <View
+                android:id="@+id/divider_3"
+                style="@style/bkbnbPublishViewDivider"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@id/stay_description" />
+
+            <TextView
+                android:id="@+id/stay_beds_distribution_title"
+                style="@style/bkbnbStayTypePublishViewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                android:layout_marginEnd="@dimen/bkbnb8dp"
+                android:text="@string/publish_view_bed_distribution_title"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider_3" />
+
+            <LinearLayout
+                android:id="@+id/stay_beds_distribution_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb12dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/stay_beds_distribution_title" />
+
+            <View
+                android:id="@+id/divider_4"
+                style="@style/bkbnbPublishViewDivider"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@id/stay_beds_distribution_list" />
+
+            <TextView
+                android:id="@+id/stay_services_title"
+                style="@style/bkbnbStayTypePublishViewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                android:layout_marginEnd="@dimen/bkbnb8dp"
+                android:text="@string/publish_view_services_title"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider_4" />
+
+            <LinearLayout
+                android:id="@+id/stay_services_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb12dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/stay_services_title" />
+
+            <Button
+                android:id="@+id/btn_services"
+                style="@style/bkbnbBorderedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                android:background="@drawable/button_bordered_ripple"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@id/stay_services_list"
+                tools:text="Mostrar los 26 servicios" />
+
+            <View
+                android:id="@+id/divider_5"
+                style="@style/bkbnbPublishViewDivider"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@id/btn_services" />
+
+            <TextView
+                android:id="@+id/stay_location_title"
+                style="@style/bkbnbStayTypePublishViewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb20dp"
+                android:layout_marginEnd="@dimen/bkbnb8dp"
+                android:text="@string/publish_view_location_title"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider_5" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:id="@+id/stay_map"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gMapHeight"
+                android:layout_margin="@dimen/bkbnb20dp"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/stay_location_title" />
+
+            <TextView
+                android:id="@+id/location_description"
+                style="@style/bkbnbSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb16dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/stay_map"
+                tools:text="Punta del Este, Maldonado, Uruguay" />
+
+            <TextView
+                android:id="@+id/location_disclaimer"
+                style="@style/bkbnbDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bkbnb8dp"
+                android:text="@string/publish_view_location_disclaimer_text"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
+                app:layout_constraintTop_toBottomOf="@+id/location_description" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="7">
+
+        <View
+            android:id="@+id/view"
+            style="@style/bkbnbDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/price_footer_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bkbnb16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/price"
+                style="@style/bkbnbSmallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="$17" />
+
+            <TextView
+                style="@style/bkbnbSubtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/bkbnb4dp"
+                android:layout_marginEnd="@dimen/bkbnb12dp"
+                android:layout_weight="1"
+                android:text="@string/stay_post_per_night_text" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_booking"
+            style="@style/bkbnbButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bkbnb20dp"
+            android:layout_marginEnd="@dimen/bkbnb16dp"
+            android:background="@drawable/button_ripple"
+            android:text="@string/publish_view_select_date_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/price_footer_container"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

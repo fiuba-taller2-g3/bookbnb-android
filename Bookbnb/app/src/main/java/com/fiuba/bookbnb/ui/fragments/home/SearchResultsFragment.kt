@@ -2,6 +2,7 @@ package com.fiuba.bookbnb.ui.fragments.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiuba.bookbnb.R
@@ -19,7 +20,11 @@ class SearchResultsFragment : BaseFragment(R.layout.bookbnb_search_results_fragm
         search_results_container.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            searchResultsViewModel.getResults()?.let { adapter = StayPostsAdapter(it) }
+            searchResultsViewModel.getResults()?.let { results ->
+                adapter = StayPostsAdapter(results)
+                isVisible = results.isNotEmpty()
+            }
         }
+        empty_results_text.isVisible = !search_results_container.isVisible
     }
 }

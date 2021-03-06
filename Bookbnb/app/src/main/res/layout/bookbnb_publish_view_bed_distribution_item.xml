@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.LinearLayout"
+    tools:orientation="vertical">
+
+    <LinearLayout
+        style="@style/bkbnbStayPostHorizontalMargins"
+        android:layout_marginTop="@dimen/bkbnb8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/publish_view_item_shape"
+        android:padding="@dimen/bkbnb12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/bedroom_title"
+            style="@style/bkbnbHostNamePublishViewLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Habitación 1"/>
+
+        <TextView
+            android:id="@+id/bedroom_description"
+            style="@style/bkbnbSubtitle"
+            android:layout_marginTop="@dimen/bkbnb4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="2 camas individuales, 1 cama matrimonial, 1 cuna"/>
+
+    </LinearLayout>
+
+</merge>

@@ -43,6 +43,11 @@ class InputItemsManager(private val context: Context, private val storeInputCont
             FormInputType.END_DATE -> buildRangeDatePickerInputField(R.string.publish_range_date_picker_end_label, inputData)
             FormInputType.MIN_PRICE -> buildPriceSearchInputField(R.string.search_min_price_label, inputData)
             FormInputType.MAX_PRICE -> buildPriceSearchInputField(R.string.search_max_price_label, inputData)
+            FormInputType.SEARCH_CITY -> buildInputModule(R.string.publish_location_city_label, buildInputFieldItem(inputData, DisabledInputValidator(context)))
+            FormInputType.SEARCH_START_DATE -> buildRangeDatePickerInputFieldWithoutValidation(R.string.publish_range_date_picker_start_label, inputData)
+            FormInputType.SEARCH_END_DATE -> buildRangeDatePickerInputFieldWithoutValidation(R.string.publish_range_date_picker_end_label, inputData)
+            FormInputType.BOOKING_START_DATE -> buildRangeDatePickerInputFieldWithLimits(R.string.publish_range_date_picker_start_label, inputData)
+            FormInputType.BOOKING_END_DATE -> buildRangeDatePickerInputFieldWithLimits(R.string.publish_range_date_picker_end_label, inputData)
             FormInputType.PRICE -> buildInputModule(R.string.publish_price_label, buildInputFieldItem(inputData, NotEmptyInputValidator(context, R.string.price_empty_msg_validation), KeyboardType.NUMERIC))
         }
     }
@@ -51,8 +56,19 @@ class InputItemsManager(private val context: Context, private val storeInputCont
         return buildInputModule(labelRes, buildInputFieldItem(inputData, DisabledInputValidator(context), KeyboardType.NUMERIC))
     }
 
-    private fun buildRangeDatePickerInputField(labelRes: Int, inputData: FormInputData) : InputFieldModule {
-        return buildInputModule(labelRes, DatePickerInputField(context, inputData, R.string.title_date_picker_dialog, storeInputContent, Date(), validator =  NotEmptyInputValidator(context, R.string.date_picker_empty_msg_validation)))
+    private fun buildRangeDatePickerInputFieldWithLimits(labelRes: Int, inputData: FormInputData): InputFieldModule {
+        return buildRangeDatePickerInputField(labelRes, inputData, minDate = inputData.minDate, maxDate = inputData.maxDate)
+    }
+
+    private fun buildRangeDatePickerInputFieldWithoutValidation(labelRes: Int, inputData: FormInputData) : InputFieldModule {
+        return buildRangeDatePickerInputField(labelRes, inputData, DisabledInputValidator(context), showClearButton = true)
+    }
+
+    private fun buildRangeDatePickerInputField(labelRes: Int, inputData: FormInputData,
+                                               validator: InputValidator = NotEmptyInputValidator(context, R.string.date_picker_empty_msg_validation),
+                                               showClearButton: Boolean = false,
+                                               minDate: Date? = Date(), maxDate: Date? = null) : InputFieldModule {
+        return buildInputModule(labelRes, DatePickerInputField(context, inputData, R.string.title_date_picker_dialog, storeInputContent, minDate, maxDate, showClearButton, validator))
     }
 
     private fun getGenderOptions() = Pair(context.getString(R.string.edit_info_profile_male_genre), context.getString(R.string.edit_info_profile_female_genre))

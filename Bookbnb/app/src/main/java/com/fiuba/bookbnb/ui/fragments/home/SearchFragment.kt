@@ -70,9 +70,9 @@ class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<Publi
     override fun getInputList(): List<FormInputData> {
         return listOf(
             FormInputData(FormInputType.STAY_TYPE_SEARCH),
-            FormInputData(FormInputType.CITY),
-            FormInputData(FormInputType.START_DATE),
-            FormInputData(FormInputType.END_DATE),
+            FormInputData(FormInputType.SEARCH_CITY),
+            FormInputData(FormInputType.SEARCH_START_DATE),
+            FormInputData(FormInputType.SEARCH_END_DATE),
             FormInputData(FormInputType.MIN_PRICE),
             FormInputData(FormInputType.MAX_PRICE)
         )
@@ -108,27 +108,48 @@ class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<Publi
     }
 
     private fun isDateRangeValidated() : Boolean {
-        val initialDate = DateUtils.getDateOutputFormat().parse(formViewModel.getContentFromItem(FormInputType.START_DATE))
-        val endDate = DateUtils.getDateOutputFormat().parse(formViewModel.getContentFromItem(FormInputType.END_DATE))
-        return endDate.after(initialDate).also { isEndDateAfterOfInitialDate ->
-            if (!isEndDateAfterOfInitialDate) showMessage("La fecha final es menor que la inicial. Revise y corrija las fechas.")
+        val initialDateContentField = formViewModel.getContentFromItem(FormInputType.SEARCH_START_DATE)
+        val endDateContentField = formViewModel.getContentFromItem(FormInputType.SEARCH_END_DATE)
+        if (initialDateContentField.isNotEmpty() && endDateContentField.isNotEmpty()) {
+            val initialDate = DateUtils.getDateOutputFormat().parse(initialDateContentField)
+            val endDate = DateUtils.getDateOutputFormat().parse(endDateContentField)
+            return endDate.after(initialDate).also { isEndDateAfterOfInitialDate ->
+                if (!isEndDateAfterOfInitialDate) showMessage("La fecha final es menor que la inicial. Revise y corrija las fechas.")
+            }
         }
+
+        if (initialDateContentField.isEmpty() && endDateContentField.isNotEmpty()) {
+            showMessage("Introduzca la fecha inicial.")
+            return false
+        }
+
+        if (initialDateContentField.isNotEmpty() && endDateContentField.isEmpty()) {
+            showMessage("Introduzca la fecha final.")
+            return false
+        }
+
+        return true
     }
 
     private fun showMessage(msg: String) = AlertDialog.Builder(context).setMessage(msg).show()
 
-    private fun getPrice(formInputType: FormInputType) : String? {
-        val price = formViewModel.getContentFromItem(formInputType)
-        return if (price.isNotEmpty()) price else null
+    private fun getInputContent(formInputType: FormInputType) : String? {
+        val content = formViewModel.getContentFromItem(formInputType)
+        return if (content.isNotEmpty()) content else null
     }
 
     private fun isAddressLocationValid(): Boolean {
-        val city = formViewModel.getContentFromItem(FormInputType.CITY)
+        val city = formViewModel.getContentFromItem(FormInputType.SEARCH_CITY)
 
-        return setLocationFromAddress(city)?.let {
-            formViewModel.locationInfo = it
-            true
-        } ?: false
+        if (city.isNotEmpty()) {
+            return setLocationFromAddress(city)?.let {
+                formViewModel.locationInfo = it
+                true
+            } ?: false
+        }
+
+        formViewModel.clearLocationInfo()
+        return true
     }
 
     private fun setLocationFromAddress(strAddress: String): Address? {
@@ -147,12 +168,12 @@ class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<Publi
 
     override fun call(): Call<List<PublishData>> = NetworkModule.buildRetrofitClient().getPosts(
         formViewModel.getContentFromItem(FormInputType.STAY_TYPE_SEARCH).toLowerCase(Locale.ROOT),
-        formViewModel.locationInfo?.latitude.toString(),
-        formViewModel.locationInfo?.longitude.toString(),
-        getPrice(FormInputType.MIN_PRICE),
-        getPrice(FormInputType.MAX_PRICE),
-        formViewModel.getContentFromItem(FormInputType.START_DATE),
-        formViewModel.getContentFromItem(FormInputType.END_DATE),
+        formViewModel.locationInfo?.latitude?.toString(),
+        formViewModel.locationInfo?.longitude?.toString(),
+        getInputContent(FormInputType.MIN_PRICE),
+        getInputContent(FormInputType.MAX_PRICE),
+        getInputContent(FormInputType.SEARCH_START_DATE),
+        getInputContent(FormInputType.SEARCH_END_DATE),
         UserManager.getUserInfo().getUserId(),
         UserManager.getUserInfo().getToken())
 

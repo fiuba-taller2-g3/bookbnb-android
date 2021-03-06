@@ -17,12 +17,12 @@ import java.io.IOException
 import java.util.*
 
 
-class UploadPhotoDialog : DialogBaseFragment() {
+class UploadPhotoDialogFragment : DialogBaseFragment() {
 
     private var filePath: Uri? = null
     private var uploadPhotoView : View? = null
 
-    private val navArguments by navArgs<UploadPhotoDialogArgs>()
+    private val navArguments by navArgs<UploadPhotoDialogFragmentArgs>()
     private val updateImagesListener by lazy { navArguments.updateImagesListener }
 
     override fun getBodyView(): View? {

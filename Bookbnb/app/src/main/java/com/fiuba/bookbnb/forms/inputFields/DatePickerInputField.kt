@@ -1,6 +1,9 @@
 package com.fiuba.bookbnb.forms.inputFields
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
+import androidx.core.view.isVisible
 import com.fiuba.bookbnb.forms.FormInputData
 import com.fiuba.bookbnb.forms.FormInputType
 import com.fiuba.bookbnb.forms.validators.DatePickerInputValidator
@@ -8,6 +11,7 @@ import com.fiuba.bookbnb.forms.validators.InputValidator
 import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragment
 import com.fiuba.bookbnb.ui.fragments.dialogs.DatePickerDialogFragmentDirections
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
+import com.fiuba.bookbnb.utils.AnimUtils
 import com.fiuba.bookbnb.utils.DateUtils
 import kotlinx.android.synthetic.main.bookbnb_text_input_field_item.view.*
 import org.apache.commons.lang3.StringUtils
@@ -17,7 +21,9 @@ import java.util.*
 class DatePickerInputField(context: Context, inputData: FormInputData,
                            private val titleDialogRes: Int,
                            private val storeInputContent: (formInputData: FormInputData) -> Unit,
-                           private val minDate: Date? = null, private val maxDate : Date? = null,
+                           private val minDate: Date? = null,
+                           private val maxDate: Date? = null,
+                           showCleanFieldButton: Boolean = false,
                            validator: InputValidator = DatePickerInputValidator(context))
     : EditTextAbstractInputField(context, inputData, storeInputContent, validator), DatePickerDialogFragment.OnDateSetListener {
 
@@ -29,6 +35,26 @@ class DatePickerInputField(context: Context, inputData: FormInputData,
         edit_text.setTextIsSelectable(false);
         inputClickListener()
         if (inputData.content.isNotEmpty()) formatInitialContentToDate(inputData.content)
+        if (showCleanFieldButton) setClearFieldButton()
+    }
+
+    private fun setClearFieldButton() {
+        clear_field_button.isVisible = edit_text.text.isNotEmpty()
+        clear_field_button.setOnClickListener { edit_text.text.clear() }
+
+        edit_text.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                // Do nothing
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                clear_field_button.isVisible = s.isNotEmpty()
+            }
+        })
     }
 
     private fun inputClickListener() {

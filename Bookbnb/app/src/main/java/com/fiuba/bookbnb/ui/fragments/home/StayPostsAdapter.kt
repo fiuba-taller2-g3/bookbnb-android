@@ -1,32 +1,22 @@
 package com.fiuba.bookbnb.ui.fragments.home
 
-import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.fiuba.bookbnb.R
-import com.fiuba.bookbnb.domain.booking.BookingRequest
-import com.fiuba.bookbnb.domain.misc.MsgResponse
 import com.fiuba.bookbnb.domain.publish.PublishData
-import com.fiuba.bookbnb.networking.NetworkModule
-import com.fiuba.bookbnb.user.UserManager
-import com.fiuba.bookbnb.utils.DateUtils
+import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.bookbnb_photo_item.view.*
-import kotlinx.android.synthetic.main.bookbnb_stay_post_card_view.view.*
-import kotlinx.android.synthetic.main.bookbnb_stay_post_card_view.view.image
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.*
+import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.*
+import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.image
 
 class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Adapter<StayPostsAdapter.StayPostsViewHolder>() {
 
-    inner class StayPostsViewHolder(itemView: CardView) : RecyclerView.ViewHolder(itemView)
+    inner class StayPostsViewHolder(itemView: ConstraintLayout) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StayPostsViewHolder {
-        (LayoutInflater.from(parent.context).inflate(R.layout.bookbnb_stay_post_card_view, parent, false) as CardView)
+        (LayoutInflater.from(parent.context).inflate(R.layout.bookbnb_stay_publish_search_results_item, parent, false) as ConstraintLayout)
             .also { return StayPostsViewHolder(it) }
     }
 
@@ -43,22 +33,7 @@ class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Ad
                 .into(image)
 
             setOnClickListener {
-                // TODO: En cuanto estén las fechas de inicio y final de la publicación, agregarlas a los parámetros correspondientes
-                val currentDate = DateUtils.getDateOutputFormat().format(Date().time)
-//                val bookingRequest = BookingRequest(UserManager.getUserInfo().getUserId(), itemData.id, currentDate, currentDate)
-//                NetworkModule.buildRetrofitClient().purchase(bookingRequest, UserManager.getUserInfo().getToken()).enqueue(object : Callback<MsgResponse> {
-//                    override fun onResponse(call: Call<MsgResponse>, response: Response<MsgResponse>) {
-//                        AlertDialog.Builder(context).run {
-//                            setMessage("Compra satisfactoria")
-//                        }.show()
-//                    }
-//
-//                    override fun onFailure(call: Call<MsgResponse>, t: Throwable) {
-//                        AlertDialog.Builder(context).run {
-//                            setMessage("Error en la compra")
-//                        }.show()
-//                    }
-//                })
+                NavigationManager.moveForward(SearchResultsFragmentDirections.actionSearchResultsFragmentToLoadingPublishViewFragment(itemData))
             }
         }
     }
