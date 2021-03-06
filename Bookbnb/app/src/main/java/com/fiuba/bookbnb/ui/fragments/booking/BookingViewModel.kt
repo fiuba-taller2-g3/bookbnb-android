@@ -19,7 +19,7 @@ class BookingViewModel : NetworkViewModel<MsgResponse>() {
     override fun onSuccessful(response: Response<MsgResponse>) {
         Log.i(TAG, "Purchase successfully")
         NavigationManager.moveForwardWithPopUpTo(
-            BookingFormFragmentDirections.actionBookingFormFragmentToConfirmationFragment(
+            BookingConfirmFormFragmentDirections.actionBookingConfirmFormFragmentToConfirmationFragment(
             R.drawable.ic_checked, msgResponse, R.string.purchase_confirmed_description), R.id.searchFragment)
     }
 

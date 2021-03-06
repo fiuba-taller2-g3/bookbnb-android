@@ -36,5 +36,6 @@ enum class FormInputType {
     BOOKING_END_DATE,
     MIN_PRICE,
     MAX_PRICE,
+    BOOKING_INFO,
     PRICE
 }

@@ -59,7 +59,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         location_description.text = publish_location.text
         price.text = getString(R.string.stay_post_price_text, publishData.price)
         btn_booking.setOnClickListener {
-            NavigationManager.moveForward(PublishViewFragmentDirections.actionPublishViewFragmentToBookingFormFragment(publishData))
+            NavigationManager.moveForward(PublishViewFragmentDirections.actionPublishViewFragmentToBookingSelectDateFormFragment(publishData))
         }
     }
 

@@ -48,6 +48,7 @@ class InputItemsManager(private val context: Context, private val storeInputCont
             FormInputType.SEARCH_END_DATE -> buildRangeDatePickerInputFieldWithoutValidation(R.string.publish_range_date_picker_end_label, inputData)
             FormInputType.BOOKING_START_DATE -> buildRangeDatePickerInputFieldWithLimits(R.string.publish_range_date_picker_start_label, inputData)
             FormInputType.BOOKING_END_DATE -> buildRangeDatePickerInputFieldWithLimits(R.string.publish_range_date_picker_end_label, inputData)
+            FormInputType.BOOKING_INFO -> buildInputModule(R.string.string_empty, BookingInfoField(context))
             FormInputType.PRICE -> buildInputModule(R.string.publish_price_label, buildInputFieldItem(inputData, NotEmptyInputValidator(context, R.string.price_empty_msg_validation), KeyboardType.NUMERIC))
         }
     }
