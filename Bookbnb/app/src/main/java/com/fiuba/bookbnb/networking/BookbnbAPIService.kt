@@ -2,6 +2,7 @@ package com.fiuba.bookbnb.networking
 
 import com.fiuba.bookbnb.domain.misc.TokenData
 import com.fiuba.bookbnb.domain.booking.BookingRequest
+import com.fiuba.bookbnb.domain.booking.BookingResponse
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.domain.login.LoginResponse
 import com.fiuba.bookbnb.domain.misc.MsgResponse
@@ -39,6 +40,12 @@ interface BookbnbAPIService {
     @POST("tokens")
     fun registerToken(@Body tokenData: TokenData) : Call<MsgResponse>
 
+    @GET("bookings")
+    fun pendingBookings(@Query(USER_BOOKINGS_ID) userId: String, @Query(STATUS) status: String) : Call<List<BookingResponse>>
+
+    @POST("bookings")
+    fun acceptBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
+
     companion object {
         private const val USER_ID = "id"
         private const val API_TOKEN = "API_TOKEN"
@@ -50,5 +57,7 @@ interface BookbnbAPIService {
         private const val HIDE_USER_ID = "hide_user_id"
         private const val LAT = "lat"
         private const val LNG = "lng"
+        private const val USER_BOOKINGS_ID = "user_id"
+        private const val STATUS = "status"
     }
 }
