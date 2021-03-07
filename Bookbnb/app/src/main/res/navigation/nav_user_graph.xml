@@ -130,17 +130,7 @@
         android:label="MyPostsLoadingFragment"
         tools:layout="@layout/bookbnb_loading_fragment">
         <action
-            android:id="@+id/action_myPostsLoadingFragment_to_myBookingsLoadingFragment"
-            app:destination="@id/myBookingsLoadingFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/myBookingsLoadingFragment"
-        android:name="com.fiuba.bookbnb.ui.fragments.myPosts.MyBookingsLoadingFragment"
-        android:label="MyBookingsLoadingFragment"
-        tools:layout="@layout/bookbnb_loading_fragment">
-        <action
-            android:id="@+id/action_myBookingsLoadingFragment_to_myPostsFragment"
+            android:id="@+id/action_myPostsLoadingFragment_to_myPostsFragment"
             app:destination="@id/myPostsFragment" />
     </fragment>
 

@@ -2,6 +2,7 @@ package com.fiuba.bookbnb.ui.fragments.myPosts
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiuba.bookbnb.R
@@ -24,9 +25,17 @@ class MyPostsFragment : BaseFragment(R.layout.bookbnb_my_posts_fragment) {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = MyPostsAdapter(loadingMyPostsViewModel.postsResults!!)
+            isVisible = loadingMyPostsViewModel.postsResults!!.isNotEmpty()
         }
 
+        setEmptyPostText(R.string.my_posts_empty_posts_text)
+
         loadTabListeners()
+    }
+
+    private fun setEmptyPostText(stringRes: Int) {
+        empty_posts_text.isVisible = !posts_list.isVisible
+        empty_posts_text.text = getString(stringRes)
     }
 
     private fun generateBookingsPendingData() {
@@ -42,10 +51,14 @@ class MyPostsFragment : BaseFragment(R.layout.bookbnb_my_posts_fragment) {
     private fun loadTabListeners() {
         my_posts_tab.setOnClickListener {
             posts_list.adapter = MyPostsAdapter(loadingMyPostsViewModel.postsResults!!)
+            posts_list.isVisible = loadingMyPostsViewModel.postsResults!!.isNotEmpty()
+            setEmptyPostText(R.string.my_posts_empty_posts_text)
         }
 
         bookings_tab.setOnClickListener {
             posts_list.adapter = MyBookingsAdapter(bookingsPendingData)
+            posts_list.isVisible = loadingHostBookingsViewModel.bookingResults!!.isNotEmpty()
+            setEmptyPostText(R.string.my_posts_empty_bookings_text)
         }
     }
 

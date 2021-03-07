@@ -21,7 +21,7 @@ class LoadingHostBookingsViewModel : NetworkViewModel<List<BookingResponse>>()  
         Log.i(TAG, "Bookings loaded successfully")
         bookingResults = response.body()
         response.body()?.let {
-            NavigationManager.moveForwardWithPopUpTo(MyBookingsLoadingFragmentDirections.actionMyBookingsLoadingFragmentToMyPostsFragment(), R.id.profileMenuFragment)
+            NavigationManager.moveForwardWithPopUpTo(MyPostsLoadingFragmentDirections.actionMyPostsLoadingFragmentToMyPostsFragment(), R.id.profileMenuFragment)
         }
     }
 

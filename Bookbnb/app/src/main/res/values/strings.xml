@@ -69,6 +69,8 @@
     <string name="my_posts_bookings_tab_text">Reservas pendientes</string>
     <string name="my_posts_accept_text_button">Aceptar</string>
     <string name="my_posts_reject_text_button">Rechazar</string>
+    <string name="my_posts_empty_posts_text">No hay publicaciones</string>
+    <string name="my_posts_empty_bookings_text">No hay solicitudes</string>
 
     <!-- Profile edit account -->
     <string name="edit_info_profile_already_exists_error_description">El correo ingresado ya existe, introduzca un correo diferente.</string>
