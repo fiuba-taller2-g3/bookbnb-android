@@ -6,7 +6,6 @@ import com.fiuba.bookbnb.domain.booking.BookingResponse
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.domain.login.LoginResponse
 import com.fiuba.bookbnb.domain.misc.MsgResponse
-import com.fiuba.bookbnb.domain.publish.PostsBody
 import com.fiuba.bookbnb.domain.publish.PublishData
 import com.fiuba.bookbnb.domain.user.UserData
 import retrofit2.Call
@@ -39,7 +38,7 @@ interface BookbnbAPIService {
     fun getUserPosts(@Query(HOST_USER_ID) userId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
 
     @GET("posts")
-    fun getPosts(@Body postsBody: PostsBody, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
+    fun getPosts(@Query(POSTS_ID) postsId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
 
     @POST("bookings")
     fun purchase(@Body userData: BookingRequest, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
@@ -73,5 +72,6 @@ interface BookbnbAPIService {
         private const val HOST_USER_ID = "user_id"
         private const val GUEST_USER_ID = "guest_user_id"
         private const val STATUS = "status"
+        private const val POSTS_ID= "posts_id"
     }
 }

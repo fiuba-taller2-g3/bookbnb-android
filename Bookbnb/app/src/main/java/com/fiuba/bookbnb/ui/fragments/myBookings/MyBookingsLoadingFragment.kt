@@ -5,12 +5,12 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.booking.BookingResponse
-import com.fiuba.bookbnb.domain.publish.PostsBody
 import com.fiuba.bookbnb.domain.publish.PublishData
 import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
 import com.fiuba.bookbnb.user.UserManager
 import retrofit2.Call
+import java.util.*
 
 class MyBookingsLoadingFragment : BaseFragment(R.layout.bookbnb_loading_fragment) {
 
@@ -30,12 +30,12 @@ class MyBookingsLoadingFragment : BaseFragment(R.layout.bookbnb_loading_fragment
 
         loadingMyBookingsViewModel.bookingsLoadedSuccessfully.observe(viewLifecycleOwner) { postsIsLoaded ->
             if (postsIsLoaded) {
-                val posts = ArrayList<Int>()
+                var postsId = StringJoiner(",");
                 loadingMyBookingsViewModel.bookingsResults?.let {
-                    it.forEach { bookingResponse -> posts.add(bookingResponse.postId.toInt()) }
+                    it.forEach { bookingResponse -> postsId.add(bookingResponse.postId)}
                 }
                 loadingBookingRequestsViewModel.execute(
-                    NetworkModule.buildRetrofitClient().getPosts(PostsBody(posts.toList()), UserManager.getUserInfo().getToken())
+                    NetworkModule.buildRetrofitClient().getPosts(postsId.toString(), UserManager.getUserInfo().getToken())
                         .also { networkManagerViewModel.setCancelCurrentRunningCallReference { cancelBookingsRequest(it) } }
                 )
             }
