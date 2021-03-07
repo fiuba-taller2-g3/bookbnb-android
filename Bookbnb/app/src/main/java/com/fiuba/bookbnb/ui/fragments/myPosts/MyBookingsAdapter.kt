@@ -51,7 +51,20 @@ class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>) : Re
             }
 
             reject_booking_button.setOnClickListener {
+                NetworkModule.buildRetrofitClient().rejectBooking(dataSet[position].bookingResponse, UserManager.getUserInfo().getToken())
+                    .enqueue(object : Callback<MsgResponse> {
 
+                        override fun onResponse(call: Call<MsgResponse>, response: Response<MsgResponse>) {
+                            dataSet.removeAt(position)
+                            notifyItemRemoved(position)
+                            notifyItemRangeChanged(position, dataSet.size)
+                        }
+
+                        override fun onFailure(call: Call<MsgResponse>, t: Throwable) {
+                            // Do nothing
+                        }
+                    }
+                )
             }
 
             Picasso.get()
