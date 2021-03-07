@@ -72,6 +72,9 @@
     <string name="my_posts_empty_posts_text">No hay publicaciones</string>
     <string name="my_posts_empty_bookings_text">No hay solicitudes</string>
 
+    <!-- My bookings -->
+    <string name="my_bookings_empty_text">No hay reservas</string>
+
     <!-- Profile edit account -->
     <string name="edit_info_profile_already_exists_error_description">El correo ingresado ya existe, introduzca un correo diferente.</string>
     <string name="edit_info_profile_title">Información personal</string>
