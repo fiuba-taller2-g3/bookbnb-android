@@ -175,6 +175,7 @@ class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<Publi
         getInputContent(FormInputType.SEARCH_START_DATE),
         getInputContent(FormInputType.SEARCH_END_DATE),
         UserManager.getUserInfo().getUserId(),
+            true,
         UserManager.getUserInfo().getToken())
 
     companion object {
