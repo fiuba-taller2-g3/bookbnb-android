@@ -5,8 +5,8 @@ import java.io.Serializable
 data class BookingResponse (
     val userId: String,
     val walletId: String,
-    val guest_user_id: String,
-    val guest_wallet_id: String ,
+    val guestUserId: String,
+    val guestWalletId: String ,
     val postId: String,
     val beginDate: String,
     val endDate: String,
