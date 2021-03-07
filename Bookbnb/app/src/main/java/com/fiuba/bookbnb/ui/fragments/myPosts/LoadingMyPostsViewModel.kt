@@ -10,7 +10,7 @@ import retrofit2.Response
 
 class LoadingMyPostsViewModel : NetworkViewModel<List<PublishData>>()  {
 
-    var searchResults : List<PublishData>? = null
+    var postsResults : List<PublishData>? = null
 
     override fun execute(call: Call<List<PublishData>>) {
         Log.i(TAG, "Getting posts...")
@@ -19,9 +19,9 @@ class LoadingMyPostsViewModel : NetworkViewModel<List<PublishData>>()  {
 
     override fun onSuccessful(response: Response<List<PublishData>>) {
         Log.i(TAG, "Posts loaded successfully")
-        searchResults = response.body()
+        postsResults = response.body()
         response.body()?.let {
-            NavigationManager.moveForwardWithPopUpTo(MyPostsLoadingFragmentDirections.actionMyPostsLoadingFragmentToMyPostsFragment(), R.id.profileMenuFragment)
+            NavigationManager.moveForwardWithPopUpTo(MyPostsLoadingFragmentDirections.actionMyPostsLoadingFragmentToMyBookingsLoadingFragment(), R.id.profileMenuFragment)
         }
     }
 

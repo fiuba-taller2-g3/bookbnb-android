@@ -44,12 +44,12 @@ interface BookbnbAPIService {
     fun registerToken(@Body tokenData: TokenData) : Call<MsgResponse>
 
     @GET("bookings")
-    fun pendingBookingsHost(@Query(HOST_USER_ID) hostUserId: String, @Query(STATUS) status: String) : Call<List<BookingResponse>>
+    fun pendingBookingsHost(@Query(HOST_USER_ID) hostUserId: String, @Query(STATUS) status: String, @Header(API_TOKEN) apiToken: String) : Call<List<BookingResponse>>
 
     @GET("bookings")
     fun bookingsGuest(@Query(GUEST_USER_ID) guestUserId: String) : Call<List<BookingResponse>>
 
-    @POST("bookings")
+    @POST("acceptance")
     fun acceptBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
 
     companion object {
