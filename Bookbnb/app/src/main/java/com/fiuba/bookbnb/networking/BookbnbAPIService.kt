@@ -52,6 +52,9 @@ interface BookbnbAPIService {
     @POST("acceptance")
     fun acceptBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
 
+    @POST("/rejectance")
+    fun rejectBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
+
     companion object {
         private const val USER_ID = "id"
         private const val API_TOKEN = "API_TOKEN"
