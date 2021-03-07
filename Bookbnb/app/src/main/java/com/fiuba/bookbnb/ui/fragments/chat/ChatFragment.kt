@@ -89,7 +89,9 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
             }
 
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
-                chatViewModel.messages.value!!.add(dataSnapshot.getValue<FirebaseChatMessage>()!!)
+                if (!chatViewModel.messages.value!!.contains(dataSnapshot.getValue<FirebaseChatMessage>()!!)) {
+                    chatViewModel.messages.value!!.add(dataSnapshot.getValue<FirebaseChatMessage>()!!)
+                }
                 chatViewModel.messages.notifyObserver()
             }
 
