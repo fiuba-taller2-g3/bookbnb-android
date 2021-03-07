@@ -92,6 +92,14 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
                 if (!chatViewModel.messages.value!!.contains(dataSnapshot.getValue<FirebaseChatMessage>()!!)) {
                     chatViewModel.messages.value!!.add(dataSnapshot.getValue<FirebaseChatMessage>()!!)
                 }
+                messageRecyclerView.apply {
+                    setHasFixedSize(true)
+                    layoutManager = LinearLayoutManager(context)
+                    chatViewModel.messages.let { results ->
+                        adapter = ChatAdapter(results.value!!)
+                        isVisible = results.value!!.isNotEmpty()
+                    }
+                }
                 chatViewModel.messages.notifyObserver()
             }
 

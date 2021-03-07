@@ -29,7 +29,7 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
     private val chatsViewModel by activityViewModels<ChatsViewModel>()
     private lateinit var binding: BookbnbChatListBindingImpl
     private lateinit var chatsReference: Query
-    private var chatsListener: ValueEventListener? = null
+    private lateinit var chatsListener: ValueEventListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,14 +49,14 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        chats_container.apply {
+        /*chats_container.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             chatsViewModel.chats.let { chats ->
                 adapter = ChatsAdapter(chats.value!!)
                 isVisible = chats.value!!.isNotEmpty()
             }
-        }
+        }*/
 
         empty_chats_text.isVisible = !chats_container.isVisible
         val userId = com.fiuba.bookbnb.user.UserManager.getUserInfo().getUserId()
@@ -75,6 +75,16 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
                 // TODO: Replace with child event listener to avoid getting all the data everytime
                 if (chatsViewModel.chats.value!! != mappedChats) {
                     chatsViewModel.chats.value = mappedChats as MutableList<FirebaseChat>?
+                    binding.chatsViewModel = chatsViewModel
+
+                    chats_container.apply {
+                        setHasFixedSize(true)
+                        layoutManager = LinearLayoutManager(context)
+                        chatsViewModel.chats.let { chats ->
+                            adapter = ChatsAdapter(chats.value!!)
+                            isVisible = chats.value!!.isNotEmpty()
+                        }
+                    }
                 }
             }
 
@@ -85,6 +95,16 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
                 // [END_EXCLUDE]
             }
         }
+
+        chats_container.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            chatsViewModel.chats.let { chats ->
+                adapter = ChatsAdapter(chats.value!!)
+                isVisible = chats.value!!.isNotEmpty()
+            }
+        }
+
         chatsReference.addValueEventListener(chatsListener)
 
         this.chatsListener = chatsListener
