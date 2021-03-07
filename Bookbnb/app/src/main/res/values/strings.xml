@@ -313,6 +313,9 @@
     <string name="error_init_data">Introduzca la fecha inicial.</string>
     <string name="error_finish_data">Introduzca la fecha final.</string>
 
+    <!-- Recommendations -->
+    <string name="recommendation_text">Recomendado</string>
+
     <!-- Utils -->
     <string name="string_empty" />
 
