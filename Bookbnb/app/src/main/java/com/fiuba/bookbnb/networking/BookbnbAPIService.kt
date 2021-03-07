@@ -47,7 +47,7 @@ interface BookbnbAPIService {
     fun pendingBookingsHost(@Query(HOST_USER_ID) hostUserId: String, @Query(STATUS) status: String, @Header(API_TOKEN) apiToken: String) : Call<List<BookingResponse>>
 
     @GET("bookings")
-    fun bookingsGuest(@Query(GUEST_USER_ID) guestUserId: String) : Call<List<BookingResponse>>
+    fun bookingsGuest(@Query(GUEST_USER_ID) guestUserId: String, @Header(API_TOKEN) apiToken: String) : Call<List<BookingResponse>>
 
     @POST("acceptance")
     fun acceptBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
