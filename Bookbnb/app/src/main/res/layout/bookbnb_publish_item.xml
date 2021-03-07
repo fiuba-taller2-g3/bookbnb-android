@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/bkbnb8dp"
+    android:background="@drawable/publish_view_item_shape"
+    android:padding="@dimen/bkbnb16dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/imgPostItemWidth"
+        android:layout_height="@dimen/imgPostItemHeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/stay_title"
+        style="@style/bkbnbSmallTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginStart="@dimen/bkbnb8dp"
+        android:layout_marginTop="@dimen/bkbnb10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toTopOf="@+id/image"
+        tools:text="Título" />
+
+    <TextView
+        android:id="@+id/stay_description"
+        style="@style/bkbnbSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_marginTop="@dimen/bkbnb4dp"
+        app:layout_constraintEnd_toEndOf="@+id/stay_title"
+        app:layout_constraintStart_toStartOf="@+id/stay_title"
+        app:layout_constraintTop_toBottomOf="@id/stay_title"
+        tools:text="Descripción" />
+
+    <LinearLayout
+        android:id="@+id/post_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb8dp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/stay_title"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/image">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/bkbnbSubtitle"
+            android:layout_marginEnd="@dimen/bkbnb8dp"
+            android:paddingVertical="@dimen/bkbnb8dp"
+            android:paddingHorizontal="@dimen/bkbnb16dp"
+            android:background="@drawable/publish_view_item_shape"
+            android:text="@string/my_posts_accept_text_button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/bkbnbSubtitle"
+            android:paddingVertical="@dimen/bkbnb8dp"
+            android:paddingHorizontal="@dimen/bkbnb16dp"
+            android:background="@drawable/publish_view_item_shape"
+            android:text="@string/my_posts_reject_text_button"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

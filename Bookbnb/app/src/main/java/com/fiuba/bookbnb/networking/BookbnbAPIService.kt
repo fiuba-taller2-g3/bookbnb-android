@@ -34,6 +34,9 @@ interface BookbnbAPIService {
                  @Query(BEGIN_DATE) beginDate: String?, @Query(END_DATE) endDate: String?,
                  @Query(HIDE_USER_ID) hideUserId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
 
+    @GET("posts")
+    fun getUserPosts(@Query(HOST_USER_ID) userId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
+
     @POST("bookings")
     fun purchase(@Body userData: BookingRequest, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
 

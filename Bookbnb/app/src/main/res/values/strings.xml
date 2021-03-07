@@ -57,10 +57,18 @@
     <string name="view_profile_text">Ver perfil</string>
     <string name="view_profile_host_title_text">ANFITRIÓN</string>
     <string name="view_profile_publish_text">Realizar una publicación</string>
+    <string name="view_profile_my_posts_text">Mis publicaciones</string>
+    <string name="view_profile_my_bookings_text">Mis reservas</string>
     <string name="view_profile_account_config_title_text">CONFIGURACIÓN DE LA CUENTA</string>
     <string name="view_profile_account_info_text">Información personal</string>
     <string name="view_profile_logout_text">Cerrar sesión</string>
     <string name="view_profile_version_text">VERSIÓN</string>
+
+    <!-- My posts -->
+    <string name="my_posts_all_tab_text">Publicaciones</string>
+    <string name="my_posts_bookings_tab_text">Reservas pendientes</string>
+    <string name="my_posts_accept_text_button">Aceptar</string>
+    <string name="my_posts_reject_text_button">Rechazar</string>
 
     <!-- Profile edit account -->
     <string name="edit_info_profile_already_exists_error_description">El correo ingresado ya existe, introduzca un correo diferente.</string>
