@@ -6,6 +6,7 @@ import com.fiuba.bookbnb.domain.booking.BookingResponse
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.domain.login.LoginResponse
 import com.fiuba.bookbnb.domain.misc.MsgResponse
+import com.fiuba.bookbnb.domain.publish.PostsBody
 import com.fiuba.bookbnb.domain.publish.PublishData
 import com.fiuba.bookbnb.domain.user.UserData
 import retrofit2.Call
@@ -36,6 +37,9 @@ interface BookbnbAPIService {
 
     @GET("posts")
     fun getUserPosts(@Query(HOST_USER_ID) userId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
+
+    @GET("posts")
+    fun getPosts(@Body postsBody: PostsBody, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
 
     @POST("bookings")
     fun purchase(@Body userData: BookingRequest, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
