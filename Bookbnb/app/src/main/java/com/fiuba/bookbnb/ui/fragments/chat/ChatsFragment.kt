@@ -85,6 +85,9 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
                             isVisible = chats.value!!.isNotEmpty()
                         }
                     }
+                    if (chatsViewModel.chats.value?.isNotEmpty()!!) {
+                        chats_container.smoothScrollToPosition((chatsViewModel.chats.value?.size?.minus(1)!!))
+                    }
                 }
             }
 
@@ -103,6 +106,10 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
                 adapter = ChatsAdapter(chats.value!!)
                 isVisible = chats.value!!.isNotEmpty()
             }
+        }
+
+        if (chatsViewModel.chats.value?.isNotEmpty()!!) {
+            chats_container.smoothScrollToPosition((chatsViewModel.chats.value?.size?.minus(1)!!))
         }
 
         chatsReference.addValueEventListener(chatsListener)

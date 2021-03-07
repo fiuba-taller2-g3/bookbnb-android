@@ -20,6 +20,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.bookbnb_chat.*
+import kotlinx.android.synthetic.main.bookbnb_chat_list.*
 
 class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
     private lateinit var childMessagesReference: DatabaseReference
@@ -54,6 +55,9 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
                 adapter = ChatAdapter(results.value!!)
                 isVisible = results.value!!.isNotEmpty()
             }
+        }
+        if (chatViewModel.messages.value?.isNotEmpty()!!) {
+            messageRecyclerView.smoothScrollToPosition((chatViewModel.messages.value?.size?.minus(1)!!))
         }
         val firebaseDbSvc = FirebaseDBService()
         firebaseDbSvc.updateChat(GuestAndHost.getGuest()!!, GuestAndHost.getHost()!!, this::updateFragmentTitle)
@@ -100,6 +104,9 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
                         isVisible = results.value!!.isNotEmpty()
                     }
                 }
+                if (chatViewModel.messages.value?.isNotEmpty()!!) {
+                    messageRecyclerView.smoothScrollToPosition((chatViewModel.messages.value?.size?.minus(1)!!))
+                }
                 chatViewModel.messages.notifyObserver()
             }
 
@@ -107,6 +114,9 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
                 TODO("Not yet implemented")
             }
 
+        }
+        if (chatViewModel.messages.value?.isNotEmpty()!!) {
+            messageRecyclerView.smoothScrollToPosition((chatViewModel.messages.value?.size?.minus(1)!!))
         }
         childMessagesReference.addChildEventListener(childMessagesListener)
         this.childListener = childMessagesListener
