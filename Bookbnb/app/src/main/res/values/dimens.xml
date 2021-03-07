@@ -39,6 +39,9 @@
     <dimen name="imgPostListHeight">240dp</dimen>
     <dimen name="imgPostViewHeight">270dp</dimen>
 
+    <dimen name="imgPostItemWidth">120dp</dimen>
+    <dimen name="imgPostItemHeight">100dp</dimen>
+
     <!-- Publish view -->
     <dimen name="publishViewMargin">16dp</dimen>
     <dimen name="publishViewProfileImg">48dp</dimen>

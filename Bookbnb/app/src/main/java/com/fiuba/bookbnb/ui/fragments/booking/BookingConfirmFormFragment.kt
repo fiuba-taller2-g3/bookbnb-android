@@ -57,7 +57,9 @@ class BookingConfirmFormFragment : FormWithNetworkStatusFragment<BookingViewMode
             publishData.id!!,
             getContentFromItem(FormInputType.BOOKING_START_DATE),
             getContentFromItem(FormInputType.BOOKING_END_DATE),
-            UserManager.getUserInfo().getUserData().walletId
+            UserManager.getUserInfo().getUserData().walletId,
+            publishData.userId,
+            publishData.walletId
         )
     }
 

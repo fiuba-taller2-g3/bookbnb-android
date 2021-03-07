@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_profileMenuFragment_to_nav_publish_graph"
             app:destination="@id/nav_publish_graph" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_myPostsLoadingFragment"
+            app:destination="@id/myPostsLoadingFragment" />
     </fragment>
 
     <fragment
@@ -112,6 +115,23 @@
         <action
             android:id="@+id/action_startProfileFragment_to_profileMenuFragment"
             app:destination="@id/profileMenuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myPostsFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.myPosts.MyPostsFragment"
+        android:label="MyPostsFragment"
+        tools:layout="@layout/bookbnb_my_posts_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/myPostsLoadingFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.myPosts.MyPostsLoadingFragment"
+        android:label="MyPostsLoadingFragment"
+        tools:layout="@layout/bookbnb_loading_fragment">
+        <action
+            android:id="@+id/action_myPostsLoadingFragment_to_myPostsFragment"
+            app:destination="@id/myPostsFragment" />
     </fragment>
 
 </navigation>

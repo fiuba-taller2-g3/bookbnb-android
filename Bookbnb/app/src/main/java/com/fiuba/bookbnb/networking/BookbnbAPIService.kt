@@ -2,6 +2,7 @@ package com.fiuba.bookbnb.networking
 
 import com.fiuba.bookbnb.domain.misc.TokenData
 import com.fiuba.bookbnb.domain.booking.BookingRequest
+import com.fiuba.bookbnb.domain.booking.BookingResponse
 import com.fiuba.bookbnb.domain.login.LoginRequest
 import com.fiuba.bookbnb.domain.login.LoginResponse
 import com.fiuba.bookbnb.domain.misc.MsgResponse
@@ -33,11 +34,26 @@ interface BookbnbAPIService {
                  @Query(BEGIN_DATE) beginDate: String?, @Query(END_DATE) endDate: String?,
                  @Query(HIDE_USER_ID) hideUserId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
 
+    @GET("posts")
+    fun getUserPosts(@Query(HOST_USER_ID) userId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
+
     @POST("bookings")
     fun purchase(@Body userData: BookingRequest, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
 
     @POST("tokens")
     fun registerToken(@Body tokenData: TokenData) : Call<MsgResponse>
+
+    @GET("bookings")
+    fun pendingBookingsHost(@Query(HOST_USER_ID) hostUserId: String, @Query(STATUS) status: String, @Header(API_TOKEN) apiToken: String) : Call<List<BookingResponse>>
+
+    @GET("bookings")
+    fun bookingsGuest(@Query(GUEST_USER_ID) guestUserId: String) : Call<List<BookingResponse>>
+
+    @POST("acceptance")
+    fun acceptBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
+
+    @POST("/rejectance")
+    fun rejectBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
 
     companion object {
         private const val USER_ID = "id"
@@ -50,5 +66,8 @@ interface BookbnbAPIService {
         private const val HIDE_USER_ID = "hide_user_id"
         private const val LAT = "lat"
         private const val LNG = "lng"
+        private const val HOST_USER_ID = "user_id"
+        private const val GUEST_USER_ID = "guest_user_id"
+        private const val STATUS = "status"
     }
 }
