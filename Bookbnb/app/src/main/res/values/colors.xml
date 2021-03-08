@@ -21,4 +21,6 @@
     <color name="colorQuantityControllerSelect">#65A0A3</color>
     <color name="colorBedDistributionEditText">#0A7875</color>
     <color name="colorAddPhotoText">#0D51A4</color>
+    <color name="colorAccept">#0D6310</color>
+    <color name="colorPending">#F36900</color>
 </resources>

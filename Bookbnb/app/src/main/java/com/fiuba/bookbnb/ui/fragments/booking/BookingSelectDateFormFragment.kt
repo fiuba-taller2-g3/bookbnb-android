@@ -1,5 +1,6 @@
 package com.fiuba.bookbnb.ui.fragments.booking
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
@@ -33,7 +34,18 @@ class BookingSelectDateFormFragment : FormFragment() {
     }
 
     override fun setActionEventButton() {
-        NavigationManager.moveForward(BookingSelectDateFormFragmentDirections.actionBookingSelectDateFormFragmentToBookingConfirmFormFragment(publishData))
+        if (isDateRangeValidated()) {
+            NavigationManager.moveForward(BookingSelectDateFormFragmentDirections.actionBookingSelectDateFormFragmentToBookingConfirmFormFragment(publishData))
+        }
     }
 
+    private fun isDateRangeValidated() : Boolean {
+        val initialDateContentField = formViewModel.getContentFromItem(FormInputType.BOOKING_START_DATE)
+        val endDateContentField = formViewModel.getContentFromItem(FormInputType.BOOKING_END_DATE)
+        val initialDate = DateUtils.getDateOutputFormat().parse(initialDateContentField)
+        val endDate = DateUtils.getDateOutputFormat().parse(endDateContentField)
+        return endDate!!.after(initialDate).also { isEndDateAfterOfInitialDate ->
+            if (!isEndDateAfterOfInitialDate) AlertDialog.Builder(context).setMessage(getString(R.string.error_data_range)).show()
+        }
+    }
 }

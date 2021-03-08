@@ -29,9 +29,9 @@ class PublishStayRangeDatePickerStepFormFragment : FormFragment() {
     override fun setActionEventButton() {
         val initialDate = DateUtils.getDateOutputFormat().parse(formViewModel.getContentFromItem(FormInputType.START_DATE))
         val endDate = DateUtils.getDateOutputFormat().parse(formViewModel.getContentFromItem(FormInputType.END_DATE))
-        if (endDate.after(initialDate)) {
+        if (endDate!!.after(initialDate)) {
             NavigationManager.moveForward(PublishStayRangeDatePickerStepFormFragmentDirections.actionPublishStayRangeDatePickerStepFormFragmentToPublishStayPriceStepFormFragment())
-        } else AlertDialog.Builder(context).setMessage("La fecha final es menor que la inicial. Revise y corrija las fechas.").show()
+        } else AlertDialog.Builder(context).setMessage(getString(R.string.error_data_range)).show()
     }
 
 }

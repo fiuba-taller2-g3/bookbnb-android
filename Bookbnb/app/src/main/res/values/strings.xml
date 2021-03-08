@@ -72,6 +72,12 @@
     <string name="my_posts_empty_posts_text">No hay publicaciones</string>
     <string name="my_posts_empty_bookings_text">No hay solicitudes</string>
 
+    <!-- My bookings -->
+    <string name="my_bookings_empty_text">No hay reservas</string>
+    <string name="my_bookings_accepted">Aceptado</string>
+    <string name="my_bookings_pending">Pendiente</string>
+    <string name="my_bookings_rejected">Rechazado</string>
+
     <!-- Profile edit account -->
     <string name="edit_info_profile_already_exists_error_description">El correo ingresado ya existe, introduzca un correo diferente.</string>
     <string name="edit_info_profile_title">Información personal</string>
@@ -301,6 +307,11 @@
     <string name="purchase_finish_date">Fecha final: %s</string>
     <string name="purchase_night_counts">Cantidad de noches: %d</string>
     <string name="purchase_total_price">Precio total: $%s</string>
+
+    <!-- Errors -->
+    <string name="error_data_range">La fecha final es menor que la inicial. Revise y corrija las fechas.</string>
+    <string name="error_init_data">Introduzca la fecha inicial.</string>
+    <string name="error_finish_data">Introduzca la fecha final.</string>
 
     <!-- Utils -->
     <string name="string_empty" />

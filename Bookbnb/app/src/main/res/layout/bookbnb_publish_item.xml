@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/bkbnb8dp"
+    android:layout_marginStart="@dimen/bkbnb8dp"
+    android:layout_marginEnd="@dimen/bkbnb8dp"
+    android:layout_marginTop="@dimen/bkbnb8dp"
     android:background="@drawable/publish_view_item_shape"
     android:padding="@dimen/bkbnb16dp">
 
@@ -23,7 +25,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:layout_marginStart="@dimen/bkbnb8dp"
+        android:layout_marginStart="@dimen/bkbnb12dp"
         android:layout_marginTop="@dimen/bkbnb10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/image"
@@ -43,37 +45,54 @@
         app:layout_constraintTop_toBottomOf="@id/stay_title"
         tools:text="Descripción" />
 
+    <TextView
+        android:id="@+id/stay_status"
+        style="@style/bkbnbDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/driver"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingHorizontal="@dimen/bkbnb8dp"
+        android:paddingVertical="@dimen/bkbnb2dp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/post_footer"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        tools:text="Reservado" />
+
     <LinearLayout
         android:id="@+id/post_footer"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bkbnb8dp"
         android:gravity="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/stay_title"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/image"
         app:layout_constraintTop_toBottomOf="@+id/image">
 
         <TextView
             android:id="@+id/accept_booking_button"
+            style="@style/bkbnbSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/bkbnbSubtitle"
             android:layout_marginEnd="@dimen/bkbnb8dp"
-            android:paddingVertical="@dimen/bkbnb8dp"
-            android:paddingHorizontal="@dimen/bkbnb16dp"
             android:background="@drawable/publish_view_item_shape"
-            android:text="@string/my_posts_accept_text_button"/>
+            android:paddingHorizontal="@dimen/bkbnb16dp"
+            android:paddingVertical="@dimen/bkbnb8dp"
+            android:text="@string/my_posts_accept_text_button" />
 
         <TextView
             android:id="@+id/reject_booking_button"
+            style="@style/bkbnbSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/bkbnbSubtitle"
-            android:paddingVertical="@dimen/bkbnb8dp"
-            android:paddingHorizontal="@dimen/bkbnb16dp"
             android:background="@drawable/publish_view_item_shape"
-            android:text="@string/my_posts_reject_text_button"/>
+            android:paddingHorizontal="@dimen/bkbnb16dp"
+            android:paddingVertical="@dimen/bkbnb8dp"
+            android:text="@string/my_posts_reject_text_button" />
 
     </LinearLayout>
 
