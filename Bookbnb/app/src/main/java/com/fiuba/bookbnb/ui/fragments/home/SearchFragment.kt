@@ -113,18 +113,18 @@ class SearchFragment : FormWithNetworkStatusFragment<SearchViewModel, List<Publi
         if (initialDateContentField.isNotEmpty() && endDateContentField.isNotEmpty()) {
             val initialDate = DateUtils.getDateOutputFormat().parse(initialDateContentField)
             val endDate = DateUtils.getDateOutputFormat().parse(endDateContentField)
-            return endDate.after(initialDate).also { isEndDateAfterOfInitialDate ->
-                if (!isEndDateAfterOfInitialDate) showMessage("La fecha final es menor que la inicial. Revise y corrija las fechas.")
+            return endDate!!.after(initialDate).also { isEndDateAfterOfInitialDate ->
+                if (!isEndDateAfterOfInitialDate) showMessage(getString(R.string.error_data_range))
             }
         }
 
         if (initialDateContentField.isEmpty() && endDateContentField.isNotEmpty()) {
-            showMessage("Introduzca la fecha inicial.")
+            showMessage(getString(R.string.error_init_data))
             return false
         }
 
         if (initialDateContentField.isNotEmpty() && endDateContentField.isEmpty()) {
-            showMessage("Introduzca la fecha final.")
+            showMessage(getString(R.string.error_finish_data))
             return false
         }
 

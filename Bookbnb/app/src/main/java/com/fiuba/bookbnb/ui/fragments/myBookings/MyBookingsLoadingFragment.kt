@@ -15,7 +15,7 @@ import java.util.*
 class MyBookingsLoadingFragment : BaseFragment(R.layout.bookbnb_loading_fragment) {
 
     private val loadingMyBookingsViewModel by activityViewModels<LoadingMyBookingsViewModel>()
-    private val loadingBookingRequestsViewModel by activityViewModels<LoadingBookingRequestsViewModel>()
+    private val loadingBookingPostRequestsViewModel by activityViewModels<LoadingBookingPostRequestsViewModel>()
 
     override val shouldShowToolbar: Boolean
         get() = false
@@ -30,13 +30,13 @@ class MyBookingsLoadingFragment : BaseFragment(R.layout.bookbnb_loading_fragment
 
         loadingMyBookingsViewModel.bookingsLoadedSuccessfully.observe(viewLifecycleOwner) { postsIsLoaded ->
             if (postsIsLoaded) {
-                var postsId = StringJoiner(",");
+                val postsId = StringJoiner(",");
                 loadingMyBookingsViewModel.bookingsResults?.let {
                     it.forEach { bookingResponse -> postsId.add(bookingResponse.postId)}
                 }
-                loadingBookingRequestsViewModel.execute(
+                loadingBookingPostRequestsViewModel.execute(
                     NetworkModule.buildRetrofitClient().getPosts(postsId.toString(), UserManager.getUserInfo().getToken())
-                        .also { networkManagerViewModel.setCancelCurrentRunningCallReference { cancelBookingsRequest(it) } }
+                        .also { networkManagerViewModel.setCancelCurrentRunningCallReference { cancelBookingsPostRequest(it) } }
                 )
             }
         }
@@ -47,9 +47,9 @@ class MyBookingsLoadingFragment : BaseFragment(R.layout.bookbnb_loading_fragment
         loadingMyBookingsViewModel.hideLoading()
     }
 
-    private fun cancelBookingsRequest(call: Call<List<PublishData>>) {
+    private fun cancelBookingsPostRequest(call: Call<List<PublishData>>) {
         call.cancel()
-        loadingBookingRequestsViewModel.hideLoading()
+        loadingBookingPostRequestsViewModel.hideLoading()
     }
 
 }

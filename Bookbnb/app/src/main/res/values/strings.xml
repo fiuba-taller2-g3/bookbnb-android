@@ -305,6 +305,11 @@
     <string name="purchase_night_counts">Cantidad de noches: %d</string>
     <string name="purchase_total_price">Precio total: $%s</string>
 
+    <!-- Errors -->
+    <string name="error_data_range">La fecha final es menor que la inicial. Revise y corrija las fechas.</string>
+    <string name="error_init_data">Introduzca la fecha inicial.</string>
+    <string name="error_finish_data">Introduzca la fecha final.</string>
+
     <!-- Utils -->
     <string name="string_empty" />
 

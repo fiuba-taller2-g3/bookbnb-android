@@ -9,7 +9,7 @@ import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import retrofit2.Call
 import retrofit2.Response
 
-class LoadingBookingRequestsViewModel : NetworkViewModel<List<PublishData>>()  {
+class LoadingBookingPostRequestsViewModel : NetworkViewModel<List<PublishData>>()  {
 
     var bookingRequestsResults : List<PublishData>? = null
 
@@ -22,7 +22,7 @@ class LoadingBookingRequestsViewModel : NetworkViewModel<List<PublishData>>()  {
         Log.i(TAG, "Bookings requests loaded successfully")
         bookingRequestsResults = response.body()
         response.body()?.let {
-            NavigationManager.moveForwardWithPopUpTo(MyPostsLoadingFragmentDirections.actionMyPostsLoadingFragmentToMyPostsFragment(), R.id.profileMenuFragment)
+            NavigationManager.moveForwardWithPopUpTo(MyBookingsLoadingFragmentDirections.actionMyBookingsLoadingFragmentToMyBookingsFragment(), R.id.profileMenuFragment)
         }
     }
 
