@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
-<data>
+
+    <data>
         <import type="android.view.View"/>
         <variable
             name="chatsViewModel" type="com.fiuba.bookbnb.ui.fragments.chat.ChatsViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chats_container"
             android:name="com.fiuba.bookbnb.ui.fragments.chat.ChatsFragment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="@dimen/bkbnb8dp"
+            android:clipToPadding="false"
             app:layoutManager="LinearLayoutManager"
             app:layout_constrainedHeight="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/empty_chats_text"
             tools:listitem="@layout/bookbnb_chat_item" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -29,6 +35,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/bkbnb22dp"
             android:visibility="@{chatsViewModel.chats.size() == 0 ? View.VISIBLE : View.GONE}"
-            android:text="@string/no_hay_chats"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="@string/chats_empty"/>
+    </LinearLayout>
 </layout>

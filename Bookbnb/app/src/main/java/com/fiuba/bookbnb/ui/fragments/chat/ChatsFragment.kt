@@ -14,6 +14,7 @@ import com.fiuba.bookbnb.GuestAndHost
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.databinding.BookbnbChatListBindingImpl
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
+import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarButtons
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query
@@ -31,16 +32,8 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
     private lateinit var chatsReference: Query
     private lateinit var chatsListener: ValueEventListener
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.bookbnb_chat_list,
-            container,
-            false
-        )
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.bookbnb_chat_list, container, false)
         binding.lifecycleOwner = this
         binding.chatsViewModel = chatsViewModel
         return binding.root
@@ -128,5 +121,10 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
             chatsReference.removeEventListener(it)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sharedViewModel.setOption(FooterBarButtons.MESSAGES)
     }
 }
