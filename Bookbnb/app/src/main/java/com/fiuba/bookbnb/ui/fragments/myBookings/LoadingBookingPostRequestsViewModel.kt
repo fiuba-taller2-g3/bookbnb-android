@@ -4,7 +4,6 @@ import android.util.Log
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.publish.PublishData
 import com.fiuba.bookbnb.networking.NetworkViewModel
-import com.fiuba.bookbnb.ui.fragments.myPosts.MyPostsLoadingFragmentDirections
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import retrofit2.Call
 import retrofit2.Response

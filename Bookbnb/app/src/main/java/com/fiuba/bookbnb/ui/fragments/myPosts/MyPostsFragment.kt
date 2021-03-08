@@ -62,7 +62,7 @@ class MyPostsFragment : BaseFragment(R.layout.bookbnb_my_posts_fragment) {
 
         bookings_tab.setOnClickListener {
             posts_list.adapter = MyBookingsAdapter(bookingsPendingData)
-            posts_list.isVisible = loadingHostBookingsViewModel.bookingResults!!.isNotEmpty()
+            posts_list.isVisible = bookingsPendingData.isNotEmpty()
             setEmptyPostText(R.string.my_posts_empty_bookings_text)
             setTabSelect(bookings_tab)
             setTabDeselect(my_posts_tab)

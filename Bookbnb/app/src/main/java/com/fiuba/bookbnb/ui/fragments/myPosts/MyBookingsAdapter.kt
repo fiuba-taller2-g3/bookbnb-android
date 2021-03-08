@@ -3,6 +3,7 @@ package com.fiuba.bookbnb.ui.fragments.myPosts
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.misc.MsgResponse
@@ -10,14 +11,11 @@ import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.user.UserManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bookbnb_publish_item.view.*
-import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.image
-import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.stay_description
-import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.stay_title
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>) : RecyclerView.Adapter<MyBookingsAdapter.MyBookingsViewHolder>() {
+class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>, private val showFooter: Boolean = true) : RecyclerView.Adapter<MyBookingsAdapter.MyBookingsViewHolder>() {
 
     inner class MyBookingsViewHolder(itemView: ConstraintLayout) : RecyclerView.ViewHolder(itemView)
 
@@ -32,6 +30,7 @@ class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>) : Re
         with(holder.itemView) {
             stay_title.text = itemData.title
             stay_description.text = itemData.description
+            post_footer.isVisible = showFooter
 
             accept_booking_button.setOnClickListener {
                 NetworkModule.buildRetrofitClient().acceptBooking(dataSet[position].bookingResponse, UserManager.getUserInfo().getToken())
