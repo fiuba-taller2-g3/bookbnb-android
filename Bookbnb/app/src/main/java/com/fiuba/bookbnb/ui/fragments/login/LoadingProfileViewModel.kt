@@ -1,6 +1,7 @@
 package com.fiuba.bookbnb.ui.fragments.login
 
 import android.util.Log
+import com.fiuba.bookbnb.FirebaseDBService
 import com.fiuba.bookbnb.MyFirebaseMessagingService
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.user.UserData
@@ -16,6 +17,7 @@ class LoadingProfileViewModel : NetworkViewModel<UserData>() {
 
     private var userInfoDecoded : UserInfoDecoded? = null
     private val firebaseMessagingService: MyFirebaseMessagingService = MyFirebaseMessagingService()
+    private val firebaseDBService: FirebaseDBService = FirebaseDBService()
 
     fun loadUserData(call: Call<UserData>, userId: String, token: String, addressWallet: String, exp: Date) {
         userInfoDecoded = UserInfoDecoded(userId, token, addressWallet, exp)
@@ -33,6 +35,7 @@ class LoadingProfileViewModel : NetworkViewModel<UserData>() {
                 Log.i(TAG, "Getting logged successfully with id: ${userInfo.id}")
                 UserManager.setUserInfo(UserInfo(userInfo.token, userInfo.id, userInfo.addressWallet, userInfo.exp, it))
                 firebaseMessagingService.sendRegistrationToServer()
+                firebaseDBService.createUserIfNotExists()
                 NavigationManager.moveForwardWithPopUpTo(LoadingProfileFragmentDirections.actionLoadingFragmentToProfileMenuFragment(), R.id.homeFragment)
             }
         }

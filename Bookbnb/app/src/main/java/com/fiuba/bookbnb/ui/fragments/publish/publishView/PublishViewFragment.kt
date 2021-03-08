@@ -2,19 +2,24 @@ package com.fiuba.bookbnb.ui.fragments.publish.publishView
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
+import com.fiuba.bookbnb.FirebaseChat
+import com.fiuba.bookbnb.GuestAndHost
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
 import com.fiuba.bookbnb.ui.fragments.dialogs.ServicesListDialogFragmentDirections
 import com.fiuba.bookbnb.ui.fragments.form.services.ServicesItemBuilder
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
+import com.fiuba.bookbnb.user.UserManager
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.bookbnb_chat.*
 import kotlinx.android.synthetic.main.bookbnb_publish_view_fragment.*
 import java.util.*
 
@@ -50,6 +55,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         publish_title.text = publishData.title
         publish_location.text = with(publishData.location) { "${city}, $country" }
         host_name.text = getString(R.string.publish_view_host_name, "${userData.name} ${userData.surname}")
+        btn_send_message.text = "Enviar mensaje privado al anfitrión"
         stay_type.text = "${publishData.type.capitalize(Locale.ROOT)} \u2022 ${publishData.availabilityType}"
         stay_summary.text = buildStaySummary()
         stay_description.text = publishData.description
@@ -60,6 +66,13 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         price.text = getString(R.string.stay_post_price_text, publishData.price)
         btn_booking.setOnClickListener {
             NavigationManager.moveForward(PublishViewFragmentDirections.actionPublishViewFragmentToBookingSelectDateFormFragment(publishData))
+        }
+        GuestAndHost.setGuest(UserManager.getUserInfo().getUserId())
+        GuestAndHost.setHost(publishData.userId)
+        btn_send_message.setOnClickListener {
+            GuestAndHost.setGuest(UserManager.getUserInfo().getUserId())
+            GuestAndHost.setHost(publishData.userId)
+            NavigationManager.moveForward(PublishViewFragmentDirections.startChat(FirebaseChat())) // TODO agregar firebase chat
         }
     }
 

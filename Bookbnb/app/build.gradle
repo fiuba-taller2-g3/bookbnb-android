@@ -3,10 +3,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+
+    dataBinding.enabled = true
+    buildFeatures{ dataBinding true}
 
     defaultConfig {
         applicationId "com.fiuba.bookbnb"
@@ -115,4 +119,21 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // Google Sign In SDK
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    // Firebase SDK
+    implementation platform('com.google.firebase:firebase-bom:26.4.0')
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.google.firebase:firebase-auth'
+
+    // Firebase UI Library
+    implementation 'com.firebaseui:firebase-ui-database:7.1.1'
+
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+    implementation 'com.google.android.material:material:1.1.0'
+
 }

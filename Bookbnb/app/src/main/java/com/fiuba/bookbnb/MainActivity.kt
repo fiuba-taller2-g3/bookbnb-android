@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.facebook.stetho.Stetho
@@ -15,6 +16,7 @@ import com.fiuba.bookbnb.ui.fragments.footerbar.*
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.ui.navigation.NavigationUpdate
 import com.fiuba.bookbnb.user.UserManager
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.bookbnb_activity_main.*
 import java.util.*
 
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         checkFooterBarMenu()
         checkFooterBarMenuOptionSelected()
         UserManager.loginWithFacebook()
+        FirebaseInstanceId.getInstance().getToken()
     }
 
     private fun checkToolbar() {

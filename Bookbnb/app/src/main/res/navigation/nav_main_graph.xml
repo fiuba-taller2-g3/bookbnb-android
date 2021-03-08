@@ -121,5 +121,29 @@
             app:argType="integer" />
     </fragment>
 
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.chat.ChatFragment"
+        android:label="ChatFragment" >
+        <argument
+            android:name="firebaseChat"
+            app:argType="com.fiuba.bookbnb.FirebaseChat" />
+    </fragment>
+
+    <action
+        android:id="@+id/startChat"
+        app:destination="@id/chatFragment" />
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.chat.ChatsFragment"
+        android:label="ChatsFragment" >
+        <action
+            android:id="@+id/action_chatsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+    <action
+        android:id="@+id/seeChatList"
+        app:destination="@id/chatsFragment" />
 
 </navigation>

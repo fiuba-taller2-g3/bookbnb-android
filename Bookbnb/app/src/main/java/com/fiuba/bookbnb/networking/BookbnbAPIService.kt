@@ -1,5 +1,6 @@
 package com.fiuba.bookbnb.networking
 
+import com.fiuba.bookbnb.NotificationData
 import com.fiuba.bookbnb.domain.misc.TokenData
 import com.fiuba.bookbnb.domain.booking.BookingRequest
 import com.fiuba.bookbnb.domain.booking.BookingResponse
@@ -54,6 +55,9 @@ interface BookbnbAPIService {
 
     @POST("/rejectance")
     fun rejectBooking(@Body bookingData: BookingResponse, @Header(API_TOKEN) apiToken: String) : Call<MsgResponse>
+
+    @POST("/notifications")
+    fun sendNotification(@Body notificationData: NotificationData) : Call<MsgResponse>
 
     companion object {
         private const val USER_ID = "id"
