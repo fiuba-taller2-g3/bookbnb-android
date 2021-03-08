@@ -82,12 +82,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun sendRegistrationToServer(token: String?) {
         if (UserManager.isUserLogged()) {
             val userId = UserManager.getUserInfo().getUserId()
-            NetworkModule.buildRetrofitClient().registerToken(
+            val call = NetworkModule.buildRetrofitClient().registerToken(
                 TokenData(
                     userId,
                     token
                 )
             )
+            executeCallback(call)
             Log.d(TAG, "sendRegistrationTokenToServer($token) for userId $userId")
         } else {
             Log.d(TAG, "no se puede guardar token de un usuario no logueado")
