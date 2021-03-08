@@ -1,8 +1,10 @@
 package com.fiuba.bookbnb.ui.fragments.myPosts
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.fiuba.bookbnb.R
@@ -31,6 +33,22 @@ class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>, priv
             stay_title.text = itemData.title
             stay_description.text = itemData.description
             post_footer.isVisible = showFooter
+            stay_status.setBackgroundResource(R.drawable.driver)
+
+            when(dataSet[position].bookingResponse.status) {
+                PENDING -> {
+                    stay_status.text = context.getString(R.string.my_bookings_pending)
+                    stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorPending))
+                }
+                ACCEPTED -> {
+                    stay_status.text = context.getString(R.string.my_bookings_accepted)
+                    stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorAccept))
+                }
+                REJECTED -> {
+                    stay_status.text = context.getString(R.string.my_bookings_rejected)
+                    stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorRed))
+                }
+            }
 
             accept_booking_button.setOnClickListener {
                 NetworkModule.buildRetrofitClient().acceptBooking(dataSet[position].bookingResponse, UserManager.getUserInfo().getToken())
@@ -74,5 +92,11 @@ class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>, priv
     }
 
     override fun getItemCount(): Int = dataSet.size
+
+    companion object {
+        private const val PENDING = "pending"
+        private const val ACCEPTED = "accepted"
+        private const val REJECTED = "rejected"
+    }
 
 }
