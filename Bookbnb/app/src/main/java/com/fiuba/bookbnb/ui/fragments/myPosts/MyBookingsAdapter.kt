@@ -17,7 +17,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>, private val showFooter: Boolean = true) : RecyclerView.Adapter<MyBookingsAdapter.MyBookingsViewHolder>() {
+class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>, private val showFooter: Boolean = true, private val showStatus: Boolean = false) : RecyclerView.Adapter<MyBookingsAdapter.MyBookingsViewHolder>() {
 
     inner class MyBookingsViewHolder(itemView: ConstraintLayout) : RecyclerView.ViewHolder(itemView)
 
@@ -33,20 +33,24 @@ class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>, priv
             stay_title.text = itemData.title
             stay_description.text = itemData.description
             post_footer.isVisible = showFooter
-            stay_status.setBackgroundResource(R.drawable.driver)
 
-            when(dataSet[position].bookingResponse.status) {
-                PENDING -> {
-                    stay_status.text = context.getString(R.string.my_bookings_pending)
-                    stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorPending))
-                }
-                ACCEPTED -> {
-                    stay_status.text = context.getString(R.string.my_bookings_accepted)
-                    stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorAccept))
-                }
-                REJECTED -> {
-                    stay_status.text = context.getString(R.string.my_bookings_rejected)
-                    stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorRed))
+            if (showStatus) {
+                stay_status.isVisible = showStatus
+                stay_status.setBackgroundResource(R.drawable.driver)
+
+                when(dataSet[position].bookingResponse.status) {
+                    PENDING -> {
+                        stay_status.text = context.getString(R.string.my_bookings_pending)
+                        stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorPending))
+                    }
+                    ACCEPTED -> {
+                        stay_status.text = context.getString(R.string.my_bookings_accepted)
+                        stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorAccept))
+                    }
+                    REJECTED -> {
+                        stay_status.text = context.getString(R.string.my_bookings_rejected)
+                        stay_status.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorRed))
+                    }
                 }
             }
 

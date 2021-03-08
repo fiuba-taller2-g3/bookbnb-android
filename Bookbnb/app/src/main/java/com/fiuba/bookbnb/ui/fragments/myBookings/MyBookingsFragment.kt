@@ -27,7 +27,7 @@ class MyBookingsFragment : BaseFragment(R.layout.bookbnb_my_bookings_fragment) {
         my_bookings_container.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            adapter = MyBookingsAdapter(bookingsPendingData, false)
+            adapter = MyBookingsAdapter(bookingsPendingData, showFooter = false, showStatus = true)
             isVisible = bookingsPendingData.isNotEmpty()
         }
 

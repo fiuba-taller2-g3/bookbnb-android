@@ -29,6 +29,7 @@ class MyPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Adap
             stay_title.text = itemData.title
             stay_description.text = itemData.description
             post_footer.isVisible = false
+            stay_status.isVisible = false
 
             Picasso.get()
                 .load(itemData.images.firstOrNull())

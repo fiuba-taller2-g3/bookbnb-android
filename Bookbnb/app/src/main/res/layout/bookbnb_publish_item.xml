@@ -53,12 +53,11 @@
         android:background="@drawable/driver"
         android:ellipsize="end"
         android:maxLines="2"
-        android:layout_marginTop="@dimen/bkbnb10dp"
         android:paddingHorizontal="@dimen/bkbnb8dp"
         android:paddingVertical="@dimen/bkbnb2dp"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/image"
+        app:layout_constraintEnd_toStartOf="@+id/post_footer"
         app:layout_constraintTop_toBottomOf="@+id/image"
         tools:text="Reservado" />
 
