@@ -7,6 +7,6 @@ import com.fiuba.bookbnb.ui.navigation.NavigationManager
 class FooterBarMenuProfileItem(context: Context) : FooterBarMenuItem(context, R.string.footer_bar_profile_menu, R.drawable.ic_profile) {
 
     override fun setButtonListener() {
-        NavigationManager.moveGlobalTo(R.id.startProfile)
+        NavigationManager.moveGlobalToWithPopUpTo(R.id.startProfile, R.id.homeFragment)
     }
 }

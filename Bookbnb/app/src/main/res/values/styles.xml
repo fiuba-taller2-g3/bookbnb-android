@@ -16,6 +16,10 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="bkbnbChatUserTitle" parent="bkbnbTitle">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="bkbnbSubtitle">
         <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:textSize">16sp</item>

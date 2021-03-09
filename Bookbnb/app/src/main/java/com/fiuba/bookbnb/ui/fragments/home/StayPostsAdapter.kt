@@ -10,7 +10,6 @@ import com.fiuba.bookbnb.domain.publish.PublishData
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.*
-import kotlinx.android.synthetic.main.bookbnb_stay_publish_search_results_item.view.image
 
 class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Adapter<StayPostsAdapter.StayPostsViewHolder>() {
 
@@ -29,6 +28,7 @@ class StayPostsAdapter(private val dataSet: List<PublishData>) : RecyclerView.Ad
             stay_description.text = itemData.description
             price.text = context.getString(R.string.stay_post_price_text, itemData.price)
             recommendation_label.isVisible = itemData.recommended ?: false
+
             Picasso.get()
                 .load(itemData.images.firstOrNull())
                 .placeholder(R.drawable.ic_photoimgdefault)

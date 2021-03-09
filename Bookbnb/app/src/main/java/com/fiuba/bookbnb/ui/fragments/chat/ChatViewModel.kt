@@ -12,11 +12,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 open class ChatViewModel() : ViewModel() {
-    val chatId: String = FirebaseDBService().getChatId(com.fiuba.bookbnb.GuestAndHost.getGuest()!!,
-        com.fiuba.bookbnb.GuestAndHost.getHost()!!
-    )
 
-    private val _messageText = MutableLiveData<String>("")
+    val chatId: String = FirebaseDBService().getChatId(GuestAndHost.getGuest()!!, GuestAndHost.getHost()!!)
+
+    private val _messageText = MutableLiveData("")
     val messageText: MutableLiveData<String>
         get() = _messageText
 

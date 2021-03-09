@@ -1,7 +1,6 @@
 package com.fiuba.bookbnb.ui.fragments.chat
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,24 +19,16 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.bookbnb_chat.*
-import kotlinx.android.synthetic.main.bookbnb_chat_list.*
 
 class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
+
     private lateinit var childMessagesReference: DatabaseReference
     private var childListener: ChildEventListener? = null
     private val chatViewModel by activityViewModels<ChatViewModel>()
     private lateinit var binding: BookbnbChatBindingImpl
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.bookbnb_chat,
-            container,
-            false
-        )
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.bookbnb_chat, container, false)
         binding.lifecycleOwner = this
         binding.chatViewModel = chatViewModel
         return binding.root
@@ -121,9 +112,6 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
         childMessagesReference.addChildEventListener(childMessagesListener)
         this.childListener = childMessagesListener
     }
-
-    override val shouldShowFooterBarMenu: Boolean
-        get() = true
 
     override fun onStop() {
         super.onStop()

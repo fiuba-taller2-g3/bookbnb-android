@@ -316,6 +316,14 @@
     <!-- Recommendations -->
     <string name="recommendation_text">Recomendado</string>
 
+    <!-- Chats -->
+    <string name="chats_empty">No hay chats para mostrar.</string>
+    <string name="chat_message_hint">Escribe un mensaje…</string>
+    <string name="chat_message_host">Anfitrión</string>
+    <string name="chat_message_guest">Huesped</string>
+    <string name="chat_send_msg">Enviar</string>
+    <string name="chat_title">Sala de chat</string>
+
     <!-- Utils -->
     <string name="string_empty" />
 
@@ -335,5 +343,4 @@
     <!-- [END fcm_default_icon_string] -->
     <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
     <string name="fcm_message">FCM Message</string>
-    <string name="no_hay_chats">No hay chats para mostrar.</string>
 </resources>

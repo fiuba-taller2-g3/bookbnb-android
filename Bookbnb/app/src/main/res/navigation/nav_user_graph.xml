@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_profileMenuFragment_to_myBookingsLoadingFragment"
             app:destination="@id/myBookingsLoadingFragment" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_viewProfileFragment"
+            app:destination="@id/viewProfileFragment" />
     </fragment>
 
     <fragment
@@ -152,5 +155,11 @@
         android:name="com.fiuba.bookbnb.ui.fragments.myBookings.MyBookingsFragment"
         android:label="MyBookingsFragment"
         tools:layout="@layout/bookbnb_my_bookings_fragment"/>
+
+    <fragment
+        android:id="@+id/viewProfileFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.profile.ViewProfileFragment"
+        android:label="ViewProfileFragment"
+        tools:layout="@layout/bookbnb_view_profile_fragment"/>
 
 </navigation>

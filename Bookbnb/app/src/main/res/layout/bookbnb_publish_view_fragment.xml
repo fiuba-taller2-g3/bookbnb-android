@@ -145,8 +145,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/bkbnb20dp"
                 android:background="@drawable/button_bordered_ripple"
-                app:layout_constraintEnd_toEndOf="@+id/stay_summary"
-                app:layout_constraintStart_toStartOf="@+id/stay_summary"
+                app:layout_constraintEnd_toEndOf="@+id/publish_title"
+                app:layout_constraintStart_toStartOf="@+id/publish_title"
                 app:layout_constraintTop_toBottomOf="@id/stay_summary"
                 tools:text="Firebase realtime database structure in chat appAsk Question" />
 
@@ -156,7 +156,7 @@
                 android:layout_width="0dp"
                 app:layout_constraintEnd_toEndOf="@+id/publish_title"
                 app:layout_constraintStart_toStartOf="@+id/publish_title"
-                app:layout_constraintTop_toBottomOf="@id/stay_summary" />
+                app:layout_constraintTop_toBottomOf="@id/btn_send_message" />
 
             <TextView
                 android:id="@+id/stay_description"
