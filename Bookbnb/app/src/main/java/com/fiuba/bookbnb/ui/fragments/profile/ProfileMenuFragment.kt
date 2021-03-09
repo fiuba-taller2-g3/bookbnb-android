@@ -40,8 +40,8 @@ class ProfileMenuFragment : BaseFragment(R.layout.bookbnb_profile_fragment) {
             /* host */
             addView(ProfileTitleMenuSection(requireContext(), R.string.view_profile_host_title_text))
             addView(ProfilePublicStays(requireContext(), R.string.view_profile_publish_text, R.drawable.ic_public_stays))
-            addView(ProfileMyPosts(requireContext(), R.string.view_profile_my_posts_text, R.drawable.ic_public_stays))
-            addView(ProfileMyBookings(requireContext(), R.string.view_profile_my_bookings_text, R.drawable.ic_public_stays))
+            addView(ProfileMyPosts(requireContext(), R.string.view_profile_my_posts_text, R.drawable.ic_myposts))
+            addView(ProfileMyBookings(requireContext(), R.string.view_profile_my_bookings_text, R.drawable.ic_mybookings))
             /* Account config */
             addView(ProfileTitleMenuSection(requireContext(), R.string.view_profile_account_config_title_text))
             // TODO: Hay que confirmar si el usuario logueado con Facebook puede editar la información personal o registar los campos que faltan
