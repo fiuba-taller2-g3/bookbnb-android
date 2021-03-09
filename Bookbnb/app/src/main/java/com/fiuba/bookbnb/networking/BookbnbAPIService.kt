@@ -33,7 +33,8 @@ interface BookbnbAPIService {
     fun getPosts(@Query(TYPE) type: String, @Query(LAT) lat: String?, @Query(LNG) lng: String?,
                  @Query(MIN_PRICE) minPrice: String?, @Query(MAX_PRICE) maxPrice: String?,
                  @Query(BEGIN_DATE) beginDate: String?, @Query(END_DATE) endDate: String?,
-                 @Query(HIDE_USER_ID) hideUserId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
+                 @Query(HIDE_USER_ID) hideUserId: String, @Query(RECOMMENDATIONS) recommendations: Boolean,
+                 @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
 
     @GET("posts")
     fun getUserPosts(@Query(HOST_USER_ID) userId: String, @Header(API_TOKEN) apiToken: String) : Call<List<PublishData>>
@@ -77,5 +78,6 @@ interface BookbnbAPIService {
         private const val GUEST_USER_ID = "guest_user_id"
         private const val STATUS = "status"
         private const val POSTS_ID= "posts_id"
+        private const val RECOMMENDATIONS ="includeRecommendations"
     }
 }

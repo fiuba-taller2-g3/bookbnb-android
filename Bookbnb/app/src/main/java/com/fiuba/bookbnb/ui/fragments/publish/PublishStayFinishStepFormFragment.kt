@@ -47,6 +47,7 @@ class PublishStayFinishStepFormFragment : FormWithNetworkStatusFragment<PublishV
                 getContentFromItem(PRICE),
                 imagesUrl,
                 getContentFromItem(AVAILABILITY_TYPE),
+                false,
                 getContentFromItem(STAY_TYPE),
                 getContentFromItem(GUEST_QUANTITY),
                 getContentFromItem(BED_QUANTITY),
