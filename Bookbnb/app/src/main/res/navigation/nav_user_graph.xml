@@ -171,7 +171,11 @@
         android:id="@+id/viewProfileFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.profile.ViewProfileFragment"
         android:label="ViewProfileFragment"
-        tools:layout="@layout/bookbnb_view_profile_fragment"/>
+        tools:layout="@layout/bookbnb_view_profile_fragment">
+        <argument
+            android:name="userData"
+            app:argType="com.fiuba.bookbnb.domain.user.UserData" />
+    </fragment>
 
     <fragment
         android:id="@+id/bookingRequestProcessFragment"

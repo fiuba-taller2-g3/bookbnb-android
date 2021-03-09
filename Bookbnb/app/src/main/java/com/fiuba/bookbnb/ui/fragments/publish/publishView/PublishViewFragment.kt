@@ -57,7 +57,7 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         publish_location.text = with(publishData.location) { "${city}, $country" }
         host_name.text = getString(R.string.publish_view_host_name, "${userData.name} ${userData.surname}")
         host_name.setOnClickListener {
-            NavigationManager.moveForward(PublishViewFragmentDirections.actionPublishViewFragmentToViewProfileFragmentFromPublish())
+            NavigationManager.moveForward(PublishViewFragmentDirections.actionPublishViewFragmentToViewProfileFragmentFromPublish(userData))
         }
         btn_send_message.text = "Enviar mensaje privado al anfitrión"
         stay_type.text = "${publishData.type.capitalize(Locale.ROOT)} \u2022 ${publishData.availabilityType}"

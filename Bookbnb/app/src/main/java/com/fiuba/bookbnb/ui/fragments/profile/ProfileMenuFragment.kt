@@ -29,7 +29,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.bookbnb_profile_fragment) {
         version.text = "${getString(R.string.view_profile_version_text)}: ${BuildConfig.VERSION_NAME}"
 
         view_profile.setOnClickListener {
-            NavigationManager.moveForward(ProfileMenuFragmentDirections.actionProfileMenuFragmentToViewProfileFragment())
+            NavigationManager.moveForward(ProfileMenuFragmentDirections.actionProfileMenuFragmentToViewProfileFragment(UserManager.getUserInfo().getUserData()))
         }
 
         loadMenu()
