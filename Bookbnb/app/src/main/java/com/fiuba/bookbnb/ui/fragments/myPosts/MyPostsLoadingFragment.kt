@@ -3,6 +3,7 @@ package com.fiuba.bookbnb.ui.fragments.myPosts
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.booking.BookingResponse
 import com.fiuba.bookbnb.domain.publish.PublishData
@@ -15,6 +16,8 @@ class MyPostsLoadingFragment : BaseFragment(R.layout.bookbnb_loading_fragment) {
 
     private val loadingMyPostsViewModel by activityViewModels<LoadingMyPostsViewModel>()
     private val loadingHostBookingsViewModel by activityViewModels<LoadingHostBookingsViewModel>()
+    private val navArguments by navArgs<MyPostsFragmentArgs>()
+    private val startWithPostTab by lazy { navArguments.startWithPostTab }
 
     override val shouldShowToolbar: Boolean
         get() = false
@@ -32,8 +35,7 @@ class MyPostsLoadingFragment : BaseFragment(R.layout.bookbnb_loading_fragment) {
                 loadingHostBookingsViewModel.execute(
                     NetworkModule.buildRetrofitClient().pendingBookingsHost(
                         UserManager.getUserInfo().getUserId(), PENDING_STATUS, UserManager.getUserInfo().getToken()
-                    ).also { networkManagerViewModel.setCancelCurrentRunningCallReference { cancelMyBookingsRequest(it) } }
-                )
+                    ).also { networkManagerViewModel.setCancelCurrentRunningCallReference { cancelMyBookingsRequest(it) } }, startWithPostTab)
             }
         }
     }
