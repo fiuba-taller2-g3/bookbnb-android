@@ -13,6 +13,7 @@ import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
 import com.fiuba.bookbnb.ui.fragments.dialogs.ServicesListDialogFragmentDirections
 import com.fiuba.bookbnb.ui.fragments.form.services.ServicesItemBuilder
+import com.fiuba.bookbnb.ui.fragments.profile.ProfileMenuFragmentDirections
 import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.user.UserManager
 import com.google.android.gms.maps.*
@@ -55,6 +56,9 @@ class PublishViewFragment : BaseFragment(R.layout.bookbnb_publish_view_fragment)
         publish_title.text = publishData.title
         publish_location.text = with(publishData.location) { "${city}, $country" }
         host_name.text = getString(R.string.publish_view_host_name, "${userData.name} ${userData.surname}")
+        host_name.setOnClickListener {
+            NavigationManager.moveForward(PublishViewFragmentDirections.actionPublishViewFragmentToViewProfileFragmentFromPublish())
+        }
         btn_send_message.text = "Enviar mensaje privado al anfitrión"
         stay_type.text = "${publishData.type.capitalize(Locale.ROOT)} \u2022 ${publishData.availabilityType}"
         stay_summary.text = buildStaySummary()
