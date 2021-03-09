@@ -4,6 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/bkbnbNormalTitle"
+        android:paddingHorizontal="@dimen/bkbnb24dp"
+        android:paddingTop="@dimen/bkbnb16dp"
+        android:paddingBottom="@dimen/bkbnb22dp"
+        android:text="@string/search_results_title" />
+
+    <View
+        android:id="@+id/header_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bkbnb2dp"
+        android:background="@color/colorBackgroundInputFieldDisabled" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_results_container"
         android:layout_width="match_parent"
@@ -13,7 +28,8 @@
         android:id="@+id/empty_results_text"
         style="@style/bkbnbOptionProfileMenu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:layout_margin="@dimen/bkbnb22dp"
         android:text="@string/search_empty_results_text"/>
 

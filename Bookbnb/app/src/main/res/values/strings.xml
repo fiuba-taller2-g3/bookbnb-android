@@ -266,6 +266,7 @@
     <string name="search_stay_type_label">Tipo de alojamiento</string>
     <string name="search_min_price_label">Precio mínimo (USD)</string>
     <string name="search_max_price_label">Precio máximo (USD)</string>
+    <string name="search_results_title">Alojamientos</string>
     <string name="search_empty_results_text">¡Ups! No se encontraron resultados para su búsqueda. Intente realizar otra.</string>
 
     <!-- Publish view -->

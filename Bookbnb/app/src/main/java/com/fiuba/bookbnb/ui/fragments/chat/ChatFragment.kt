@@ -119,6 +119,8 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
         this.childListener = childMessagesListener
     }
 
+    override fun shouldClearInputsWhenBackPressed(): Boolean = false
+
     override fun onStop() {
         super.onStop()
         childListener?.let {
