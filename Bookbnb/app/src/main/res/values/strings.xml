@@ -318,6 +318,8 @@
     <string name="chat_message_hint">Escribe un mensaje…</string>
     <string name="chat_message_host">Anfitrión</string>
     <string name="chat_message_guest">Huesped</string>
+    <string name="chat_send_msg">Enviar</string>
+    <string name="chat_title">Sala de chat</string>
 
     <!-- Utils -->
     <string name="string_empty" />
