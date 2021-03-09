@@ -313,6 +313,9 @@
     <string name="error_init_data">Introduzca la fecha inicial.</string>
     <string name="error_finish_data">Introduzca la fecha final.</string>
 
+    <!-- Recommendations -->
+    <string name="recommendation_text">Recomendado</string>
+
     <!-- Chats -->
     <string name="chats_empty">No hay chats para mostrar.</string>
     <string name="chat_message_hint">Escribe un mensaje…</string>
