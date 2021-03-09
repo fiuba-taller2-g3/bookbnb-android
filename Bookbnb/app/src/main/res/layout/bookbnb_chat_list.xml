@@ -16,9 +16,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/bkbnbSmallTitle"
-            android:paddingHorizontal="@dimen/bkbnb8dp"
-            android:paddingVertical="@dimen/bkbnb16dp"
+            style="@style/bkbnbNormalTitle"
+            android:paddingHorizontal="@dimen/bkbnb14dp"
+            android:paddingTop="@dimen/bkbnb28dp"
+            android:paddingBottom="@dimen/bkbnb16dp"
             android:text="@string/chat_title" />
 
         <androidx.recyclerview.widget.RecyclerView
