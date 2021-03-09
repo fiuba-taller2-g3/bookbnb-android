@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiuba.bookbnb.*
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.databinding.BookbnbChatBindingImpl
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
-import com.fiuba.bookbnb.utils.notifyObserver
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
@@ -24,7 +23,7 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
 
     private lateinit var childMessagesReference: DatabaseReference
     private var childListener: ChildEventListener? = null
-    private val chatViewModel by activityViewModels<ChatViewModel>()
+    private val chatViewModel by viewModels<ChatViewModel>()
     private lateinit var binding: BookbnbChatBindingImpl
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -42,14 +41,16 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
         messageRecyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            chatViewModel.messages.let { results ->
-                adapter = ChatAdapter(results.value!!)
-                isVisible = results.value!!.isNotEmpty()
+            chatViewModel.messagesLiveData.value!!.let { results ->
+                adapter = ChatAdapter(results)
+                isVisible = results.isNotEmpty()
             }
         }
-        if (chatViewModel.messages.value?.isNotEmpty()!!) {
-            messageRecyclerView.smoothScrollToPosition((chatViewModel.messages.value?.size?.minus(1)!!))
+
+        if (chatViewModel.messagesLiveData.value!!.isNotEmpty()) {
+            messageRecyclerView.smoothScrollToPosition((chatViewModel.messagesLiveData.value!!.size.minus(1)))
         }
+
         val firebaseDbSvc = FirebaseDBService()
         firebaseDbSvc.updateChat(GuestAndHost.getGuest()!!, GuestAndHost.getHost()!!, this::updateFragmentTitle)
         addFirebaseListeners()
@@ -84,21 +85,24 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
             }
 
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
-                if (!chatViewModel.messages.value!!.contains(dataSnapshot.getValue<FirebaseChatMessage>()!!)) {
-                    chatViewModel.messages.value!!.add(dataSnapshot.getValue<FirebaseChatMessage>()!!)
+                if (!chatViewModel.messagesLiveData.value!!.contains(dataSnapshot.getValue<FirebaseChatMessage>()!!)) {
+                    chatViewModel.messagesLiveData.value!!.add(dataSnapshot.getValue<FirebaseChatMessage>()!!)
                 }
+
                 messageRecyclerView.apply {
                     setHasFixedSize(true)
                     layoutManager = LinearLayoutManager(context)
-                    chatViewModel.messages.let { results ->
-                        adapter = ChatAdapter(results.value!!)
-                        isVisible = results.value!!.isNotEmpty()
+                    chatViewModel.messagesLiveData.value!!.let { results ->
+                        adapter = ChatAdapter(results)
+                        isVisible = results.isNotEmpty()
                     }
                 }
-                if (chatViewModel.messages.value?.isNotEmpty()!!) {
-                    messageRecyclerView.smoothScrollToPosition((chatViewModel.messages.value?.size?.minus(1)!!))
+
+                if (chatViewModel.messagesLiveData.value!!.isNotEmpty()) {
+                    messageRecyclerView.smoothScrollToPosition((chatViewModel.messagesLiveData.value!!.size.minus(1)))
                 }
-                chatViewModel.messages.notifyObserver()
+
+                chatViewModel.notifyObserver()
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
@@ -106,9 +110,11 @@ class ChatFragment : BaseFragment(R.layout.bookbnb_chat) {
             }
 
         }
-        if (chatViewModel.messages.value?.isNotEmpty()!!) {
-            messageRecyclerView.smoothScrollToPosition((chatViewModel.messages.value?.size?.minus(1)!!))
+
+        if (chatViewModel.messagesLiveData.value!!.isNotEmpty()) {
+            messageRecyclerView.smoothScrollToPosition((chatViewModel.messagesLiveData.value?.size?.minus(1)!!))
         }
+
         childMessagesReference.addChildEventListener(childMessagesListener)
         this.childListener = childMessagesListener
     }
