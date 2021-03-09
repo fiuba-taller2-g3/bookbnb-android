@@ -17,10 +17,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/bkbnbNormalTitle"
-            android:paddingHorizontal="@dimen/bkbnb14dp"
-            android:paddingTop="@dimen/bkbnb28dp"
+            android:paddingHorizontal="@dimen/bkbnb24dp"
+            android:paddingTop="@dimen/bkbnb32dp"
             android:paddingBottom="@dimen/bkbnb16dp"
-            android:text="@string/chat_title" />
+            android:text="@string/footer_bar_messages_menu" />
+
+        <View
+            android:id="@+id/header_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bkbnb2dp"
+            android:background="@color/colorBackgroundInputFieldDisabled"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabs_content" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chats_container"
@@ -40,7 +49,8 @@
             android:id="@+id/empty_chats_text"
             style="@style/bkbnbOptionProfileMenu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_margin="@dimen/bkbnb22dp"
             android:visibility="@{chatsViewModel.chats.size() == 0 ? View.VISIBLE : View.GONE}"
             android:text="@string/chats_empty"/>

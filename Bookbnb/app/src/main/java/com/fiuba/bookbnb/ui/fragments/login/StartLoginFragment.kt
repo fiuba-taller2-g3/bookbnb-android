@@ -72,6 +72,9 @@ class StartLoginFragment : BaseFragment(R.layout.bookbnb_start_login_fragment) {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override val shouldShowToolbar: Boolean
+        get() = false
+
     override fun onResume() {
         super.onResume()
         sharedViewModel.setOption(FooterBarButtons.PROFILE)

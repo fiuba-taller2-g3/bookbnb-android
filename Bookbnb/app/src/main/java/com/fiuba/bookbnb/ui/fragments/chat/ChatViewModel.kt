@@ -1,17 +1,20 @@
 package com.fiuba.bookbnb.ui.fragments.chat
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.fiuba.bookbnb.*
 import com.fiuba.bookbnb.domain.misc.MsgResponse
 import com.fiuba.bookbnb.networking.NetworkModule
 import com.fiuba.bookbnb.user.UserManager
+import com.fiuba.bookbnb.utils.notifyObserver
+import org.apache.commons.lang3.StringUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-open class ChatViewModel() : ViewModel() {
+open class ChatViewModel : ViewModel() {
 
     val chatId: String = FirebaseDBService().getChatId(GuestAndHost.getGuest()!!, GuestAndHost.getHost()!!)
 
@@ -19,24 +22,17 @@ open class ChatViewModel() : ViewModel() {
     val messageText: MutableLiveData<String>
         get() = _messageText
 
-    private val _messages = MutableLiveData<MutableList<FirebaseChatMessage>>(mutableListOf<FirebaseChatMessage>())
-    val messages: MutableLiveData<MutableList<FirebaseChatMessage>>
-        get() = _messages
+    private val mutableMessagesLiveData = MutableLiveData(mutableListOf<FirebaseChatMessage>())
+    val messagesLiveData: LiveData<MutableList<FirebaseChatMessage>>
+        get() = mutableMessagesLiveData
 
     fun onSendClick(){
-        FirebaseDBService().saveMessage(
-            chatId,
-            com.fiuba.bookbnb.GuestAndHost.getGuest()!!,
-            UserManager.getUserInfo().getUserData().name,
-            messageText.value!!)
-        _messageText.value = ""
+        FirebaseDBService().saveMessage(chatId, GuestAndHost.getGuest()!!, UserManager.getUserInfo().getUserData().name, messageText.value!!)
+        _messageText.value = StringUtils.EMPTY
 
-        var receiverId = ""
-        receiverId = if (UserManager.getUserInfo().getUserData().id == com.fiuba.bookbnb.GuestAndHost.getGuest()!!) {
-            com.fiuba.bookbnb.GuestAndHost.getHost()!!
-        } else {
-            com.fiuba.bookbnb.GuestAndHost.getGuest()!!
-        }
+        val receiverId = if (UserManager.getUserInfo().getUserData().id == GuestAndHost.getGuest()!!) GuestAndHost.getHost()!!
+        else GuestAndHost.getGuest()!!
+
         val call = NetworkModule.buildRetrofitClient().sendNotification(NotificationData(receiverId, "BookBnB Chat", "Tenes un nuevo mensaje"))
         executeCallback(call)
     }
@@ -59,6 +55,8 @@ open class ChatViewModel() : ViewModel() {
             }
         })
     }
+
+    fun notifyObserver() = mutableMessagesLiveData.notifyObserver()
 
     fun onSuccessful(response: Response<MsgResponse>) {
         response.body()?.let {

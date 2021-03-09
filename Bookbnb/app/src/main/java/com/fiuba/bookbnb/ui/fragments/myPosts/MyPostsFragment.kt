@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.ui.fragments.BaseFragment
@@ -15,6 +16,8 @@ class MyPostsFragment : BaseFragment(R.layout.bookbnb_my_posts_fragment) {
 
     private val loadingMyPostsViewModel by activityViewModels<LoadingMyPostsViewModel>()
     private val loadingHostBookingsViewModel by activityViewModels<LoadingHostBookingsViewModel>()
+    private val navArguments by navArgs<MyPostsFragmentArgs>()
+    private val startWithPostTab by lazy { navArguments.startWithPostTab }
 
     private val bookingsPendingData : ArrayList<BookingPendingData> = ArrayList()
 
@@ -26,14 +29,10 @@ class MyPostsFragment : BaseFragment(R.layout.bookbnb_my_posts_fragment) {
         posts_list.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            adapter = MyPostsAdapter(loadingMyPostsViewModel.postsResults!!)
-            isVisible = loadingMyPostsViewModel.postsResults!!.isNotEmpty()
         }
 
-        setEmptyPostText(R.string.my_posts_empty_posts_text)
-
+        loadTab(startWithPostTab)
         loadTabListeners()
-        setTabSelect(my_posts_tab)
     }
 
     private fun setEmptyPostText(stringRes: Int) {
@@ -52,31 +51,34 @@ class MyPostsFragment : BaseFragment(R.layout.bookbnb_my_posts_fragment) {
     }
 
     private fun loadTabListeners() {
-        my_posts_tab.setOnClickListener {
-            posts_list.adapter = MyPostsAdapter(loadingMyPostsViewModel.postsResults!!)
-            posts_list.isVisible = loadingMyPostsViewModel.postsResults!!.isNotEmpty()
-            setEmptyPostText(R.string.my_posts_empty_posts_text)
-            setTabSelect(my_posts_tab)
-            setTabDeselect(bookings_tab)
-        }
+        my_posts_tab.setOnClickListener { loadTab(true) }
+        bookings_tab.setOnClickListener { loadTab(false) }
+    }
 
-        bookings_tab.setOnClickListener {
-            posts_list.adapter = MyBookingsAdapter(bookingsPendingData)
-            posts_list.isVisible = bookingsPendingData.isNotEmpty()
-            setEmptyPostText(R.string.my_posts_empty_bookings_text)
-            setTabSelect(bookings_tab)
-            setTabDeselect(my_posts_tab)
+    private fun loadTab(isPostTab: Boolean) {
+        posts_list.apply {
+            if (isPostTab) {
+                adapter = MyPostsAdapter(loadingMyPostsViewModel.postsResults!!)
+                isVisible = loadingMyPostsViewModel.postsResults!!.isNotEmpty()
+                setEmptyPostText(R.string.my_posts_empty_posts_text)
+                setTabSelect(my_posts_tab)
+                setTabDeselect(bookings_tab)
+            } else {
+                posts_list.adapter = MyBookingsAdapter(bookingsPendingData)
+                posts_list.isVisible = bookingsPendingData.isNotEmpty()
+                setEmptyPostText(R.string.my_posts_empty_bookings_text)
+                setTabSelect(bookings_tab)
+                setTabDeselect(my_posts_tab)
+            }
         }
     }
 
     private fun setTabSelect(tabView: TextView) {
         tabView.setBackgroundResource(R.drawable.tab_background)
-        tabView.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
     }
 
     private fun setTabDeselect(tabView: TextView) {
         tabView.setBackgroundResource(0)
-        tabView.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorTitle))
     }
 
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/bkbnb24dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb40dp"
+        style="@style/bkbnbNormalTitle"
+        android:text="@string/chat_not_login_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bkbnb8dp"
+        style="@style/bkbnbSubtitle"
+        android:text="@string/chat_not_login_subtitle"/>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/bkbnbButton"
+        android:layout_marginTop="@dimen/bkbnb28dp"
+        android:background="@drawable/button_ripple"
+        android:paddingStart="@dimen/bkbnb16dp"
+        android:paddingEnd="@dimen/bkbnb16dp"
+        android:text="@string/login_title"/>
+
+</LinearLayout>

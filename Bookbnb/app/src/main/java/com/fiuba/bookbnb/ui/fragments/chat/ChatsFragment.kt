@@ -13,8 +13,6 @@ import com.fiuba.bookbnb.FirebaseChat
 import com.fiuba.bookbnb.GuestAndHost
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.databinding.BookbnbChatListBindingImpl
-import com.fiuba.bookbnb.ui.fragments.BaseFragment
-import com.fiuba.bookbnb.ui.fragments.footerbar.FooterBarButtons
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query
@@ -25,7 +23,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.bookbnb_chat_list.*
 
 
-class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
+class ChatsFragment : ChatBaseFragment(R.layout.bookbnb_chat_list) {
 
     private val chatsViewModel by viewModels<ChatsViewModel>()
     private lateinit var binding: BookbnbChatListBindingImpl
@@ -92,12 +90,6 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
         }
     }
 
-    override val shouldShowFooterBarMenu: Boolean
-        get() = true
-
-    override val shouldShowToolbar: Boolean
-        get() = false
-
     override fun onStop() {
         super.onStop()
 
@@ -106,10 +98,5 @@ class ChatsFragment : BaseFragment(R.layout.bookbnb_chat_list) {
             chatsReference.removeEventListener(it)
         }
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        sharedViewModel.setOption(FooterBarButtons.MESSAGES)
     }
 }

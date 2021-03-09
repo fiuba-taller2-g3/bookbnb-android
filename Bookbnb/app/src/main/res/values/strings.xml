@@ -71,6 +71,8 @@
     <string name="my_posts_reject_text_button">Rechazar</string>
     <string name="my_posts_empty_posts_text">No hay publicaciones</string>
     <string name="my_posts_empty_bookings_text">No hay solicitudes</string>
+    <string name="my_posts_loading_request_text">Espere…</string>
+    <string name="my_posts_loading_request_description">Estamos enviando su respuesta de solicitud.</string>
 
     <!-- My bookings -->
     <string name="my_bookings_empty_text">No hay reservas</string>
@@ -264,6 +266,7 @@
     <string name="search_stay_type_label">Tipo de alojamiento</string>
     <string name="search_min_price_label">Precio mínimo (USD)</string>
     <string name="search_max_price_label">Precio máximo (USD)</string>
+    <string name="search_results_title">Alojamientos</string>
     <string name="search_empty_results_text">¡Ups! No se encontraron resultados para su búsqueda. Intente realizar otra.</string>
 
     <!-- Publish view -->
@@ -317,12 +320,13 @@
     <string name="recommendation_text">Recomendado</string>
 
     <!-- Chats -->
-    <string name="chats_empty">No hay chats para mostrar.</string>
+    <string name="chats_empty">No hay chats para mostrar</string>
     <string name="chat_message_hint">Escribe un mensaje…</string>
     <string name="chat_message_host">Anfitrión</string>
     <string name="chat_message_guest">Huesped</string>
     <string name="chat_send_msg">Enviar</string>
-    <string name="chat_title">Sala de chat</string>
+    <string name="chat_not_login_title">Inicio de sesión requerido</string>
+    <string name="chat_not_login_subtitle">Es necesario iniciar sesión para poder acceder a la sala de chats.</string>
 
     <!-- Utils -->
     <string name="string_empty" />

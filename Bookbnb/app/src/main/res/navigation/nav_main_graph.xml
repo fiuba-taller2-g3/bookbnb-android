@@ -20,6 +20,18 @@
     <!-- Include login graph -->
     <include app:graph="@navigation/nav_user_graph" />
 
+    <action
+        android:id="@+id/startChat"
+        app:destination="@id/chatFragment" />
+
+    <action
+        android:id="@+id/startChatList"
+        app:destination="@id/chatsFragment" />
+
+    <action
+        android:id="@+id/startChatLogin"
+        app:destination="@id/chatLoginFragment" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.home.HomeFragment"
@@ -77,6 +89,9 @@
         <action
             android:id="@+id/action_publishViewFragment_to_bookingSelectDateFormFragment"
             app:destination="@id/bookingSelectDateFormFragment" />
+        <action
+            android:id="@+id/action_publishViewFragment_to_viewProfileFragmentFromPublish"
+            app:destination="@id/viewProfileFragmentFromPublish" />
     </fragment>
 
     <fragment
@@ -124,26 +139,37 @@
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.chat.ChatFragment"
-        android:label="ChatFragment" >
+        android:label="ChatFragment"
+        tools:layout="@layout/bookbnb_chat">
         <argument
             android:name="firebaseChat"
             app:argType="com.fiuba.bookbnb.FirebaseChat" />
     </fragment>
 
-    <action
-        android:id="@+id/startChat"
-        app:destination="@id/chatFragment" />
     <fragment
         android:id="@+id/chatsFragment"
         android:name="com.fiuba.bookbnb.ui.fragments.chat.ChatsFragment"
-        android:label="ChatsFragment" >
+        android:label="ChatsFragment"
+        tools:layout="@layout/bookbnb_chat_list">
         <action
             android:id="@+id/action_chatsFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
     </fragment>
 
-    <action
-        android:id="@+id/seeChatList"
-        app:destination="@id/chatsFragment" />
+    <fragment
+        android:id="@+id/chatLoginFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.chat.ChatLoginFragment"
+        android:label="ChatLoginFragment"
+        tools:layout="@layout/bookbnb_chat_login_fragment"/>
+
+    <fragment
+        android:id="@+id/viewProfileFragmentFromPublish"
+        android:name="com.fiuba.bookbnb.ui.fragments.profile.ViewProfileFragment"
+        android:label="ViewProfileFragment"
+        tools:layout="@layout/bookbnb_view_profile_fragment">
+        <argument
+            android:name="userData"
+            app:argType="com.fiuba.bookbnb.domain.user.UserData" />
+    </fragment>
 
 </navigation>

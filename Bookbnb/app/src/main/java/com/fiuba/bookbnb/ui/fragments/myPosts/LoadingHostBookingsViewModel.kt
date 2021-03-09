@@ -11,6 +11,12 @@ import retrofit2.Response
 class LoadingHostBookingsViewModel : NetworkViewModel<List<BookingResponse>>()  {
 
     var bookingResults : List<BookingResponse>? = null
+    private var startWithPostTab = true
+
+    fun execute(call: Call<List<BookingResponse>>, startWithPostTab: Boolean) {
+        this.startWithPostTab = startWithPostTab
+        execute(call)
+    }
 
     override fun execute(call: Call<List<BookingResponse>>) {
         Log.i(TAG, "Getting bookings...")
@@ -21,7 +27,7 @@ class LoadingHostBookingsViewModel : NetworkViewModel<List<BookingResponse>>()  
         Log.i(TAG, "Bookings loaded successfully")
         bookingResults = response.body()
         response.body()?.let {
-            NavigationManager.moveForwardWithPopUpTo(MyPostsLoadingFragmentDirections.actionMyPostsLoadingFragmentToMyPostsFragment(), R.id.profileMenuFragment)
+            NavigationManager.moveForwardWithPopUpTo(MyPostsLoadingFragmentDirections.actionMyPostsLoadingFragmentToMyPostsFragment(startWithPostTab), R.id.profileMenuFragment)
         }
     }
 

@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/bkbnb8dp"
-    android:layout_marginEnd="@dimen/bkbnb8dp"
+    android:layout_marginHorizontal="@dimen/bkbnb8dp"
     android:layout_marginTop="@dimen/bkbnb8dp"
     android:background="@drawable/publish_view_item_shape"
     android:padding="@dimen/bkbnb16dp">
@@ -79,20 +78,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/bkbnb8dp"
-            android:background="@drawable/publish_view_item_shape"
+            android:gravity="center_vertical"
+            android:background="@drawable/button_booking_request_ripple"
             android:paddingHorizontal="@dimen/bkbnb16dp"
             android:paddingVertical="@dimen/bkbnb8dp"
-            android:text="@string/my_posts_accept_text_button" />
+            android:text="@string/my_posts_accept_text_button"
+            android:drawablePadding="@dimen/bkbnb4dp"
+            app:drawableStartCompat="@drawable/ic_accept" />
 
         <TextView
             android:id="@+id/reject_booking_button"
             style="@style/bkbnbSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/publish_view_item_shape"
+            android:background="@drawable/button_booking_request_ripple"
             android:paddingHorizontal="@dimen/bkbnb16dp"
             android:paddingVertical="@dimen/bkbnb8dp"
-            android:text="@string/my_posts_reject_text_button" />
+            android:text="@string/my_posts_reject_text_button"
+            android:drawablePadding="@dimen/bkbnb4dp"
+            app:drawableStartCompat="@drawable/ic_reject"/>
 
     </LinearLayout>
 
