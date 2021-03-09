@@ -4,8 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/my_posts_title"
+        style="@style/bkbnbNormalTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/bkbnb24dp"
+        android:paddingTop="@dimen/bkbnb16dp"
+        android:paddingBottom="@dimen/bkbnb22dp"
+        android:text="@string/view_profile_my_bookings_text" />
+
+    <View
+        android:id="@+id/header_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bkbnb2dp"
+        android:background="@color/colorBackgroundInputFieldDisabled" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_bookings_container"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -13,7 +30,8 @@
         android:id="@+id/empty_bookings_text"
         style="@style/bkbnbOptionProfileMenu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:layout_margin="@dimen/bkbnb22dp"
         android:text="@string/my_bookings_empty_text"/>
 

@@ -75,12 +75,10 @@ class MyPostsFragment : BaseFragment(R.layout.bookbnb_my_posts_fragment) {
 
     private fun setTabSelect(tabView: TextView) {
         tabView.setBackgroundResource(R.drawable.tab_background)
-        tabView.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
     }
 
     private fun setTabDeselect(tabView: TextView) {
         tabView.setBackgroundResource(0)
-        tabView.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorTitle))
     }
 
 }
