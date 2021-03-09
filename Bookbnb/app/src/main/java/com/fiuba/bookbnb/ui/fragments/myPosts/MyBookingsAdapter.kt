@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fiuba.bookbnb.R
 import com.fiuba.bookbnb.domain.misc.MsgResponse
 import com.fiuba.bookbnb.networking.NetworkModule
+import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.user.UserManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bookbnb_publish_item.view.*
@@ -55,36 +56,14 @@ class MyBookingsAdapter(private val dataSet: ArrayList<BookingPendingData>, priv
             }
 
             accept_booking_button.setOnClickListener {
-                NetworkModule.buildRetrofitClient().acceptBooking(dataSet[position].bookingResponse, UserManager.getUserInfo().getToken())
-                    .enqueue(object : Callback<MsgResponse> {
-
-                        override fun onResponse(call: Call<MsgResponse>, response: Response<MsgResponse>) {
-                            dataSet.removeAt(position)
-                            notifyItemRemoved(position)
-                            notifyItemRangeChanged(position, dataSet.size)
-                        }
-
-                        override fun onFailure(call: Call<MsgResponse>, t: Throwable) {
-                            // Do nothing
-                        }
-                    }
+                NavigationManager.moveForward(
+                    MyPostsFragmentDirections.actionMyPostsFragmentToBookingRequestProcessFragment(true, dataSet[position].bookingResponse)
                 )
             }
 
             reject_booking_button.setOnClickListener {
-                NetworkModule.buildRetrofitClient().rejectBooking(dataSet[position].bookingResponse, UserManager.getUserInfo().getToken())
-                    .enqueue(object : Callback<MsgResponse> {
-
-                        override fun onResponse(call: Call<MsgResponse>, response: Response<MsgResponse>) {
-                            dataSet.removeAt(position)
-                            notifyItemRemoved(position)
-                            notifyItemRangeChanged(position, dataSet.size)
-                        }
-
-                        override fun onFailure(call: Call<MsgResponse>, t: Throwable) {
-                            // Do nothing
-                        }
-                    }
+                NavigationManager.moveForward(
+                    MyPostsFragmentDirections.actionMyPostsFragmentToBookingRequestProcessFragment(false, dataSet[position].bookingResponse)
                 )
             }
 

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bkbnb40dp"
-        style="@style/bkbnbSmallTitle"
+        style="@style/bkbnbNormalTitle"
         android:text="@string/chat_not_login_title"/>
 
     <TextView

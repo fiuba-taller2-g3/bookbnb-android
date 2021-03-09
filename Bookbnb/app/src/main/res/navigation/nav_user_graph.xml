@@ -132,6 +132,9 @@
             android:name="startWithPostTab"
             app:argType="boolean"
             android:defaultValue="true" />
+        <action
+            android:id="@+id/action_myPostsFragment_to_bookingRequestProcessFragment"
+            app:destination="@id/bookingRequestProcessFragment" />
     </fragment>
 
     <fragment
@@ -169,5 +172,21 @@
         android:name="com.fiuba.bookbnb.ui.fragments.profile.ViewProfileFragment"
         android:label="ViewProfileFragment"
         tools:layout="@layout/bookbnb_view_profile_fragment"/>
+
+    <fragment
+        android:id="@+id/bookingRequestProcessFragment"
+        android:name="com.fiuba.bookbnb.ui.fragments.myPosts.BookingResponseProcessFragment"
+        android:label="BookingRequestProcessFragment"
+        tools:layout="@layout/bookbnb_booking_request_process">
+        <action
+            android:id="@+id/action_bookingRequestProcessFragment_to_myPostsLoadingFragment"
+            app:destination="@id/myPostsLoadingFragment" />
+        <argument
+            android:name="isAcceptedRequest"
+            app:argType="boolean" />
+        <argument
+            android:name="bookingResponse"
+            app:argType="com.fiuba.bookbnb.domain.booking.BookingResponse" />
+    </fragment>
 
 </navigation>

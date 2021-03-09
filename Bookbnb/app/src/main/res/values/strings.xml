@@ -71,6 +71,8 @@
     <string name="my_posts_reject_text_button">Rechazar</string>
     <string name="my_posts_empty_posts_text">No hay publicaciones</string>
     <string name="my_posts_empty_bookings_text">No hay solicitudes</string>
+    <string name="my_posts_loading_request_text">Espere…</string>
+    <string name="my_posts_loading_request_description">Estamos enviando su respuesta de solicitud.</string>
 
     <!-- My bookings -->
     <string name="my_bookings_empty_text">No hay reservas</string>
@@ -322,7 +324,7 @@
     <string name="chat_message_host">Anfitrión</string>
     <string name="chat_message_guest">Huesped</string>
     <string name="chat_send_msg">Enviar</string>
-    <string name="chat_title">Sala de chat</string>
+    <string name="chat_title">Mensajes</string>
     <string name="chat_not_login_title">Inicio de sesión requerido</string>
     <string name="chat_not_login_subtitle">Es necesario iniciar sesión para poder acceder a la sala de chats.</string>
 

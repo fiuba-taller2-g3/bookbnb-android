@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/bkbnbNormalTitle"
-            android:paddingHorizontal="@dimen/bkbnb14dp"
-            android:paddingTop="@dimen/bkbnb28dp"
+            android:paddingHorizontal="@dimen/bkbnb24dp"
+            android:paddingTop="@dimen/bkbnb32dp"
             android:paddingBottom="@dimen/bkbnb16dp"
             android:text="@string/chat_title" />
 
