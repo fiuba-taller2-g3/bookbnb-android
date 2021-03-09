@@ -323,6 +323,8 @@
     <string name="chat_message_guest">Huesped</string>
     <string name="chat_send_msg">Enviar</string>
     <string name="chat_title">Sala de chat</string>
+    <string name="chat_not_login_title">Inicio de sesión requerido</string>
+    <string name="chat_not_login_subtitle">Es necesario iniciar sesión para poder acceder a la sala de chats.</string>
 
     <!-- Utils -->
     <string name="string_empty" />
