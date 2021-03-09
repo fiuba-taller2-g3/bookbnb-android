@@ -12,7 +12,7 @@ import com.fiuba.bookbnb.ui.navigation.NavigationManager
 import com.fiuba.bookbnb.user.UserManager
 import kotlinx.android.synthetic.main.bookbnb_chat_item.view.*
 
-class ChatsAdapter(private val dataSet: MutableList<FirebaseChat>) : RecyclerView.Adapter<ChatsAdapter.ChatsViewHolder>() {
+class ChatsAdapter(private val dataSet: List<FirebaseChat>) : RecyclerView.Adapter<ChatsAdapter.ChatsViewHolder>() {
 
     inner class ChatsViewHolder(itemView: LinearLayout) : RecyclerView.ViewHolder(itemView)
 
@@ -26,13 +26,15 @@ class ChatsAdapter(private val dataSet: MutableList<FirebaseChat>) : RecyclerVie
             val itemData = dataSet[position]
             GuestAndHost.setGuest(itemData.userHuespedId!!)
             GuestAndHost.setHost(itemData.userAnfitrionId!!)
+
             if (UserManager.getUserInfo().getUserData().name == itemData.userHuespedName) {
-                chat_list_item_name.text = itemData.userAnfitrionName
-                chat_list_item_type.text = "Anfitrión"
+                title_chat_item.text = itemData.userAnfitrionName
+                msg_chat_item.text = context.getString(R.string.chat_message_host)
             } else {
-                chat_list_item_name.text = itemData.userHuespedName
-                chat_list_item_type.text = "Huesped"
+                title_chat_item.text = itemData.userHuespedName
+                msg_chat_item.text = context.getString(R.string.chat_message_guest)
             }
+
             setOnClickListener {
                 //NavigationManager.moveForward(ChatsFragmentDirections.actionChatsFragmentToChatFragment(itemData))
                 NavigationManager.moveForward(PublishViewFragmentDirections.startChat(FirebaseChat()))

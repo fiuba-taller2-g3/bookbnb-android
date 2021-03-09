@@ -5,8 +5,7 @@
 
     <data>
         <import type="android.view.View"/>
-        <variable
-            name="chatsViewModel" type="com.fiuba.bookbnb.ui.fragments.chat.ChatsViewModel" />
+        <variable name="chatsViewModel" type="com.fiuba.bookbnb.ui.fragments.chat.ChatsViewModel" />
     </data>
 
     <LinearLayout

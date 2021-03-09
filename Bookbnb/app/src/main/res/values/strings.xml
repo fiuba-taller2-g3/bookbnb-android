@@ -316,6 +316,8 @@
     <!-- Chats -->
     <string name="chats_empty">No hay chats para mostrar.</string>
     <string name="chat_message_hint">Escribe un mensaje…</string>
+    <string name="chat_message_host">Anfitrión</string>
+    <string name="chat_message_guest">Huesped</string>
 
     <!-- Utils -->
     <string name="string_empty" />
